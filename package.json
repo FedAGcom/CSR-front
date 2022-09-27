@@ -25,20 +25,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext .ts,.tsx src --fix"
   },
-  "prettier": {
-    "endOfLine": "auto",
-    "semi": true,
-    "printWidth": 120,
-    "tabWidth": 2,
-    "useTabs": false,
-    "singleQuote": true,
-    "quoteProps": "as-needed",
-    "jsxSingleQuote": false,
-    "trailingComma": "none",
-    "bracketSpacing": true,
-    "arrowParens": "always",
-    "parser": "typescript"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
