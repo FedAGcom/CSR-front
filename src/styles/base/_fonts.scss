@@ -1,0 +1,67 @@
+$gilroy-font-path: "../../fonts/gilroy/";
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy-font-path}/Gilroy-Light.eot');
+  src: local('Gilroy Light'), local('Gilroy-Light'),
+      url('#{$gilroy-font-path}/Gilroy-Light.eot?#iefix') format('embedded-opentype'),
+      url('#{$gilroy-font-path}/Gilroy-Light.woff') format('woff'),
+      url('#{$gilroy-font-path}/Gilroy-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy-font-path}Gilroy-Regular.eot');
+  src: local('Gilroy Regular'), local('Gilroy-Regular'),
+      url('#{$gilroy-font-path}Gilroy-Regular.eot?#iefix') format('embedded-opentype'),
+      url('#{$gilroy-font-path}Gilroy-Regular.woff') format('woff'),
+      url('#{$gilroy-font-path}Gilroy-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy-font-path}Gilroy-Medium.eot');
+  src: local('Gilroy Medium'), local('Gilroy-Medium'),
+      url('#{$gilroy-font-path}Gilroy-Medium.eot?#iefix') format('embedded-opentype'),
+      url('#{$gilroy-font-path}Gilroy-Medium.woff') format('woff'),
+      url('#{$gilroy-font-path}Gilroy-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy-font-path}Gilroy-SemiBold.eot');
+  src: local('Gilroy SemiBold'), local('Gilroy-SemiBold'),
+      url('#{$gilroy-font-path}Gilroy-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('#{$gilroy-font-path}Gilroy-SemiBold.woff') format('woff'),
+      url('#{$gilroy-font-path}Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy-font-path}Gilroy-Bold.eot');
+  src: local('Gilroy Bold'), local('Gilroy-Bold'),
+      url('#{$gilroy-font-path}Gilroy-Bold.eot?#iefix') format('embedded-opentype'),
+      url('#{$gilroy-font-path}Gilroy-Bold.woff') format('woff'),
+      url('#{$gilroy-font-path}Gilroy-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('#{$gilroy-font-path}Gilroy-Black.eot');
+  src: local('Gilroy Black'), local('Gilroy-Black'),
+      url('#{$gilroy-font-path}Gilroy-Black.eot?#iefix') format('embedded-opentype'),
+      url('#{$gilroy-font-path}Gilroy-Black.woff') format('woff'),
+      url('#{$gilroy-font-path}Gilroy-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
