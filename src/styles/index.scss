@@ -1,0 +1,14 @@
+// base 
+@import './base/normilize';
+@import './base/variables';
+@import './base/mixins';
+@import './base/fonts';
+@import './base/common';
+
+//components
+@import './components/header';
+@import './components/footer';
+@import './components/case';
+
+//pages
+@import './pages/main-page';
