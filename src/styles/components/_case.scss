@@ -1,0 +1,19 @@
+.case {
+  background-color: $background-main-lighter;
+  width: 255px;
+  height: 346px;
+  border-radius: 10px;
+  border: 1px solid #3E3C43;
+  padding: 9px 5px 20px 5px;
+  @include font(20px, 24px, 500);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__price {
+    background-color: $brand-color;
+    border-radius: 10px;
+    padding: 5px 19px;
+    margin: 11px 0 6px 0;
+  }
+}
