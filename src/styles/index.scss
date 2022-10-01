@@ -1,4 +1,4 @@
-// base 
+// base
 @import './base/normilize';
 @import './base/variables';
 @import './base/mixins';
@@ -9,6 +9,7 @@
 @import './components/header';
 @import './components/footer';
 @import './components/case';
+@import './components/prizesBlock';
 
 //pages
 @import './pages/main-page';

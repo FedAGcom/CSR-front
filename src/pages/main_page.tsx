@@ -1,21 +1,20 @@
-import React from 'react';
-import Banner from '../components/Banner/Banner';
-import { CommonBlockInfo, CommonBlockInfoWithBack } from '../components/CommonBlockInfo/CommonBlockInfo';
+import { Banner, CommonBlockInfo, CommonBlockInfoWithImage, HeaderAndFooter, PrizeBlock } from '../components';
 
 const MainPage = () => {
   return (
     <>
-      {/* Шапка, баннер */}
-      <Banner />
-      <CommonBlockInfo
-        name="Горячие офферы"
-        pStyle={{ borderBottom: 'none' }}
-        blockStyle={{ backgroundColor: '#2D2B34' }}
-      />
-      <CommonBlockInfo name="Популярные" />
-      <CommonBlockInfo blockStyle={{ backgroundColor: '#2D2B34' }} name="Дефолт" />
-      <CommonBlockInfoWithBack name="Наши сборки" />
-      {/* Футер */}
+      <HeaderAndFooter>
+        <PrizeBlock />
+        <Banner />
+        <CommonBlockInfo
+          name="Горячие офферы"
+          pStyle={{ borderBottom: 'none' }}
+          blockStyle={{ backgroundColor: '#2D2B34' }}
+        />
+        <CommonBlockInfo name="Популярные" />
+        <CommonBlockInfo blockStyle={{ backgroundColor: '#2D2B34' }} name="Дефолт" />
+        <CommonBlockInfoWithImage name="Наши сборки" />
+      </HeaderAndFooter>
     </>
   );
 };

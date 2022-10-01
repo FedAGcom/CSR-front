@@ -1,0 +1,78 @@
+.header {
+  width: 100%;
+  height: 84px;
+  background: linear-gradient(
+    60deg, 
+    $background-header-dark 50%, 
+    $background-header-light 50%
+  );
+  @include flex(center, center);
+
+  &__content {
+    width: 100%;
+    margin: 0 auto;
+    @include flex(space-between, center);
+  }
+
+  &__column1 {
+    @include flex(flex-start, center);
+    gap: 25px;
+  }
+
+  &__users-online {
+    @include flex(flex-start, center);
+    @include font(20px, 24px, 400);
+    gap: 6px;
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__column2 {
+    @include flex(flex-start, center);
+    gap: 65px;
+  }
+
+  &__location {
+    @include flex(flex-start, center);
+    cursor: pointer;
+  }
+
+  &__flag {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #E6E6E6;
+    margin: 0 5px 0 0;
+  }
+
+  &__country {
+    border-right: 1px solid $text-white;
+    @include font(15px, 24px, 400);
+    padding-right: 8px;
+    margin-right: 8px;
+  }
+
+  &__currency {
+    @include font(15px, 24px, 500);
+  }
+
+  &__user-info {
+    @include flex(flex-start, center);
+    gap: 8px;
+    cursor: pointer;
+  }
+
+  &__username {
+    @include font(15px, 19px, 700);
+  }
+
+  &__balance {
+    @include font(13px, 15px, 500);
+  }
+
+  &__balance-value {
+    @include font(13px, 16px, 600);
+    color: $brand-color;
+  }
+}

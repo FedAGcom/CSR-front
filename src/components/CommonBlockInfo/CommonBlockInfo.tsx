@@ -1,4 +1,5 @@
 import React from 'react';
+import { Case } from '../index';
 
 interface ICommonBlockInfoProps {
   blockStyle?: React.CSSProperties;
@@ -12,32 +13,35 @@ export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({ blockStyle, p
       <div className="container">
         <p style={pStyle}>{name}</p>
         <div className="block__wrapper">
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
+          <Case />
+          {/* <div className="block__item">111</div> */}
+          <Case />
+          <Case />
+          <Case />
         </div>
       </div>
     </div>
   );
 };
 
-export const CommonBlockInfoWithBack: React.FC<ICommonBlockInfoProps> = ({ name }) => {
+export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name }) => {
   return (
     <div className="block__image">
       <div className="container">
         <p>{name}</p>
         <div className="block__wrapper">
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
-          <div className="block__item">111</div>
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
+          <Case />
         </div>
       </div>
     </div>
