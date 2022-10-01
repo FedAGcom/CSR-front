@@ -1,7 +1,11 @@
+import { Case, Footer, Header } from './components';
+
 function App() {
   return (
     <div className="App">
-      <h1>SOMETHING</h1>
+      <Header />
+      <Case />
+      <Footer />
     </div>
   );
 }
