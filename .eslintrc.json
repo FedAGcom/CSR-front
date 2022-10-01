@@ -4,11 +4,9 @@
       "es2021": true
   },
   "extends": [
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier",
-      "plugin:react-hooks/recommended",
-      "plugin:prettier/recommended"
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,13 +17,10 @@
       "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint", 
-    "react", 
-    "prettier", 
-    "react-hooks"
+    "@typescript-eslint",
+    "react"
   ],
   "rules": {
-    "prettier/prettier": "warn",
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/naming-convention": [
@@ -39,10 +34,6 @@
         "selector": "typeAlias",
         "format": ["PascalCase"],
         "prefix": ["T"]
-      },
-      {
-        "selector": "variable",
-        "format": ["camelCase", "UPPER_CASE"]
       }
     ]
   }
