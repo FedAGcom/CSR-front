@@ -7,7 +7,7 @@ export const Case = () => {
   const title = 'Засекреченноe';
 
   return (
-    <Box className="case">
+    <Box className="case block__item">
       <Box className="case__image"></Box>
       <Box component="img" src={caseImage} alt="case image"></Box>
       <Box className="case__price">{price} &#8381;</Box>

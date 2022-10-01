@@ -1,12 +1,13 @@
-import { Case, Footer, Header } from './components';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MainPage } from './pages/index';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Case />
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
