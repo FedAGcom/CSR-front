@@ -1,0 +1,31 @@
+.localization {
+
+  &__title {
+    @include font(32px, 39px, 600);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  &__subtitle {
+    @include font(22px, 27px, 500);
+    text-align: center;
+  }
+
+  &__form-container {
+    width: 350px;
+    margin: 0 auto;
+    padding: 30px 0 0 0;
+  }
+
+  &__form-item {
+    @include flex(center, flex-start);
+    flex-direction: column;
+    margin: 0 0 20px 0;
+    gap: 10px;
+
+    &:nth-child(3) {
+      margin-bottom: 30px;
+    }
+  }
+
+}
