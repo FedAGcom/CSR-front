@@ -8,6 +8,7 @@ import { HeaderAndFooter } from './HeaderAndFooter/HeaderAndFooter';
 import { LoginModal } from './LoginModal/LoginModal';
 import { Checkbox } from './Checkbox/Checkbox';
 import { ButtonBasic } from './ButtonBasic/ButtonBasic';
+import { ModalBasic } from './ModalBasic/ModalBasic';
 
 export {
   Header,
@@ -21,4 +22,5 @@ export {
   LoginModal,
   Checkbox,
   ButtonBasic,
+  ModalBasic,
 };
