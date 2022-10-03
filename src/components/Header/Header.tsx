@@ -3,11 +3,13 @@ import { FAQ, Logo, OnlineAmount, HeaderSteam, HeaderPlusIcon } from '../svg';
 import { Box, Avatar, Container } from '@mui/material';
 import { HeaderButton } from './HeaderButton/HeaderButton';
 import { flagRu } from '../images';
+import { LoginModal } from '../index';
 import { LocalizationModal } from './LocalizationModal/LocalizationModal';
 import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(false);
   const handleModalClose = () => setModalOpen(false);
@@ -71,9 +73,18 @@ export const Header = () => {
                 </HeaderButton>
               </>
             ) : (
-              <HeaderButton className="login-button" variant="contained" endIcon={<HeaderSteam />}>
-                ВОЙТИ
-              </HeaderButton>
+              <>
+                <LoginModal show={show} setShow={setShow} onClose={() => setShow(false)} />
+
+                <HeaderButton
+                  className="login-button"
+                  onClick={() => setShow(true)}
+                  variant="contained"
+                  endIcon={<HeaderSteam />}
+                >
+                  ВОЙТИ
+                </HeaderButton>
+              </>
             )}
           </Box>
         </Box>
