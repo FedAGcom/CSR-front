@@ -1,9 +1,18 @@
+import { useState } from 'react';
 import { FAQ, Logo, OnlineAmount, HeaderSteam, HeaderPlusIcon } from '../svg';
 import { Box, Avatar, Container } from '@mui/material';
-import { HeaderButton } from './HeaderButton';
+import { HeaderButton } from './HeaderButton/HeaderButton';
 import { flagRu } from '../images';
+import { LocalizationModal } from './LocalizationModal/LocalizationModal';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
+  const navigate = useNavigate();
+
+  const [isModalOpen, setModalOpen] = useState(false);
+  const handleModalClose = () => setModalOpen(false);
+  const handleModalOpen = () => setModalOpen(true);
+
   // get from backend
   const onlineUsers = 666;
   const userName = 'sladko puknul';
@@ -19,22 +28,30 @@ export const Header = () => {
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Box className="header__content">
           <Box className="header__column1">
-            <Logo />
+            <Box className="header__logo" onClick={() => navigate('/')}>
+              <Logo />
+            </Box>
             <Box className="header__users-online">
               <OnlineAmount />
               <Box component="span">{onlineUsers}</Box>
               <Box>онлайн</Box>
             </Box>
-            <HeaderButton className="FAQ-button" variant="text" startIcon={<FAQ />}>
+            <HeaderButton
+              className="FAQ-button"
+              variant="text"
+              startIcon={<FAQ />}
+              onClick={() => console.log('FAQ page')}
+            >
               FAQ
             </HeaderButton>
           </Box>
           <Box className="header__column2">
-            <Box className="header__location" onClick={() => console.log('OPEN MODAL select country and currency')}>
+            <Box className="header__location" onClick={handleModalOpen}>
               <Box className="header__flag" component="img" alt="Country icon" src={flagRu}></Box>
               <Box className="header__country">{country}</Box>
               <Box className="header__currency">{currency}</Box>
             </Box>
+            <LocalizationModal isOpen={isModalOpen} handleClose={handleModalClose}></LocalizationModal>
             {isAuth ? (
               <>
                 <Box className="header__user-info" onClick={() => console.log('go to user page')}>
