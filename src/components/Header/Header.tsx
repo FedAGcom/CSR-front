@@ -36,10 +36,15 @@ export const Header = () => {
               <Box component="span">{onlineUsers}</Box>
               <Box>онлайн</Box>
             </Box>
-            <HeaderButton className="FAQ-button" variant="text" startIcon={<FAQ />} onClick={()=> console.log('FAQ page')}>
+            <HeaderButton
+              className="FAQ-button"
+              variant="text"
+              startIcon={<FAQ />}
+              onClick={() => console.log('FAQ page')}
+            >
               FAQ
             </HeaderButton>
-          </Box> 
+          </Box>
           <Box className="header__column2">
             <Box className="header__location" onClick={handleModalOpen}>
               <Box className="header__flag" component="img" alt="Country icon" src={flagRu}></Box>

@@ -4,7 +4,7 @@ interface IMyButtonProps extends ButtonProps {
   className?: string;
 }
 
-export const ButtonBasic  = (props: IMyButtonProps) => {
+export const ButtonBasic = (props: IMyButtonProps) => {
   const btnStyles: SxProps = {
     boxSizing: 'border-box',
     borderRadius: '10px',
@@ -42,4 +42,4 @@ export const ButtonBasic  = (props: IMyButtonProps) => {
   else if (props.className === 'outlined') styles = { ...styles, ...outlined };
 
   return <MUIButton {...props} disableRipple={true} sx={{ ...styles, ...props.sx }}></MUIButton>;
-}
+};
