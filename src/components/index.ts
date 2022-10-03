@@ -5,5 +5,20 @@ import { Footer } from './Footer/Footer';
 import { Banner } from './Banner/Banner';
 import { CommonBlockInfo, CommonBlockInfoWithImage } from './CommonBlockInfo/CommonBlockInfo';
 import { HeaderAndFooter } from './HeaderAndFooter/HeaderAndFooter';
+import { LoginModal } from './LoginModal/LoginModal';
+import { Checkbox } from './Checkbox/Checkbox';
+import { ButtonBasic } from './ButtonBasic/ButtonBasic';
 
-export { Header, Case, Footer, PrizeBlock, Banner, CommonBlockInfo, CommonBlockInfoWithImage, HeaderAndFooter };
+export {
+  Header,
+  Case,
+  Footer,
+  PrizeBlock,
+  Banner,
+  CommonBlockInfo,
+  CommonBlockInfoWithImage,
+  HeaderAndFooter,
+  LoginModal,
+  Checkbox,
+  ButtonBasic,
+};

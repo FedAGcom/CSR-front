@@ -1,0 +1,77 @@
+.login-modal {
+	position: absolute;
+    background-color: $background-main-lighter;
+    text-align: center;
+    display: block;
+    overflow: auto;
+    border-radius: 20px;
+    width: 730px;
+    left: 27%;
+    top: 27%;
+
+	&__wrapper {
+	inset: 0px;
+    position: fixed;
+    z-index: 5;
+	background: rgba(0, 0, 0, 0.5);
+	}
+
+	&__content {
+	position: relative;
+    width: 540px;
+    margin: 60px auto 40px;
+	}
+
+	&__text {
+	font-size: 22px;
+	line-height: 27px;
+	margin-top: 15px;
+	}
+
+	&__close {
+	position: absolute;
+	right: -71px;
+    top: -38px;
+	cursor: pointer;
+	width: 17.6px;
+	height: 17.6px;
+
+	&:hover {
+		box-shadow: 0px 0px 20px red;
+		}
+	}
+
+	&__checkbox {
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+    height: 17px;
+
+		& > p {
+		margin-left: 10px;
+    	font-size: 14px;
+		color: #D2D2D2;
+		a {
+			text-decoration: underline;
+			cursor: pointer;
+			&:hover {
+			color: $link-hover;
+		}
+		}
+		}
+	}
+
+	&__footer {
+		margin-top: 30px;
+
+		p {
+		font-weight: 900;
+    	font-size: 16px;
+    	line-height: 20px;
+    	text-transform: uppercase;
+		margin-right: 10px;
+		}
+	}
+}

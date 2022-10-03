@@ -15,6 +15,9 @@ import { ReactComponent as SocialInstagram } from './social-instagram.svg';
 import { ReactComponent as SocialFacebook } from './social-facebook.svg';
 import { ReactComponent as SocialSteam } from './social-steam.svg';
 import { ReactComponent as LogoFooter } from './logo-footer.svg';
+import { ReactComponent as CloseBtn } from './closeBtn.svg';
+import { ReactComponent as CheckboxChecked } from './checkbox-checked.svg';
+import { ReactComponent as CheckboxUnchecked } from './checkbox-unchecked.svg';
 
 export {
   Logo,
@@ -29,5 +32,12 @@ export {
   SocialFacebook,
   SocialSteam,
   LogoFooter,
-  StarIcon, All, Bonus, Roulette, Case
+  CloseBtn,
+  StarIcon,
+  All,
+  Bonus,
+  Roulette,
+  Case,
+  CheckboxChecked,
+  CheckboxUnchecked,
 };

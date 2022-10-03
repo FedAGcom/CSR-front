@@ -2,8 +2,12 @@ import { FAQ, Logo, OnlineAmount, HeaderSteam, HeaderPlusIcon } from '../svg';
 import { Box, Avatar, Container } from '@mui/material';
 import { HeaderButton } from './HeaderButton';
 import { flagRu } from '../images';
+import { useState } from 'react';
+import { LoginModal } from '../index';
 
 export const Header = () => {
+  const [show, setShow] = useState(false);
+
   // get from backend
   const onlineUsers = 666;
   const userName = 'sladko puknul';
@@ -54,9 +58,18 @@ export const Header = () => {
                 </HeaderButton>
               </>
             ) : (
-              <HeaderButton className="login-button" variant="contained" endIcon={<HeaderSteam />}>
-                ВОЙТИ
-              </HeaderButton>
+              <>
+                <LoginModal show={show} setShow={setShow} onClose={() => setShow(false)} />
+
+                <HeaderButton
+                  className="login-button"
+                  onClick={() => setShow(true)}
+                  variant="contained"
+                  endIcon={<HeaderSteam />}
+                >
+                  ВОЙТИ
+                </HeaderButton>
+              </>
             )}
           </Box>
         </Box>
