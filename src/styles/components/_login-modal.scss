@@ -6,8 +6,14 @@
     overflow: auto;
     border-radius: 20px;
     width: 730px;
-    left: 27%;
-    top: 27%;
+	margin: auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	height: 363px;
+    // left: 27%;
+    // top: 27%;
 
 	&__wrapper {
 	inset: 0px;
