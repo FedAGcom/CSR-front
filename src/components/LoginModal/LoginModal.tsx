@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CloseBtn, LogoFooter, HeaderSteam } from '../svg';
+import { CloseIcon, LogoFooter, HeaderSteam } from '../svg';
 import { Checkbox, ButtonBasic } from '../index';
 
 interface ILoginModal {
@@ -12,14 +12,25 @@ export const LoginModal: React.FC<ILoginModal> = ({ show, setShow, onClose }) =>
   const [confirmAge, setConfirmAge] = useState<boolean>(false);
   const [agree, setAgree] = useState<boolean>(false);
 
+  function autoClose() {
+    onClose;
+    closeModal();
+  }
+
+  function closeModal() {
+    setShow(false);
+    setConfirmAge(false);
+    setAgree(false);
+  }
+
   return (
     <>
       {show ? (
-        <div className="login-modal__wrapper" onClick={onClose}>
+        <div className="login-modal__wrapper" onClick={autoClose}>
           <div className="login-modal" onClick={(e) => e.stopPropagation()}>
             <div className="login-modal__content">
               <div className="login-modal__close">
-                <CloseBtn onClick={() => setShow(false)} />
+                <CloseIcon onClick={closeModal} />
               </div>
 
               <div className="login-modal__body">

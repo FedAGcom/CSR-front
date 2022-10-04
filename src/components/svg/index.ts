@@ -15,7 +15,6 @@ import { ReactComponent as SocialInstagram } from './footer/social-instagram.svg
 import { ReactComponent as SocialFacebook } from './footer/social-facebook.svg';
 import { ReactComponent as SocialSteam } from './footer/social-steam.svg';
 import { ReactComponent as LogoFooter } from './logo-footer.svg';
-import { ReactComponent as CloseBtn } from './closeBtn.svg';
 import { ReactComponent as CheckboxChecked } from './checkbox-checked.svg';
 import { ReactComponent as CheckboxUnchecked } from './checkbox-unchecked.svg';
 import { ReactComponent as CloseIcon } from './close-icon.svg';
@@ -33,7 +32,6 @@ export {
   SocialFacebook,
   SocialSteam,
   LogoFooter,
-  CloseBtn,
   StarIcon,
   All,
   Bonus,
