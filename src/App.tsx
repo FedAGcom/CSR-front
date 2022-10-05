@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { MainPage, PrivacyPolicyPage } from './pages/index';
+import { MainPage, PrivacyPolicyPage, TermsOfServicePage } from './pages/index';
 
 function App() {
   return (
@@ -7,6 +7,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
       </Routes>
     </BrowserRouter>
   );
