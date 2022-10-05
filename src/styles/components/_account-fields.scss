@@ -1,0 +1,171 @@
+.account{
+    background-color:$background-account;
+    padding: 32px 0 120px;
+
+    &-wrapper {
+	display: flex;
+    flex-direction: column;
+    }
+
+    &-field {
+    width: 46%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+
+        &__wrapper {
+        background: $background-main;
+        border-radius: 20px;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        align-items: center;
+        }
+    }
+
+    &-avatar {
+    border: 2px solid #B81034;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+
+        img {
+        width: 100%;
+        }
+    }
+
+    &-info {
+        margin-left: 20px;
+        font-weight: 700;
+
+        &__name {
+        display: flex;
+        align-items: center;
+
+            p {
+            font-size: 20px;
+            line-height: 25px;
+            color: $text-account-grey;
+            padding-right: 4px;
+            }
+
+            .headerSteam {
+                fill:$text-account-grey;
+                width: 13px;
+            }
+        }
+
+        &__money {
+        font-size: 24px;
+        line-height: 30px;
+        color: $text-white;
+        }
+    }
+
+    &-exit {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border: 2px solid #B81034;
+    background: $background-main;
+    border-radius:50%;
+    cursor: pointer;
+
+        &:hover {
+        border: 2px solid #fff;
+
+            & .exit {
+            fill:#fff
+            }
+        }
+    }
+
+    &-drop__img {
+    width: 170px;
+    height: 144px;
+    }
+
+    &-case {
+    background: $background-main;
+    border-radius: 20px;
+    width: 540px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+
+        &__wrapper {
+        margin: 30px 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        }
+
+        &__common {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        }
+
+        &__title {
+            color: $text-account-grey;
+            margin-bottom: 10px;
+            font-size: 20px;
+            line-height: 25px
+        }
+
+        &__desc{
+            font-size: 22px;
+            line-height: 27px;
+            color: $text-white;
+            margin-bottom: 20px;
+        }
+
+        &__img {
+            width: 147px;
+            height: 144px;
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &-items{
+    margin-top: 20px;
+
+        &__p{
+        font-size: 22px;
+        line-height: 27px;
+        color: $text-white;
+        }
+
+        &__inner-wrapper {
+            padding-top: 60px;
+            text-align: center;
+        }
+
+        &__title {
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 40px;
+        color: $text-white;
+        }
+
+        &__subtitle {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 30px;
+        color: $text-account-grey;
+        margin-bottom: 30px;
+        }
+    }
+
+}
+
