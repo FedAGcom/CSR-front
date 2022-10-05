@@ -42,7 +42,7 @@ export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, is
             <MenuItem value="USD">USD</MenuItem>
           </Select>
         </Box>
-        <ButtonBasic className="primary" onClick={handleSaveButton}>
+        <ButtonBasic className="primary" sx={{ width: '100%' }} onClick={handleSaveButton}>
           Сохранить настройки
         </ButtonBasic>
       </Box>

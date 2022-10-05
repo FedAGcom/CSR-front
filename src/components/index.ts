@@ -9,6 +9,8 @@ import { LoginModal } from './LoginModal/LoginModal';
 import { Checkbox } from './Checkbox/Checkbox';
 import { ButtonBasic } from './ButtonBasic/ButtonBasic';
 import { ModalBasic } from './ModalBasic/ModalBasic';
+import { AskQuestionBlock } from './AskQuestionBlock/AskQuestionBlock';
+import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
 
 export {
   Header,
@@ -23,4 +25,6 @@ export {
   Checkbox,
   ButtonBasic,
   ModalBasic,
+  AskQuestionBlock,
+  ButtonBackToMain,
 };
