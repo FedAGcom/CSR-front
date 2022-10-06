@@ -54,7 +54,7 @@ export const LoginModal: React.FC<ILoginModal> = ({ show, setShow, onClose }) =>
                   <p>
                     <a href="https://store.steampowered.com/login">Войти через steam</a>
                   </p>{' '}
-                  <HeaderSteam />
+                  <HeaderSteam className={!confirmAge || !agree ? 'headerSteam:disabled' : 'headerSteam'} />
                 </ButtonBasic>
               </div>
             </div>

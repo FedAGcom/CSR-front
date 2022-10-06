@@ -9,6 +9,7 @@ import { LoginModal } from './LoginModal/LoginModal';
 import { Checkbox } from './Checkbox/Checkbox';
 import { ButtonBasic } from './ButtonBasic/ButtonBasic';
 import { ModalBasic } from './ModalBasic/ModalBasic';
+import { AccountHeaderField, AccountCaseField, AccountSoldItemsField } from './Account/AccountFields';
 import { AskQuestionBlock } from './AskQuestionBlock/AskQuestionBlock';
 import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
 
@@ -25,6 +26,9 @@ export {
   Checkbox,
   ButtonBasic,
   ModalBasic,
+  AccountHeaderField,
+  AccountCaseField,
+  AccountSoldItemsField,
   AskQuestionBlock,
   ButtonBackToMain,
 };

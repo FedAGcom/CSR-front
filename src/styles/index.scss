@@ -4,6 +4,7 @@
 @import './base/mixins';
 @import './base/fonts';
 @import './base/common';
+@import './base/svg-colors';
 
 //components
 @import './components/header';
@@ -12,6 +13,7 @@
 @import './components/prizesBlock';
 @import './components/login-modal';
 @import './components/localizationModal';
+@import './components/account-fields';
 @import './components/askQuestion';
 @import './components/buttonBackToMain';
 

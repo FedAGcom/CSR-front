@@ -16,6 +16,15 @@ export const ButtonBasic = (props: IMyButtonProps) => {
     textTransform: 'initial',
   };
 
+  const disabled: SxProps = {
+    '&:disabled': {
+      color: '#737373',
+      background: '#24232A',
+      border: '2px solid #737373',
+      borderRadius: '10px',
+    },
+  };
+
   const primary: SxProps = {
     color: '#fff',
     backgroundColor: '#B81034',
@@ -52,6 +61,7 @@ export const ButtonBasic = (props: IMyButtonProps) => {
   let styles = { ...btnStyles };
   if (props.className === 'primary') styles = { ...styles, ...primary };
   else if (props.className === 'outlined') styles = { ...styles, ...outlined };
+  else if (props.disabled) styles = { ...styles, ...disabled };
   else if (props.className === 'text') styles = { ...styles, ...text };
 
   return <MUIButton {...props} disableRipple={true} sx={{ ...styles, ...props.sx }}></MUIButton>;

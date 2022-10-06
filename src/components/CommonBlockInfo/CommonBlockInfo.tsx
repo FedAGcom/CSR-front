@@ -14,7 +14,6 @@ export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({ blockStyle, p
         <p style={pStyle}>{name}</p>
         <div className="block__wrapper">
           <Case />
-          {/* <div className="block__item">111</div> */}
           <Case />
           <Case />
           <Case />
