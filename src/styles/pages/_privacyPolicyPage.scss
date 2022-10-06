@@ -1,0 +1,38 @@
+.privacy-policy {
+  position: relative;
+  margin: 50px 0 0 0;
+
+  &__title {
+    @include font(32px, 39px, 700);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    list-style-type: upper-roman;
+    list-style-position: inside;
+    box-sizing: border-box;
+    margin-bottom: 80px;
+    
+    li {
+      @include font(24px, 30px, 600);
+      color: $brand-color;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__sublist {
+    margin-top: 16px;
+    list-style-position: outside;
+
+    li {
+      @include font(20px, 24px, 400);
+      color: $text-white;
+      text-transform: none;
+      margin-left: 24px;
+      margin-bottom: 0;
+    }
+
+  }
+}
