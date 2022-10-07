@@ -1,6 +1,7 @@
+import { forwardRef } from 'react';
 import { Input as MUIInput, InputProps, SxProps } from '@mui/material';
 
-export function InputBasic(props: InputProps) {
+export const InputBasic = forwardRef<JSX.Element, InputProps>(function InputBasic(props: InputProps, ref) {
   const inputStyles: SxProps = {
     boxSizing: 'border-box',
     borderRadius: '5px',
@@ -24,10 +25,12 @@ export function InputBasic(props: InputProps) {
       color: '#fff',
       boxShadow: '0px 0px 10px 2px rgba(184, 16, 52, 0.25)',
     },
-    '&.Mui-error': {
-      border: '1px solid #FB0000',
-    },
+    // '&.Mui-error': {
+    //   border: '1px solid #FB0000',
+    // },
   };
 
-  return <MUIInput {...props} disableUnderline={true} sx={{ ...inputStyles, ...props.sx }} />;
-}
+  return (
+    <MUIInput {...props} autoComplete="off" ref={ref} disableUnderline={true} sx={{ ...inputStyles, ...props.sx }} />
+  );
+});

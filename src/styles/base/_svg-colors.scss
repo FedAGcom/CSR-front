@@ -1,15 +1,20 @@
-.headerSteam {
+.headerSteam, .close-icon, .cases, .users, setting {
 	fill: white;
 }
 
 .exit {
-    fill: #B81034;
+    fill: $brand-color;
 }
 
 .clip {
 	size: 24px;
 }
 
-.close-icon {
-	fill:white;
+.support, .promocode, .money, .logs {
+	fill: white;
+	stroke: white;
+	// font-weight: bold;
+	// &:hover, &:active {
+	// fill: $brand-color;
+	// }
 }
