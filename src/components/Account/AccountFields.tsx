@@ -1,7 +1,7 @@
 import React from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
 import { ButtonBasic } from '../index';
-import { weapon, caseImage } from '../images';
+import { caseImage } from '../images';
 
 export const AccountHeaderField = () => {
   return (

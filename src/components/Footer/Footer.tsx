@@ -96,7 +96,7 @@ const FooterInfo = () => {
               </Grid>
               <Grid item xs={6} sm={4}>
                 <Box className="footer-info__title">Мой аккаунт</Box>
-                <FooterLink value="Мой аккаунт" url="#" />
+                <FooterLink value="Мой аккаунт" url="/account" />
                 <FooterLink value="Мои кейсы" url="#" />
                 <FooterLink value="Плюшки" url="#" />
               </Grid>

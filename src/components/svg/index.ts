@@ -20,6 +20,7 @@ import { ReactComponent as CheckboxUnchecked } from './checkbox-unchecked.svg';
 import { ReactComponent as CloseIcon } from './close-icon.svg';
 import { ReactComponent as ExitIcon } from './exit-icon.svg';
 import { ReactComponent as ArrowBack } from './arrow-back.svg';
+import { ReactComponent as ErrorIcon } from './error-icon.svg';
 
 export {
   Logo,
@@ -44,4 +45,5 @@ export {
   CloseIcon,
   ExitIcon,
   ArrowBack,
+  ErrorIcon
 };

@@ -12,6 +12,7 @@ import { ModalBasic } from './ModalBasic/ModalBasic';
 import { AccountHeaderField, AccountCaseField, AccountSoldItemsField } from './Account/AccountFields';
 import { AskQuestionBlock } from './AskQuestionBlock/AskQuestionBlock';
 import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
+import { InputBasic } from './InputBasic/InputBasic';
 
 export {
   Header,
@@ -31,4 +32,5 @@ export {
   AccountSoldItemsField,
   AskQuestionBlock,
   ButtonBackToMain,
+  InputBasic,
 };
