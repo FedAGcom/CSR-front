@@ -26,8 +26,24 @@ import { ReactComponent as DoneIcon } from './done-icon.svg';
 import { ReactComponent as RadioCheckedIcon } from './radio-checked.svg';
 import { ReactComponent as RadioUncheckedIcon } from './radio-unchecked.svg';
 import { ReactComponent as ErrorIcon } from './error-icon.svg';
+import { ReactComponent as CasesIcon } from './cases.svg';
+import { ReactComponent as Money } from './money.svg';
+import { ReactComponent as PromoCode } from './promoCode.svg';
+import { ReactComponent as Settings } from './settings.svg';
+import { ReactComponent as Support } from './support.svg';
+import { ReactComponent as UsersIcon } from './users-icon.svg';
+import { ReactComponent as Logs } from './logs.svg';
+import { ReactComponent as AdminExit } from './admin-exit.svg';
 
 export {
+  CasesIcon,
+  Logs,
+  AdminExit,
+  Support,
+  PromoCode,
+  UsersIcon,
+  Money,
+  Settings,
   Logo,
   FAQ,
   HeaderSteam,
@@ -55,5 +71,5 @@ export {
   DoneIcon,
   RadioCheckedIcon,
   RadioUncheckedIcon,
-  ErrorIcon
+  ErrorIcon,
 };
