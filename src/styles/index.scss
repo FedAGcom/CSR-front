@@ -17,11 +17,23 @@
 @import './components/account-fields';
 @import './components/askQuestion';
 @import './components/buttonBackToMain';
+<<<<<<< HEAD
 @import './components/admin-panel';
+=======
+@import './components/case-item';
+@import './components/case-auth-banner';
+@import './components/prize-modal';
+@import './components/case-content';
+@import './components/roulette-item';
+>>>>>>> 61c0e28 (feature/CSRFR-5: add open-case-page and fix prize-block)
 
 //pages
 @import './pages/main-page';
 @import './pages/privacyPolicyPage';
 @import './pages/termsOfServicePage';
+<<<<<<< HEAD
 @import './pages/techSupportPage';
+=======
+@import './pages/open-case_page';
+>>>>>>> 61c0e28 (feature/CSRFR-5: add open-case-page and fix prize-block)
 

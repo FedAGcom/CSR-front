@@ -1,0 +1,82 @@
+.prize-modal {
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    width: 322px;
+    height: 210px;
+    left: 0;
+    right: 0;
+    bottom: 48px;
+    border-radius: 10px;
+    z-index: 11;
+}
+
+.prize-modal__img {
+    display: block;
+    margin: 23px auto;
+    width: 217px;
+    object-fit: cover;
+}
+
+.prize-modal__type {
+    position: absolute;
+    bottom: 37px;
+    left: 25px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.prize-modal__title {
+    position: absolute;
+    bottom: 17px;
+    left: 25px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.rarity {
+    &-common {
+        background: linear-gradient(180deg, #24232A 0%, #3F5879 100%);
+        border: 1px solid #6A98D4;
+        box-shadow: 0px 0px 15px 10px #6A98D4;
+    
+    }
+
+    &-uncommon {
+        background: linear-gradient(180deg, #24232A 0%, #4057C7 100%);
+        border: 1px solid #4F6CF6;
+        box-shadow: 0px 0px 15px 10px #4F6CF6;
+    
+    }
+
+    &-milspec {
+        background: linear-gradient(180deg, #24232A 0%, #6542C5 100%);
+        border: 1px solid #7E51F6;
+        box-shadow: 0px 0px 15px 10px #7E51F6;
+    
+    }
+    
+    &-restricted {
+        background: linear-gradient(180deg, #24232A 0%, #7B2A8D 100%);
+        border: 1px solid #C243DE;
+        box-shadow: 0px 0px 15px 10px #C243DE;
+    }
+    
+    &-covert {
+        background: linear-gradient(180deg, #24232A 0%, #9F3F3C 100%);
+        border: 1px solid #DA5752;
+        box-shadow: 0px 0px 15px 10px rgba(218, 87, 82, 1);
+    }
+
+    &-legendary {
+        background: linear-gradient(180deg, #24232A 0%, #9f943c 100%);
+        border: 1px solid #dedb32;
+        box-shadow: 0px 0px 15px 10px rgb(219, 206, 57);
+    }
+}

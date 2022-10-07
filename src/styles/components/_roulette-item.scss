@@ -1,0 +1,12 @@
+.item {
+    min-width: 205px;
+    height: 304px;
+    box-sizing: border-box;
+    
+    &__img {
+        margin-top: 84px;
+        margin-left: 15px;
+        width: 184px;
+        object-fit: cover;
+    }
+}

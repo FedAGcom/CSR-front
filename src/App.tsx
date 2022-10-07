@@ -6,6 +6,7 @@ import {
   TermsOfServicePage,
   AccountPage,
   AdminLayout,
+  OpenCase
 } from './pages/index';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="/admin/settings" element={<h3>Settings</h3>} />
         </Route>
+        <Route path="/open-case" element={<OpenCase />} />
       </Routes>
     </BrowserRouter>
   );

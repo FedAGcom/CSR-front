@@ -1,0 +1,61 @@
+.case-item {
+    position: relative;
+    width: 150px;
+    height: 98px;
+    border-radius: 10px;
+
+    &__img {
+        display: block;
+        margin: 16px auto;
+        width: 88px;
+        object-fit: cover;
+    }
+
+    &__type {
+        position: absolute;
+        bottom: 25px;
+        left: 15px;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    &__title {
+        position: absolute;
+        bottom: 12px;
+        left: 15px;
+        font-family: 'Gilroy';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 13px;
+    }
+}
+
+.case-item-common {
+    background: linear-gradient(180deg, #24232A 0%, #3F5879 100%);
+    border-bottom: 1px solid #6A98D4;
+}
+.case-item-uncommon {
+    background: linear-gradient(180deg, #24232A 0%, #4057C7 100%);
+    border-bottom: 1px solid #4F6CF6;
+}
+.case-item-milspec {
+    background: linear-gradient(180deg, #24232A 0%, #6542C5 100%);
+    border-bottom: 1px solid #7E51F6;
+}
+.case-item-restricted {
+    background: linear-gradient(180deg, #24232A 0%, #7B2A8D 100%);
+    border-bottom: 1px solid #C243DE;
+}
+.case-item-covert {
+    background: linear-gradient(180deg, #24232A 0%, #9F3F3C 100%);
+    border-bottom: 1px solid #DA5752;
+}
+
+.case-item-legendary {
+    background: linear-gradient(180deg, #24232A 0%, #9f943c 100%);
+    border-bottom: 1px solid #dedb32;
+}
