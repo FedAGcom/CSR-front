@@ -5,7 +5,7 @@ interface ICaseItemProps {
   class: string;
 }
 
-export const CaseItem: React.FC<ICaseItemProps> = (props) => {
+export const CaseItem: React.FC<ICaseItemProps> = (props: ICaseItemProps) => {
   return (
     <div className={'case-item ' + 'case-item-' + props.class}>
       <img className="case-item__img" src={props.image} alt={props.type} />
