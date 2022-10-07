@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Modal as MuiModal, Box, IconButton } from '@mui/material';
-import { CloseIcon } from '../svg';
+import { CloseIcon } from '../../svg';
 import type { SxProps } from '@mui/material';
 
 const modalContainer: SxProps = {
@@ -31,11 +31,11 @@ type TModalBasicProps = {
 
 export const ModalBasic: FC<TModalBasicProps> = ({ open, onClose, children }) => {
   return (
-    <MuiModal open={open}>
+    <MuiModal open={open} onClick={onClose}>
       <Box sx={modalContainer}>
-        <Box sx={modalContent}>
+        <Box sx={modalContent} onClick={(e) => e.stopPropagation()}>
           <Box sx={closeButton}>
-            <IconButton onClick={onClose}>
+            <IconButton onClick={onClose} className="modal-close">
               <CloseIcon />
             </IconButton>
           </Box>

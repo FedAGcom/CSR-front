@@ -6,13 +6,12 @@ import { Banner } from './Banner/Banner';
 import { CommonBlockInfo, CommonBlockInfoWithImage } from './CommonBlockInfo/CommonBlockInfo';
 import { HeaderAndFooter } from './HeaderAndFooter/HeaderAndFooter';
 import { LoginModal } from './LoginModal/LoginModal';
-import { Checkbox } from './Checkbox/Checkbox';
-import { ButtonBasic } from './ButtonBasic/ButtonBasic';
-import { ModalBasic } from './ModalBasic/ModalBasic';
 import { AccountHeaderField, AccountCaseField, AccountSoldItemsField } from './Account/AccountFields';
 import { AskQuestionBlock } from './AskQuestionBlock/AskQuestionBlock';
 import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
-import { InputBasic } from './InputBasic/InputBasic';
+import { TradeLinkModal } from './TradeLinkModal/TradeLinkModal';
+import { BalanceModal } from './TopUpBalanceModal/BalanceModal';
+import { Checkbox, ButtonBasic, ModalBasic, RadioBtn, InputBasic } from './BasicComponents/index';
 
 export {
   Header,
@@ -33,4 +32,7 @@ export {
   AskQuestionBlock,
   ButtonBackToMain,
   InputBasic,
+  TradeLinkModal,
+  BalanceModal,
+  RadioBtn,
 };

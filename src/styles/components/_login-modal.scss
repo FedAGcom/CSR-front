@@ -1,48 +1,14 @@
 .login-modal {
-	position: absolute;
-    background-color: $background-main-lighter;
-    text-align: center;
-    display: block;
-    overflow: auto;
-    border-radius: 20px;
-    width: 730px;
-	margin: auto;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	height: 363px;
-
-	&__wrapper {
-	inset: 0px;
-    position: fixed;
-    z-index: 5;
-	background: rgba(0, 0, 0, 0.5);
-	}
-
 	&__content {
-	position: relative;
-    width: 540px;
-    margin: 60px auto 40px;
+	padding: 0px 70px 0;
+	text-align: center;
+	margin-bottom: -20px;
 	}
 
 	&__text {
 	font-size: 22px;
 	line-height: 27px;
 	margin-top: 15px;
-	}
-
-	&__close {
-	position: absolute;
-	right: -71px;
-    top: -38px;
-	cursor: pointer;
-	width: 24px;
-	height: 24px;
-
-	&:hover {
-		box-shadow: 0px 0px 20px red;
-		}
 	}
 
 	&__checkbox {
@@ -57,13 +23,13 @@
 		margin-left: 10px;
     	font-size: 14px;
 		color: #D2D2D2;
-		a {
-			text-decoration: underline;
-			cursor: pointer;
-			&:hover {
-			color: $link-hover;
-		}
-		}
+			a {
+				text-decoration: underline;
+				cursor: pointer;
+				&:hover {
+				color: $link-hover;
+				}
+			}
 		}
 	}
 

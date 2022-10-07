@@ -32,6 +32,7 @@ const button2: SxProps = {
   fontSize: '20px',
   lineHeight: '25px',
   marginTop: '15px',
+  marginBottom: '15px',
   marginRight: '10px',
   gap: '15px',
   '&:hover': {

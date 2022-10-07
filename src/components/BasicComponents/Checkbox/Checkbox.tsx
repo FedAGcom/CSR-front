@@ -1,6 +1,6 @@
 import React from 'react';
 import { Checkbox as MUICheckbox, CheckboxProps, SxProps } from '@mui/material';
-import { CheckboxChecked, CheckboxUnchecked } from '../svg/index';
+import { CheckboxChecked, CheckboxUnchecked } from '../../svg/index';
 
 export function Checkbox(props: CheckboxProps) {
   const styles: SxProps = {
