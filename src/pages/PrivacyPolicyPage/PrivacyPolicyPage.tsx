@@ -2,7 +2,6 @@ import { Box, Container } from '@mui/material';
 import { AskQuestionBlock, HeaderAndFooter, PrizeBlock, ButtonBackToMain } from '../../components';
 
 export const PrivacyPolicyPage = () => {
-
   return (
     <Box>
       <HeaderAndFooter>

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
 import { BalanceModal, ButtonBasic, TradeLinkModal } from '../index';
 import { weapon, caseImage } from '../images';
-import { useState } from 'react';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);

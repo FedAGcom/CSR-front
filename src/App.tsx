@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { MainPage, PrivacyPolicyPage, TermsOfServicePage, AccountPage } from './pages/index';
+import { MainPage, PrivacyPolicyPage, TechSupportPage, TermsOfServicePage, AccountPage  } from './pages/index';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
         <Route path="/account" element={<AccountPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
+        <Route path="/tech-support" element={<TechSupportPage />} />
       </Routes>
     </BrowserRouter>
   );

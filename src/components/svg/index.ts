@@ -25,6 +25,7 @@ import { ReactComponent as WaletIcon } from './walet-icon.svg';
 import { ReactComponent as DoneIcon } from './done-icon.svg';
 import { ReactComponent as RadioCheckedIcon } from './radio-checked.svg';
 import { ReactComponent as RadioUncheckedIcon } from './radio-unchecked.svg';
+import { ReactComponent as ErrorIcon } from './error-icon.svg';
 
 export {
   Logo,
@@ -54,4 +55,5 @@ export {
   DoneIcon,
   RadioCheckedIcon,
   RadioUncheckedIcon,
+  ErrorIcon
 };

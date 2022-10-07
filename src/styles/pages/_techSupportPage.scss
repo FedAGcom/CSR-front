@@ -1,0 +1,201 @@
+.tech-support {
+  background-color: $background-rounded-block;
+  border-radius: 20px 20px 0 0;
+  @include flex(center, center);
+  flex-direction: column;
+  margin: 15px 0 0 0;
+  
+  &__title {
+    @include font(32px, 39px, 700);
+    margin: 60px 0 0 0;
+    text-align: center;
+  }
+
+  &__subtitle {
+    @include font(24px, 29px, 700);
+    max-width: 750px;
+    text-align: center;
+    margin: 20px 0 52px 0;
+
+    span {
+      color: $brand-color;
+    }
+  }
+}
+
+.tech-support-form {
+  background-color: $background-main;
+  padding: 50px 95px 30px 95px;
+  border-radius: 20px;
+  @include flex(flex-start, center);
+  flex-direction: column;
+  gap: 10px;
+
+  &__inputs-container {
+    width: 730px;
+    @include flex(flex-start, center);
+    flex-direction: column;
+  }
+
+  &__title {
+    @include font(26px, 32px, 600);
+    align-self: flex-start;
+  }
+
+  &__buttons {
+    width: 100%;
+    @include flex(space-between, center);
+  }
+
+  &__input-label {
+    @include font(20px, 24px, 500);
+    align-self: flex-start;
+    margin-bottom: 10px;
+  }
+
+  &__file-upload {
+    display: flex;
+
+    div {
+      display: block;
+      color: $text-white;
+      background-color: transparent;
+      padding: 16px 32px;
+      font-family: "Gilroy";
+      @include font(16px, 20px, 500);
+      border-radius: 10px;
+      border: 1px solid $text-white;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        border-color: $brand-color;
+        color: $brand-color;
+      }
+    }
+
+    input {
+      margin: 15px 0 0 -10px;
+      color: $brand-color;
+      font-family: 'Gilroy';
+      max-width: 150px;
+  
+      &::-webkit-file-upload-button {
+        visibility: hidden;
+        width: 0;
+      }
+    }
+
+  }
+
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  &__modal {
+    @include flex (center, center);
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__modal-title {
+    @include font(32px, 39px, 600);
+  }
+
+  &__modal-subtitle {
+    @include font(22px, 27px, 500);
+    margin-bottom: 20px;
+  }
+
+  &__error-message {
+    @include font(16px, 20px, 400);
+    color: #FB0000;
+    @include flex(center, center);
+    gap: 5px;
+    align-self: flex-start;
+    opacity: 1;
+    margin: 5px 0 10px 0;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+
+}
+
+.faq-item {
+  transition: 0.5s;
+
+  &__question {
+    @include font(20px, 24px, 500);
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &.active {
+      color: $brand-color;
+    }
+  }
+
+  &__answer {
+    display: none;
+    @include font(16px, 19px, 400);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 520px;
+    position: relative;
+    background-color: $background-rounded-block;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23B81034FF' stroke-width='2' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    margin: 18px 0 10px 0;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      transform: rotate(45deg);
+      top: -8px;
+      left: 33px;
+      border-left: 1px solid $brand-color;
+      border-top: 1px solid $brand-color;
+      background-color: $background-rounded-block;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+}
+
+.FAQ {
+
+  &__container {
+    @include flex(center, center);
+    flex-direction: column;
+    gap: 25px;
+    width: 920px;
+    margin: 65px 0 120px 0;
+  }
+
+  &__title {
+    @include font(32px, 39px, 700);
+    margin: 60px 0 0 0;
+    text-align: center;
+  }
+
+  &__category-list {
+    width: 100%;
+    @include flex(space-between, flex-start);
+    @include font(24px, 29px, 700);
+  }
+
+  &__category-title {
+    width: 30%;
+  }
+
+  &__list {
+    list-style-position: inside;
+    width: 70%;
+  }
+
+}
