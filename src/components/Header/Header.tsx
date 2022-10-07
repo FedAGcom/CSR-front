@@ -74,7 +74,7 @@ export const Header = () => {
               </>
             ) : (
               <>
-                <LoginModal show={show} setShow={setShow} onClose={() => setShow(false)} />
+                <LoginModal show={show} onClose={() => setShow(false)} />
 
                 <HeaderButton
                   className="login-button"

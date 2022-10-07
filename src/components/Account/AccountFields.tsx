@@ -1,9 +1,21 @@
 import React from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
-import { ButtonBasic } from '../index';
+import { BalanceModal, ButtonBasic, TradeLinkModal } from '../index';
 import { weapon, caseImage } from '../images';
+import { useState } from 'react';
 
 export const AccountHeaderField = () => {
+  const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
+  const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
+
+  const handleCloseTrade = () => {
+    setTradeModalOpen(false);
+  };
+
+  const handleCloseBalance = () => {
+    setBalanceModalOpen(false);
+  };
+
   return (
     <div className="account-field__wrapper">
       <div className="account-field">
@@ -18,8 +30,15 @@ export const AccountHeaderField = () => {
         </div>
       </div>
       <div className="account-field" style={{ justifyContent: 'space-between' }}>
-        <ButtonBasic className="primary">Пополнить баланс</ButtonBasic>
-        <ButtonBasic className="outlined">Трейд ссылка</ButtonBasic>
+        <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />
+        <ButtonBasic className="primary" onClick={() => setBalanceModalOpen(true)}>
+          Пополнить баланс
+        </ButtonBasic>
+
+        <TradeLinkModal open={isTradeModalOpen} onClose={handleCloseTrade} />
+        <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
+          Трейд ссылка
+        </ButtonBasic>
         <div className="account-exit">
           <ExitIcon />
         </div>

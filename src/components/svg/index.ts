@@ -20,6 +20,11 @@ import { ReactComponent as CheckboxUnchecked } from './checkbox-unchecked.svg';
 import { ReactComponent as CloseIcon } from './close-icon.svg';
 import { ReactComponent as ExitIcon } from './exit-icon.svg';
 import { ReactComponent as ArrowBack } from './arrow-back.svg';
+import { ReactComponent as ClipIcon } from './clip-icon.svg';
+import { ReactComponent as WaletIcon } from './walet-icon.svg';
+import { ReactComponent as DoneIcon } from './done-icon.svg';
+import { ReactComponent as RadioCheckedIcon } from './radio-checked.svg';
+import { ReactComponent as RadioUncheckedIcon } from './radio-unchecked.svg';
 
 export {
   Logo,
@@ -44,4 +49,9 @@ export {
   CloseIcon,
   ExitIcon,
   ArrowBack,
+  ClipIcon,
+  WaletIcon,
+  DoneIcon,
+  RadioCheckedIcon,
+  RadioUncheckedIcon,
 };
