@@ -11,6 +11,7 @@ export const InputBasic = forwardRef<JSX.Element, InputProps>(function InputBasi
     border: '1px solid #fff',
     height: '43px',
     display: 'flex',
+    justifyContent: 'center',
     flexDirection: 'column',
     '& .MuiInput-input': {
       padding: 0,
