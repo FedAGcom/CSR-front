@@ -17,7 +17,10 @@
 @import './components/account-fields';
 @import './components/askQuestion';
 @import './components/buttonBackToMain';
-@import './components/admin-panel';
+
+@import './components/admin-panel/admin-panel';
+@import './components/admin-panel/admin-users';
+@import './components/admin-panel/admin-users-modal';
 
 //pages
 @import './pages/main-page';

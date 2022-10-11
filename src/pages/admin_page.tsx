@@ -1,7 +1,7 @@
 import { memo, Suspense } from 'react';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import { AdminSideBar } from '../components/AdminPanel/AdminSideBar/AdminSideBar';
+import { AdminSideBar } from '../components';
 import { Header } from '../components';
 
 const AdminPage = () => {

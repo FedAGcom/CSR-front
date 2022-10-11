@@ -1,0 +1,72 @@
+.aum {
+
+	&__body {
+		padding: 20px 0 15px;
+		border-bottom: 1px solid #BDBDBD;
+
+		&-wrapper {
+			padding: 0 30px;
+		}
+	}
+
+	&__title {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	color: $text-white;
+		span {
+			color: $brand-color;
+		}
+	}
+
+	&__input {
+		margin-bottom: 15px;
+	}
+
+	&__label {
+		padding-bottom: 5px !important;
+		font-size: 18px !important;
+
+		&-trade {
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 19px;
+			color: #009320;
+			margin-left: 10px;
+		}
+	}
+
+	&__balance {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		span {
+			margin-right: 15px;
+			font-weight: 500;
+			font-size: 16px;
+			line-height: 19px;
+		}
+
+		p {
+			color: $brand-color;
+			cursor: pointer;
+			text-decoration: underline;
+			&:hover {
+				color:red;
+			}
+		}
+	}
+
+	&__actions {
+		padding-top: 10px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__footer {
+	display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+	}
+}

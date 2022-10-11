@@ -11,7 +11,9 @@ import { AskQuestionBlock } from './AskQuestionBlock/AskQuestionBlock';
 import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
 import { TradeLinkModal } from './TradeLinkModal/TradeLinkModal';
 import { BalanceModal } from './TopUpBalanceModal/BalanceModal';
-import { Checkbox, ButtonBasic, ModalBasic, RadioBtn, InputBasic } from './BasicComponents/index';
+import { Checkbox, ButtonBasic, ModalBasic, ModalUsersAdmin, RadioBtn, InputBasic } from './BasicComponents/index';
+
+import { AdminSideBar, AdminUsers } from './AdminPanel/index';
 
 export {
   Header,
@@ -26,6 +28,7 @@ export {
   Checkbox,
   ButtonBasic,
   ModalBasic,
+  ModalUsersAdmin,
   AccountHeaderField,
   AccountCaseField,
   AccountSoldItemsField,
@@ -35,4 +38,6 @@ export {
   TradeLinkModal,
   BalanceModal,
   RadioBtn,
+  AdminSideBar,
+  AdminUsers,
 };

@@ -1,4 +1,4 @@
-.headerSteam, .close-icon, .cases, .users, setting {
+.headerSteam, .close-icon, .cases, .users, .setting, .support, .promocode, .money, .logs {
 	fill: white;
 }
 
@@ -11,10 +11,5 @@
 }
 
 .support, .promocode, .money, .logs {
-	fill: white;
 	stroke: white;
-	// font-weight: bold;
-	// &:hover, &:active {
-	// fill: $brand-color;
-	// }
 }

@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AdminUsers } from './components';
 import {
   MainPage,
   PrivacyPolicyPage,
@@ -19,6 +20,7 @@ function App() {
         <Route path="/tech-support" element={<TechSupportPage />} />
 
         <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/settings" element={<h3>Settings</h3>} />
         </Route>
       </Routes>

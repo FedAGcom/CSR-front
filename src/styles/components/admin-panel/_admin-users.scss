@@ -1,0 +1,64 @@
+.admin-users {
+
+	&__title {
+		font-weight: 500;
+		font-size: 24px;
+		line-height: 29px;
+		color: $text-white;
+	}
+
+	&__head {
+		border-top: 1px solid $admin-users-border;
+		border-bottom: 1px solid $admin-users-border;
+		margin-top: 10px;
+		margin-bottom: 15px;
+		display: flex;
+    	justify-content: space-around;
+	}
+
+	.MuiTableHead-root {
+		border-top: 1px solid $admin-users-border;
+		border-bottom: 1px solid $admin-users-border;
+		margin-top: 10px;
+		margin-bottom: 15px;
+		display: flex;
+    	justify-content: space-between;
+		align-items: center;
+
+		.MuiTableCell-root {
+		padding: 8px 16px;
+		}
+	}
+
+	.MuiTableRow-root {
+	background: #24232A;
+	border: 1px solid $admin-users-border !important;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	margin-bottom: 5px;
+	display: flex;
+	justify-content: space-between;
+	}
+
+	.MuiTableCell-root {
+		font-family: "Gilroy", sans-serif;
+		padding: 21px 18px;
+		color: $text-white;
+		border-bottom: none;
+		line-height: 17px;
+		font-size: 14px;
+		font-weight: 400;
+		word-break: break-word;
+	}
+
+	&__modal {
+		cursor: pointer;
+		color: $brand-color !important;
+		text-decoration: underline;
+
+		&:hover {
+			color: red !important
+		}
+	}
+
+}
