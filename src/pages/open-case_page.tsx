@@ -147,7 +147,7 @@ export const OpenCase = () => {
                 onPrizeDefined={handlePrizeDefined}
                 options={{ stopInCenter: true, withoutAnimation: true }}
                 defaultDesignOptions={{ hideCenterDelimiter: true }}
-                prizeItemRenderFunction={(i) => <RouletteItem image={i.image} class={i.class} />}
+                prizeItemRenderFunction={(i) => <RouletteItem image={i.image} class={i.class} />} //todo
               />
               <ArrowTop className="arrow-top" />
               <ArrowBottom className="arrow-bottom" />
