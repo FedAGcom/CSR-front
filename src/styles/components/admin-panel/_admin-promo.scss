@@ -20,9 +20,18 @@
 	border: 2px dashed #B81034;
 	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 	border-radius: 10px;
+
+	&__title {
+		display: flex;
+		gap: 5px;		
+	}
+
 	&:hover {
 		cursor: pointer;
-		transition: 0.3s all ease;
-		opacity: 0.7;
+		color: red;
+		border: 2px dashed red;
+		:first-child {
+			fill: red;
+		}
 	}
 }

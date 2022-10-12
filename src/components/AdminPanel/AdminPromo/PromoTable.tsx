@@ -1,5 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { useState } from 'react';
+import { Promo } from '../../svg';
 import { AdminPromoModal } from './AdminPromoModal';
 
 export const PromoTable = () => {
@@ -34,7 +35,11 @@ export const PromoTable = () => {
         </TableHead>
 
         <TableBody>
-          <div className="create" onClick={open}>Создать промокод</div>
+          <div className="create" onClick={open}>
+            <div className="create__title">
+              <Promo/>Создать промокод
+            </div>
+          </div>
           <TableRow className="admin-users__wrapper">
             <TableCell align="center" width="10%">
               22
