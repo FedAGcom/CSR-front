@@ -11,9 +11,9 @@ import { AskQuestionBlock } from './AskQuestionBlock/AskQuestionBlock';
 import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
 import { TradeLinkModal } from './TradeLinkModal/TradeLinkModal';
 import { BalanceModal } from './TopUpBalanceModal/BalanceModal';
-import { Checkbox, ButtonBasic, ModalBasic, ModalUsersAdmin, RadioBtn, InputBasic } from './BasicComponents/index';
+import { Checkbox, ButtonBasic, ModalBasic, ModalUsersAdmin, RadioBtn, InputBasic, ModalPromo } from './BasicComponents/index';
 
-import { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport } from './AdminPanel/index';
+import { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminPromo } from './AdminPanel/index';
 
 export {
   AdminBalance,
@@ -42,4 +42,6 @@ export {
   AdminSideBar,
   AdminUsers,
   AdminTechSupport,
+  ModalPromo,
+  AdminPromo,
 };
