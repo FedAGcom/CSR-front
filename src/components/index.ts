@@ -13,7 +13,7 @@ import { TradeLinkModal } from './TradeLinkModal/TradeLinkModal';
 import { BalanceModal } from './TopUpBalanceModal/BalanceModal';
 import { Checkbox, ButtonBasic, ModalBasic, ModalUsersAdmin, RadioBtn, InputBasic } from './BasicComponents/index';
 
-import { AdminSideBar, AdminUsers, AdminBalance } from './AdminPanel/index';
+import { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport } from './AdminPanel/index';
 
 export {
   AdminBalance,
@@ -41,4 +41,5 @@ export {
   RadioBtn,
   AdminSideBar,
   AdminUsers,
+  AdminTechSupport,
 };
