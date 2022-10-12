@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { InputLabel } from '../../Header/LocalizationModal/InputLabel';
 import { ButtonBasic, InputBasic, ModalUsersAdmin } from '../../index';
 
@@ -44,6 +45,8 @@ const CommonAdminInput: React.FC<ICommonAdminInputProps> = ({ name, children }) 
 };
 
 export const AdminUsersModal: React.FC<IAdminUsersModal> = ({ open, onClose, id, name }) => {
+  const navigate = useNavigate();
+
   return (
     <ModalUsersAdmin open={open} onClose={onClose} id={id} name={name}>
       <CommonBodySection>
@@ -64,12 +67,12 @@ export const AdminUsersModal: React.FC<IAdminUsersModal> = ({ open, onClose, id,
 
         <CommonAdminInput name="Баланс">
           <div className="aum__balance">
-            <span>3.900 ₽</span> <p>Пополнить</p>
+            <span>3.900 ₽</span> <p onClick={() => navigate('/admin/balance')}>Пополнить</p>
           </div>
         </CommonAdminInput>
       </CommonBodySection>
 
-      <CommonBodySection>
+      {/* <CommonBodySection>
         <CommonAdminInput name="Действия">
           <div className="aum__actions">
             <ButtonBasic className="outlined" style={adminBtn}>
@@ -83,7 +86,7 @@ export const AdminUsersModal: React.FC<IAdminUsersModal> = ({ open, onClose, id,
             </ButtonBasic>
           </div>
         </CommonAdminInput>
-      </CommonBodySection>
+      </CommonBodySection> */}
 
       <div className="aum__footer">
         <ButtonBasic className="primary" onClick={onClose} style={adminCloseBtn}>
