@@ -1,16 +1,11 @@
 import { Table, TableBody, TableHead, TableRow, TableCell } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { AdminUsersModal } from './AdminUsersModal';
 
 export const UsersTable = () => {
   const [isOpenModal, setOpen] = useState<boolean>(false);
   const id = 11291;
   const abc = 11291;
-
-  useEffect(() => {
-    console.log(id, 'id');
-    console.log(abc, 'abc');
-  }, [id, abc]);
 
   return (
     <Table className="admin-users">
