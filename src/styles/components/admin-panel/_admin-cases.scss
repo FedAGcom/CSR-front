@@ -27,4 +27,29 @@
     color: $brand-color;
   }
 
+  &__cases-container {
+    @include flex(flex-start, center);
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 0 0 0; 
+  }
+
+  .admin-case {
+
+    background-color: $background-main-lighter;
+    border-radius: 10px;
+    width: 255px;
+    height: 169px;
+    cursor: pointer;
+    @include flex(flex-start, center);
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #3E3C43;
+    @include font(14px, 17px, 400);
+   
+    &__image {
+      margin-top: -11px;
+    }
+  }
+
 }
