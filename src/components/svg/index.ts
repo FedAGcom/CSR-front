@@ -34,6 +34,7 @@ import { ReactComponent as Support } from './support.svg';
 import { ReactComponent as UsersIcon } from './users-icon.svg';
 import { ReactComponent as Logs } from './logs.svg';
 import { ReactComponent as AdminExit } from './admin-exit.svg';
+import { ReactComponent as Promo } from './promo.svg';
 
 export {
   CasesIcon,
@@ -72,4 +73,5 @@ export {
   RadioCheckedIcon,
   RadioUncheckedIcon,
   ErrorIcon,
+  Promo,
 };
