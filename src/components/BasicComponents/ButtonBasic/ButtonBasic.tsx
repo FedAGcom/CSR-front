@@ -64,5 +64,5 @@ export const ButtonBasic = (props: IMyButtonProps) => {
   else if (props.disabled) styles = { ...styles, ...disabled };
   else if (props.className === 'text') styles = { ...styles, ...text };
 
-  return <MUIButton {...props} disableRipple={true} sx={{ ...styles, ...props.sx }}></MUIButton>;
+  return <MUIButton {...props} disableRipple={false} sx={{ ...styles, ...props.sx }}></MUIButton>;
 };

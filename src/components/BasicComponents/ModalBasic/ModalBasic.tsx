@@ -44,13 +44,14 @@ type TModalBasicProps = {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 };
 
-export const ModalBasic: FC<TModalBasicProps> = ({ open, onClose, children }) => {
+export const ModalBasic: FC<TModalBasicProps> = ({ open, onClose, children, style }) => {
   return (
     <MuiModal open={open} onClick={onClose}>
       <Box sx={modalContainer}>
-        <Box sx={modalContent} onClick={(e) => e.stopPropagation()}>
+        <Box sx={modalContent} style={style} onClick={(e) => e.stopPropagation()}>
           <Box sx={closeButton}>
             <IconButton onClick={onClose} className="modal-close">
               <CloseIcon />
