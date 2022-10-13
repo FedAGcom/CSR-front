@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AdminUsers, AdminBalance, AdminSettings } from './components';
+import { AdminUsers, AdminBalance, AdminTechSupport, AdminSettings } from './components';
 import {
   MainPage,
   PrivacyPolicyPage,
@@ -23,6 +23,7 @@ function App() {
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/balance" element={<AdminBalance />} />
           <Route path="/admin/settings" element={<AdminSettings />} />
+          <Route path="/admin/tech-support" element={<AdminTechSupport />} />
         </Route>
       </Routes>
     </BrowserRouter>

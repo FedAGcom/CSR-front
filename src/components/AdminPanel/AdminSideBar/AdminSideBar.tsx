@@ -42,7 +42,7 @@ export const AdminSideBar = () => {
     },
     {
       text: 'Тех.поддержка',
-      en: 'support',
+      en: 'tech-support',
       icon: <Support fill={setActive(5)} />,
     },
     {
