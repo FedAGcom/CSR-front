@@ -14,4 +14,17 @@
     gap: 5px;
   }
 
+  &__create-button {
+    width: 255px;
+    height: 169px;
+    border-radius: 10px;
+    border: 2px dashed $brand-color;
+    cursor: pointer;
+    @include flex(center, center);
+    flex-direction: column;
+    @include font(14px, 17px, 500);
+    gap: 10px;
+    color: $brand-color;
+  }
+
 }
