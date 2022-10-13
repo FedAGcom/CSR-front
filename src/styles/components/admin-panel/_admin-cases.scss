@@ -1,0 +1,17 @@
+.admin-cases {
+
+  &__title {
+    @include font( 24px, 29px, 500);
+  }
+
+  &__divider.MuiDivider-root {
+    background-color: #BDBDBD;
+    margin: 10px 0 20px 0;
+  }
+
+  &__search-form {
+    @include flex(center, center);
+    gap: 5px;
+  }
+
+}
