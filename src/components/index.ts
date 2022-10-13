@@ -12,11 +12,11 @@ import { ButtonBackToMain } from './ButtonBackToMain/ButtonBackToMain';
 import { TradeLinkModal } from './TradeLinkModal/TradeLinkModal';
 import { BalanceModal } from './TopUpBalanceModal/BalanceModal';
 import { Checkbox, ButtonBasic, ModalBasic, ModalUsersAdmin, RadioBtn, InputBasic } from './BasicComponents/index';
-
-import { AdminSideBar, AdminUsers, AdminBalance } from './AdminPanel/index';
+import { AdminSideBar, AdminUsers, AdminBalance, AdminSettings } from './AdminPanel/index';
 
 export {
   AdminBalance,
+  AdminSettings,
   Header,
   Case,
   Footer,

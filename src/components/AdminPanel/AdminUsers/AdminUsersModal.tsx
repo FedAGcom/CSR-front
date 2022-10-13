@@ -21,7 +21,7 @@ const adminBtn = {
   borderRadius: '5px',
 };
 
-const adminCloseBtn = {
+export const adminCloseBtn = {
   width: '160px',
   height: '38px',
   borderRadius: '5px',

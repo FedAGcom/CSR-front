@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { CasesIcon, Money, PromoCode, UsersIcon, Logs, Support, Settings, AdminExit } from '../../svg';
+import { AdminSettingsModal } from '../AdminSettings/AdminSettingsModal';
+import { CommonBtn } from '../AdminSettings/AdminSettings';
 
 export const AdminSideBar = () => {
   const [activeIcon, setActiveIcon] = useState<number | null>(null);
   const setActive = (index: number) => {
     return activeIcon === index ? '#e4b8b8' : ' #fff';
   };
+
+  const [isExit, setExit] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const menuItems = [
     {
@@ -68,19 +73,31 @@ export const AdminSideBar = () => {
           </ListItem>
         ))}
         <ListItem className="admin-panel-items" disablePadding>
-          <NavLink className="admin-panel-link" to={'/'}>
+          <NavLink className="admin-panel-link" to="#">
             <ListItemIcon className="admin-panel-items__icon">
               <AdminExit />
             </ListItemIcon>
             <ListItemText
               primary={
-                <Typography sx={{ color: '#FB0000' }} className="admin-panel-items__text">
+                <Typography sx={{ color: '#FB0000' }} className="admin-panel-items__text" onClick={() => setExit(true)}>
                   Выход
                 </Typography>
               }
             />
           </NavLink>
         </ListItem>
+
+        <AdminSettingsModal
+          open={isExit}
+          onClose={() => setExit(false)}
+          title="Выход из панели"
+          subtitle="Вы точно хотите выйти из панели администратора?"
+        >
+          <div className="admin-settings__exit">
+            <CommonBtn className="outlined" btnName="Отменить" onClick={() => setExit(false)} />
+            <CommonBtn btnName="Выйти" onClick={() => navigate('/')} />
+          </div>
+        </AdminSettingsModal>
       </List>
     </Drawer>
   );
