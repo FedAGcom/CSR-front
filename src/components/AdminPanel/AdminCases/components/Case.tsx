@@ -3,14 +3,15 @@ import { FC } from "react";
 import { caseImage } from "../../../images";
 
 type TCaseProps = {
-  onClick: () => void
+  caseItem: any;
+  onClick: () => void;
 }
 
-export const Case: FC<TCaseProps> = ({onClick}) => {
+export const Case: FC<TCaseProps> = ({caseItem, onClick}) => {
   return(
     <Box className="admin-case" onClick={onClick}>
       <Box className="admin-case__title">
-        {`Кейс "title"`}
+        {`Кейс "${caseItem.title}"`}
       </Box>
       <Box
         component="img" 
