@@ -1,6 +1,7 @@
 @import './adminCases/case-header-form';
 @import './adminCases/add-skin-form';
 @import './adminCases/add-skin-button';
+@import './adminCases/skin';
 
 .admin-cases {
 
@@ -60,6 +61,15 @@
     margin: 30px 0 0 0;
     padding: 0 25px 10px 25px;
     @include font(20px, 24px, 500);
+  }
+
+  &__modal-skins {
+    height: 425px; 
+    overflow-Y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
 }

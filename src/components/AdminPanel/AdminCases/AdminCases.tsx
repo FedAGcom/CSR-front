@@ -10,7 +10,7 @@ export const AdminCases = () => {
 
   // если кейс есть, то открываю модалку для редактирования этого кейса
   // и передаю его в контент модалки, если null то открываю модалку для создания нового кейса
-  const [editableCase, setEditableCase] = useState<any>(null); 
+  const [editableCase, setEditableCase] = useState<any>(cases[0]); 
 
   const handleCreateButton = () => {
     setEditableCase(null);
@@ -41,8 +41,7 @@ export const AdminCases = () => {
         open={isModalOpen}
         onClose={() => setModalOpen(false)}
         title={editableCase ? `Кейс "${editableCase?.title}"` : 'Кейс'}>
-
-          <ModalContent />
+          <ModalContent editableCase={editableCase}/>
       </ModalAdmin>
     </Box>
   )
