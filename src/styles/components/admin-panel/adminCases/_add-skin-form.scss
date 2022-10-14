@@ -1,12 +1,12 @@
 .add-skin-form {
   padding: 0 25px;
-  @include flex(flex-start, center);
+  @include flex(flex-start, flex-start);
   column-gap: 30px;
   row-gap: 10px;
   flex-wrap: wrap;
   
   &__form {
-    @include flex(center, flex-start);
+    @include flex(flex-start, flex-start);
     gap: 5px;
     flex-direction: column;
     @include font(18px, 22px, 500);
@@ -17,5 +17,10 @@
     @include flex(flex-start, center);
     gap: 10px;
     margin: 10px 0 0 0;
+  }
+
+  &__error {
+    color: #FB0000;
+    @include font( 14px, 18px, 400);
   }
 }

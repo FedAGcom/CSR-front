@@ -5,8 +5,18 @@ import { CaseCreateButton, CasesSearchForm, Case, ModalAdmin, CaseHeaderForm, Mo
 
 export const AdminCases = () => {
 
+  // const getCases = async () => {
+  //   let resp = await fetch('http://5.101.51.15/api/v1/packs?paged=true&sort.sorted=true&sort.unsorted=true&unpaged=true');
+  //   resp = await resp.json();
+  //   console.log('responce:', resp);
+  // }
+
+  // getCases();
+
   const [cases, setCases] = useState(casesForAdmin);
   const [isModalOpen, setModalOpen] = useState(false);
+
+  // console.log(JSON.stringify(cases[0]));
 
   // если кейс есть, то открываю модалку для редактирования этого кейса
   // и передаю его в контент модалки, если null то открываю модалку для создания нового кейса
@@ -41,7 +51,7 @@ export const AdminCases = () => {
         open={isModalOpen}
         onClose={() => setModalOpen(false)}
         title={editableCase ? `Кейс "${editableCase?.title}"` : 'Кейс'}>
-          <ModalContent editableCase={editableCase}/>
+          <ModalContent editableCase={editableCase} setModalOpen={setModalOpen}/>
       </ModalAdmin>
     </Box>
   )

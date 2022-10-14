@@ -9,7 +9,7 @@ import { FC } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-type TAddFormInputs = {
+type TEditFormInputs = {
   type: string;
   title: string;
   skin: string;
@@ -19,40 +19,38 @@ type TAddFormInputs = {
 }
 
 type TAddSkinFormProps = {
-  setAddSkinFormActive: (value: boolean) => void;
-  addItem: (item: any) => void
+  setEditSkinFormActive: (value: boolean) => void;
+  changeItem: (item: any, index: number) => void;
+  deleteItem: (item: any) => void;
+  item: any;
+  index: number;
 }
 
-export const AddSkinForm: FC<TAddSkinFormProps> = ( {setAddSkinFormActive, addItem} ) => {
+export const EditSkinForm: FC<TAddSkinFormProps> = ( {setEditSkinFormActive, changeItem, deleteItem, item, index} ) => {
 
   const schema = yup.object().shape({
-    type: yup.string().required('Не указан тип').test('select', 'Выберите значение', (value) => value === 'default' ? false : true),
-    title: yup.string().required('Не указано название').test('select2', 'Выберите значение', (value) => value === 'default' ? false : true),
-    skin: yup.string().required('Не указан скин').test('select3', 'Выберите значение', (value) => value === 'default' ? false : true),
-    rare: yup.string().required('Не указана редкость').test('select4', 'Выберите значение', (value) => value === 'default' ? false : true),
-    quality: yup.string().required('Не указано качество').test('select5', 'Выберите значение', (value) => value === 'default' ? false : true),
-    winchance: yup.number().required('Не указан процент'),
+    winchance: yup.number().required(),
   });
 
-  const { register, handleSubmit, formState: { errors } } = useForm<TAddFormInputs>({resolver: yupResolver(schema)});
+  const { register, handleSubmit, formState: { errors } } = useForm<TEditFormInputs>({resolver: yupResolver(schema)});
 
   const onSubmit = (data: any) => {
-    console.log(data);
-    setAddSkinFormActive(false);
-    addItem(data);
+    setEditSkinFormActive(false);
+    changeItem(data, index);
   }
 
   const handleDelete = () => {
-    setAddSkinFormActive(false);
+    deleteItem(index);
+    setEditSkinFormActive(false);
   }
 
   return (
 
-    <Box className="add-skin-form">
+    <Box className="add-skin-form" sx={{marginTop: '20px'}}>
       <Box className="add-skin-form__form">
         <Box>Тип</Box>
         <AdminSelect
-          defaultValue={"default"}
+          defaultValue={item.type}
           {...register("type")}
         >
           <MenuItem value="default" disabled hidden sx={{display: 'none'}}>Выбрать</MenuItem>
@@ -64,11 +62,9 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ( {setAddSkinFormActive, addIt
       <Box className="add-skin-form__form">
         <Box>Название</Box>
         <AdminSelect 
-          defaultValue={"default"}
+          defaultValue={item.title}
           {...register("title")}
         >
-          <MenuItem value="default" disabled hidden sx={{display: 'none'}}>Выбрать</MenuItem>
-          <MenuItem value="default" disabled hidden sx={{display: 'none'}}>Выбрать</MenuItem>
           {skinProperties.titles.map((title, index) => {
             return <MenuItem value={title} key={index}>{title}</MenuItem>
           })}
@@ -77,10 +73,9 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ( {setAddSkinFormActive, addIt
       <Box className="add-skin-form__form">
         <Box>Скин</Box>
         <AdminSelect 
-          defaultValue={"default"}
+          defaultValue={item.skin}
           {...register("skin")}
         >
-          <MenuItem value="default" disabled hidden sx={{display: 'none'}}>Выбрать</MenuItem>
           {skinProperties.skins.map((skin, index) => {
             return <MenuItem value={skin} key={index}>{skin}</MenuItem>
           })}
@@ -89,10 +84,9 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ( {setAddSkinFormActive, addIt
       <Box className="add-skin-form__form">
         <Box>Редкость</Box>
         <AdminSelect 
-          defaultValue={"default"}
+          defaultValue={item.rare}
           {...register("rare")}
         >
-          <MenuItem value="default" disabled hidden sx={{display: 'none'}}>Выбрать</MenuItem>
           {skinProperties.rarities.map((rare, index) => {
             return <MenuItem value={rare} key={index}>{rare}</MenuItem>
           })}
@@ -101,19 +95,18 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ( {setAddSkinFormActive, addIt
       <Box className="add-skin-form__form">
         <Box>Качество</Box>
         <AdminSelect 
-          defaultValue={"default"}
+          defaultValue={item.quality}
           {...register("quality")}
         >
-          <MenuItem value="default" disabled hidden sx={{display: 'none'}}>Выбрать</MenuItem>
           {skinProperties.qualities.map((quality, index) => {
             return <MenuItem value={quality} key={index}>{quality}</MenuItem>
           })}
         </AdminSelect>
-        {/* {errors?.quality? <Box className='add-skin-form__error'>{`${errors.type?.message}`}</Box> : <></>} */}
       </Box>
       <Box className="add-skin-form__form">
         <Box>Процент выпадения</Box>
         <AdminInput 
+          defaultValue={item.winchance}
           placeholder='Число'
           {...register("winchance")}
         />
@@ -123,7 +116,7 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ( {setAddSkinFormActive, addIt
           className="admin" 
           onClick={handleSubmit(onSubmit)}
         >
-          Добавить
+          Сохранить
         </ButtonBasic>
         <ButtonBasic 
           startIcon={<TrashIconAdmin/>}

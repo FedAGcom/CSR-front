@@ -1,5 +1,6 @@
 import { Box, Divider } from "@mui/material";
-import { FC } from "react";
+import { FC, useState } from "react";
+import { EditSkinForm } from "./EditSkinForm";
 
 type TItem = {
   id: string;
@@ -8,27 +9,48 @@ type TItem = {
   skin: string;
   rare: string;
   quality: string;
-  winChance: string;
+  winchance: number;
 }
 
 type TSkinProps = {
   item: TItem;
+  isEditSkinActive?: boolean;
+  index: number;
+  changeItem: any;
+  deleteItem: any;
 }
 
-export const Skin: FC<TSkinProps> = ({item}) => {
+export const Skin: FC<TSkinProps> = ({item, isEditSkinActive, index, changeItem, deleteItem}) => {
+
+  const [isEditActive, setEditActive] = useState(isEditSkinActive)
+
+  const clickHandler = () => {
+    setEditActive(true);
+  }
+
+
   return (
-    <Box className='skin'>
+    <>
+    <Box className='skin' onClick={clickHandler}>
       <Box>{`${item.type}`}</Box>
       <Divider orientation="vertical"></Divider>
-      <Box>{`${item.title}`}</Box>
-      <Divider orientation="vertical"></Divider>
-      <Box>{`${item.skin}`}</Box>
+      <Box>{`${item.title}/${item.skin}`}</Box>
       <Divider orientation="vertical"></Divider>
       <Box>{`${item.rare}`}</Box>
       <Divider orientation="vertical"></Divider>
       <Box>{`${item.quality}`}</Box>
       <Divider orientation="vertical"></Divider>
-      <Box>{`${item.winChance} %`}</Box>
+      <Box>{`${item.winchance} %`}</Box>
     </Box>
+    { isEditActive &&
+      <EditSkinForm 
+        setEditSkinFormActive={setEditActive} 
+        item={item} 
+        index={index} 
+        changeItem={changeItem} 
+        deleteItem={deleteItem}
+      />
+    }
+    </>
   )
 }

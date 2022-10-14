@@ -1,29 +1,29 @@
 const itemsArray = [
   {
     id: 1,
-    type: 'Пистолеты',
-    title: 'UPS',
-    skin: 'Закрученный',
-    rare: 'Армейское',
-    quality: 'Качественное',
+    type: 'SMG',
+    title: 'AK-47',
+    skin: 'Glock-18',
+    rare: 'Minimal Wear',
+    quality: 'Exceptional',
     winchance: 27
   },
   {
     id: 2,
-    type: 'Ножи',
-    title: 'UPS',
-    skin: 'Какой-то нож',
-    rare: 'Острый',
-    quality: 'Не очень качественное',
+    type: 'Shotgun',
+    title: 'UPS-s',
+    skin: 'Desert Eagle',
+    rare: 'Well-Worn',
+    quality: 'Covert',
     winchance: 12
   },
   {
     id: 56,
-    type: 'Автомат',
-    title: 'АК-47',
-    skin: 'Некий',
-    rare: 'Редкий',
-    quality: 'Некачественное',
+    type: 'Sticker',
+    title: 'AWP',
+    skin: 'CZ75-Auto',
+    rare: 'Battle-Scarred',
+    quality: 'Exotic',
     winchance: 45
   },
 ]

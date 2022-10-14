@@ -12,13 +12,26 @@ type TCaseInputs = {
   price: number;
 }
 
-export const ModalContent = ({editableCase}: any) => {
+export const ModalContent = ({editableCase, setModalOpen}: any) => {
 
   const [isAddSkinActive, setAddSkinActive] = useState(false);
+  const [isEditSkinActive, setEditSkinActive] = useState(false);
   const [items, setItems] = useState(editableCase ? editableCase.items : []);
 
   const addItem = (item : any) => {
     setItems([...items, item]);
+  }
+
+  const changeItem = (item: any, index: number) => {
+    const newItems = items.slice(0);
+    newItems.splice(index, 1, item);
+    setItems([...newItems]);
+  }
+
+  const deleteItem = (index: number) => {
+    const newItems = items.slice(0);
+    newItems.splice(index, 1);
+    setItems([...newItems]);
   }
 
   const schema = yup.object().shape({
@@ -40,6 +53,7 @@ export const ModalContent = ({editableCase}: any) => {
           winChance: item.winchance
       })
     })
+
     const finalCase = {
       title: data.title,
       price: data.price,
@@ -47,14 +61,17 @@ export const ModalContent = ({editableCase}: any) => {
     }
     // здесь должна быть отправка на бэк 
     console.log('SUBMIT : --', finalCase);
+    setModalOpen(false);
     // alert(JSON.stringify(finalCase));
   }
+
+  console.log('ITEMS --- ', items);
 
   return(
     <>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
         <FormProvider {...methods}>
-          <CaseHeaderForm />
+          <CaseHeaderForm editableCase={editableCase}/>
           <Box className="admin-cases__modal-subtitle">Содержимое кейса</Box>
           <Divider  className="admin-cases__divider"/>
           <Box className="admin-cases__modal-skins">
@@ -67,7 +84,14 @@ export const ModalContent = ({editableCase}: any) => {
             }
             {
               items.map((item: any, index: number) => {
-                return <Skin item={item} key={index}/>
+                return <Skin 
+                  item={item} 
+                  key={index} 
+                  index={index}
+                  isEditSkinActive={isEditSkinActive}
+                  changeItem={changeItem}
+                  deleteItem={deleteItem}
+                />
               })
             }
             
