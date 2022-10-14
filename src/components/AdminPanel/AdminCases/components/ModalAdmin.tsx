@@ -44,7 +44,7 @@ export const ModalAdmin: FC<TModalBasicProps> = ({ open, onClose, children, titl
               <CloseModalAdminIcon />
             </IconButton>
           </Box>
-          <Divider sx={{backgroundColor: '#BDBDBD'}}/>
+          <Divider sx={{backgroundColor: '#BDBDBD', marginBottom: '20px'}}/>
           {children}
         </Box>
       </Box>

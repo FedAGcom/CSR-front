@@ -1,0 +1,13 @@
+.case-header-form {
+  padding: 0 25px;
+  @include flex(center, center);
+  gap: 30px;
+
+  &__form {
+    @include flex(center, flex-start);
+    gap: 5px;
+    flex-direction: column;
+    @include font(18px, 22px, 500);
+    width: 50%;
+  }
+}

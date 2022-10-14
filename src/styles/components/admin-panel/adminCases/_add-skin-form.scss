@@ -1,0 +1,21 @@
+.add-skin-form {
+  padding: 0 25px;
+  @include flex(flex-start, center);
+  column-gap: 30px;
+  row-gap: 10px;
+  flex-wrap: wrap;
+  
+  &__form {
+    @include flex(center, flex-start);
+    gap: 5px;
+    flex-direction: column;
+    @include font(18px, 22px, 500);
+    width: 325px;
+  }
+
+  &__button-container {
+    @include flex(flex-start, center);
+    gap: 10px;
+    margin: 10px 0 0 0;
+  }
+}

@@ -1,7 +1,7 @@
 import { Box, Divider } from "@mui/material";
 import { useState } from "react";
 import { casesForAdmin } from "../../../mocks/casesForAdmin";
-import { CaseCreateButton, CasesSearchForm, Case, ModalAdmin } from "./components";
+import { CaseCreateButton, CasesSearchForm, Case, ModalAdmin, CaseHeaderForm, ModalContent } from "./components";
 
 export const AdminCases = () => {
 
@@ -13,13 +13,11 @@ export const AdminCases = () => {
   const [editableCase, setEditableCase] = useState<any>(null); 
 
   const handleCreateButton = () => {
-    console.log('create button clicked');
     setEditableCase(null);
     setModalOpen(true);
   }
 
   const handleCaseClick = (caseId: number) => {
-    console.log('case clicked');
     const currentCase = cases.find(item => item.id === caseId)
     setEditableCase(currentCase);
     setModalOpen(true);
@@ -29,7 +27,7 @@ export const AdminCases = () => {
     <Box className='admin-cases'>
       <Box component='h1' className='admin-cases__title'>Кейсы</Box>
       <Divider className='admin-cases__divider'/>
-      <CasesSearchForm></CasesSearchForm>
+      <CasesSearchForm />
 
       <Box className="admin-cases__cases-container">
         <CaseCreateButton onClick={handleCreateButton}/>
@@ -43,9 +41,9 @@ export const AdminCases = () => {
         open={isModalOpen}
         onClose={() => setModalOpen(false)}
         title={editableCase ? `Кейс "${editableCase?.title}"` : 'Кейс'}>
-        МОДАЛКА
+
+          <ModalContent />
       </ModalAdmin>
-      
     </Box>
   )
 }

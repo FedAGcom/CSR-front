@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
 import { ButtonBasic, InputBasic } from "../../..";
+import { AdminInput } from "./AdminInput";
 
 export const CasesSearchForm = () => {
   return(
     <Box className="admin-cases__search-form">
-      <InputBasic
+      <AdminInput
         type="search"
         placeholder="Название кейса"
       />

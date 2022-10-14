@@ -4,6 +4,7 @@ import { forwardRef } from 'react';
 export const AdminSelect = forwardRef<JSX.Element, SelectProps>(function Select(props: SelectProps, ref) {
   const selectStyles: SxProps = {
     boxSizing: 'border-box',
+    height: '38px',
     borderRadius: '5px',
     width: '100%',
     color: '#8A8A8A',
@@ -11,8 +12,7 @@ export const AdminSelect = forwardRef<JSX.Element, SelectProps>(function Select(
     border: '1px solid #fff',
     fontFamily: 'inherit',
     fontSize: '16px',
-    lineHeight: '20px',
-    padding: '0 !important',
+    lineHeight: '19px',
     '& div': {
       padding: '9px 15px',
     },
