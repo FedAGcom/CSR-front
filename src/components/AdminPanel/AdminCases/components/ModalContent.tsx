@@ -10,6 +10,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 type TCaseInputs = {
   title: string;
   price: number;
+  image: FileList;
 }
 
 export const ModalContent = ({editableCase, setModalOpen}: any) => {
@@ -37,6 +38,7 @@ export const ModalContent = ({editableCase, setModalOpen}: any) => {
   const schema = yup.object().shape({
     title: yup.string().required('Не указано название'),
     price: yup.number().required('Не указана цена'),
+    image: yup.mixed(),
   });
 
   const methods = useForm<TCaseInputs>({resolver: yupResolver(schema)});
@@ -46,26 +48,24 @@ export const ModalContent = ({editableCase, setModalOpen}: any) => {
     // склейка тайтл + скин для бэка 
     const finalItems = items.map((item: any) => {
       return ({
-          type: item.type,
-          title: `${item.title} | ${item.skin}`,
-          rare: item.rare,
-          quality: item.quality,
-          winChance: item.winchance
+        type: item.type,
+        title: `${item.title} | ${item.skin}`,
+        rare: item.rare,
+        quality: item.quality,
+        winChance: item.winchance
       })
     })
 
     const finalCase = {
       title: data.title,
       price: data.price,
+      image: data.image[0],
       items: finalItems,
     }
     // здесь должна быть отправка на бэк 
     console.log('SUBMIT : --', finalCase);
     setModalOpen(false);
-    // alert(JSON.stringify(finalCase));
   }
-
-  console.log('ITEMS --- ', items);
 
   return(
     <>

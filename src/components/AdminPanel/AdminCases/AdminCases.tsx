@@ -5,8 +5,16 @@ import { CaseCreateButton, CasesSearchForm, Case, ModalAdmin, CaseHeaderForm, Mo
 
 export const AdminCases = () => {
 
+  // const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhemlyYWZhaWwiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NTc2MDU4NywiZXhwIjoxNjY2MzY1Mzg3fQ.cvWdTltNcYYaiiFH6RiGIQ-u5DBDvzR7MdlgMBMMXSQ';
+
   // const getCases = async () => {
-  //   let resp = await fetch('http://5.101.51.15/api/v1/packs?paged=true&sort.sorted=true&sort.unsorted=true&unpaged=true');
+  //   let resp = await fetch('http://5.101.51.15/api/v1/packs/5', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json;charset=utf-8',
+  //       'Authorization': token,
+  //     }
+  //   });
   //   resp = await resp.json();
   //   console.log('responce:', resp);
   // }
@@ -15,8 +23,6 @@ export const AdminCases = () => {
 
   const [cases, setCases] = useState(casesForAdmin);
   const [isModalOpen, setModalOpen] = useState(false);
-
-  // console.log(JSON.stringify(cases[0]));
 
   // если кейс есть, то открываю модалку для редактирования этого кейса
   // и передаю его в контент модалки, если null то открываю модалку для создания нового кейса

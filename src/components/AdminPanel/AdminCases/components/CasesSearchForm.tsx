@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { ButtonBasic, InputBasic } from "../../..";
+import { ButtonBasic } from "../../..";
 import { AdminInput } from "./AdminInput";
 
 export const CasesSearchForm = () => {

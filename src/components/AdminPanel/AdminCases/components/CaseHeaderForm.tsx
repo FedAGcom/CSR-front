@@ -26,6 +26,14 @@ export const CaseHeaderForm = ({editableCase} : any) => {
           {...register('price')}
         />
       </Box>
+      <Box className="case-header-form__form">
+        <Box>Изображение кейса</Box>
+        <input 
+          type="file"
+          placeholder="Сумма"
+          {...register('image')}
+        />
+      </Box>
     </Box>
   )
 }

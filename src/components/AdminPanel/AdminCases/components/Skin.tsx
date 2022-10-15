@@ -28,7 +28,6 @@ export const Skin: FC<TSkinProps> = ({item, isEditSkinActive, index, changeItem,
     setEditActive(true);
   }
 
-
   return (
     <>
     <Box className='skin' onClick={clickHandler}>
