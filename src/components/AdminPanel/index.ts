@@ -3,6 +3,7 @@ import { AdminUsers } from './AdminUsers/AdminUsers';
 import { AdminBalance } from './AdminBalance/AdminBalance';
 import { AdminSettings } from './AdminSettings/AdminSettings';
 import { AdminTechSupport } from './AdminTechSupport/AdminTechSupport';
-import { AdminPromo } from './AdminPromo/AdminPromo'; 
+import { AdminPromo } from './AdminPromo/AdminPromo';
+import { AdminLogs } from './AdminLogs/AdminLogs';
 
-export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo};
+export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminLogs };

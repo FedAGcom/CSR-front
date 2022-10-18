@@ -43,11 +43,11 @@ export const AdminPromoModal: React.FC<IAdminUsersModal> = ({ open, onClose, id,
     <ModalPromo open={open} onClose={onClose} id={id} name={name}>
       <CommonBodySection>
         <CommonAdminInput name="Промокод">
-          <InputBasic />
+          <InputBasic placeholder="Любое слово и цифры" />
         </CommonAdminInput>
         <Box sx={{ display: 'flex', gap: '30px' }}>
           <CommonAdminInput name="Количество использований">
-            <InputBasic />
+            <InputBasic placeholder="Только число" />
             <Box sx={{ display: 'flex', alignItems: 'center', mt: '14px' }}>
               <RadioBtn sx={{ mr: '5px' }} />
               <div>Неограниченое кол-во</div>
@@ -56,9 +56,9 @@ export const AdminPromoModal: React.FC<IAdminUsersModal> = ({ open, onClose, id,
 
           <CommonAdminInput name="Валиден до">
             <Box sx={{ display: 'flex', gap: '11px' }}>
-              <InputBasic />
-              <InputBasic />
-              <InputBasic />
+              <InputBasic placeholder="День" />
+              <InputBasic placeholder="Месяц" />
+              <InputBasic placeholder="Год" />
             </Box>
           </CommonAdminInput>
         </Box>
@@ -68,15 +68,15 @@ export const AdminPromoModal: React.FC<IAdminUsersModal> = ({ open, onClose, id,
         <p>Что дает промокод</p>
         <p>Можно выбрать несколько и оставить поля свободными</p>
         <CommonAdminInput name="Баланс (сумма капает на баланс)">
-          <InputBasic sx={{ width: '325px' }} />
+          <InputBasic sx={{ width: '325px' }} placeholder="Сумма получения" />
         </CommonAdminInput>
 
         <Box sx={{ display: 'flex', gap: '30px' }}>
           <CommonAdminInput name="Кейс (можно выбрать 1 вариант)">
-            <InputBasic sx={{ width: '325px' }} disabled={true}/>
+            <InputBasic sx={{ width: '325px' }} disabled={true} />
           </CommonAdminInput>
           <CommonAdminInput name="Количество кейсов">
-            <InputBasic sx={{ width: '325px' }} disabled={true}/>
+            <InputBasic sx={{ width: '325px' }} disabled={true} placeholder="Число кейсов, если больше одного" />
           </CommonAdminInput>
         </Box>
       </CommonBodySection>
