@@ -109,7 +109,7 @@ export const ModalPromo: FC<TModalPromoProps> = ({ open, onClose, children, name
         <Box sx={modalContentAdmin} onClick={(e) => e.stopPropagation()}>
           <Box sx={closeButtonAdmin}>
             <Box className="aum__title">
-             Промокод <span>{name}</span> (#{id})
+              Промокод <span>{name}</span> (#{id})
             </Box>
             <IconButton onClick={onClose} className="modal-close">
               <CloseIcon />
