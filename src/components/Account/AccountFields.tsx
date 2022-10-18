@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
-import { BalanceModal, ButtonBasic, TradeLinkModal } from '../index';
+import { BalanceModal, ButtonBasic, TradeLinkModal, ConfirmSkinSaleModal } from '../index';
 import { weapon, caseImage } from '../images';
 
 export const AccountHeaderField = () => {
@@ -74,6 +74,16 @@ export const AccountCaseField = () => {
 };
 
 export const AccountSoldItemsField = () => {
+  const [selectedSkin, setSelectedSkin] = useState<null | {name: string, price: number}>({
+    name: 'Sawed-off Цвет джунглей',
+    price: 113
+  }); 
+
+  function onConfirmSale() {
+    console.log('Продажа подтверждена');
+    setSelectedSkin(null)
+  }
+
   return (
     <>
       <div className="account-field__wrapper">
@@ -90,6 +100,14 @@ export const AccountSoldItemsField = () => {
           <ButtonBasic className="primary">Открыть кейсы</ButtonBasic>
         </div>
       </div>
+
+      <ConfirmSkinSaleModal
+        open={!!selectedSkin}
+        onClose={() => setSelectedSkin(null)}
+        onConfirm={onConfirmSale}
+        skinName={`${selectedSkin?.name ?? ''}`}
+        price={selectedSkin?.price ?? 0}
+      />
     </>
   );
 };
