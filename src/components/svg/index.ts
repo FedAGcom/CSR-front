@@ -35,6 +35,10 @@ import { ReactComponent as UsersIcon } from './users-icon.svg';
 import { ReactComponent as Logs } from './logs.svg';
 import { ReactComponent as AdminExit } from './admin-exit.svg';
 import { ReactComponent as Promo } from './promo.svg';
+import { ReactComponent as PlusIconAdmin } from './admin/plus-icon-admin.svg';
+import { ReactComponent as CloseModalAdminIcon } from './admin/close-modal-admin.svg';
+import { ReactComponent as TrashIconAdmin } from './admin/trash-icon.svg';
+import { ReactComponent as EditImageIcon } from './admin/edit-image-icon.svg';
 
 export {
   CasesIcon,
@@ -74,4 +78,8 @@ export {
   RadioUncheckedIcon,
   ErrorIcon,
   Promo,
+  PlusIconAdmin,
+  CloseModalAdminIcon,
+  TrashIconAdmin,
+  EditImageIcon
 };

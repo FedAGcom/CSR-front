@@ -58,11 +58,23 @@ export const ButtonBasic = (props: IMyButtonProps) => {
     },
   };
 
+  const adminButton: SxProps = {
+    padding: '10px 45px',
+    borderRadius: '5px',
+    color: '#fff',
+    backgroundColor: '#B81034',
+    '&:hover': {
+      textDecoration: 'initial',
+      backgroundColor: '#D2002D',
+    },
+  }
+
   let styles = { ...btnStyles };
   if (props.className === 'primary') styles = { ...styles, ...primary };
   else if (props.className === 'outlined') styles = { ...styles, ...outlined };
   else if (props.disabled) styles = { ...styles, ...disabled };
   else if (props.className === 'text') styles = { ...styles, ...text };
+  else if (props.className === 'admin') styles = { ...styles, ...adminButton };
 
   return <MUIButton {...props} disableRipple={false} sx={{ ...styles, ...props.sx }}></MUIButton>;
 };

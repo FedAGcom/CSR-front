@@ -1,4 +1,4 @@
-import { MenuItem, Select, SxProps, Table, TableCell, TableRow } from '@mui/material';
+import { MenuItem, Select, SelectChangeEvent, SxProps, Table, TableCell, TableRow } from '@mui/material';
 import { useState } from 'react';
 import { ButtonBasic, InputBasic } from '../../BasicComponents';
 
@@ -28,14 +28,14 @@ const select: SxProps = {
   marginTop: '10px',
 };
 
-const users = [
-  { id: 1, name: 'vladis192@mail.ru', trade: true, balance: 200 },
-  { id: 2, name: 'dis192@mail.ru', trade: true, balance: 200 },
-  { id: 3, name: 'vldis192@mail.ru', trade: true, balance: 200 },
-  { id: 4, name: 'vls12@mail.ru', trade: true, balance: 200 },
-  { id: 5, name: 'vla@mail.ru', trade: false, balance: 200 },
-  { id: 6, name: 'vladis2@mail.ru', trade: true, balance: 200 },
-];
+// const users = [
+//   { id: 1, name: 'vladis192@mail.ru', trade: true, balance: 200 },
+//   { id: 2, name: 'dis192@mail.ru', trade: true, balance: 200 },
+//   { id: 3, name: 'vldis192@mail.ru', trade: true, balance: 200 },
+//   { id: 4, name: 'vls12@mail.ru', trade: true, balance: 200 },
+//   { id: 5, name: 'vla@mail.ru', trade: false, balance: 200 },
+//   { id: 6, name: 'vladis2@mail.ru', trade: true, balance: 200 },
+// ];
 
 const logs = {
   id: 1,
@@ -51,9 +51,10 @@ const logs = {
 export const AdminLogs = () => {
   const [age, setAge] = useState('');
 
-  const handleChange = (event: any) => {
+  const handleChange = (event: SelectChangeEvent<string>) => {
     setAge(event.target.value);
   };
+
   return (
     <div className="admin-logs">
       <h3 className="admin-logs__title">Логи</h3>

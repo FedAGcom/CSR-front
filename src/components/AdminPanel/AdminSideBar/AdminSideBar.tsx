@@ -22,7 +22,7 @@ export const AdminSideBar = () => {
     },
     {
       text: 'Кейсы',
-      en: 'create-case',
+      en: 'cases',
       icon: <CasesIcon fill={setActive(1)} />,
     },
     {

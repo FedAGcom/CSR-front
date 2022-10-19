@@ -1,0 +1,12 @@
+.add-skin-button {
+  margin: 0 auto;
+  width: 680px;
+  height: 59px;
+  border-radius: 10px;
+  border: 2px dashed $brand-color;
+  cursor: pointer;
+  @include flex(center, center);
+  @include font(14px, 17px, 500);
+  gap: 10px;
+  color: $brand-color;
+}

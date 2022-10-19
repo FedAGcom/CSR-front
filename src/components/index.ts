@@ -27,6 +27,8 @@ import {
   AdminTechSupport,
   AdminSettings,
   AdminPromo,
+  AdminCases,
+  AdminLogs
 } from './AdminPanel/index';
 import { ConfirmSkinSaleModal } from './ConfirmSkinSaleModal/ConfirmSkinSaleModal';
 
@@ -61,4 +63,6 @@ export {
   ModalPromo,
   AdminPromo,
   ConfirmSkinSaleModal,
+  AdminCases,
+  AdminLogs
 };
