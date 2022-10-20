@@ -40,7 +40,7 @@ const closeButtonAdmin: SxProps = {
   borderBottom: '1px solid #BDBDBD',
 };
 
-type TModalBasicProps = {
+export type TModalBasicProps = {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
@@ -70,7 +70,6 @@ type TModalUsersAdminProps = {
   children: React.ReactNode;
   id: number;
   name: string;
-  abc?: number;
 };
 
 export const ModalUsersAdmin: FC<TModalUsersAdminProps> = ({ open, onClose, children, name, id }) => {

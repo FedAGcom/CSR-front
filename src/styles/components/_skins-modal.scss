@@ -1,0 +1,92 @@
+.skins {
+    border-top: 1px solid #BDBDBD;
+    border-bottom: 1px solid #BDBDBD;
+
+	&__wrapper {
+		margin-top: -31px;
+		width: 100%;
+	}
+
+	&__inner {
+		padding: 0 25px;
+		height: 320px;
+    	overflow-y: auto;
+		@include scroll(5px)
+	}
+
+	&__title {
+		font-size: 20px;
+		line-height: 24px;
+		padding-left: 25px;
+		margin-bottom: 20px;
+		color: $text-white;
+	}
+
+	&__name {
+		font-size: 18px;
+		line-height: 22px;
+		color: $text-white;
+		padding: 20px 0;
+	}
+
+	&__card {
+		width: 150px;
+		height: 98px;
+		border-radius: 10px;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-right: 15px;
+		margin-bottom: 15px;
+
+		img {
+			width: 150px;
+    		height: 98px;
+		}
+
+		&-wrapper {
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+
+		&-desc {
+			position: absolute;
+			bottom: 9px;
+			left: 15px;
+			color: #fff;
+			display: flex;
+			flex-direction: column;
+			color: $text-white;
+
+
+			&__model {
+				font-weight: 400;
+				font-size: 10px;
+				line-height: 12px;
+				padding-bottom: 1px;
+			}
+
+			&__species {
+				font-weight: 500;
+				font-size: 11px;
+				line-height: 13px;
+			}
+		}
+	}
+
+	&__btn {
+		margin-top: 30px;
+		text-align: right;
+	}
+}
+
+.additional {
+	max-height: 650px;
+    overflow-y: auto;
+	padding: 30px;
+	width: 790px;
+}
