@@ -7,4 +7,4 @@ import { AdminPromo } from './AdminPromo/AdminPromo';
 import { AdminLogs } from './AdminLogs/AdminLogs';
 import { AdminCases } from './AdminCases/AdminCases';
 
-export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminLogs, AdminCases};
+export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminLogs, AdminCases };

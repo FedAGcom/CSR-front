@@ -81,5 +81,5 @@ export {
   PlusIconAdmin,
   CloseModalAdminIcon,
   TrashIconAdmin,
-  EditImageIcon
+  EditImageIcon,
 };

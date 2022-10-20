@@ -1,23 +1,22 @@
-import { useFormContext } from "react-hook-form";
-import { Box } from "@mui/material";
-import { AdminInput } from "./AdminInput";
-import { AddImageButton } from "./AddImageButton";
-import { TEditableCase } from "./types";
+import { useFormContext } from 'react-hook-form';
+import { Box } from '@mui/material';
+import { AdminInput } from './AdminInput';
+import { AddImageButton } from './AddImageButton';
+import { TEditableCase } from './types';
 
 type TCaseHeaderFormProps = {
   editableCase: TEditableCase | null | undefined;
   setFile: (file: File) => void;
-}
+};
 
-export const CaseHeaderForm = ({editableCase, setFile} : TCaseHeaderFormProps) => {
-
+export const CaseHeaderForm = ({ editableCase, setFile }: TCaseHeaderFormProps) => {
   const { register } = useFormContext();
 
-  return(
+  return (
     <Box className="case-header-form">
       <Box className="case-header-form__form">
         <Box>Название</Box>
-        <AdminInput 
+        <AdminInput
           defaultValue={editableCase ? editableCase.title : null}
           type="text"
           placeholder="Название кейса"
@@ -26,14 +25,14 @@ export const CaseHeaderForm = ({editableCase, setFile} : TCaseHeaderFormProps) =
       </Box>
       <Box className="case-header-form__form">
         <Box>Стоимость</Box>
-        <AdminInput 
+        <AdminInput
           defaultValue={editableCase ? editableCase.price : null}
           type="text"
           placeholder="Сумма"
           {...register('price')}
         />
       </Box>
-      <AddImageButton setFileToForm={setFile}/>
+      <AddImageButton setFileToForm={setFile} />
     </Box>
-  )
-}
+  );
+};

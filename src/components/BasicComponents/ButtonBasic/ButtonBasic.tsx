@@ -67,7 +67,7 @@ export const ButtonBasic = (props: IMyButtonProps) => {
       textDecoration: 'initial',
       backgroundColor: '#D2002D',
     },
-  }
+  };
 
   let styles = { ...btnStyles };
   if (props.className === 'primary') styles = { ...styles, ...primary };

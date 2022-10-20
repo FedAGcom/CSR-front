@@ -76,16 +76,6 @@ export const AccountCaseField = () => {
 };
 
 export const AccountSoldItemsField = () => {
-  const [selectedSkin, setSelectedSkin] = useState<null | { name: string; price: number }>({
-    name: 'Sawed-off Цвет джунглей',
-    price: 113,
-  });
-
-  function onConfirmSale() {
-    console.log('Продажа подтверждена');
-    setSelectedSkin(null);
-  }
-
   return (
     <>
       <div className="account-field__wrapper">
@@ -106,18 +96,18 @@ export const AccountSoldItemsField = () => {
       ) : (
         <div className="account-items-content">
           {caseData.map((i) => (
-            <CaseItem key={i.id} class={i.class} image={i.image} type={i.type} title={i.title} />
+            <CaseItem
+              key={i.id}
+              class={i.class}
+              image={i.image}
+              type={i.type}
+              title={i.title}
+              price={i.price}
+              disabled={false}
+            />
           ))}
         </div>
       )}
-
-      <ConfirmSkinSaleModal
-        open={!!selectedSkin}
-        onClose={() => setSelectedSkin(null)}
-        onConfirm={onConfirmSale}
-        skinName={`${selectedSkin?.name ?? ''}`}
-        price={selectedSkin?.price ?? 0}
-      />
     </>
   );
 };
