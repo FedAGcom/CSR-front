@@ -1,4 +1,4 @@
-import { SxProps, Select as MUISelect, SelectProps} from '@mui/material';
+import { SxProps, Select as MUISelect, SelectProps } from '@mui/material';
 import { forwardRef } from 'react';
 
 export const AdminSelect = forwardRef<JSX.Element, SelectProps>(function Select(props: SelectProps, ref) {
@@ -25,17 +25,29 @@ export const AdminSelect = forwardRef<JSX.Element, SelectProps>(function Select(
     },
     '&.Mui-focused': {
       color: '#fff',
+      border: '1px solid #B81034',
+      boxShadow: '0px 0px 10px 2px rgba(184, 16, 52, 0.25)',
     },
     '&.Mui-error': {
-      border: '1px solid #FB0000',
+      border: '1px solid #B81034',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      border: 'none',
     },
   };
 
   return (
-    <MUISelect 
-      {...props} 
-      sx={{ ...selectStyles, ...props.sx }} 
+    <MUISelect
+      {...props}
+      sx={{ ...selectStyles, ...props.sx }}
       ref={ref}
+      MenuProps={{
+        PaperProps: {
+          style: {
+            maxHeight: '200px',
+          },
+        },
+      }}
     />
   );
 });

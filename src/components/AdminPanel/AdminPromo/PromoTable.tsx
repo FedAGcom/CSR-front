@@ -37,7 +37,8 @@ export const PromoTable = () => {
         <TableBody>
           <div className="create" onClick={open}>
             <div className="create__title">
-              <Promo/>Создать промокод
+              <Promo />
+              Создать промокод
             </div>
           </div>
           <TableRow className="admin-users__wrapper">

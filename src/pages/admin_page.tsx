@@ -11,7 +11,7 @@ const AdminPage = () => {
       <Box sx={{ borderTop: '1px solid #BDBDBD', display: 'flex', height: '100vh', justifyContent: 'center' }}>
         <AdminSideBar />
         <Suspense fallback={<div>Loading...</div>}>
-          <Box sx={{ padding: '30px', width: '885px' }}>
+          <Box sx={{ padding: '30px 0px 30px 30px', width: '855px' }}>
             <Outlet />
           </Box>
         </Suspense>

@@ -4,6 +4,7 @@
 @import './adminCases/skin';
 
 .admin-cases {
+  padding: 0 0 20px 0;
 
   &__title {
     @include font( 24px, 29px, 500);
@@ -64,7 +65,8 @@
   }
 
   &__modal-skins {
-    height: 425px; 
+    // height: 425px; 
+    height: 300px; 
     overflow-Y: scroll;
 
     &::-webkit-scrollbar {

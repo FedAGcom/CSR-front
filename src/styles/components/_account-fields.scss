@@ -165,6 +165,12 @@
         color: $text-account-grey;
         margin-bottom: 30px;
         }
+
+        &-content {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
     }
 
     &__sold-btns {

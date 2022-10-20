@@ -1,0 +1,94 @@
+.admin-logs {
+
+    &__title {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 29px;
+        color: #FFFFFF;
+        padding-bottom: 10px;
+		border-bottom: 1px solid $admin-users-border;
+    }
+
+    &__search {
+        box-sizing: border-box;
+        margin-top: 20px;
+        width: 825px;
+        height: 163px;
+        background: #2D2B34;
+        border: 1px solid #3E3C43;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+
+        &-title {
+            box-sizing: border-box;
+            margin: 20px 25px;
+            font-size: 18px;
+            line-height: 22px;
+            color: #FFFFFF;
+        }
+
+        &-block {
+            display: flex;
+            margin-left: 25px;
+            gap: 5px;
+        }
+        
+        &-selects {
+            display: flex;
+            margin-left: 25px;
+            gap: 10px;
+        }
+    }
+
+    &__user {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__logs-title {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 15px;
+        padding-bottom: 10px;
+		border-bottom: 1px solid $admin-users-border;
+    }
+
+    &__logs-actions-title {
+        display: flex;
+        gap: 57px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        padding-left: 12px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+		border-bottom: 1px solid $admin-users-border;
+    }
+
+    &__logs-actions {
+        display: flex;
+        gap: 57px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        padding-left: 19px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+		border-bottom: 1px solid $admin-users-border;
+    }
+
+    &__logs-time {
+        width: 41px;
+    }
+
+    &__logs-end {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        margin-top: 15px;
+    }
+}

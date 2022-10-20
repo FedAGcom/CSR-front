@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
-import { BalanceModal, ButtonBasic, TradeLinkModal } from '../index';
+import { BalanceModal, ButtonBasic, TradeLinkModal, ConfirmSkinSaleModal } from '../index';
 import { SkinsModal } from './SkinsModal';
 // import { weapon, caseImage } from '../images';
+import { CaseItem } from '../CaseItem/CaseItem';
+import { caseData } from '../../mocks';
+import { caseImage } from '../images';
+
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
@@ -97,13 +101,29 @@ export const AccountSoldItemsField = () => {
         </div>
       </div>
 
-      <div className="account-items">
-        <div className="account-items__inner-wrapper">
-          <p className="account-items__title">У вас нет предметов</p>
-          <p className="account-items__subtitle">Пора начать открывать кейсы!</p>
-          <ButtonBasic className="primary">Открыть кейсы</ButtonBasic>
+      {!caseData ? (
+        <div className="account-items">
+          <div className="account-items__inner-wrapper">
+            <p className="account-items__title">У вас нет предметов</p>
+            <p className="account-items__subtitle">Пора начать открывать кейсы!</p>
+            <ButtonBasic className="primary">Открыть кейсы</ButtonBasic>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="account-items-content">
+          {caseData.map((i) => (
+            <CaseItem
+              key={i.id}
+              class={i.class}
+              image={i.image}
+              type={i.type}
+              title={i.title}
+              price={i.price}
+              disabled={false}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 };
