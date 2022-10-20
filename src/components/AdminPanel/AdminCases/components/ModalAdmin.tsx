@@ -31,7 +31,7 @@ type TModalBasicProps = {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  title: string
+  title: string;
 };
 
 export const ModalAdmin: FC<TModalBasicProps> = ({ open, onClose, children, title }) => {
@@ -40,12 +40,12 @@ export const ModalAdmin: FC<TModalBasicProps> = ({ open, onClose, children, titl
       <Box sx={modalContainer}>
         <Box sx={modalContent} onClick={(e) => e.stopPropagation()}>
           <Box sx={header}>
-            <Box sx={{fontSize: '20px', lineHeight: '24px'}}>{title}</Box>
-            <IconButton onClick={onClose} sx={{padding: 0}}>
+            <Box sx={{ fontSize: '20px', lineHeight: '24px' }}>{title}</Box>
+            <IconButton onClick={onClose} sx={{ padding: 0 }}>
               <CloseModalAdminIcon />
             </IconButton>
           </Box>
-          <Divider sx={{backgroundColor: '#BDBDBD', marginBottom: '20px'}}/>
+          <Divider sx={{ backgroundColor: '#BDBDBD', marginBottom: '20px' }} />
           {children}
         </Box>
       </Box>

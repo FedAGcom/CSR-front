@@ -1,5 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminCases, AdminLogs } from './components';
+import {
+  AdminUsers,
+  AdminBalance,
+  AdminTechSupport,
+  AdminSettings,
+  AdminPromo,
+  AdminCases,
+  AdminLogs,
+} from './components';
 
 import {
   MainPage,
