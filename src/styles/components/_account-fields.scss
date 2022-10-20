@@ -167,5 +167,12 @@
         }
     }
 
+    &__sold-btns {
+        width: 367px;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
 }
 

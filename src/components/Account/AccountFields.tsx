@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
 import { BalanceModal, ButtonBasic, TradeLinkModal } from '../index';
-import { weapon, caseImage } from '../images';
+import { SkinsModal } from './SkinsModal';
+// import { weapon, caseImage } from '../images';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
@@ -56,9 +57,9 @@ export const AccountCaseField = () => {
           <ButtonBasic className="primary">Открыть</ButtonBasic>
         </div>
 
-        <div className="account-case__img">
+        {/* <div className="account-case__img">
           <img src={caseImage} />
-        </div>
+        </div> */}
       </div>
       <div className="account-case account-case__drop">
         <div className="account-case__common">
@@ -67,20 +68,33 @@ export const AccountCaseField = () => {
           <ButtonBasic className="primary">Открыть</ButtonBasic>
         </div>
 
-        <div className="account-drop__img">{/* <img src={weapon} /> */}</div>
+        {/* <div className="account-drop__img"><img src={weapon} /></div> */}
       </div>
     </div>
   );
 };
 
 export const AccountSoldItemsField = () => {
+  const [isSkinsModalOpen, setSkinsModalOpen] = useState<boolean>(false);
+
   return (
     <>
       <div className="account-field__wrapper">
         <p className="account-items__p">Предметы</p>
-        <ButtonBasic className="disabled" disabled={true}>
-          Продать все
-        </ButtonBasic>
+        <div className="account__sold-btns">
+          <ButtonBasic className="skins" onClick={() => setSkinsModalOpen(true)}>
+            Вывести скины
+          </ButtonBasic>
+          <SkinsModal
+            open={isSkinsModalOpen}
+            onClose={() => setSkinsModalOpen(false)}
+            style={{ padding: '30px', width: '790px' }}
+          />
+
+          <ButtonBasic className="disabled" disabled={true}>
+            Продать все
+          </ButtonBasic>
+        </div>
       </div>
 
       <div className="account-items">

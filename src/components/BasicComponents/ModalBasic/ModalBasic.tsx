@@ -40,7 +40,7 @@ const closeButtonAdmin: SxProps = {
   borderBottom: '1px solid #BDBDBD',
 };
 
-type TModalBasicProps = {
+export type TModalBasicProps = {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
@@ -70,7 +70,6 @@ type TModalUsersAdminProps = {
   children: React.ReactNode;
   id: number;
   name: string;
-  abc?: number;
 };
 
 export const ModalUsersAdmin: FC<TModalUsersAdminProps> = ({ open, onClose, children, name, id }) => {
@@ -109,7 +108,7 @@ export const ModalPromo: FC<TModalPromoProps> = ({ open, onClose, children, name
         <Box sx={modalContentAdmin} onClick={(e) => e.stopPropagation()}>
           <Box sx={closeButtonAdmin}>
             <Box className="aum__title">
-             Промокод <span>{name}</span> (#{id})
+              Промокод <span>{name}</span> (#{id})
             </Box>
             <IconButton onClick={onClose} className="modal-close">
               <CloseIcon />
