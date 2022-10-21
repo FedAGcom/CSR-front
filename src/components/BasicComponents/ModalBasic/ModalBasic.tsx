@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Modal as MuiModal, Box, IconButton } from '@mui/material';
+import { Modal as MuiModal, ModalProps, Box, IconButton } from '@mui/material';
 import { CloseIcon } from '../../svg';
 import type { SxProps } from '@mui/material';
 
@@ -40,24 +40,17 @@ const closeButtonAdmin: SxProps = {
   borderBottom: '1px solid #BDBDBD',
 };
 
-type TModalBasicProps = {
-  open: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-};
-
-export const ModalBasic: FC<TModalBasicProps> = ({ open, onClose, children, style }) => {
+export const ModalBasic: FC<ModalProps> = (props) => {
   return (
-    <MuiModal open={open} onClick={onClose}>
+    <MuiModal {...props}>
       <Box sx={modalContainer}>
-        <Box sx={modalContent} style={style} onClick={(e) => e.stopPropagation()}>
+        <Box sx={modalContent} style={props.style} onClick={(e) => e.stopPropagation()}>
           <Box sx={closeButton}>
-            <IconButton onClick={onClose} className="modal-close">
+            <IconButton onClick={(e) => props.onClose && props.onClose(e, 'escapeKeyDown')} className="modal-close">
               <CloseIcon />
             </IconButton>
           </Box>
-          {children}
+          {props.children}
         </Box>
       </Box>
     </MuiModal>

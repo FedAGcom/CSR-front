@@ -11,16 +11,16 @@ body {
   margin: 0 auto;
   background-color: $background-main;
 
-    &::-webkit-scrollbar {
+    &::-webkit-scrollbar, & *::-webkit-scrollbar {
         width: 9px;
     }
 
-    &::-webkit-scrollbar-track {
+    &::-webkit-scrollbar-track, & *::-webkit-scrollbar-track {
         box-shadow: 5px 5px 5px -5px rgba(158, 108, 107, 0.273) inset;
         background-color: #484544;
     }
 
-    &::-webkit-scrollbar-thumb {
+    &::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb {
         background-color: #7f1010d0;
         background-image: -webkit-linear-gradient(
             45deg,
