@@ -63,7 +63,6 @@ type TModalUsersAdminProps = {
   children: React.ReactNode;
   id: number;
   name: string;
-  abc?: number;
 };
 
 export const ModalUsersAdmin: FC<TModalUsersAdminProps> = ({ open, onClose, children, name, id }) => {

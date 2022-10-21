@@ -6,7 +6,7 @@ const itemsArray = [
     skin: 'Glock-18',
     rare: 'Minimal Wear',
     quality: 'Exceptional',
-    winchance: 27
+    winchance: 27,
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const itemsArray = [
     skin: 'Desert Eagle',
     rare: 'Well-Worn',
     quality: 'Covert',
-    winchance: 12
+    winchance: 12,
   },
   {
     id: 56,
@@ -24,9 +24,9 @@ const itemsArray = [
     skin: 'CZ75-Auto',
     rare: 'Battle-Scarred',
     quality: 'Exotic',
-    winchance: 45
+    winchance: 45,
   },
-]
+];
 
 export const casesForAdmin = [
   {
@@ -52,5 +52,5 @@ export const casesForAdmin = [
     title: 'Второй',
     price: 100,
     items: itemsArray,
-  }
-]
+  },
+];

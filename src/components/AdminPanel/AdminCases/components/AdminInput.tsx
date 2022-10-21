@@ -28,12 +28,6 @@ export const AdminInput = forwardRef<JSX.Element, InputProps>(function InputBasi
   };
 
   return (
-    <MUIInput 
-      {...props} 
-      autoComplete="off" 
-      ref={ref} 
-      disableUnderline={true} 
-      sx={{ ...inputStyles, ...props.sx }} 
-    />
+    <MUIInput {...props} autoComplete="off" ref={ref} disableUnderline={true} sx={{ ...inputStyles, ...props.sx }} />
   );
 });

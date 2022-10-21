@@ -21,7 +21,16 @@ export const ButtonBasic = (props: IMyButtonProps) => {
       color: '#737373',
       background: '#24232A',
       border: '2px solid #737373',
-      borderRadius: '10px',
+    },
+  };
+
+  const skinsBtn: SxProps = {
+    color: '#fff',
+    background: '#737373',
+    cursor: 'initial',
+    '&:hover': {
+      color: '#fff',
+      background: '#737373',
     },
   };
 
@@ -67,7 +76,7 @@ export const ButtonBasic = (props: IMyButtonProps) => {
       textDecoration: 'initial',
       backgroundColor: '#D2002D',
     },
-  }
+  };
 
   let styles = { ...btnStyles };
   if (props.className === 'primary') styles = { ...styles, ...primary };
@@ -75,6 +84,7 @@ export const ButtonBasic = (props: IMyButtonProps) => {
   else if (props.disabled) styles = { ...styles, ...disabled };
   else if (props.className === 'text') styles = { ...styles, ...text };
   else if (props.className === 'admin') styles = { ...styles, ...adminButton };
+  else if (props.className === 'skins') styles = { ...styles, ...skinsBtn };
 
   return <MUIButton {...props} disableRipple={false} sx={{ ...styles, ...props.sx }}></MUIButton>;
 };

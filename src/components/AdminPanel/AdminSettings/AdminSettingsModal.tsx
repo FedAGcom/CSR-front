@@ -1,7 +1,7 @@
 import React from 'react';
 import { ModalBasic } from '../../index';
 
-interface IPasswordModal {
+export interface IPasswordModal {
   open: boolean;
   onClose: () => void;
   title: string;
