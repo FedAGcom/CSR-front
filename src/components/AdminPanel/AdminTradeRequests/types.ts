@@ -11,6 +11,7 @@ interface ITradeItem {
   id: number,
   type: string,
   title: string,
+  price: number,
   image: string,
   class: string,
 }

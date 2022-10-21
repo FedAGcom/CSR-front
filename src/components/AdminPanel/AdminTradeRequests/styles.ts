@@ -137,6 +137,8 @@ export const modalStyles: SxProps = {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '30px',
+    borderTop: 'none',    // Для перекрытия стилей из _skins-modal.scss
+    borderBottom: 'none', // Для перекрытия стилей из _skins-modal.scss
   },
   '.skins__title': {
     padding: '0 25px 22px 25px',

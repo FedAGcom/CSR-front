@@ -51,10 +51,7 @@ function TradeRequestsModal({open, onClose, onConfirm, nick, email, tradeUrl, it
                 return (
                   <CaseItem
                     key={index}
-                    image={item.image}
-                    title={item.title}
-                    type={item.type}
-                    class={item.class}
+                    {...item}
                   />
                 )
               })
