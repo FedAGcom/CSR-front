@@ -1,13 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import {
-  AdminUsers,
-  AdminBalance,
-  AdminTechSupport,
-  AdminSettings,
-  AdminPromo,
-  AdminCases,
-  AdminLogs,
-} from './components';
+import { AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminCases, AdminLogs, AdminTradeRequests } from './components';
 
 import {
   MainPage,
@@ -36,6 +28,7 @@ function App() {
           <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/admin/tech-support" element={<AdminTechSupport />} />
           <Route path="/admin/cases" element={<AdminCases />} />
+          <Route path="/admin/trade-requests" element={<AdminTradeRequests />} />
         </Route>
       </Routes>
     </BrowserRouter>

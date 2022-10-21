@@ -39,6 +39,7 @@ import { ReactComponent as PlusIconAdmin } from './admin/plus-icon-admin.svg';
 import { ReactComponent as CloseModalAdminIcon } from './admin/close-modal-admin.svg';
 import { ReactComponent as TrashIconAdmin } from './admin/trash-icon.svg';
 import { ReactComponent as EditImageIcon } from './admin/edit-image-icon.svg';
+import { ReactComponent as TradeIcon } from './trade-icon.svg';
 
 export {
   CasesIcon,
@@ -82,4 +83,5 @@ export {
   CloseModalAdminIcon,
   TrashIconAdmin,
   EditImageIcon,
+  TradeIcon,
 };

@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { CasesIcon, Money, PromoCode, UsersIcon, Logs, Support, Settings, AdminExit } from '../../svg';
+import { CasesIcon, Money, PromoCode, UsersIcon, Logs, Support, Settings, AdminExit, TradeIcon } from '../../svg';
 import { AdminSettingsModal } from '../AdminSettings/AdminSettingsModal';
 import { CommonBtn } from '../AdminSettings/AdminSettings';
 
 export const AdminSideBar = () => {
   const [activeIcon, setActiveIcon] = useState<number | null>(null);
   const setActive = (index: number) => {
-    return activeIcon === index ? '#e4b8b8' : ' #fff';
+    return activeIcon === index ? '#B81034' : ' #fff';
   };
 
   const [isExit, setExit] = useState<boolean>(false);
@@ -43,12 +43,17 @@ export const AdminSideBar = () => {
     {
       text: 'Тех.поддержка',
       en: 'tech-support',
-      icon: <Support fill={setActive(5)} />,
+      icon: <Support stroke={setActive(5)} />,
+    },
+    {
+      text: 'Запросы на трейд',
+      en: 'trade-requests',
+      icon: <TradeIcon fill={setActive(6)} />,
     },
     {
       text: 'Настройки',
       en: 'settings',
-      icon: <Settings fill={setActive(6)} />,
+      icon: <Settings fill={setActive(7)} />,
     },
   ];
 
