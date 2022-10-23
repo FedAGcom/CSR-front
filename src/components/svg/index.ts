@@ -35,8 +35,12 @@ import { ReactComponent as UsersIcon } from './users-icon.svg';
 import { ReactComponent as Logs } from './logs.svg';
 import { ReactComponent as AdminExit } from './admin-exit.svg';
 import { ReactComponent as Promo } from './promo.svg';
+import { ReactComponent as BrushIcon } from './brush.svg';
+import { ReactComponent as EditIcon } from './edit.svg';
 
 export {
+  EditIcon,
+  BrushIcon,
   CasesIcon,
   Logs,
   AdminExit,

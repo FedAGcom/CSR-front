@@ -4,5 +4,6 @@ import { AdminBalance } from './AdminBalance/AdminBalance';
 import { AdminSettings } from './AdminSettings/AdminSettings';
 import { AdminTechSupport } from './AdminTechSupport/AdminTechSupport';
 import { AdminPromo } from './AdminPromo/AdminPromo'; 
+import { AdminAppearance } from './AdminAppearance/AdminAppearance'; 
 
-export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo};
+export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminAppearance};

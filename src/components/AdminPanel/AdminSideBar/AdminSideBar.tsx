@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { CasesIcon, Money, PromoCode, UsersIcon, Logs, Support, Settings, AdminExit } from '../../svg';
+import { CasesIcon, Money, PromoCode, UsersIcon, Logs, Support, Settings, AdminExit, BrushIcon } from '../../svg';
 import { AdminSettingsModal } from '../AdminSettings/AdminSettingsModal';
 import { CommonBtn } from '../AdminSettings/AdminSettings';
 
@@ -49,6 +49,11 @@ export const AdminSideBar = () => {
       text: 'Настройки',
       en: 'settings',
       icon: <Settings fill={setActive(6)} />,
+    },
+    {
+      text: 'Внешний вид сайта',
+      en: 'appearance',
+      icon: <BrushIcon fill={setActive(6)} />,
     },
   ];
 
