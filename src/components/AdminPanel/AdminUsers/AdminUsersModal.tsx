@@ -15,11 +15,11 @@ interface ICommonAdminInputProps {
   children: React.ReactNode;
 }
 
-const adminBtn = {
-  width: '212px',
-  height: '38px',
-  borderRadius: '5px',
-};
+// const adminBtn = {
+//   width: '212px',
+//   height: '38px',
+//   borderRadius: '5px',
+// };
 
 export const adminCloseBtn = {
   width: '160px',

@@ -18,6 +18,7 @@ export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, is
 
   return (
     <ModalBasic open={isOpen} onClose={handleClose}>
+      <>
       <Box className="localization__title">Обновить интерфейс платформы</Box>
       <Box className="localization__subtitle">Выберите подходящий язык и валюту</Box>
       <Box className="localization__form-container" width="350px">
@@ -46,6 +47,7 @@ export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, is
           Сохранить настройки
         </ButtonBasic>
       </Box>
+      </>
     </ModalBasic>
   );
 };

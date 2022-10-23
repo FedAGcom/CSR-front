@@ -9,3 +9,30 @@
   justify-content: $justify;
   align-items: $align;
 }
+
+
+@mixin scroll ($size) {
+ &::-webkit-scrollbar {
+        width: $size;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: 5px 5px 5px -5px rgba(158, 108, 107, 0.273) inset;
+        background-color: #484544;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #7f1010d0;
+        background-image: -webkit-linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.25) 25%,
+            transparent 25%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.25) 50%,
+            rgba(255, 255, 255, 0.25) 75%,
+            transparent 75%,
+            transparent
+        );
+    }
+}
+
