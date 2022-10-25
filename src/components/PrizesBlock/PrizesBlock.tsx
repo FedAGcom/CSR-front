@@ -44,7 +44,7 @@ const button2: SxProps = {
 
 export const PrizeBlock = () => {
   return (
-    <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
+    <Container sx={{ maxWidth: '1148px' }} maxWidth={false}>
       <Box className="win-panel">
         <Box className="sort-block">
           <Button sx={{ ...button }} className="button">

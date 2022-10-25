@@ -1,5 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminCases, AdminLogs, AdminTradeRequests } from './components';
+import {
+  AdminUsers,
+  AdminBalance,
+  AdminTechSupport,
+  AdminSettings,
+  AdminPromo,
+  AdminCases,
+  AdminLogs,
+  AdminTradeRequests,
+} from './components';
 
 import {
   MainPage,
@@ -8,6 +17,7 @@ import {
   TermsOfServicePage,
   AccountPage,
   AdminLayout,
+  OpenCase,
 } from './pages/index';
 
 function App() {
@@ -30,6 +40,7 @@ function App() {
           <Route path="/admin/cases" element={<AdminCases />} />
           <Route path="/admin/trade-requests" element={<AdminTradeRequests />} />
         </Route>
+        <Route path="/open-case" element={<OpenCase />} />
       </Routes>
     </BrowserRouter>
   );

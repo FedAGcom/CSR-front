@@ -1,0 +1,48 @@
+.case-auth-banner {
+    margin-top: 30px;
+    position: relative;
+    box-sizing: border-box;
+    width: 1110px;
+    height: 306px;
+    background: #2D2B34;
+    border: 1px solid #434343;
+    border-radius: 20px;
+    font-family: 'Gilroy';
+    font-style: normal;
+    color: #FFFFFF;
+
+    &__title {
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        text-transform: uppercase;
+    }
+    
+    &__content {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+    }
+}
+
+.case-auth-banner__img {
+    display: block;
+    margin: 28px auto;
+    width: 247px;
+}
+
+.case-auth-banner__wrap {
+    display: flex;
+    left: 0;
+    right: 0;
+    margin: -103px auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: absolute;
+    width: 482px;
+    height: 81px;
+    background: #24232A;
+    border-radius: 10px;
+}

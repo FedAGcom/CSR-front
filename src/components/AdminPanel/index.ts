@@ -8,4 +8,14 @@ import { AdminLogs } from './AdminLogs/AdminLogs';
 import { AdminCases } from './AdminCases/AdminCases';
 import { AdminTradeRequests } from './AdminTradeRequests/AdminTradeRequests';
 
-export { AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminLogs, AdminCases, AdminTradeRequests};
+export {
+  AdminSideBar,
+  AdminUsers,
+  AdminBalance,
+  AdminTechSupport,
+  AdminSettings,
+  AdminPromo,
+  AdminLogs,
+  AdminCases,
+  AdminTradeRequests,
+};

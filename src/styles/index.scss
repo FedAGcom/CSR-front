@@ -17,6 +17,12 @@
 @import './components/account-fields';
 @import './components/askQuestion';
 @import './components/buttonBackToMain';
+
+@import './components/case-item';
+@import './components/case-auth-banner';
+@import './components/prize-modal';
+@import './components/case-content';
+@import './components/roulette-item';
 @import './components/skins-modal';
 
 @import './components/admin-panel/admin-panel';
@@ -35,4 +41,5 @@
 @import './pages/privacyPolicyPage';
 @import './pages/termsOfServicePage';
 @import './pages/techSupportPage';
+@import './pages/open-case_page';
 
