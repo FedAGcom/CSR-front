@@ -1,36 +1,64 @@
-.case-item {
+.skin-wrap {
     position: relative;
     width: 150px;
     height: 98px;
-    border-radius: 10px;
 
-    &__img {
-        display: block;
-        margin: 16px auto;
-        width: 88px;
-        object-fit: cover;
+    .MuiButton-root {
+        opacity: 0;
     }
 
-    &__type {
-        position: absolute;
-        bottom: 25px;
-        left: 15px;
-        font-family: 'Gilroy';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 12px;
+    &:not(.disabled):hover {
+        .MuiButton-root {
+            opacity: 1;
+        }
+        .case-item {
+            filter: brightness(50%);
+        }
     }
 
-    &__title {
-        position: absolute;
-        bottom: 12px;
-        left: 15px;
-        font-family: 'Gilroy';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 11px;
-        line-height: 13px;
+    .case-item {
+        position: relative;
+        width: 150px;
+        height: 98px;
+        border-radius: 10px;
+        filter: brightness(100%);
+        transition: filter 0.2 ease;
+    
+        &__img {
+            display: block;
+            margin: 0 auto;
+            padding-top: 16px;
+            width: 88px;
+        }
+    
+        &__type {
+            position: absolute;
+            bottom: 25px;
+            left: 15px;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 10px;
+            line-height: 12px;
+        }
+    
+        &__title {
+            position: absolute;
+            bottom: 12px;
+            left: 15px;
+            font-family: 'Gilroy';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 11px;
+            line-height: 13px;
+        }
+
+        &:not(.disabled):hover {
+            filter: brightness(50%);
+            .MuiButton-root {
+                opacity: 1;
+            }  
+        }   
     }
 }
 
@@ -54,7 +82,6 @@
     background: linear-gradient(180deg, #24232A 0%, #9F3F3C 100%);
     border-bottom: 1px solid #DA5752;
 }
-
 .case-item-legendary {
     background: linear-gradient(180deg, #24232A 0%, #9f943c 100%);
     border-bottom: 1px solid #dedb32;

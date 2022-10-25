@@ -1,0 +1,47 @@
+.case-header-form {
+  padding: 0 25px;
+  @include flex(flex-start, center);
+  column-gap: 30px;
+  row-gap: 15px;
+  flex-wrap: wrap;
+
+
+  &__form {
+    width: 325px;
+    @include flex(center, flex-start);
+    gap: 5px;
+    flex-direction: column;
+    @include font(18px, 22px, 500);
+  }
+
+  &__add-image-button {
+    position: relative;
+    width: 150px;
+    height: 98px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: 2px dashed $brand-color;
+    border-radius: 10px;
+    text-align: 'center';
+    cursor: pointer;
+    color: $brand-color;
+    @include font(14px, 17px, 500);
+    div {
+      text-align: center;
+    }
+
+    &.change {
+      cursor: default;
+
+      & .edit-image-icon {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        cursor: pointer;
+      }
+    }
+  }
+}

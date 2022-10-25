@@ -1,0 +1,94 @@
+.admin-tech-support {
+  max-width: 825px;
+
+  &__title.MuiTypography-root {
+    font-family: 'Gilroy';
+    @include font(24px, 29px, 500);
+    margin-bottom: 10px;
+  }
+
+  &__divider.MuiDivider-root {
+    background-color: #BDBDBD;
+    margin-bottom: 18px;
+  }
+
+  &__text-box {
+    display: flex;
+    column-gap: 4px;
+    align-items: flex-start;
+  }
+
+  &__sub-title.MuiTypography-root {
+    font-family: 'Gilroy';
+    @include font(20px, 24px, 500);
+    margin-bottom: 15px;
+  }
+
+  &__requests-number.MuiTypography-root {
+    font-family: 'Gilroy';
+    @include font(16px, 19px, 500);
+    border-radius: 50%;
+    background-color: #B81034;
+    height: 24px;
+    flex-basis: 24px;
+    flex-shrink: 0;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-form {
+    padding: 20px 25px;
+    background-color: #2D2B34;
+    border-radius: 10px;
+
+    &__title {
+      font-family: 'Gilroy';
+      @include font(18px, 22px, 500);
+      margin-bottom: 15px;
+    }
+
+    &__content {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 5px;
+
+      @media (max-width: 768px) {
+        flex-wrap: wrap;
+      }
+    }
+
+    .MuiInput-root {
+      height: 38px;
+      min-width: 150px;
+      padding: 0;
+      
+      & .MuiInputBase-input {
+        box-sizing: border-box;
+        height: auto;
+        padding: 9px 15px;
+      }
+
+      & .MuiInputBase-input-MuiInput-input {
+        height: '100%';
+      }
+    }
+
+    &__validation-message-box {
+      display: flex;
+      column-gap: 5px;
+    }
+
+    &__error-icon {
+      height: 15px;
+      width: 15px;
+      margin-top: 2px;
+    }
+
+    &__validation-message.MuiTypography-root {
+      @include font(16px, 19px, 500);
+      color: #FB0000;
+    }
+  }
+}

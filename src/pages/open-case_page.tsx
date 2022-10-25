@@ -5,7 +5,15 @@ import RoulettePro from 'react-roulette-pro';
 import { caseData } from '../mocks/open-case';
 import 'react-roulette-pro/dist/index.css';
 import { ArrowBottom, ArrowMain, ArrowTop, HeaderSteam } from '../components/svg';
-import { CaseContent, CaseAuthBanner, PrizeModal, SellButton, RouletteItem, TryAgainButton, audio } from '../components/OpenCase';
+import {
+  CaseContent,
+  CaseAuthBanner,
+  PrizeModal,
+  SellButton,
+  RouletteItem,
+  TryAgainButton,
+  audio,
+} from '../components/OpenCase';
 import { useNavigate } from 'react-router-dom';
 import { HeaderAndFooter, PrizeBlock } from '../components';
 

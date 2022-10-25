@@ -1,5 +1,5 @@
 import { caseData } from '../../../mocks/open-case';
-import { CaseItem } from '../CaseItem/CaseItem';
+import { CaseItem } from '../../CaseItem/CaseItem';
 
 export const CaseContent = () => {
   return (

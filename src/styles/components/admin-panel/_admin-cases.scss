@@ -1,0 +1,77 @@
+@import './adminCases/case-header-form';
+@import './adminCases/add-skin-form';
+@import './adminCases/add-skin-button';
+@import './adminCases/skin';
+
+.admin-cases {
+  padding: 0 0 20px 0;
+
+  &__title {
+    @include font( 24px, 29px, 500);
+  }
+
+  &__divider.MuiDivider-root {
+    background-color: #BDBDBD;
+    margin: 10px 0 20px 0;
+  }
+
+  &__search-form {
+    @include flex(center, center);
+    gap: 5px;
+  }
+
+  &__create-button {
+    width: 255px;
+    height: 169px;
+    border-radius: 10px;
+    border: 2px dashed $brand-color;
+    cursor: pointer;
+    @include flex(center, center);
+    flex-direction: column;
+    @include font(14px, 17px, 500);
+    gap: 10px;
+    color: $brand-color;
+  }
+
+  &__cases-container {
+    @include flex(flex-start, center);
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 20px 0 0 0; 
+  }
+
+  .admin-case {
+
+    background-color: $background-main-lighter;
+    border-radius: 10px;
+    width: 255px;
+    height: 169px;
+    cursor: pointer;
+    @include flex(flex-start, center);
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid #3E3C43;
+    @include font(14px, 17px, 400);
+   
+    &__image {
+      margin-top: -11px;
+    }
+  }
+
+  &__modal-subtitle {
+    margin: 30px 0 0 0;
+    padding: 0 25px 10px 25px;
+    @include font(20px, 24px, 500);
+  }
+
+  &__modal-skins {
+    // height: 425px; 
+    height: 300px; 
+    overflow-Y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+}

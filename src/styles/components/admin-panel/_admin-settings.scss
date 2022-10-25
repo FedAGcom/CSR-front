@@ -1,0 +1,61 @@
+.admin-settings {
+
+	&__wrapper {
+		margin-top: 25px;
+    	width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+
+		p {
+			font-size: 20px;
+			line-height: 24px;
+			color: $text-white;
+			margin-bottom: 10px;
+		}
+	}
+
+	&__block {
+		margin-bottom: 10px;
+	}
+
+	&__common {
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__password {
+		border-right: 1px solid $admin-users-border;
+		    padding-right: 62px;
+	}
+
+	&__email {
+		margin-left: 63px;
+	}
+
+	&__modal {
+		color: $text-white;
+		text-align: center;
+		width: 350px;
+    	margin: -12px auto 0;
+
+		&-title {
+			font-size: 20px;
+			line-height: 24px;
+			margin-bottom: 20px;
+		}
+
+		&-subtitle {
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 22px;
+			margin-bottom: 20px;
+		}
+	}
+
+	&__exit {
+		display: flex;
+    	justify-content: space-between;
+	}
+}

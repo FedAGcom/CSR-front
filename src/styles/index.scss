@@ -17,12 +17,24 @@
 @import './components/account-fields';
 @import './components/askQuestion';
 @import './components/buttonBackToMain';
-@import './components/admin-panel';
+
 @import './components/case-item';
 @import './components/case-auth-banner';
 @import './components/prize-modal';
 @import './components/case-content';
 @import './components/roulette-item';
+@import './components/skins-modal';
+
+@import './components/admin-panel/admin-panel';
+@import './components/admin-panel/admin-users';
+@import './components/admin-panel/admin-users-modal';
+@import './components/admin-panel/admin-balance';
+@import './components/admin-panel/admin-settings';
+@import './components/admin-panel/admin-panel-tech-support';
+@import './components/admin-panel/admin-cases';
+@import './components/admin-panel/admin-promo';
+@import './components/admin-panel/admin-logs';
+@import './components/case-item';
 
 //pages
 @import './pages/main-page';
