@@ -5,13 +5,8 @@ import RoulettePro from 'react-roulette-pro';
 import { caseData } from '../mocks/open-case';
 import 'react-roulette-pro/dist/index.css';
 import { ArrowBottom, ArrowMain, ArrowTop, HeaderSteam } from '../components/svg';
-import { CaseContent } from '../components/OpenCase/CaseContent/CaseContent';
-import { CaseAuthBanner } from '../components/OpenCase/CaseAuthBanner/CaseAuthBanner';
-import { PrizeModal } from '../components/OpenCase/PrizeModal/PrizeModal';
+import { CaseContent, CaseAuthBanner, PrizeModal, SellButton, RouletteItem, TryAgainButton, audio } from '../components/OpenCase';
 import { useNavigate } from 'react-router-dom';
-import { SellButton } from '../components/OpenCase/SellButton/SellButton';
-import { RouletteItem } from '../components/OpenCase/RouletteItem/RouletteItem';
-import { TryAgainButton } from '../components/OpenCase/TryAgainButton/TryAgainButton';
 import { HeaderAndFooter, PrizeBlock } from '../components';
 
 const button: SxProps = {
@@ -108,7 +103,6 @@ export const OpenCase = () => {
   };
 
   const handlePrizeDefined = () => {
-    console.log('🥳 Prize defined! 🥳');
     setIsModal(true);
     setIsActive(false);
   };
@@ -139,14 +133,16 @@ export const OpenCase = () => {
                 />
               )}
               <RoulettePro
+                soundWhileSpinning={audio}
                 prizes={prizeList}
                 prizeIndex={prizeIndex}
                 start={start}
-                spinningTime={7}
+                spinningTime={5}
                 type={'horizontal'}
                 onPrizeDefined={handlePrizeDefined}
                 options={{ stopInCenter: true, withoutAnimation: true }}
                 defaultDesignOptions={{ hideCenterDelimiter: true }}
+                //@ts-expect-error заглушка для рулетки
                 prizeItemRenderFunction={(i) => <RouletteItem image={i.image} class={i.class} />} //todo
               />
               <ArrowTop className="arrow-top" />

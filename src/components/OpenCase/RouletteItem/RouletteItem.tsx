@@ -3,7 +3,7 @@ interface IRouletteItemProps {
   image?: string;
 }
 
-export const RouletteItem: React.FC<IRouletteItemProps> = (props) => {
+export const RouletteItem: React.FC<IRouletteItemProps> = (props: IRouletteItemProps) => {
   return (
     <div className={'item ' + 'case-item-' + props.class}>
       <div>

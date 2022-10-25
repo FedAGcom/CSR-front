@@ -16,13 +16,13 @@ const button: SxProps = {
   borderRadius: '10px',
   border: '1px solid #B81034',
   boxShadow: '0px 0px 10px #BE2E4D',
+  transition: "0.4s easy",
   '&:hover': {
     backgroundColor: '#D2002D',
     color: '#FFFFFF',
-    '&:first-of-type': {
-      fill: '#FFFFFF',
-      color: '#FFFFFF',
-    },
+  },
+  '&:hover svg': {
+    fill: '#FFFFFF',
   },
 };
 
