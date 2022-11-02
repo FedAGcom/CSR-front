@@ -5,7 +5,7 @@ export const titleStyles: SxProps = {
   fontWeight: '500',
   fontSize: '24px',
   lineHeight: '29px',
-}
+};
 
 export const tableStyles: SxProps = {
   borderCollapse: 'separate',
@@ -21,7 +21,7 @@ export const tableStyles: SxProps = {
     top: '-5px',
     left: '0',
     right: '0',
-    height: '1px solid #BDBDBD'
+    height: '1px solid #BDBDBD',
   },
   '.MuiTableRow-root.MuiTableRow-head:after': {
     content: '""',
@@ -31,7 +31,7 @@ export const tableStyles: SxProps = {
     bottom: '0px',
     left: '0',
     right: '0',
-    height: '1px solid #BDBDBD'
+    height: '1px solid #BDBDBD',
   },
   '.MuiTableRow-root:not(.MuiTableRow-head):before': {
     content: '""',
@@ -49,11 +49,11 @@ export const tableStyles: SxProps = {
     top: '-10px',
   },
   '.MuiTableCell-root': {
-    fontFamily: 'Gilroy', 
-    fontWeight: '400', 
-    fontSize: '14px', 
-    lineHeight: '17px', 
-    color: '#FFFFFF', 
+    fontFamily: 'Gilroy',
+    fontWeight: '400',
+    fontSize: '14px',
+    lineHeight: '17px',
+    color: '#FFFFFF',
     border: 'none',
     textAlign: 'center',
     padding: '18px 16px 21px 16px',
@@ -70,8 +70,8 @@ export const tableStyles: SxProps = {
   },
   '.withoutUrl': {
     color: '#FFFFFF',
-  }
-}
+  },
+};
 
 export const modalStyles: SxProps = {
   '& > .MuiBox-root > .MuiBox-root': {
@@ -93,7 +93,7 @@ export const modalStyles: SxProps = {
     top: '-29px',
     width: '730px',
   },
-  
+
   '.title': {
     padding: '0 25px 20px 25px',
     borderBottom: '1px solid #BDBDBD',
@@ -137,7 +137,7 @@ export const modalStyles: SxProps = {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '30px',
-    borderTop: 'none',    // Для перекрытия стилей из _skins-modal.scss
+    borderTop: 'none', // Для перекрытия стилей из _skins-modal.scss
     borderBottom: 'none', // Для перекрытия стилей из _skins-modal.scss
   },
   '.skins__title': {
@@ -180,4 +180,4 @@ export const modalStyles: SxProps = {
   '.buttons .MuiButtonBase-root:last-of-type': {
     width: '160px',
   },
-}
+};

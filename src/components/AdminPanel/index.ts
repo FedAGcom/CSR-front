@@ -9,4 +9,18 @@ import { AdminCases } from './AdminCases/AdminCases';
 import { AdminTradeRequests } from './AdminTradeRequests/AdminTradeRequests';
 import { AdminAppearance } from './AdminAppearance/AdminAppearance'; 
 
+<<<<<<< HEAD
 export {AdminAppearance, AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminLogs, AdminCases, AdminTradeRequests};
+=======
+export {
+  AdminSideBar,
+  AdminUsers,
+  AdminBalance,
+  AdminTechSupport,
+  AdminSettings,
+  AdminPromo,
+  AdminLogs,
+  AdminCases,
+  AdminTradeRequests,
+};
+>>>>>>> master

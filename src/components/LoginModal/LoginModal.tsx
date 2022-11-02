@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LogoFooter, HeaderSteam } from '../svg';
 import { Checkbox, ButtonBasic, ModalBasic } from '../index';
+import { usePostLoginMutation } from '../../store/slices/loginSlice';
 
 interface ILoginModal {
   show: boolean;
@@ -10,6 +11,9 @@ interface ILoginModal {
 export const LoginModal: React.FC<ILoginModal> = ({ show, onClose }) => {
   const [confirmAge, setConfirmAge] = useState<boolean>(false);
   const [agree, setAgree] = useState<boolean>(false);
+  const [postLogin, result] = usePostLoginMutation();
+
+  console.log(result, 9999);
 
   function closeModal() {
     onClose();
@@ -39,9 +43,7 @@ export const LoginModal: React.FC<ILoginModal> = ({ show, onClose }) => {
 
           <div className="login-modal__footer">
             <ButtonBasic className="primary" disabled={!confirmAge || !agree}>
-              <p>
-                <a href="https://store.steampowered.com/login">Войти через steam</a>
-              </p>{' '}
+              <p onClick={postLogin}>Войти через steam</p>
               <HeaderSteam className={!confirmAge || !agree ? 'headerSteam:disabled' : 'headerSteam'} />
             </ButtonBasic>
           </div>

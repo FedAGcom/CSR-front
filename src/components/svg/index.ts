@@ -34,6 +34,11 @@ import { ReactComponent as Support } from './support.svg';
 import { ReactComponent as UsersIcon } from './users-icon.svg';
 import { ReactComponent as Logs } from './logs.svg';
 import { ReactComponent as AdminExit } from './admin-exit.svg';
+import { ReactComponent as ArrowTop } from './arrow-top.svg';
+import { ReactComponent as ArrowBottom } from './arrow-bottom.svg';
+import { ReactComponent as ArrowMain } from './arrow-main.svg';
+import { ReactComponent as ReloadBtn } from './reload-btn.svg';
+import { ReactComponent as SellBtn } from './sell-btn.svg';
 import { ReactComponent as Promo } from './promo.svg';
 import { ReactComponent as BrushIcon } from './brush.svg';
 import { ReactComponent as EditIcon } from './edit.svg';
@@ -82,6 +87,11 @@ export {
   RadioCheckedIcon,
   RadioUncheckedIcon,
   ErrorIcon,
+  ArrowTop,
+  ArrowBottom,
+  ArrowMain,
+  ReloadBtn,
+  SellBtn,
   Promo,
   PlusIconAdmin,
   CloseModalAdminIcon,

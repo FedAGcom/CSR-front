@@ -18,6 +18,7 @@ import {
   TermsOfServicePage,
   AccountPage,
   AdminLayout,
+  OpenCase,
 } from './pages/index';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
           <Route path="/admin/trade-requests" element={<AdminTradeRequests />} />
           <Route path="appearance" element={<AdminAppearance />} />
         </Route>
+        <Route path="/open-case" element={<OpenCase />} />
       </Routes>
     </BrowserRouter>
   );

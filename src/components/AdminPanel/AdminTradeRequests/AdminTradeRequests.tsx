@@ -9,11 +9,11 @@ export function AdminTradeRequests() {
   const [requestIndex, setRequestIndex] = useState<null | number>(null);
 
   const openRequestHandler = useCallback(
-    function(requestIndex: number) {
+    function (requestIndex: number) {
       setRequestIndex(requestIndex);
     },
-    [setRequestIndex]
-  ); 
+    [setRequestIndex],
+  );
 
   function confirmHandler() {
     console.log('Confirm');
@@ -22,7 +22,9 @@ export function AdminTradeRequests() {
 
   return (
     <Box>
-      <Typography component='h1' sx={titleStyles}>Запросы на трейд</Typography>
+      <Typography component="h1" sx={titleStyles}>
+        Запросы на трейд
+      </Typography>
 
       <TableContainer>
         <Table sx={tableStyles}>
@@ -37,31 +39,21 @@ export function AdminTradeRequests() {
             </TableRow>
           </TableHead>
           <TableBody>
-          {
-            tradeRequests.map((request, index) => {
-              return (
-                <Row 
-                  key={request.id}
-                  {...request}
-                  index={index}
-                  onOpen={openRequestHandler}
-                />
-              )
-            })
-          }
+            {tradeRequests.map((request, index) => {
+              return <Row key={request.id} {...request} index={index} onOpen={openRequestHandler} />;
+            })}
           </TableBody>
         </Table>
       </TableContainer>
 
-      {
-        requestIndex || requestIndex === 0 ?
+      {requestIndex || requestIndex === 0 ? (
         <TradeRequestsModal
           open={requestIndex || requestIndex === 0 ? true : false}
           onClose={() => setRequestIndex(null)}
           onConfirm={confirmHandler}
           {...tradeRequests[requestIndex]}
-        /> : null
-      }
+        />
+      ) : null}
     </Box>
-  )
+  );
 }

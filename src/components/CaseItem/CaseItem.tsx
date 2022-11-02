@@ -8,7 +8,7 @@ interface ICaseItemProps {
   type: string;
   title: string;
   class: string;
-  price: number;
+  price?: number;
   disabled?: boolean;
 }
 
@@ -32,10 +32,6 @@ const btn: SxProps = {
 
 export const CaseItem: React.FC<ICaseItemProps> = (props: ICaseItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSkin, setSelectedSkin] = useState<null | { name: string; price: number }>({
-    name: props.title,
-    price: props.price,
-  });
 
   function onConfirmSale() {
     console.log('Продажа подтверждена');
@@ -59,8 +55,8 @@ export const CaseItem: React.FC<ICaseItemProps> = (props: ICaseItemProps) => {
             open={isOpen}
             onClose={() => setIsOpen(false)}
             onConfirm={onConfirmSale}
-            skinName={`${selectedSkin?.name ?? ''}`}
-            price={selectedSkin?.price ?? 0}
+            skinName={`${props?.title ?? ''}`}
+            price={props?.price ?? 0}
           />
         </>
       )}
