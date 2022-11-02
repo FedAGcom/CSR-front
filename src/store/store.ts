@@ -1,15 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducer } from './reducers';
+import { loginSlice } from './slices/loginSlice';
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
-      .concat
+    getDefaultMiddleware().concat(
       // middlewares
       // api.middleware
-      (),
+      loginSlice.middleware,
+    ),
 });
 
 type TRootState = ReturnType<typeof store.getState>;

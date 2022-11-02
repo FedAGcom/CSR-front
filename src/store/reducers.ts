@@ -1,9 +1,10 @@
 import { combineReducers } from '@reduxjs/toolkit';
+import { loginSlice } from './slices/loginSlice';
 import packsSlice from './slices/packsSlice';
 
 const rootReducer = combineReducers({
-  // [api.reducerPath]: api.reducer
   // [slice.name]: reducer
+  [loginSlice.reducerPath]: loginSlice.reducer,
   packs: packsSlice,
 });
 
