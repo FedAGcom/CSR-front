@@ -3,7 +3,6 @@ import React, { ChangeEvent, ReactNode, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { InputBasic } from '../../BasicComponents';
 import { EditIcon } from '../../svg';
-import { inputTypeFile, labelHover, labelWrapper } from './style';
 
 interface IInputTypeFile {
   htmlFor: string;
@@ -24,13 +23,12 @@ export const InputTypeFile = ({ htmlFor, id, registerName, children }: IInputTyp
   };
 
   return (
-    <Box sx={labelWrapper}>
+    <Box className="labelWrapper">
       {selectedFile ? <img style={{ width: '100%', height: '100%' }} src={selectedFile} /> : children}
-
-      <InputLabel htmlFor={htmlFor} sx={labelHover}>
+      <InputLabel htmlFor={htmlFor}>
         <EditIcon />
       </InputLabel>
-      <InputBasic id={id} sx={inputTypeFile} type="file" {...register(registerName)} onChange={handleChange} />
+      <InputBasic id={id} type="file" {...register(registerName)} onChange={handleChange} />
     </Box>
   );
 };

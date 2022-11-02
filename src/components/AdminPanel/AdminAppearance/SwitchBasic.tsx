@@ -13,7 +13,9 @@ const CustomSwitch = styled((props: SwitchProps) => (
     transitionDuration: '300ms',
     '&.Mui-checked': {
       transform: 'translateX(33px)',
-      color: '#fff',
+      '& .MuiSwitch-thumb': {
+        color: '#fff',
+      },
       '& + .MuiSwitch-track': {
         backgroundColor: theme.palette.mode === 'dark' ? '#2ECA45' : '#B81034',
         opacity: 1,
@@ -30,6 +32,7 @@ const CustomSwitch = styled((props: SwitchProps) => (
     boxSizing: 'border-box',
     width: 24,
     height: 24,
+    color: '#898989',
   },
   '& .MuiSwitch-track': {
     borderRadius: 26 / 2,
