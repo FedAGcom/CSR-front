@@ -13,7 +13,7 @@ export const LoginModal: React.FC<ILoginModal> = ({ show, onClose }) => {
   const [agree, setAgree] = useState<boolean>(false);
   const { data } = usePostLoginQuery('');
 
-  const redirectLink = data.link;
+  const redirectLink = data?.link;
 
   function closeModal() {
     onClose();
