@@ -4,20 +4,15 @@ export const loginSlice = createApi({
   reducerPath: 'login',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://csgofarm.online',
-    // mode: 'no-cors',
   }),
   endpoints: (builder) => ({
-    postLogin: builder.mutation({
+    postLogin: builder.query({
       query: () => ({
         url: `/api/v1/auth/steam-registration`,
-        method: 'POST',
-        // transformResponse: (response: { data: any }) => {
-        //   console.log(response.data, '88888');
-        //   return response.data;
-        // },
+        method: 'GET',
       }),
     }),
   }),
 });
 
-export const { usePostLoginMutation } = loginSlice;
+export const { usePostLoginQuery } = loginSlice;
