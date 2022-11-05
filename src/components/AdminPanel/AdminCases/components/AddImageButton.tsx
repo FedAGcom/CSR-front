@@ -1,14 +1,23 @@
 import { Box } from '@mui/material';
 import { EditImageIcon, PlusIconAdmin } from '../../../svg';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { TEditableCase } from './types';
 
 type TAddImageButton = {
-  setFileToForm: (file: File) => void;
+  setFileToForm: (string: string | ArrayBuffer | null) => void;
+  editableCase: TEditableCase;
 };
 
-export const AddImageButton = ({ setFileToForm }: TAddImageButton) => {
+export const AddImageButton: FC<TAddImageButton> = ({ setFileToForm, editableCase }) => {
   const [isImage, setImage] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>();
+
+  useEffect(() => {
+    if (editableCase) {
+      setImage(true);
+      setImageSrc(editableCase.image);
+    }
+  }, []);
 
   const imageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setImage(true);
@@ -16,16 +25,13 @@ export const AddImageButton = ({ setFileToForm }: TAddImageButton) => {
     reader.onload = () => {
       if (reader.readyState === 2) {
         setImageSrc(reader.result);
+        setFileToForm(reader.result);
       }
     };
     if (e.target.files) {
       reader.readAsDataURL(e.target.files[0]);
-      setFileToForm(e.target.files[0]);
     }
   };
-
-  // console.log('IMAGE', imageSrc);
-  // console.log('FILE', file);
 
   return (
     <>

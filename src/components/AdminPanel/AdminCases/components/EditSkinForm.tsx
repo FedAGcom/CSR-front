@@ -20,6 +20,7 @@ type TAddSkinFormProps = {
 
 export const EditSkinForm: FC<TAddSkinFormProps> = ({ setEditSkinFormActive, changeItem, deleteItem, item, index }) => {
   const schema = yup.object().shape({
+    title: yup.string().required(),
     winchance: yup.number().required(),
   });
 
@@ -43,7 +44,7 @@ export const EditSkinForm: FC<TAddSkinFormProps> = ({ setEditSkinFormActive, cha
           <MenuItem value="default" disabled hidden sx={{ display: 'none' }}>
             Выбрать
           </MenuItem>
-          {skinProperties.types.map((type, index) => {
+          {skinProperties.type.map((type, index) => {
             return (
               <MenuItem value={type} key={index}>
                 {type}
@@ -54,32 +55,12 @@ export const EditSkinForm: FC<TAddSkinFormProps> = ({ setEditSkinFormActive, cha
       </Box>
       <Box className="add-skin-form__form">
         <Box>Название</Box>
-        <AdminSelect defaultValue={item.title} {...register('title')}>
-          {skinProperties.titles.map((title, index) => {
-            return (
-              <MenuItem value={title} key={index}>
-                {title}
-              </MenuItem>
-            );
-          })}
-        </AdminSelect>
-      </Box>
-      <Box className="add-skin-form__form">
-        <Box>Скин</Box>
-        <AdminSelect defaultValue={item.skin} {...register('skin')}>
-          {skinProperties.skins.map((skin, index) => {
-            return (
-              <MenuItem value={skin} key={index}>
-                {skin}
-              </MenuItem>
-            );
-          })}
-        </AdminSelect>
+        <AdminInput defaultValue={item.title} {...register('title')} />
       </Box>
       <Box className="add-skin-form__form">
         <Box>Редкость</Box>
         <AdminSelect defaultValue={item.rare} {...register('rare')}>
-          {skinProperties.rarities.map((rare, index) => {
+          {skinProperties.rare.map((rare, index) => {
             return (
               <MenuItem value={rare} key={index}>
                 {rare}
@@ -91,7 +72,7 @@ export const EditSkinForm: FC<TAddSkinFormProps> = ({ setEditSkinFormActive, cha
       <Box className="add-skin-form__form">
         <Box>Качество</Box>
         <AdminSelect defaultValue={item.quality} {...register('quality')}>
-          {skinProperties.qualities.map((quality, index) => {
+          {skinProperties.quality.map((quality, index) => {
             return (
               <MenuItem value={quality} key={index}>
                 {quality}

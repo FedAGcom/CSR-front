@@ -1,12 +1,9 @@
 import axios from 'axios';
 import { Box, Divider } from '@mui/material';
 import { useEffect, useState } from 'react';
-// import { casesForAdmin } from "../../../mocks/casesForAdmin";
 import { CaseCreateButton, CasesSearchForm, Case, ModalAdmin, ModalContent } from './components';
 import { TCase, TEditableCase } from './components/types';
-
-const token =
-  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhemlyYWZhaWwiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NjAyNTkwNCwiZXhwIjoxNjY2NjMwNzA0fQ._GcEyB3FZP1OqzypDNLSB9_19QDU2fQ_C1-liYkTPVk';
+import { token } from './token';
 
 const headers = {
   headers: {
@@ -14,10 +11,17 @@ const headers = {
     Authorization: token,
   },
 };
+//----------------------------------------------------------
 
 export const AdminCases = () => {
+  const [cases, setCases] = useState<TCase[]>();
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [editableCase, setEditableCase] = useState<TEditableCase | null>();
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  //TODO заменить правильным запросом с правильным токеном
   const getCases = async () => {
-    axios.get('http://5.101.51.15/api/v1/packs', headers).then((resp) => {
+    await axios.get('http://5.101.51.15/api/v1/packs', headers).then((resp) => {
       setCases(resp.data.content);
     });
   };
@@ -29,23 +33,19 @@ export const AdminCases = () => {
     fetchDataAsync();
   }, []);
 
-  const [cases, setCases] = useState<TCase[]>();
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  // если кейс есть, то открываю модалку для редактирования этого кейса
-  // и передаю его в контент модалки, если null то открываю модалку для создания нового кейса
-  const [editableCase, setEditableCase] = useState<TEditableCase | null>();
-
   const handleCreateButton = () => {
     setEditableCase(null);
     setModalOpen(true);
   };
 
   const handleCaseClick = (caseId: number) => {
+    console.log('case id', caseId);
     const currentCase = cases?.find((item) => item.id === caseId);
     setEditableCase(currentCase);
     setModalOpen(true);
   };
+
+  console.log(cases);
 
   return (
     <Box className="admin-cases">
@@ -53,21 +53,30 @@ export const AdminCases = () => {
         Кейсы
       </Box>
       <Divider className="admin-cases__divider" />
-      <CasesSearchForm />
+      <CasesSearchForm setSearchQuery={setSearchQuery} />
 
       <Box className="admin-cases__cases-container">
         <CaseCreateButton onClick={handleCreateButton} />
 
-        {cases?.map((caseItem) => {
-          return <Case key={caseItem.id} caseItem={caseItem} onClick={() => handleCaseClick(caseItem.id)}></Case>;
-        })}
+        {cases
+          ?.filter((caseItem) => caseItem.title.toLowerCase().includes(searchQuery))
+          .map((caseItem) => {
+            return (
+              <Case
+                key={caseItem.id}
+                caseItem={caseItem}
+                onClick={() => handleCaseClick(caseItem.id)}
+                actualCase={caseItem}
+              ></Case>
+            );
+          })}
       </Box>
       <ModalAdmin
         open={isModalOpen}
         onClose={() => setModalOpen(false)}
         title={editableCase ? `Кейс "${editableCase?.title}"` : 'Кейс'}
       >
-        <ModalContent editableCase={editableCase} setModalOpen={setModalOpen} />
+        <ModalContent editableCase={editableCase} setModalOpen={setModalOpen} getCases={getCases} />
       </ModalAdmin>
     </Box>
   );

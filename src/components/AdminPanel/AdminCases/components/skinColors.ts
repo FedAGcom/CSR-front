@@ -1,66 +1,66 @@
 export const skinColors = [
   {
-    quality: 'Consumer Grade',
+    rare: 'Consumer Grade',
     color: 'rgb(176, 195, 217)',
   },
   {
-    quality: 'Mil-Spec Grade',
+    rare: 'Mil-Spec Grade',
     color: 'rgb(75, 105, 255)',
   },
   {
-    quality: 'Industrial Grade',
+    rare: 'Industrial Grade',
     color: 'rgb(94, 152, 217)',
   },
   {
-    quality: 'Restricted',
+    rare: 'Restricted',
     color: 'rgb(136, 71, 255)',
   },
   {
-    quality: 'Classified',
+    rare: 'Classified',
     color: 'rgb(211, 44, 230)',
   },
   {
-    quality: 'Covert',
+    rare: 'Covert',
     color: 'rgb(235, 75, 75)',
   },
   {
-    quality: 'Base Grade',
+    rare: 'Base Grade',
     color: 'rgb(176, 195, 217)',
   },
   {
-    quality: 'Distinguished',
+    rare: 'Distinguished',
     color: 'rgb(75, 105, 255)',
   },
   {
-    quality: 'Extraordinary',
+    rare: 'Extraordinary',
     color: 'rgb(235, 75, 75)',
   },
   {
-    quality: 'Exceptional',
+    rare: 'Exceptional',
     color: 'rgb(211, 44, 230)',
   },
   {
-    quality: 'Superior',
+    rare: 'Superior',
     color: 'rgb(136, 71, 255)',
   },
   {
-    quality: 'High',
+    rare: 'High Grade',
     color: 'rgb(75, 105, 255)',
   },
   {
-    quality: 'Master',
+    rare: 'Master',
     color: 'rgb(235, 75, 75)',
   },
   {
-    quality: 'Remarkable',
+    rare: 'Remarkable',
     color: 'rgb(136, 71, 255)',
   },
   {
-    quality: 'Exotic',
+    rare: 'Exotic',
     color: 'rgb(211, 44, 230)',
   },
   {
-    quality: 'Contraband',
+    rare: 'Contraband',
     color: 'rgb(228, 174, 57)',
   },
 ];

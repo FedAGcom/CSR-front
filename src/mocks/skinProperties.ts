@@ -1,5 +1,5 @@
 export const skinProperties = {
-  types: [
+  type: [
     'Pistol',
     'SMG',
     'Rifle',
@@ -21,10 +21,8 @@ export const skinProperties = {
     'Tag',
     'Tool',
   ],
-  titles: ['AK-47', 'AWP', 'M4A4', 'M4A1-S', 'AUG', 'SG 553', 'Galil AR', 'FAMAS', 'SSG 08', 'SCAR-20', 'G3SG1'],
-  skins: ['Glock-18', 'Desert Eagle', 'Five-SeveN', 'CZ75-Auto'],
-  rarities: ['Field-Tested', 'Minimal Wear', 'Battle-Scarred', 'Well-Worn', 'Factory New'],
-  qualities: [
+  quality: ['Field-Tested', 'Minimal Wear', 'Battle-Scarred', 'Well-Worn', 'Factory New'],
+  rare: [
     'Consumer Grade',
     'Mil-Spec Grade',
     'Industrial Grade',
