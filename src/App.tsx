@@ -24,15 +24,12 @@ import { useAppDispatch, useAppSelector } from './store';
 import { fetchUser } from './store/slices/userSlice';
 
 function App() {
-  const dispatch = useAppDispatch()
-  const {isAuth, user} = useAppSelector(state => state.userSlice)
-  
-  useEffect(() => {
-    dispatch(fetchUser())
-  }, [])
-  
-  console.log(Cookies.get('AuthorizationCSRApp'))
+  const dispatch = useAppDispatch();
+  const { isAuth, user } = useAppSelector((state) => state.userSlice);
 
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, []);
 
   return (
     <BrowserRouter>
@@ -42,22 +39,22 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         <Route path="/tech-support" element={<TechSupportPage />} />
-        {user.role === 'admin' ?
-        <>
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route path="/admin/users" element={<AdminUsers />} />
-            <Route path="/admin/promocodes" element={<AdminPromo />} />
-            <Route path="/admin/balance" element={<AdminBalance />} />
-            <Route path="/admin/logs" element={<AdminLogs />} />
-            <Route path="/admin/settings" element={<AdminSettings />} />
-            <Route path="/admin/tech-support" element={<AdminTechSupport />} />
-            <Route path="/admin/cases" element={<AdminCases />} />
-            <Route path="/admin/trade-requests" element={<AdminTradeRequests />} />
-          </Route>
-        </>
-        :
-        <Route path="/admin" element={<MainPage />}></Route>
-      }
+        {user.role === 'admin' ? (
+          <>
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route path="/admin/users" element={<AdminUsers />} />
+              <Route path="/admin/promocodes" element={<AdminPromo />} />
+              <Route path="/admin/balance" element={<AdminBalance />} />
+              <Route path="/admin/logs" element={<AdminLogs />} />
+              <Route path="/admin/settings" element={<AdminSettings />} />
+              <Route path="/admin/tech-support" element={<AdminTechSupport />} />
+              <Route path="/admin/cases" element={<AdminCases />} />
+              <Route path="/admin/trade-requests" element={<AdminTradeRequests />} />
+            </Route>
+          </>
+        ) : (
+          <Route path="/admin" element={<MainPage />}></Route>
+        )}
         <Route path="/open-case" element={<OpenCase />} />
       </Routes>
     </BrowserRouter>
