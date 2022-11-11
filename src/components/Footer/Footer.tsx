@@ -1,6 +1,8 @@
 import { Grid, Box, Container, Link, Stack } from '@mui/material';
 import { FooterKey, FooterNet, FooterPerson, LogoFooter, SocialFacebook, SocialInstagram, SocialSteam } from '../svg';
 import { FC } from 'react';
+import { useSelector } from 'react-redux';
+import { getColorFooterUp, getColorFooterDown } from '../../store/selectors/getSettingsAppearance';
 
 type TFooterStatisticProps = {
   openCases: number;
@@ -28,8 +30,10 @@ const FooterStatisticItemInfo: FC<TFooterStatisticItemInfo> = ({ amount, title }
 };
 
 const FooterStatistic: FC<TFooterStatisticProps> = ({ openCases, onlineUsers, totalUsers }) => {
+  const serverColorFooterUp = useSelector(getColorFooterUp);
+  
   return (
-    <Box className="footer-statistic">
+    <Box className="footer-statistic" sx={{backgroundColor: serverColorFooterUp}}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
           <Grid item>
@@ -67,8 +71,10 @@ const FooterLink: FC<TFooterLink> = ({ value, url }) => {
 };
 
 const FooterInfo = () => {
+  const serverColorFooterDown = useSelector(getColorFooterDown);
+
   return (
-    <Box className="footer-info">
+    <Box className="footer-info" sx={{backgroundColor: serverColorFooterDown}}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row">
           <Grid item xs={12} sm={5}>

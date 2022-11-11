@@ -1,10 +1,14 @@
 import { Button as MUIButton, ButtonProps, SxProps } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { getColorButtons } from '../../../store/selectors/getSettingsAppearance';
 
 interface IMyButtonProps extends ButtonProps {
   className?: string;
 }
 
 export const ButtonBasic = (props: IMyButtonProps) => {
+  const serverColorButtons = useSelector(getColorButtons);
+
   const btnStyles: SxProps = {
     boxSizing: 'border-box',
     borderRadius: '10px',
@@ -36,7 +40,7 @@ export const ButtonBasic = (props: IMyButtonProps) => {
 
   const primary: SxProps = {
     color: '#fff',
-    backgroundColor: '#B81034',
+    backgroundColor: serverColorButtons ?? '#B81034',
     '&:hover': {
       textDecoration: 'initial',
       backgroundColor: '#D2002D',

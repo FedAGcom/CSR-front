@@ -1,6 +1,8 @@
 import { Box, Button, Container, SxProps } from '@mui/material';
 import { All, Bonus, Case, Roulette, StarIcon } from '../svg';
 import { data } from '../../mocks/prizes';
+import { useSelector } from 'react-redux';
+import { getColorButtons, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
 
 const button: SxProps = {
   display: 'flex',
@@ -43,11 +45,14 @@ const button2: SxProps = {
 };
 
 export const PrizeBlock = () => {
+  const serverColorButtons = useSelector(getColorButtons);
+  const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
+
   return (
     <Container sx={{ maxWidth: '1148px' }} maxWidth={false}>
       <Box className="win-panel">
         <Box className="sort-block">
-          <Button sx={{ ...button }} className="button">
+          <Button sx={{ ...button, backgroundColor: serverColorButtons ?? button.backgroundColor }} className="button">
             Лучшее
             <StarIcon />
           </Button>
@@ -67,16 +72,16 @@ export const PrizeBlock = () => {
           })}
         </Box>
       </Box>
-      <Box>
-        <Button sx={button2}>
+      <Box sx={{backgroundColor: serverColorBackgroundTwo}}>
+        <Button sx={{...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor}}>
           <Bonus />
           Бонусы
         </Button>
-        <Button sx={button2}>
+        <Button sx={{...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor}}>
           <Roulette />
           Барабан
         </Button>
-        <Button sx={{ ...button2, width: '274px' }}>
+        <Button sx={{ ...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor, width: '274px' }}>
           <Case />
           Дневной кейс
         </Button>

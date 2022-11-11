@@ -1,6 +1,11 @@
 import { Banner, CommonBlockInfo, CommonBlockInfoWithImage, HeaderAndFooter, PrizeBlock } from '../components';
+import { useSelector } from 'react-redux';
+import { getColorBackgroundOne, getColorBackgroundTwo } from '../store/selectors/getSettingsAppearance';
 
 const MainPage = () => {
+  const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+  const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
+
   return (
     <>
       <HeaderAndFooter>
@@ -9,10 +14,10 @@ const MainPage = () => {
         <CommonBlockInfo
           name="Горячие офферы"
           pStyle={{ borderBottom: 'none' }}
-          blockStyle={{ backgroundColor: '#2D2B34' }}
+          blockStyle={{ backgroundColor: serverColorBackgroundTwo ?? '#2D2B34' }}
         />
         <CommonBlockInfo name="Популярные" />
-        <CommonBlockInfo blockStyle={{ backgroundColor: '#2D2B34' }} name="Дефолт" />
+        <CommonBlockInfo blockStyle={{ backgroundColor: serverColorBackgroundTwo ?? '#2D2B34' }} name="Дефолт" />
         <CommonBlockInfoWithImage name="Наши сборки" />
       </HeaderAndFooter>
     </>
