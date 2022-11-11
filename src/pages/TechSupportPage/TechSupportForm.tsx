@@ -5,6 +5,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ButtonBasic, InputBasic, ModalBasic } from '../../components';
 import { ErrorIcon } from '../../components/svg';
+import { useSelector } from 'react-redux';
+import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
 
 type TFormInputs = {
   email: string;
@@ -15,6 +17,7 @@ type TFormInputs = {
 
 export const TechSupportForm = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
 
   const schema = yup.object().shape({
     email: yup.string().email('Некорректный email').required('Не указан email'),
@@ -41,7 +44,7 @@ export const TechSupportForm = () => {
 
   return (
     <>
-      <form className="tech-support-form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="tech-support-form" onSubmit={handleSubmit(onSubmit)} style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
         <Box className="tech-support-form__title">Форма для связи с тех.поддержкой</Box>
         <Box className="tech-support-form__inputs-container">
           <label className="tech-support-form__input-label">Email*</label>

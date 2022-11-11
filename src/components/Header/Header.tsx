@@ -7,9 +7,13 @@ import { LoginModal } from '../index';
 import { LocalizationModal } from './LocalizationModal/LocalizationModal';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
+import { useSelector } from 'react-redux';
+import { getColorHeaderLeft, getColorHeaderRight } from '../../store/selectors/getSettingsAppearance';
 
 export const Header = () => {
   const { user, isAuth } = useAppSelector((state) => state.userSlice);
+  const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
+  const serverColorHeaderRight = useSelector(getColorHeaderRight);
 
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -29,7 +33,7 @@ export const Header = () => {
   //const isAuth = false;
 
   return (
-    <header className="header">
+    <header className="header" style={{background: `linear-gradient(60deg, ${serverColorHeaderLeft} 50%, ${serverColorHeaderRight} 50%)`}}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Box className="header__content">
           <Box className="header__column1">

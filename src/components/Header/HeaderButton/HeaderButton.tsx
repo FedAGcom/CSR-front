@@ -1,10 +1,14 @@
 import { Button as MUIButton, ButtonProps, SxProps } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { getColorButtons } from '../../../store/selectors/getSettingsAppearance';
 
 interface IMyButtonProps extends ButtonProps {
   className?: string;
 }
 
 export function HeaderButton(props: IMyButtonProps) {
+  const serverColorButtons = useSelector(getColorButtons);
+
   const btnStyles: SxProps = {
     boxSizing: 'border-box',
     borderRadius: '10px',
@@ -15,7 +19,7 @@ export function HeaderButton(props: IMyButtonProps) {
   };
 
   const loginButton: SxProps = {
-    backgroundColor: '#B81034',
+    backgroundColor: serverColorButtons ?? '#B81034',
     width: '127px',
     height: '42px',
     fontSize: '16px',
@@ -29,7 +33,7 @@ export function HeaderButton(props: IMyButtonProps) {
   };
 
   const addButton: SxProps = {
-    backgroundColor: '#B81034',
+    backgroundColor: serverColorButtons ?? '#B81034',
     width: '127px',
     height: '33px',
     fontSize: '12px',

@@ -6,11 +6,14 @@ import { SkinsModal } from './SkinsModal';
 import { CaseItem } from '../CaseItem/CaseItem';
 import { caseData } from '../../mocks';
 import { useAppSelector } from '../../store';
+import { useSelector } from 'react-redux';
+import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
   const { user } = useAppSelector((state) => state.userSlice);
+  const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
 
   const handleCloseTrade = () => {
     setTradeModalOpen(false);
@@ -21,7 +24,7 @@ export const AccountHeaderField = () => {
   };
 
   return (
-    <div className="account-field__wrapper">
+    <div className="account-field__wrapper" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
       <div className="account-field">
         <div className="account-avatar">
           <img src={user.steamAvatarMedium} alt="" />
@@ -52,9 +55,11 @@ export const AccountHeaderField = () => {
 };
 
 export const AccountCaseField = () => {
+  const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+
   return (
     <div className="account-case__wrapper">
-      <div className="account-case account-case__item">
+      <div className="account-case account-case__item" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
         <div className="account-case__common">
           <p className="account-case__title">Любимый кейс</p>
           <p className="account-case__desc">Нет любимого кейса</p>
@@ -65,7 +70,7 @@ export const AccountCaseField = () => {
           <img src={caseImage} />
         </div> */}
       </div>
-      <div className="account-case account-case__drop">
+      <div className="account-case account-case__drop" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
         <div className="account-case__common">
           <p className="account-case__title">Лучший дроп</p>
           <p className="account-case__desc">Пока нет лучшего дропа</p>
@@ -80,10 +85,11 @@ export const AccountCaseField = () => {
 
 export const AccountSoldItemsField = () => {
   const [isSkinsModalOpen, setSkinsModalOpen] = useState<boolean>(false);
+  const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
 
   return (
     <>
-      <div className="account-field__wrapper">
+      <div className="account-field__wrapper" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
         <p className="account-items__p">Предметы</p>
         <div className="account__sold-btns">
           <ButtonBasic className="skins" onClick={() => setSkinsModalOpen(true)}>
