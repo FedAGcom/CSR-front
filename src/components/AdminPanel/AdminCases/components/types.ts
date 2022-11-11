@@ -8,6 +8,17 @@ export type TItem = {
   winchance: number;
 };
 
+export type TItemFromBack = {
+  id: string;
+  type: string;
+  title: string;
+  rare: string;
+  quality: string;
+  price: number;
+  winchance: number;
+  iconItemId?: string | null;
+};
+
 export type TCase = {
   id: number;
   title: string;
@@ -15,10 +26,22 @@ export type TCase = {
   items: any[];
 };
 
-export type TEditableCase = {
+export type TCaseFromBack = {
   id: number;
   title: string;
   price: number;
-  packItemsId?: any[];
-  items?: any[];
+  packItemsList: TItemFromBack[];
 };
+
+export type TEditableCase =
+  | {
+      id: number;
+      title: string;
+      price: number;
+      packItemsList?: any[];
+      items?: any[];
+      image?: string;
+      imageType?: string;
+    }
+  | undefined
+  | null;

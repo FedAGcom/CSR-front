@@ -68,6 +68,12 @@
     cursor: pointer;
   }
 
+  &__user-avatar {
+    width: 54px;
+    border-radius: 50%;
+    border: 1px solid $brand-color;
+  }
+
   &__username {
     @include font(15px, 19px, 700);
   }

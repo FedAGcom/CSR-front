@@ -2,11 +2,13 @@ import { useForm, FormProvider } from 'react-hook-form';
 import { Box, Divider } from '@mui/material';
 import { ButtonBasic } from '../../../BasicComponents';
 import { CaseHeaderForm, AddSkinButton, AddSkinForm } from './';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { Skin } from './Skin';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TEditableCase, TItem } from './types';
+import axios from 'axios';
+import { token } from '../token';
 
 type TCaseInputs = {
   title: string;
@@ -16,12 +18,13 @@ type TCaseInputs = {
 type TModalContentProps = {
   editableCase: TEditableCase | null | undefined;
   setModalOpen: (value: boolean) => void;
+  getCases: () => void;
 };
 
-export const ModalContent = ({ editableCase, setModalOpen }: TModalContentProps) => {
+export const ModalContent: FC<TModalContentProps> = ({ editableCase, setModalOpen, getCases }) => {
   const [isAddSkinActive, setAddSkinActive] = useState(false);
-  const [items, setItems] = useState(editableCase ? editableCase.items : []);
-  const [file, setFile] = useState<File | string | Blob>('');
+  const [items, setItems] = useState(editableCase ? editableCase.packItemsList : []);
+  const [file, setFile] = useState<string | ArrayBuffer | null | undefined>(editableCase ? editableCase.image : '');
 
   const addItem = (item: TItem) => {
     if (Array.isArray(items)) {
@@ -54,69 +57,25 @@ export const ModalContent = ({ editableCase, setModalOpen }: TModalContentProps)
 
   const methods = useForm<TCaseInputs>({ resolver: yupResolver(schema) });
 
+  //TODO заменить правильными запросами с правильным токеном
   const onSubmit = async (data: TCaseInputs) => {
-    // склейка тайтл + скин для бэка
-    // const finalItems = items?.map((item: any) => {
-    //   return ({
-    //     type: item.type,
-    //     title: `${item.title} | ${item.skin}`,
-    //     rare: item.rare,
-    //     quality: item.quality,
-    //     winChance: item.winchance
-    //   })
-    // })
-
-    // const finalCase = {
-    //   title: data.title,
-    //   price: data.price,
-    //   items: finalItems,
-    // }
-
-    console.log('data ---', data);
-
-    const myItems = [
-      {
-        type: 'Rifle',
-        title: 'M4A1-S | Nightmare',
-        rare: 'Common',
-        quality: 'Field-Tested',
-        winchance: 2.0,
-      },
-    ];
-
-    const obj = { title: 'some title', price: 333, items: myItems };
-
-    // const blob = new Blob([JSON.stringify(obj)], {type: 'application/json'})
-    // formData.append('pack', blob);
-
-    const formData = new FormData();
-    formData.append('pack', JSON.stringify(obj));
-    formData.append('file', file);
-
-    const values = Object.fromEntries(formData.entries());
-    console.log('values --- ', values);
-    console.log('form data --- ', formData);
-
-    const url = 'http://5.101.51.15/api/v1/packs';
-
-    // axios.post(url, formData, headers).then(resp => console.log(resp)).catch(err => console.log('err --', err));
-
-    let resp = await fetch(url, {
-      method: 'POST',
-      body: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        Authorization:
-          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhemlyYWZhaWwiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2NjAyNTkwNCwiZXhwIjoxNjY2NjMwNzA0fQ._GcEyB3FZP1OqzypDNLSB9_19QDU2fQ_C1-liYkTPVk',
-      },
-    });
-    resp = await resp.json();
-    console.log('responce --- ', resp);
-
-    setModalOpen(false);
+    if (editableCase) {
+      const obj = { id: editableCase.id, title: data.title, price: data.price, items: items, file: file };
+      await axios
+        .put('http://csgofarm.online/api/v1/packs', obj, {
+          headers: { Authorization: token, 'Content-Type': 'application/json' },
+        })
+        .then(() => setModalOpen(false));
+    } else {
+      const obj = { title: data.title, price: data.price, items: items, file: file };
+      await axios
+        .post('http://csgofarm.online/api/v1/packs', obj, {
+          headers: { Authorization: token, 'Content-Type': 'application/json' },
+        })
+        .then(() => setModalOpen(false));
+    }
+    getCases();
   };
-
-  console.log('FILE --- ', file);
 
   return (
     <>

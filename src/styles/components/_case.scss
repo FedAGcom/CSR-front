@@ -4,11 +4,19 @@
   height: 346px;
   border-radius: 10px;
   border: 1px solid #3E3C43;
+  box-shadow: (0px 5px 10px rgba(62, 60, 67, 0.3));
   padding: 9px 5px 20px 5px;
   @include font(20px, 24px, 500);
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+    background-color: lighten($color: $background-main-lighter, $amount: 1);
+  }
 
   &__price {
     background-color: $brand-color;

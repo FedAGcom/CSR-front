@@ -6,8 +6,11 @@ import { flagRu } from '../images';
 import { LoginModal } from '../index';
 import { LocalizationModal } from './LocalizationModal/LocalizationModal';
 import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../store';
 
 export const Header = () => {
+  const { user, isAuth } = useAppSelector((state) => state.userSlice);
+
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
@@ -17,13 +20,13 @@ export const Header = () => {
 
   // get from backend
   const onlineUsers = 666;
-  const userName = 'sladko puknul';
+  const userName = user.nickNameSteam;
   const country = 'Россия';
   const currency = 'РУБ';
-  const balanceValue = 910;
+  const balanceValue = user.balance;
 
   // get from redux
-  const isAuth = false;
+  //const isAuth = false;
 
   return (
     <header className="header">
@@ -56,8 +59,9 @@ export const Header = () => {
             <LocalizationModal isOpen={isModalOpen} handleClose={handleModalClose}></LocalizationModal>
             {isAuth ? (
               <>
-                <Box className="header__user-info" onClick={() => console.log('go to user page')}>
-                  <Avatar />
+                <Box className="header__user-info" onClick={() => navigate('/account')}>
+                  <img className="header__user-avatar" src={user.steamAvatarMedium} alt="" />
+                  {/* <Avatar /> */}
                   <Box>
                     <Box className="header__username">{userName}</Box>
                     <Box className="header__balance">

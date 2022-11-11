@@ -3,13 +3,14 @@ import { Box } from '@mui/material';
 import { AdminInput } from './AdminInput';
 import { AddImageButton } from './AddImageButton';
 import { TEditableCase } from './types';
+import { FC } from 'react';
 
 type TCaseHeaderFormProps = {
   editableCase: TEditableCase | null | undefined;
-  setFile: (file: File) => void;
+  setFile: (string: string | ArrayBuffer | null) => void;
 };
 
-export const CaseHeaderForm = ({ editableCase, setFile }: TCaseHeaderFormProps) => {
+export const CaseHeaderForm: FC<TCaseHeaderFormProps> = ({ editableCase, setFile }) => {
   const { register } = useFormContext();
 
   return (
@@ -32,7 +33,7 @@ export const CaseHeaderForm = ({ editableCase, setFile }: TCaseHeaderFormProps) 
           {...register('price')}
         />
       </Box>
-      <AddImageButton setFileToForm={setFile} />
+      <AddImageButton setFileToForm={setFile} editableCase={editableCase} />
     </Box>
   );
 };
