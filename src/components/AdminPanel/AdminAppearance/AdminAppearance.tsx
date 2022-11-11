@@ -6,11 +6,21 @@ import { HeaderSection } from './HeaderSection';
 import { ParametersSection } from './ParametersSection';
 import { PopupSection } from './PopupSection';
 import { appearanceStyle } from './style';
+import { useDispatch } from 'react-redux';
+import { getSettings, sendSettings } from './../../../store/slices/appearanceSlice';
+import { useEffect } from 'react';
 
 export const AdminAppearance = () => {
-  const methods = useForm();
+  const dispatch = useDispatch<any>();
 
-  const onSubmit = (data: any) => console.log(data);
+  const methods = useForm();
+  const onSubmit = (data: any) => {
+    dispatch(sendSettings(data));
+  };
+
+  useEffect(() => {
+    dispatch(getSettings());
+  }, [dispatch]);
 
   return (
     <Box sx={appearanceStyle}>

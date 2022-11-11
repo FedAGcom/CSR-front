@@ -4,11 +4,16 @@ import { useFormContext } from 'react-hook-form';
 import { InputBasic } from '../../BasicComponents';
 import { Logo } from '../../svg';
 import { InputTypeFile } from './InputTypeFile';
+import { useSelector } from 'react-redux';
+import { getColorHeaderLeft, getColorHeaderRight } from '../../../store/selectors/getSettingsAppearance';
 
 export const HeaderSection = () => {
   const [colorHeaderLeft, setColorHeaderLeft] = useState<string>('#2D2B34');
   const [colorHeaderRight, setColorHeaderRight] = useState<string>('#38363F');
+
   const { register } = useFormContext();
+  const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
+  const serverColorHeaderRight = useSelector(getColorHeaderRight);
 
   return (
     <Box>
@@ -22,7 +27,7 @@ export const HeaderSection = () => {
             <InputBasic
               {...register('colorHeaderLeft')}
               onChange={(e) => setColorHeaderLeft(e.target.value)}
-              defaultValue="#2D2B34"
+              value={colorHeaderLeft}
             />
             <Box className="colorBox" sx={{ background: colorHeaderLeft }}></Box>
           </Box>
@@ -31,7 +36,7 @@ export const HeaderSection = () => {
             <InputBasic
               {...register('colorHeaderRight')}
               onChange={(e) => setColorHeaderRight(e.target.value)}
-              defaultValue="#38363F"
+              value={colorHeaderRight}
             />
             <Box className="colorBox" sx={{ background: colorHeaderRight }}></Box>
           </Box>

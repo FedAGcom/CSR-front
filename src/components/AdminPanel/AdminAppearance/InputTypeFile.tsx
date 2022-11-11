@@ -28,7 +28,12 @@ export const InputTypeFile = ({ htmlFor, id, registerName, children }: IInputTyp
       <InputLabel htmlFor={htmlFor}>
         <EditIcon />
       </InputLabel>
-      <InputBasic id={id} type="file" {...register(registerName)} onChange={handleChange} />
+      <InputBasic
+        id={id}
+        type="file"
+        // {...register(registerName)}
+        onChange={handleChange}
+      />
     </Box>
   );
 };

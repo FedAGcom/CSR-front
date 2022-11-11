@@ -1,4 +1,4 @@
-import { Hidden, SxProps } from "@mui/material";
+import { SxProps } from "@mui/material";
 
 export const appearanceStyle:SxProps={
   '.MuiTypography-root' :{
@@ -49,7 +49,12 @@ export const appearanceStyle:SxProps={
     height: '38px',
     background: '#1C1B21',
     marginRight: '10px',
-    color:"#FFF",
+  },
+  '.mainSection .MuiInput-input':{
+    color:'#FFF',
+    "&::placeholder":{
+      opacity:1
+    } 
   },
   '.labelWrapper':{
     position:'relative',
@@ -66,7 +71,6 @@ export const appearanceStyle:SxProps={
     },
   },
   '.labelWrapper .MuiInput-root':{
-    //display:'none',
     opacity:0,
     width:0,
     height:0,
@@ -93,5 +97,4 @@ export const appearanceStyle:SxProps={
     }
   },
 }
-
 

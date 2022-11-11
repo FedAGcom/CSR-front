@@ -1,15 +1,30 @@
 import { Box, Stack, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
 import { backgroundMain } from '../../images';
 import { InputTypeFile } from './InputTypeFile';
 import { SwitchBasic } from './SwitchBasic';
+import {
+  getTitleText,
+  getWindowText,
+  getButtonText,
+  getColorButton,
+  getColorBackground,
+  getActiveWindow,
+} from '../../../store/selectors/getSettingsAppearance';
 
 export const PopupSection = () => {
   const [colorButton, setColorButton] = useState<string>('#B81034');
   const [colorBackground, setColorBackground] = useState<string>('#24232A');
   const { register } = useFormContext();
+  const serverTitleText = useSelector(getTitleText);
+  const serverWindowText = useSelector(getWindowText);
+  const serverButtonText = useSelector(getButtonText);
+  const serverColorButton = useSelector(getColorButton);
+  const serverColorBackground = useSelector(getColorBackground);
+  const serverActiveWindow = useSelector(getActiveWindow);
 
   return (
     <Box>
@@ -28,7 +43,7 @@ export const PopupSection = () => {
         <Box className="inputWrapper">
           <Typography>Текст окна</Typography>
           <InputBasic
-            {...register('windowText')}
+            {...register('windowTextTwo')}
             multiline
             style={{ width: '76%', height: '106px', marginRight: 0 }}
             defaultValue="С наступающим праздником Хеллоуином! Наша команда приготовила
