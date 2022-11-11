@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { InputBasic } from '../../BasicComponents';
 import { Logo } from '../../svg';
@@ -8,12 +8,18 @@ import { useSelector } from 'react-redux';
 import { getColorHeaderLeft, getColorHeaderRight } from '../../../store/selectors/getSettingsAppearance';
 
 export const HeaderSection = () => {
-  const [colorHeaderLeft, setColorHeaderLeft] = useState<string>('#2D2B34');
-  const [colorHeaderRight, setColorHeaderRight] = useState<string>('#38363F');
-
+  const [colorHeaderLeft, setColorHeaderLeft] = useState<string | undefined>('#2D2B34');
+  const [colorHeaderRight, setColorHeaderRight] = useState<string | undefined>('#38363F');
   const { register } = useFormContext();
   const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
   const serverColorHeaderRight = useSelector(getColorHeaderRight);
+
+  useEffect(() => {
+    if (serverColorHeaderLeft && serverColorHeaderRight !== undefined) {
+      setColorHeaderLeft(serverColorHeaderLeft);
+      setColorHeaderRight(serverColorHeaderRight);
+    }
+  }, [serverColorHeaderLeft, serverColorHeaderRight]);
 
   return (
     <Box>

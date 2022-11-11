@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
@@ -20,6 +20,14 @@ export const ParametersSection = () => {
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
   const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
 
+  useEffect(() => {
+    if (serverColorButtons && serverColorBackgroundOne && serverColorBackgroundTwo !== undefined) {
+      setColorButtons(serverColorButtons);
+      setColorBackgroundOne(serverColorBackgroundOne);
+      setColorBackgroundTwo(serverColorBackgroundTwo);
+    }
+  }, [serverColorButtons, serverColorBackgroundTwo, serverColorBackgroundOne]);
+
   return (
     <Box>
       <Typography component={'h3'} className="parameters__title">
@@ -34,31 +42,25 @@ export const ParametersSection = () => {
               onChange={(e) => setColorButtons(e.target.value)}
               value={colorButtons}
             />
-            <Box className="colorBox" sx={{ background: colorButtons ? colorButtons : serverColorButtons }}></Box>
+            <Box className="colorBox" sx={{ background: colorButtons }}></Box>
           </Box>
           <Box className="inputWrapper">
             <Typography>Цвет фона 1 (Main)</Typography>
             <InputBasic
               {...register('colorBackgroundOne')}
               onChange={(e) => setColorBackgroundOne(e.target.value)}
-              defaultValue="#24232A"
+              value={colorBackgroundOne}
             />
-            <Box
-              className="colorBox"
-              sx={{ background: colorBackgroundOne ? colorBackgroundOne : serverColorBackgroundOne }}
-            ></Box>
+            <Box className="colorBox" sx={{ background: colorBackgroundOne }}></Box>
           </Box>
           <Box className="inputWrapper">
             <Typography>Цвет фона 2</Typography>
             <InputBasic
               {...register('colorBackgroundTwo')}
               onChange={(e) => setColorBackgroundTwo(e.target.value)}
-              defaultValue="#2D2B34"
+              value={colorBackgroundTwo}
             />
-            <Box
-              className="colorBox"
-              sx={{ background: colorBackgroundTwo ? colorBackgroundTwo : serverColorBackgroundTwo }}
-            ></Box>
+            <Box className="colorBox" sx={{ background: colorBackgroundTwo }}></Box>
           </Box>
         </Stack>
         <Box sx={{ display: 'flex', flexDirection: 'column', width: '50%', paddingLeft: '40px' }}>

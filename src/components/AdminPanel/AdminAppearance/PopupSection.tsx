@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
@@ -12,19 +12,37 @@ import {
   getButtonText,
   getColorButton,
   getColorBackground,
-  getActiveWindow,
 } from '../../../store/selectors/getSettingsAppearance';
 
 export const PopupSection = () => {
   const [colorButton, setColorButton] = useState<string>('#B81034');
   const [colorBackground, setColorBackground] = useState<string>('#24232A');
+  const [titleText, setTitleText] = useState<string>('');
+  const [windowText, setWindowText] = useState<string>('');
+  const [buttonText, setButtonText] = useState<string>('');
+
   const { register } = useFormContext();
   const serverTitleText = useSelector(getTitleText);
   const serverWindowText = useSelector(getWindowText);
   const serverButtonText = useSelector(getButtonText);
   const serverColorButton = useSelector(getColorButton);
   const serverColorBackground = useSelector(getColorBackground);
-  const serverActiveWindow = useSelector(getActiveWindow);
+
+  useEffect(() => {
+    if (
+      serverTitleText &&
+      serverWindowText &&
+      serverButtonText &&
+      serverColorButton &&
+      serverColorBackground !== undefined
+    ) {
+      setColorButton(serverColorButton);
+      setColorBackground(serverColorBackground);
+      setTitleText(serverTitleText);
+      setWindowText(serverWindowText);
+      setButtonText(serverButtonText);
+    }
+  }, [serverColorButton, serverColorBackground, serverTitleText, serverWindowText, serverButtonText]);
 
   return (
     <Box>
@@ -37,7 +55,8 @@ export const PopupSection = () => {
           <InputBasic
             {...register('titleText')}
             style={{ width: '76%', marginRight: 0 }}
-            defaultValue="Время Хеллоуина!"
+            onChange={(e) => setTitleText(e.target.value)}
+            value={titleText}
           />
         </Box>
         <Box className="inputWrapper">
@@ -46,9 +65,8 @@ export const PopupSection = () => {
             {...register('windowTextTwo')}
             multiline
             style={{ width: '76%', height: '106px', marginRight: 0 }}
-            defaultValue="С наступающим праздником Хеллоуином! Наша команда приготовила
-            для вас небольшой подарок в виде бесплатного праздничного кейса.
-             Хотите открыть его?"
+            onChange={(e) => setWindowText(e.target.value)}
+            value={windowText}
           />
         </Box>
       </Stack>
@@ -56,7 +74,12 @@ export const PopupSection = () => {
         <Stack direction="column" spacing={1}>
           <Box className="inputWrapper">
             <Typography>Текст кнопки</Typography>
-            <InputBasic {...register('buttonText')} style={{ width: '208px' }} defaultValue="Открыть" />
+            <InputBasic
+              {...register('buttonText')}
+              style={{ width: '208px' }}
+              onChange={(e) => setButtonText(e.target.value)}
+              value={buttonText}
+            />
           </Box>
           <Box className="inputWrapper">
             <Typography>Цвет кнопки</Typography>
