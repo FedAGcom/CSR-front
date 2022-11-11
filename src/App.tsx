@@ -23,6 +23,7 @@ import {
 } from './pages/index';
 import { useAppDispatch, useAppSelector } from './store';
 import { fetchUser } from './store/slices/userSlice';
+import { getSettings } from './store/slices/appearanceSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -30,6 +31,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUser());
+    dispatch(getSettings());
   }, []);
 
   return (
