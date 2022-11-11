@@ -5,10 +5,12 @@ import { SkinsModal } from './SkinsModal';
 // import { weapon, caseImage } from '../images';
 import { CaseItem } from '../CaseItem/CaseItem';
 import { caseData } from '../../mocks';
+import { useAppSelector } from '../../store';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
+  const { user } = useAppSelector(state => state.userSlice)
 
   const handleCloseTrade = () => {
     setTradeModalOpen(false);
@@ -22,13 +24,13 @@ export const AccountHeaderField = () => {
     <div className="account-field__wrapper">
       <div className="account-field">
         <div className="account-avatar">
-          <img src="https://pixmafia.ru/uploads/posts/2021-03/pixmafia.ru_1616753779-46.jpg" alt="" />
+          <img src={user.steamAvatarMedium} alt="" />
         </div>
         <div className="account-info">
           <div className="account-info__name">
-            <p>sladko puknul</p> <HeaderSteam />
+            <p>{user.nickNameSteam}</p> <HeaderSteam />
           </div>
-          <div className="account-info__money">910 ₽</div>
+          <div className="account-info__money">{`${user.balance} ₽`}</div>
         </div>
       </div>
       <div className="account-field" style={{ justifyContent: 'space-between' }}>

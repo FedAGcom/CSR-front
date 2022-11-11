@@ -9,3 +9,4 @@ declare module '*.png' {
   export default url;
 }
 declare module '*.mp3';
+declare module 'js-cookie';
