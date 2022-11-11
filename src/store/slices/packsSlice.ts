@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+import $api from '../../api';
 import { TAppDispatch } from '../store';
 
 interface IPack {
@@ -23,15 +24,10 @@ const initialState: IPackState = {
 export const fetchPacks = () => async (dispatch: TAppDispatch) => {
   try {
     dispatch(packSlice.actions.packsFetching());
-    const response = await axios.get<IPack[]>('http://5.101.51.15/api/v1/packs', {
-      headers: {
-        Authorization:
-          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTcGVybyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNjY2ODA5MjEyLCJleHAiOjE2Njc0MTQwMTJ9.Bpn1MZqracUl2_D2yK4YDdlANKycpuqIyuVkhbCTKbE',
-      },
-    });
+    const response = await $api.get<IPack[]>(`api/v1/packs`);
     dispatch(packSlice.actions.packsFetchingSuccess(response.data));
-  } catch (e: any) {
-    dispatch(packSlice.actions.packsFetchingError(e.message));
+  } catch (e) {
+    dispatch(packSlice.actions.packsFetchingError((e as Error).message));
   }
 };
 
