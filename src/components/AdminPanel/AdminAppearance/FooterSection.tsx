@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
@@ -8,11 +8,19 @@ import { InputTypeFile } from './InputTypeFile';
 import { getColorFooterUp } from './../../../store/selectors/getSettingsAppearance';
 
 export const FooterSection = () => {
-  const [colorFooterUp, setColorFooterUp] = useState<string>('#1E1D23');
-  const [colorFooterDown, setColorFooterDown] = useState<string>('#19181E');
+  const [colorFooterUp, setColorFooterUp] = useState<string | undefined>('#1E1D23');
+  const [colorFooterDown, setColorFooterDown] = useState<string | undefined>('#19181E');
   const { register } = useFormContext();
   const serverColorFooterUp = useSelector(getColorFooterUp);
   const serverColorFooterDown = useSelector(getColorFooterUp);
+
+  useEffect(() => {
+    if (serverColorFooterUp && serverColorFooterDown !== undefined) {
+      setColorFooterUp(serverColorFooterUp);
+      setColorFooterDown(serverColorFooterDown);
+    }
+  }, [serverColorFooterUp, serverColorFooterDown]);
+
   return (
     <Box>
       <Typography component={'h3'} className="footer__title">
@@ -27,19 +35,16 @@ export const FooterSection = () => {
               onChange={(e) => setColorFooterUp(e.target.value)}
               value={colorFooterUp}
             />
-            <Box className="colorBox" sx={{ background: colorFooterUp ? colorFooterUp : serverColorFooterUp }}></Box>
+            <Box className="colorBox" sx={{ background: colorFooterUp }}></Box>
           </Box>
           <Box className="inputWrapper">
             <Typography>Цвет Footer 2 (Down)</Typography>
             <InputBasic
               {...register('colorFooterDown')}
               onChange={(e) => setColorFooterDown(e.target.value)}
-              placeholder={colorFooterDown}
+              value={colorFooterDown}
             />
-            <Box
-              className="colorBox"
-              sx={{ background: colorFooterDown ? colorFooterDown : serverColorFooterDown }}
-            ></Box>
+            <Box className="colorBox" sx={{ background: colorFooterDown }}></Box>
           </Box>
         </Stack>
         <Typography>Логотип Footer</Typography>
