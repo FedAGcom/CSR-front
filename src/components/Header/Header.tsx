@@ -9,8 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 
 export const Header = () => {
-
-  const { user, isAuth } = useAppSelector(state => state.userSlice)
+  const { user, isAuth } = useAppSelector((state) => state.userSlice);
 
   const navigate = useNavigate();
   const [show, setShow] = useState(false);

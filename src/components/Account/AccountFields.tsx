@@ -10,7 +10,7 @@ import { useAppSelector } from '../../store';
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
-  const { user } = useAppSelector(state => state.userSlice)
+  const { user } = useAppSelector((state) => state.userSlice);
 
   const handleCloseTrade = () => {
     setTradeModalOpen(false);
