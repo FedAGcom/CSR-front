@@ -9,6 +9,7 @@ import {
   AdminCases,
   AdminLogs,
   AdminTradeRequests,
+  AdminAppearance,
 } from './components';
 import Cookies from 'js-cookie';
 import {
@@ -22,6 +23,7 @@ import {
 } from './pages/index';
 import { useAppDispatch, useAppSelector } from './store';
 import { fetchUser } from './store/slices/userSlice';
+import { getSettings } from './store/slices/appearanceSlice';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -29,6 +31,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchUser());
+    dispatch(getSettings());
   }, []);
 
   return (
@@ -50,6 +53,7 @@ function App() {
               <Route path="/admin/tech-support" element={<AdminTechSupport />} />
               <Route path="/admin/cases" element={<AdminCases />} />
               <Route path="/admin/trade-requests" element={<AdminTradeRequests />} />
+              <Route path="appearance" element={<AdminAppearance />} />
             </Route>
           </>
         ) : (

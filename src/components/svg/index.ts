@@ -40,6 +40,8 @@ import { ReactComponent as ArrowMain } from './arrow-main.svg';
 import { ReactComponent as ReloadBtn } from './reload-btn.svg';
 import { ReactComponent as SellBtn } from './sell-btn.svg';
 import { ReactComponent as Promo } from './promo.svg';
+import { ReactComponent as BrushIcon } from './brush.svg';
+import { ReactComponent as EditIcon } from './edit.svg';
 import { ReactComponent as PlusIconAdmin } from './admin/plus-icon-admin.svg';
 import { ReactComponent as CloseModalAdminIcon } from './admin/close-modal-admin.svg';
 import { ReactComponent as TrashIconAdmin } from './admin/trash-icon.svg';
@@ -47,6 +49,8 @@ import { ReactComponent as EditImageIcon } from './admin/edit-image-icon.svg';
 import { ReactComponent as TradeIcon } from './trade-icon.svg';
 
 export {
+  EditIcon,
+  BrushIcon,
   CasesIcon,
   Logs,
   AdminExit,

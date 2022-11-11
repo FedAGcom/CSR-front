@@ -27,6 +27,7 @@ import {
   AdminTechSupport,
   AdminSettings,
   AdminPromo,
+   AdminAppearance,
   AdminCases,
   AdminLogs,
   AdminTradeRequests,
@@ -34,6 +35,7 @@ import {
 import { ConfirmSkinSaleModal } from './ConfirmSkinSaleModal/ConfirmSkinSaleModal';
 
 export {
+  AdminAppearance,
   AdminBalance,
   AdminSettings,
   Header,

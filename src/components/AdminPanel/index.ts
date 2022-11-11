@@ -7,15 +7,6 @@ import { AdminPromo } from './AdminPromo/AdminPromo';
 import { AdminLogs } from './AdminLogs/AdminLogs';
 import { AdminCases } from './AdminCases/AdminCases';
 import { AdminTradeRequests } from './AdminTradeRequests/AdminTradeRequests';
+import { AdminAppearance } from './AdminAppearance/AdminAppearance'; 
 
-export {
-  AdminSideBar,
-  AdminUsers,
-  AdminBalance,
-  AdminTechSupport,
-  AdminSettings,
-  AdminPromo,
-  AdminLogs,
-  AdminCases,
-  AdminTradeRequests,
-};
+export {AdminAppearance, AdminSideBar, AdminUsers, AdminBalance, AdminTechSupport, AdminSettings, AdminPromo, AdminLogs, AdminCases, AdminTradeRequests};
