@@ -1,4 +1,5 @@
 import React from 'react';
+import { useAppSelector } from '../../store';
 import { Case } from '../index';
 
 interface ICommonBlockInfoProps {
@@ -7,23 +8,23 @@ interface ICommonBlockInfoProps {
   name: string;
 }
 
-export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({ blockStyle, pStyle, name }) => {
+export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({ blockStyle, pStyle, name }:ICommonBlockInfoProps) => {
+  
+  const {packs} = useAppSelector(state => state.packs)
+  
   return (
     <div className="block" style={blockStyle}>
       <div className="container">
         <p style={pStyle}>{name}</p>
         <div className="block__wrapper">
-          <Case />
-          <Case />
-          <Case />
-          <Case />
+        {packs.map((i) => <Case key={i.id} title={i.title} price={i.price} img={i.image} id={i.id}/>)}
         </div>
       </div>
     </div>
   );
 };
 
-export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name }) => {
+export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name } : ICommonBlockInfoProps) => {
   return (
     <div className="block__image">
       <div className="container">

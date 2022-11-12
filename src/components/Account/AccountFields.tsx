@@ -7,12 +7,14 @@ import { CaseItem } from '../CaseItem/CaseItem';
 import { caseData } from '../../mocks';
 import { useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
   const { user } = useAppSelector((state) => state.userSlice);
+  const navigate = useNavigate();
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
 
   const handleCloseTrade = () => {
@@ -33,8 +35,11 @@ export const AccountHeaderField = () => {
           <div className="account-info__name">
             <p>{user.nickNameSteam}</p> <HeaderSteam />
           </div>
-          <div className="account-info__money">{`${user.balance} ₽`}</div>
+          <div className="account-info__money">{`${user.balance?.toLocaleString('ru')} ₽`}</div>
         </div>
+        {user.role === 'admin' && <ButtonBasic sx={{marginLeft: '4rem'}} className="primary" onClick={() => navigate('/admin')}>
+          Админ-панель
+        </ButtonBasic>}
       </div>
       <div className="account-field" style={{ justifyContent: 'space-between' }}>
         <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />

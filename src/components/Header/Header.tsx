@@ -5,6 +5,7 @@ import { HeaderButton } from './HeaderButton/HeaderButton';
 import { flagRu } from '../images';
 import { LoginModal } from '../index';
 import { LocalizationModal } from './LocalizationModal/LocalizationModal';
+import { BalanceModal } from '../index';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
@@ -19,15 +20,21 @@ export const Header = () => {
   const [show, setShow] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
+  const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
+  const handleCloseBalance = () => setBalanceModalOpen(false)
+  const handleCloseTrade = () => setTradeModalOpen(false)
+
   const handleModalClose = () => setModalOpen(false);
   const handleModalOpen = () => setModalOpen(true);
 
   // get from backend
   const onlineUsers = 666;
-  const userName = user.nickNameSteam;
+  //const userName = user.nickNameSteam;
   const country = 'Россия';
   const currency = 'РУБ';
-  const balanceValue = user.balance;
+  //const balanceValue = user.balance;
 
   // get from redux
   //const isAuth = false;
@@ -67,16 +74,17 @@ export const Header = () => {
                   <img className="header__user-avatar" src={user.steamAvatarMedium} alt="" />
                   {/* <Avatar /> */}
                   <Box>
-                    <Box className="header__username">{userName}</Box>
+                    <Box className="header__username">{user.nickNameSteam}</Box>
                     <Box className="header__balance">
                       Баланс:
                       <Box component="span" className="header__balance-value">
-                        {balanceValue}
+                        {user.balance?.toLocaleString('ru')}
                       </Box>
                     </Box>
                   </Box>
                 </Box>
-                <HeaderButton className="add-button" variant="contained" startIcon={<HeaderPlusIcon />}>
+                <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />
+                <HeaderButton className="add-button" variant="contained" startIcon={<HeaderPlusIcon /> } onClick={() => setBalanceModalOpen(true)}>
                   пополнить
                 </HeaderButton>
               </>

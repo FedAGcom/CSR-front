@@ -23,18 +23,20 @@ import {
 } from './pages/index';
 import { useAppDispatch, useAppSelector } from './store';
 import { fetchUser } from './store/slices/userSlice';
+import { fetchPacks } from './store/slices/packsSlice';
 import { getSettings } from './store/slices/appearanceSlice';
 import { useSelector } from 'react-redux';
 import { getColorBackgroundOne } from './store/selectors/getSettingsAppearance';
 
 function App() {
   const dispatch = useAppDispatch();
-  const { isAuth, user } = useAppSelector((state) => state.userSlice);
+  const { user } = useAppSelector((state) => state.userSlice);
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
 
   useEffect(() => {
     dispatch(fetchUser());
     dispatch(getSettings());
+    dispatch(fetchPacks());
   }, []);
 
   useEffect(() => {
@@ -67,7 +69,7 @@ function App() {
         ) : (
           <Route path="/admin" element={<MainPage />}></Route>
         )}
-        <Route path="/open-case" element={<OpenCase />} />
+        <Route path="/open-case/:id" element={<OpenCase />} />
       </Routes>
     </BrowserRouter>
   );
