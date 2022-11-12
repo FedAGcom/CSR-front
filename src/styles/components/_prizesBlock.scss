@@ -12,6 +12,8 @@
 
 .win-panel {
     display: flex;
+    z-index: 1;
+    position: relative;
 }
 
 .prizes-block__item {
