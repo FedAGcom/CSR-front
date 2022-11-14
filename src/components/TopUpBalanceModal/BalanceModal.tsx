@@ -8,7 +8,7 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
   const [inputValue, setInputValue] = useState<string>('');
   const [radioValue, setRadioValue] = useState('');
   const [isChecked, setChecked] = useState<boolean>(false);
-  const [createDeposit] = depositAPI.useCreateDepositMutation();
+  const { data: link } = depositAPI.useGetCreateDepositLinkQuery('');
 
   const handleClose = () => {
     onClose();
@@ -16,10 +16,6 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
     setRadioValue('');
     setInputValue('');
   };
-
-  const createDepositHandler = async () => {
-    await createDeposit({});
-  }
 
   return (
     <ModalBasic open={open} onClose={handleClose}>
@@ -73,9 +69,8 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
             className="primary" 
             style={{ width: '100%' }} 
             disabled={!isChecked}
-            onClick={createDepositHandler}
           >
-            Пополнить
+            <a href={link}>Пополнить</a>
           </ButtonBasic>
         </div>
       </div>

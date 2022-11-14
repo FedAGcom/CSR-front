@@ -15,12 +15,10 @@ export const depositAPI = createApi({
   }),
   endpoints: function(build) {
     return {
-      createDeposit: build.mutation({
+      getCreateDepositLink: build.query<string, string>({
         query: function() {
           return {
             url: '/api/v1/create-deposit',
-            method: 'POST',
-            headers: {}
           }
         }
       })
