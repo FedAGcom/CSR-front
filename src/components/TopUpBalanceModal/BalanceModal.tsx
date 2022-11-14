@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { ButtonBasic, InputBasic, ModalBasic, RadioBtn } from '../index';
 import { WaletIcon } from '../svg';
 import { ITradeLinkModalProps } from '../TradeLinkModal/TradeLinkModal';
+import { depositAPI } from '../../store/slices/depositSlice';
 
 export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [radioValue, setRadioValue] = useState('');
   const [isChecked, setChecked] = useState<boolean>(false);
+  const [createDeposit] = depositAPI.useCreateDepositMutation();
 
   const handleClose = () => {
     onClose();
@@ -14,6 +16,10 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
     setRadioValue('');
     setInputValue('');
   };
+
+  const createDepositHandler = async () => {
+    await createDeposit({});
+  }
 
   return (
     <ModalBasic open={open} onClose={handleClose}>
@@ -63,7 +69,12 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
         </div>
 
         <div className="trade-btn">
-          <ButtonBasic className="primary" style={{ width: '100%' }} disabled={!isChecked}>
+          <ButtonBasic 
+            className="primary" 
+            style={{ width: '100%' }} 
+            disabled={!isChecked}
+            onClick={createDepositHandler}
+          >
             Пополнить
           </ButtonBasic>
         </div>

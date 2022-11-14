@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducer } from './reducers';
 import { loginSlice } from './slices/loginSlice';
+import { depositAPI } from './slices/depositSlice';
 
 const store = configureStore({
   reducer: rootReducer,
@@ -10,6 +11,7 @@ const store = configureStore({
       // middlewares
       // api.middleware
       loginSlice.middleware,
+      depositAPI.middleware,
     ),
 });
 
