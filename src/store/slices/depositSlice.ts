@@ -13,9 +13,9 @@ export const depositAPI = createApi({
       return headers;
     }
   }),
-  endpoints: function(build) {
+  endpoints: function(builder) {
     return {
-      getCreateDepositLink: build.query<string, string>({
+      getCreateDepositLink: builder.query<{link: string}, string>({
         query: function() {
           return {
             url: '/api/v1/create-deposit',

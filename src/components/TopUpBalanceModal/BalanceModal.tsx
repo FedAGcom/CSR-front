@@ -8,7 +8,7 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
   const [inputValue, setInputValue] = useState<string>('');
   const [radioValue, setRadioValue] = useState('');
   const [isChecked, setChecked] = useState<boolean>(false);
-  const { data: link } = depositAPI.useGetCreateDepositLinkQuery('');
+  const { data } = depositAPI.useGetCreateDepositLinkQuery('');
 
   const handleClose = () => {
     onClose();
@@ -70,7 +70,7 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
             style={{ width: '100%' }} 
             disabled={!isChecked}
           >
-            <a href={link}>Пополнить</a>
+            <a href={`${data?.link}`}>Пополнить</a>
           </ButtonBasic>
         </div>
       </div>
