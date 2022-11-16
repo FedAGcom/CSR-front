@@ -1,8 +1,8 @@
 import { Button, SxProps } from '@mui/material';
 import { Container } from '@mui/system';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import RoulettePro from 'react-roulette-pro';
-import { caseData } from '../mocks/open-case';
+//import { packItemsList } from '../mocks/open-case';
 import 'react-roulette-pro/dist/index.css';
 import { ArrowBottom, ArrowMain, ArrowTop, HeaderSteam } from '../components/svg';
 import {
@@ -14,8 +14,10 @@ import {
   TryAgainButton,
   audio,
 } from '../components/OpenCase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { HeaderAndFooter, PrizeBlock } from '../components';
+import { fetchPack } from '../store/slices/packSlice';
+import { useAppDispatch, useAppSelector } from '../store';
 
 const button: SxProps = {
   margin: '47px auto',
@@ -66,7 +68,21 @@ const steamBtn: SxProps = {
 };
 
 export const OpenCase = () => {
-  const [winPrizeIndex, setWinPrizeIndex] = useState(25);
+
+ const {id} = useParams()
+  console.log(id)
+ const dispatch = useAppDispatch()
+ const {title, price, packItemsList} = useAppSelector(state => state.packSlice)
+ const {isAuth} = useAppSelector(state => state.userSlice)
+
+ console.log(title)
+ console.log(packItemsList)
+  
+ useEffect(() => {
+    dispatch(fetchPack(id))
+  }, [])
+
+  const [winPrizeIndex, setWinPrizeIndex] = useState(1);
 
   const reproductionArray = (array: any[] = [], length = 0) => [
     ...Array(length)
@@ -75,10 +91,10 @@ export const OpenCase = () => {
   ];
 
   const reproducedPrizeList = [
-    ...caseData,
-    ...reproductionArray(caseData, caseData.length * 3),
-    ...caseData,
-    ...reproductionArray(caseData, caseData.length),
+    ...packItemsList,
+    ...reproductionArray(packItemsList, packItemsList.length * 3),
+    ...packItemsList,
+    ...reproductionArray(packItemsList, packItemsList.length),
   ];
 
   const generateId = () => `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
@@ -88,16 +104,16 @@ export const OpenCase = () => {
     id: generateId(),
   }));
 
-  const [isAuth, setIsAuth] = useState(false);
+  //const [isAuth, setIsAuth] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [start, setStart] = useState(false);
 
   const navigate = useNavigate();
 
-  const auth = () => {
-    setIsAuth((prevState) => !prevState);
-  };
+  // const auth = () => {
+  //   setIsAuth((prevState) => !prevState);
+  // };
 
   const handleStart = () => {
     setStart((prevState) => !prevState);
@@ -115,7 +131,7 @@ export const OpenCase = () => {
     setIsActive(false);
   };
 
-  const prizeIndex = caseData.length * 4 + winPrizeIndex;
+  const prizeIndex = packItemsList.length * 4 + winPrizeIndex;
 
   return (
     <>
@@ -123,7 +139,7 @@ export const OpenCase = () => {
         <PrizeBlock />
         <Container sx={{ maxWidth: '1148px', marginTop: '50px' }} maxWidth={false}>
           <div className="case-content__header">
-            <h5 className="case-content__title">Мясной кейс</h5>
+            <h5 className="case-content__title">{title}</h5>
             <div className="case-content__back" onClick={() => navigate('/')}>
               <ArrowMain />
               Вернуться на Главную
@@ -133,10 +149,10 @@ export const OpenCase = () => {
             <div className="roulette-wrap">
               {isModal && (
                 <PrizeModal
-                  image={prizeList[prizeIndex].image}
+                  image={prizeList[prizeIndex].iconItemId}
                   type={prizeList[prizeIndex].type}
                   title={prizeList[prizeIndex].title}
-                  class={prizeList[prizeIndex].class}
+                  class={prizeList[prizeIndex].rare}
                   id={prizeList[prizeIndex].id}
                 />
               )}
@@ -151,7 +167,7 @@ export const OpenCase = () => {
                 options={{ stopInCenter: true, withoutAnimation: true }}
                 defaultDesignOptions={{ hideCenterDelimiter: true }}
                 //@ts-expect-error заглушка для рулетки
-                prizeItemRenderFunction={(i) => <RouletteItem image={i.image} class={i.class} />} //todo
+                prizeItemRenderFunction={(i) => <RouletteItem image={i.iconItemId} class={i.rare} />} //todo
               />
               <ArrowTop className="arrow-top" />
               <ArrowBottom className="arrow-bottom" />
@@ -166,12 +182,10 @@ export const OpenCase = () => {
                 <TryAgainButton onClick={handleTryAgain} />
               </div>
             ) : (
-              <Button disabled={isActive} sx={button} onClick={handleStart}>
-                Открыть кейс за 299 ₽
-              </Button>
+              <Button disabled={isActive} sx={button} onClick={handleStart}>{`Открыть кейс за ${price} ₽`}</Button>
             )
           ) : (
-            <Button sx={steamBtn} onClick={auth}>
+            <Button sx={steamBtn} onClick={() => console.log('ddd')}>
               Войти через steam
               <HeaderSteam />
             </Button>
