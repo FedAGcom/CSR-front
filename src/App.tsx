@@ -27,6 +27,7 @@ import { fetchPacks } from './store/slices/packsSlice';
 import { getSettings } from './store/slices/appearanceSlice';
 import { useSelector } from 'react-redux';
 import { getColorBackgroundOne } from './store/selectors/getSettingsAppearance';
+import ScrollToTop from './components/ScrollOnTop/ScrollOnTop';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -46,6 +47,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/account" element={<AccountPage />} />

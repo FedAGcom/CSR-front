@@ -1,8 +1,10 @@
+import { banner } from "../images";
+
 export const Banner = () => {
   return (
     <div className="container">
       <div className="banner">
-        <div className="banner__img"></div>
+        <img className="banner__img" src={banner} alt="" />
       </div>
     </div>
   );

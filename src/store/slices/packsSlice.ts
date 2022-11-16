@@ -25,15 +25,15 @@ const initialState: IPackState = {
 
 export const fetchPacks = () => async (dispatch: TAppDispatch) => {
   try {
-    dispatch(packSlice.actions.packsFetching());
+    dispatch(packsSlice.actions.packsFetching());
     const {data} = await $api.get<any>(`api/v1/packs`);
-    dispatch(packSlice.actions.packsFetchingSuccess(data.content));
+    dispatch(packsSlice.actions.packsFetchingSuccess(data.content));
   } catch (e) {
-    dispatch(packSlice.actions.packsFetchingError((e as Error).message));
+    dispatch(packsSlice.actions.packsFetchingError((e as Error).message));
   }
 };
 
-export const packSlice = createSlice({
+export const packsSlice = createSlice({
   name: 'packs',
   initialState,
   reducers: {
@@ -52,4 +52,4 @@ export const packSlice = createSlice({
   },
 });
 
-export default packSlice.reducer;
+export default packsSlice.reducer;

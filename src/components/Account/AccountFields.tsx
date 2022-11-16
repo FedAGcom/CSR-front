@@ -5,10 +5,13 @@ import { SkinsModal } from './SkinsModal';
 // import { weapon, caseImage } from '../images';
 import { CaseItem } from '../CaseItem/CaseItem';
 import { caseData } from '../../mocks';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
+import Cookies from 'js-cookie';
+import { fetchUser } from '../../store/slices/userSlice';
+
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
@@ -16,6 +19,7 @@ export const AccountHeaderField = () => {
   const { user } = useAppSelector((state) => state.userSlice);
   const navigate = useNavigate();
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+  const dispatch = useAppDispatch()
 
   const handleCloseTrade = () => {
     setTradeModalOpen(false);
@@ -24,6 +28,11 @@ export const AccountHeaderField = () => {
   const handleCloseBalance = () => {
     setBalanceModalOpen(false);
   };
+
+  const handleExit = () => {
+    Cookies.remove('AuthorizationCSRApp')
+    dispatch(fetchUser())
+  }
 
   return (
     <div className="account-field__wrapper" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
@@ -51,7 +60,7 @@ export const AccountHeaderField = () => {
         <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
           Трейд ссылка
         </ButtonBasic>
-        <div className="account-exit">
+        <div className="account-exit" onClick={handleExit}>
           <ExitIcon />
         </div>
       </div>
