@@ -65,11 +65,7 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
         </div>
 
         <div className="trade-btn">
-          <ButtonBasic 
-            className="primary" 
-            style={{ width: '100%' }} 
-            disabled={!isChecked}
-          >
+          <ButtonBasic className="primary" style={{ width: '100%' }} disabled={!isChecked}>
             <a href={`${data?.link}`}>Пополнить</a>
           </ButtonBasic>
         </div>

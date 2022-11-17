@@ -7,7 +7,7 @@ interface IPack {
   name: string;
   email: string;
   title: string;
-  [key: string]: any
+  [key: string]: any;
 }
 
 interface IPackState {
@@ -26,7 +26,7 @@ const initialState: IPackState = {
 export const fetchPacks = () => async (dispatch: TAppDispatch) => {
   try {
     dispatch(packsSlice.actions.packsFetching());
-    const {data} = await $api.get<any>(`api/v1/packs`);
+    const { data } = await $api.get<any>(`api/v1/packs`);
     dispatch(packsSlice.actions.packsFetchingSuccess(data.content));
   } catch (e) {
     dispatch(packsSlice.actions.packsFetchingError((e as Error).message));

@@ -1,3 +1,3 @@
 import Cookies from 'js-cookie';
 
-export const token = Cookies.get('AuthorizationCSRApp')
+export const token = Cookies.get('AuthorizationCSRApp');
