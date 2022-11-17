@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import { caseData } from '../../../mocks/open-case';
 import { useAppSelector } from '../../../store';
+import { getBackgroundCase } from '../../../store/selectors/getSettingsAppearance';
 import { CaseItem } from '../../CaseItem/CaseItem';
 
 export const CaseContent = () => {
   const { packItemsList } = useAppSelector((state) => state.packSlice);
+  const serverBackgroundCase = useSelector(getBackgroundCase);
 
   return (
     <div className="case-content__wraper">
