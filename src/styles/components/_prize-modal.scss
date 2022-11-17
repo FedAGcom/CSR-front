@@ -41,34 +41,34 @@
 }
 
 .rarity {
-    &-common {
+    &-Common {
         background: linear-gradient(180deg, #24232A 0%, #3F5879 100%);
         border: 1px solid #6A98D4;
         box-shadow: 0px 0px 15px 10px #6A98D4;
     
     }
 
-    &-uncommon {
+    &-Uncommon {
         background: linear-gradient(180deg, #24232A 0%, #4057C7 100%);
         border: 1px solid #4F6CF6;
         box-shadow: 0px 0px 15px 10px #4F6CF6;
     
     }
 
-    &-milspec {
+    &-Mil-Spec {
         background: linear-gradient(180deg, #24232A 0%, #6542C5 100%);
         border: 1px solid #7E51F6;
         box-shadow: 0px 0px 15px 10px #7E51F6;
     
     }
     
-    &-restricted {
+    &-Restricted {
         background: linear-gradient(180deg, #24232A 0%, #7B2A8D 100%);
         border: 1px solid #C243DE;
         box-shadow: 0px 0px 15px 10px #C243DE;
     }
     
-    &-covert {
+    &-Covert {
         background: linear-gradient(180deg, #24232A 0%, #9F3F3C 100%);
         border: 1px solid #DA5752;
         box-shadow: 0px 0px 15px 10px rgba(218, 87, 82, 1);

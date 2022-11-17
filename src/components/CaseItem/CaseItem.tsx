@@ -4,12 +4,13 @@ import { ButtonBasic } from '../BasicComponents';
 import { ConfirmSkinSaleModal } from '../ConfirmSkinSaleModal/ConfirmSkinSaleModal';
 
 interface ICaseItemProps {
-  image: string;
+  image?: any;
   type: string;
   title: string;
   class: string;
   price?: number;
   disabled?: boolean;
+  content?: boolean;
 }
 
 const btn: SxProps = {
@@ -38,12 +39,16 @@ export const CaseItem: React.FC<ICaseItemProps> = (props: ICaseItemProps) => {
     setIsOpen(false);
   }
 
+  const titleFormat = (title: string, index: number) => {
+    return title.split('|')[index]?.trim();
+  };
+
   return (
     <div className={'skin-wrap' + ' ' + (props.disabled ? 'disabled' : '')}>
       <div className={'case-item ' + 'case-item-' + props.class + ' ' + (props.disabled ? 'disabled' : '')}>
         <img className="case-item__img" src={props.image} alt={props.type} />
-        <span className="case-item__type">{props.type}</span>
-        <span className="case-item__title">{props.title}</span>
+        <span className="case-item__type">{props.content ? titleFormat(props.title, 0) : props.type}</span>
+        <span className="case-item__title">{props.content ? titleFormat(props.title, 1) : props.title}</span>
       </div>
       {!props.disabled && (
         <>

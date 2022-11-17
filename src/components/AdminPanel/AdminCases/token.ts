@@ -1,2 +1,3 @@
-export const token =
-  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhemlyYWZhaWwiLCJyb2xlIjoidXNlciIsImlhdCI6MTY2Njc5MzY1NiwiZXhwIjoxNjY3Mzk4NDU2fQ.x23PG8FZuTNYUx_XcyyhsEueXBiNhqP4m02Lkue0rL0';
+import Cookies from 'js-cookie';
+
+export const token = Cookies.get('AuthorizationCSRApp');

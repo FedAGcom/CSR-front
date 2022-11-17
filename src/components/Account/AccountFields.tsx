@@ -5,15 +5,20 @@ import { SkinsModal } from './SkinsModal';
 // import { weapon, caseImage } from '../images';
 import { CaseItem } from '../CaseItem/CaseItem';
 import { caseData } from '../../mocks';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
+import Cookies from 'js-cookie';
+import { fetchUser } from '../../store/slices/userSlice';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
   const { user } = useAppSelector((state) => state.userSlice);
+  const navigate = useNavigate();
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+  const dispatch = useAppDispatch();
 
   const handleCloseTrade = () => {
     setTradeModalOpen(false);
@@ -23,8 +28,13 @@ export const AccountHeaderField = () => {
     setBalanceModalOpen(false);
   };
 
+  const handleExit = () => {
+    Cookies.remove('AuthorizationCSRApp');
+    dispatch(fetchUser());
+  };
+
   return (
-    <div className="account-field__wrapper" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
+    <div className="account-field__wrapper" style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}>
       <div className="account-field">
         <div className="account-avatar">
           <img src={user.steamAvatarMedium} alt="" />
@@ -33,8 +43,13 @@ export const AccountHeaderField = () => {
           <div className="account-info__name">
             <p>{user.nickNameSteam}</p> <HeaderSteam />
           </div>
-          <div className="account-info__money">{`${user.balance} ₽`}</div>
+          <div className="account-info__money">{`${user.balance?.toLocaleString('ru')} ₽`}</div>
         </div>
+        {user.role === 'admin' && (
+          <ButtonBasic sx={{ marginLeft: '4rem' }} className="primary" onClick={() => navigate('/admin')}>
+            Админ-панель
+          </ButtonBasic>
+        )}
       </div>
       <div className="account-field" style={{ justifyContent: 'space-between' }}>
         <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />
@@ -46,7 +61,7 @@ export const AccountHeaderField = () => {
         <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
           Трейд ссылка
         </ButtonBasic>
-        <div className="account-exit">
+        <div className="account-exit" onClick={handleExit}>
           <ExitIcon />
         </div>
       </div>
@@ -59,7 +74,10 @@ export const AccountCaseField = () => {
 
   return (
     <div className="account-case__wrapper">
-      <div className="account-case account-case__item" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
+      <div
+        className="account-case account-case__item"
+        style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}
+      >
         <div className="account-case__common">
           <p className="account-case__title">Любимый кейс</p>
           <p className="account-case__desc">Нет любимого кейса</p>
@@ -70,7 +88,10 @@ export const AccountCaseField = () => {
           <img src={caseImage} />
         </div> */}
       </div>
-      <div className="account-case account-case__drop" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
+      <div
+        className="account-case account-case__drop"
+        style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}
+      >
         <div className="account-case__common">
           <p className="account-case__title">Лучший дроп</p>
           <p className="account-case__desc">Пока нет лучшего дропа</p>
@@ -89,7 +110,7 @@ export const AccountSoldItemsField = () => {
 
   return (
     <>
-      <div className="account-field__wrapper" style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
+      <div className="account-field__wrapper" style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}>
         <p className="account-items__p">Предметы</p>
         <div className="account__sold-btns">
           <ButtonBasic className="skins" onClick={() => setSkinsModalOpen(true)}>

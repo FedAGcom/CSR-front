@@ -27,7 +27,7 @@ import {
   AdminTechSupport,
   AdminSettings,
   AdminPromo,
-   AdminAppearance,
+  AdminAppearance,
   AdminCases,
   AdminLogs,
   AdminTradeRequests,

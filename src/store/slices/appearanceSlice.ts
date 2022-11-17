@@ -36,13 +36,13 @@ export type TInitialState= {
     error: string | unknown;
   }
 
-const initialState:TInitialState ={
+  const initialState:TInitialState ={
     appearanceSettings:{} as TAppearanceSettings,
     status: '',
     error: ''
 } 
 
-const baseURL = 'http://csgofarm.online:8080/api/v1/front'
+const baseURL = 'http://csgofarm.online:8080/api/v1/front'  
 
 export const getSettings = createAsyncThunk(
     'appearance/getSettings',

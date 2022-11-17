@@ -21,7 +21,7 @@ export const AdminCases = () => {
 
   //TODO заменить правильным запросом с правильным токеном
   const getCases = async () => {
-    await axios.get('http://5.101.51.15/api/v1/packs', headers).then((resp) => {
+    await axios.get('http://csgofarm.online/api/v1/packs', headers).then((resp) => {
       setCases(resp.data.content);
     });
   };
