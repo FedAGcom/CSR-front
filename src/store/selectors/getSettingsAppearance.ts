@@ -1,6 +1,6 @@
 import { TInitialState } from "../slices/appearanceSlice";
 
-type TStateType = {
+export type TStateType = {
     appearance : TInitialState
 }
 
@@ -55,4 +55,24 @@ export const getColorBackground = (state:TStateType) => {
 export const getActiveWindow = (state:TStateType) => {
     return state.appearance.appearanceSettings?.activeWindow;
   };     
+
+//image  
+export const getHeaderLogo = (state:TStateType) => {
+    return state.appearance.appearanceSettings?.headerLogo;
+  };    
   
+export const getFooterLogo = (state:TStateType) => {
+    return state.appearance.appearanceSettings?.footerLogo;
+  }; 
+  
+export const getBackgroundMainBottom = (state:TStateType) => {
+    return state.appearance.appearanceSettings?.backgroundMainBottom;
+  };   
+  
+export const getBackgroundCase = (state:TStateType) => {
+    return state.appearance.appearanceSettings?.backgroundCase;
+  };  
+
+export const getTextImage = (state:TStateType) => {
+    return state.appearance.appearanceSettings?.textImage;
+  };    

@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
-import { backgroundCase, backgroundMain } from '../../images';
 import { InputTypeFile } from './InputTypeFile';
 import {
   getColorButtons,
   getColorBackgroundOne,
   getColorBackgroundTwo,
+  getBackgroundCase,
+  getBackgroundMainBottom,
 } from './../../../store/selectors/getSettingsAppearance';
 
 export const ParametersSection = () => {
@@ -19,6 +20,8 @@ export const ParametersSection = () => {
   const serverColorButtons = useSelector(getColorButtons);
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
   const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
+  const serverBackgroundCase = useSelector(getBackgroundCase);
+  const serverBackgroundMainBottom = useSelector(getBackgroundMainBottom);
 
   useEffect(() => {
     if (serverColorButtons && serverColorBackgroundOne && serverColorBackgroundTwo !== undefined) {
@@ -67,13 +70,23 @@ export const ParametersSection = () => {
           <Box sx={{ display: 'flex', marginBottom: '10px' }}>
             <Typography style={{ marginRight: '58px' }}>Фон главная (низ)</Typography>
             <InputTypeFile htmlFor="backgroundMainBottom" id="backgroundMainBottom" registerName="backgroundMainBottom">
-              <Box component="img" src={backgroundMain} alt="textImage"></Box>
+              <Box
+                component="img"
+                style={{ width: '100%', height: '100%' }}
+                src={`${serverBackgroundMainBottom}`}
+                alt="Image"
+              ></Box>
             </InputTypeFile>
           </Box>
           <Box sx={{ display: 'flex' }}>
             <Typography style={{ marginRight: '58px' }}>Фон кейс</Typography>
             <InputTypeFile htmlFor="backgroundCase" id="backgroundCase" registerName="backgroundCase">
-              <Box component="img" src={backgroundCase} alt="textImage"></Box>
+              <Box
+                component="img"
+                style={{ width: '100%', height: '100%' }}
+                src={`${serverBackgroundCase}`}
+                alt="Image"
+              ></Box>
             </InputTypeFile>
           </Box>
         </Box>

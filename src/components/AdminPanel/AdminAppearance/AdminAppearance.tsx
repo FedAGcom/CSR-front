@@ -1,5 +1,5 @@
 import { Box, Divider, Typography } from '@mui/material';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { ButtonBasic } from '../../BasicComponents';
 import { FooterSection } from './FooterSection';
 import { HeaderSection } from './HeaderSection';
@@ -9,12 +9,12 @@ import { appearanceStyle } from './style';
 import { useDispatch } from 'react-redux';
 import { getSettings, sendSettings } from './../../../store/slices/appearanceSlice';
 import { useEffect } from 'react';
+import { store } from '../../../store';
 
 export const AdminAppearance = () => {
-  const dispatch = useDispatch<any>();
-
+  const dispatch: typeof store.dispatch = useDispatch();
   const methods = useForm();
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: FieldValues) => {
     dispatch(sendSettings(data));
   };
 

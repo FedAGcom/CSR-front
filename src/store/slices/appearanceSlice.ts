@@ -1,6 +1,8 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { FieldValues } from 'react-hook-form';
+import { store } from "../store";
 
 type TErrorMessage ={
     message:string
@@ -23,13 +25,13 @@ export type TAppearanceSettings = {
     backgroundMainBottom: string | null,
     footerLogo: string | null,
     headerLogo: string | null,
-    textImage: string |null,
+    textImage: string |null ,
     titleText: string,
     windowTextTwo: string
 }
 
 export type TInitialState= {
-    appearanceSettings: TAppearanceSettings | undefined;
+    appearanceSettings: TAppearanceSettings;
     status: string;
     error: string | unknown;
   }
@@ -60,31 +62,34 @@ try {
 
 export const sendSettings = createAsyncThunk(
     'appearance/sendSettings',
-    async (data:any,{rejectWithValue})=>{
-        // const formData = new FormData();
-        // formData.append('textImage', data.textImage[0]);
-        // formData.append('headerLogo', data.headerLogo[0]);
-        // formData.append('backgroundCase', data.backgroundCase[0]);
-        // formData.append('footerLogo', data.footerLogo[0]);
-        // formData.append('backgroundMainBottom', data.backgroundMainBottom[0]);
-        // formData.append('activeWindow', data.activeWindow);
-        // formData.append('buttonText', data.buttonText);
-        // formData.append('colorBackground', data.colorBackground);
-        // formData.append('colorBackgroundOne', data.colorBackgroundOne);
-        // formData.append('colorBackgroundTwo', data.colorBackgroundTwo);
-        // formData.append('colorButton', data.colorButton);
-        // formData.append('colorButtons', data.colorButtons);
-        // formData.append('colorFooterDown', data.colorFooterDown);
-        // formData.append('colorFooterUp', data.colorFooterUp);
-        // formData.append('colorHeaderLeft', data.colorHeaderLeft);
-        // formData.append('colorHeaderRight', data.colorHeaderRight);
-        // formData.append('titleText', data.titleText);
-        // formData.append('windowText', data.windowText);
+    async (data:FieldValues, { rejectWithValue, getState })=>{
+        const currentState:typeof store.getState.arguments = getState()
+    const formData = new FormData();
+    formData.append('textImage', currentState.appearance.appearanceSettings.textImage );
+    formData.append('headerLogo', currentState.appearance.appearanceSettings.headerLogo);
+    formData.append('backgroundCase', currentState.appearance.appearanceSettings.backgroundCase);
+    formData.append('footerLogo', currentState.appearance.appearanceSettings.footerLogo);
+    formData.append('backgroundMainBottom', currentState.appearance.appearanceSettings.backgroundMainBottom);
+    formData.append('activeWindow', data.activeWindow);
+    formData.append('buttonText', data.buttonText);
+    formData.append('colorBackground', data.colorBackground);
+    formData.append('colorBackgroundOne', data.colorBackgroundOne);
+    formData.append('colorBackgroundTwo', data.colorBackgroundTwo);
+    formData.append('colorButton', data.colorButton);
+    formData.append('colorButtons', data.colorButtons);
+    formData.append('colorFooterDown', data.colorFooterDown);
+    formData.append('colorFooterUp', data.colorFooterUp);
+    formData.append('colorHeaderLeft', data.colorHeaderLeft);
+    formData.append('colorHeaderRight', data.colorHeaderRight);
+    formData.append('titleText', data.titleText);
+    formData.append('windowTextTwo', data.windowTextTwo);
         try {
-           await axios.post(baseURL,data) 
-        } catch (error) {
+            await axios.post(baseURL,formData, {
+                headers: { 'Content-Type': 'application/json' },
+            })      
+            }   catch (error) {
             return rejectWithValue((error as TErrorMessage).message)
-        }
+            }
    }
 )
 
@@ -93,7 +98,23 @@ export const sendSettings = createAsyncThunk(
  export const appearanceSlice = createSlice({
     name: 'appearance',
     initialState,
-    reducers:{},
+    reducers:{
+        getTextImage:(state, action)=>{
+        state.appearanceSettings.textImage = action.payload
+        },
+        getHeaderLogo:(state, action)=>{
+            state.appearanceSettings.headerLogo = action.payload
+        },
+        getBackgroundCase:(state, action)=>{
+            state.appearanceSettings.backgroundCase = action.payload
+        },
+        getFooterLogo:(state, action)=>{
+            state.appearanceSettings.footerLogo = action.payload
+        },
+        getBackgroundMainBottom:(state, action)=>{
+            state.appearanceSettings.backgroundMainBottom = action.payload
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(getSettings.pending, (state) => {
             state.status = 'loading'
@@ -120,4 +141,5 @@ export const sendSettings = createAsyncThunk(
     
 })
 
+export const {getTextImage, getHeaderLogo, getBackgroundCase, getFooterLogo, getBackgroundMainBottom} = appearanceSlice.actions
 export default appearanceSlice.reducer
