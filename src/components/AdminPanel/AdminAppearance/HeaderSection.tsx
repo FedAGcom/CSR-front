@@ -2,10 +2,9 @@ import { Box, Stack, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { InputBasic } from '../../BasicComponents';
-import { Logo } from '../../svg';
 import { InputTypeFile } from './InputTypeFile';
 import { useSelector } from 'react-redux';
-import { getColorHeaderLeft, getColorHeaderRight } from '../../../store/selectors/getSettingsAppearance';
+import { getColorHeaderLeft, getColorHeaderRight, getHeaderLogo } from '../../../store/selectors/getSettingsAppearance';
 
 export const HeaderSection = () => {
   const [colorHeaderLeft, setColorHeaderLeft] = useState<string | undefined>('#2D2B34');
@@ -13,6 +12,7 @@ export const HeaderSection = () => {
   const { register } = useFormContext();
   const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
   const serverColorHeaderRight = useSelector(getColorHeaderRight);
+  const serverHeaderLogo = useSelector(getHeaderLogo);
 
   useEffect(() => {
     if (serverColorHeaderLeft && serverColorHeaderRight !== undefined) {
@@ -49,7 +49,12 @@ export const HeaderSection = () => {
         </Stack>
         <Typography>Логотип Header</Typography>
         <InputTypeFile htmlFor="headerLogo" id="headerLogo" registerName="headerLogo">
-          <Logo />
+          <Box
+            component="img"
+            style={{ width: '100%', height: '100%' }}
+            src={`${serverHeaderLogo}`}
+            alt="headerImage"
+          ></Box>
         </InputTypeFile>
       </Box>
     </Box>

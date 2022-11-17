@@ -1,6 +1,5 @@
 import { styled, Switch, SwitchProps } from '@mui/material';
 import React, { forwardRef } from 'react';
-import { JsxElement } from 'typescript';
 
 const CustomSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />

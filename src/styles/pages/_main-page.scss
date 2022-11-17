@@ -1,18 +1,7 @@
-.block, .block__image {
+.block {
 	background-color: inherit;
 	text-align: center;
 	padding: 60px 0;
-
-	p {
-	font-weight: 700;
-    font-size: 30px;
-    line-height: 37px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #37363D;
-    margin: 0px auto 20px;
-    width: 98.5%;
-	}
-
 	&__wrapper {
     display: flex;
     justify-content: center;
@@ -32,6 +21,18 @@
 	}
 }
 
+.block , .block__image {
+	p {
+		font-weight: 700;
+		font-size: 30px;
+		line-height: 37px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid #37363D;
+		margin: 0px auto 20px;
+		width: 98.5%;
+		}
+}
+
 .banner {
 	margin: 50px auto;
 		&__img {
@@ -44,17 +45,23 @@
 
 .block__image {
 	position: relative;
-
-	&::before {
-   	content: '';
-    position: absolute;
-    left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-    z-index: -1;
-    background: url('../../components/images/block-bckg.png') center no-repeat;
-    filter: blur(10px);
+	z-index: 1;
+	padding: 0;
+	.container {
+		text-align: center;
+		padding: 60px 0;
 	}
+	
+	// &::before {
+   	// content: '';
+    // position: absolute;
+    // left: 0;
+	// right: 0;
+	// top: 0;
+	// bottom: 0;
+    // z-index: -1;
+    // background: url('../../components/images/block-bckg.png') center no-repeat;
+    // filter: blur(10px);
+	// }
 
 }

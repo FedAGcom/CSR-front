@@ -9,12 +9,13 @@ import { BalanceModal } from '../index';
 import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
-import { getColorHeaderLeft, getColorHeaderRight } from '../../store/selectors/getSettingsAppearance';
+import { getColorHeaderLeft, getColorHeaderRight, getHeaderLogo } from '../../store/selectors/getSettingsAppearance';
 
 export const Header = () => {
   const { user, isAuth } = useAppSelector((state) => state.userSlice);
   const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
   const serverColorHeaderRight = useSelector(getColorHeaderRight);
+  const serverHeaderLogo = useSelector(getHeaderLogo);
 
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
@@ -48,7 +49,16 @@ export const Header = () => {
         <Box className="header__content">
           <Box className="header__column1">
             <Box className="header__logo" onClick={() => navigate('/')}>
-              <Logo />
+              {serverHeaderLogo ? (
+                <Box
+                  component="img"
+                  style={{ width: '100%', height: '100%' }}
+                  src={`${serverHeaderLogo}`}
+                  alt="headerImage"
+                ></Box>
+              ) : (
+                <Logo />
+              )}
             </Box>
             <Box className="header__users-online">
               <OnlineAmount />

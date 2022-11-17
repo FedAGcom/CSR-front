@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
-import { Logo } from '../../svg';
 import { InputTypeFile } from './InputTypeFile';
-import { getColorFooterUp } from './../../../store/selectors/getSettingsAppearance';
+import { getColorFooterUp, getFooterLogo } from './../../../store/selectors/getSettingsAppearance';
 
 export const FooterSection = () => {
   const [colorFooterUp, setColorFooterUp] = useState<string | undefined>('#1E1D23');
@@ -13,6 +12,7 @@ export const FooterSection = () => {
   const { register } = useFormContext();
   const serverColorFooterUp = useSelector(getColorFooterUp);
   const serverColorFooterDown = useSelector(getColorFooterUp);
+  const serverFooterLogo = useSelector(getFooterLogo);
 
   useEffect(() => {
     if (serverColorFooterUp && serverColorFooterDown !== undefined) {
@@ -49,7 +49,12 @@ export const FooterSection = () => {
         </Stack>
         <Typography>Логотип Footer</Typography>
         <InputTypeFile htmlFor="footerLogo" id="footerLogo" registerName="footerLogo">
-          <Logo />
+          <Box
+            component="img"
+            style={{ width: '100%', height: '100%' }}
+            src={`${serverFooterLogo}`}
+            alt="footerImage"
+          ></Box>
         </InputTypeFile>
       </Box>
     </Box>

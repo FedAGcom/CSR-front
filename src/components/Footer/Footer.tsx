@@ -2,7 +2,7 @@ import { Grid, Box, Container, Link, Stack } from '@mui/material';
 import { FooterKey, FooterNet, FooterPerson, LogoFooter, SocialFacebook, SocialInstagram, SocialSteam } from '../svg';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { getColorFooterUp, getColorFooterDown } from '../../store/selectors/getSettingsAppearance';
+import { getColorFooterUp, getColorFooterDown, getFooterLogo } from '../../store/selectors/getSettingsAppearance';
 
 type TFooterStatisticProps = {
   openCases: number;
@@ -72,13 +72,23 @@ const FooterLink: FC<TFooterLink> = ({ value, url }) => {
 
 const FooterInfo = () => {
   const serverColorFooterDown = useSelector(getColorFooterDown);
+  const serverFooterLogo = useSelector(getFooterLogo);
 
   return (
     <Box className="footer-info" sx={{ backgroundColor: serverColorFooterDown }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row">
           <Grid item xs={12} sm={5}>
-            <LogoFooter />
+            {serverFooterLogo ? (
+              <Box
+                component="img"
+                style={{ width: '160px', height: '44px' }}
+                src={`${serverFooterLogo}`}
+                alt="headerImage"
+              ></Box>
+            ) : (
+              <LogoFooter />
+            )}
             <Stack direction="row" justifyContent="start" alignItems="center" spacing={1} sx={{ marginTop: '10px' }}>
               <Link href="https://www.instagram.com/">
                 <SocialInstagram />

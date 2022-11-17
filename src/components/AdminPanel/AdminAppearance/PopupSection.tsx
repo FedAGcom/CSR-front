@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { InputBasic } from '../../BasicComponents';
-import { backgroundMain } from '../../images';
 import { InputTypeFile } from './InputTypeFile';
 import { SwitchBasic } from './SwitchBasic';
 import {
@@ -12,6 +11,7 @@ import {
   getButtonText,
   getColorButton,
   getColorBackground,
+  getTextImage,
 } from '../../../store/selectors/getSettingsAppearance';
 
 export const PopupSection = () => {
@@ -27,6 +27,7 @@ export const PopupSection = () => {
   const serverButtonText = useSelector(getButtonText);
   const serverColorButton = useSelector(getColorButton);
   const serverColorBackground = useSelector(getColorBackground);
+  const serverTextImage = useSelector(getTextImage);
 
   useEffect(() => {
     if (
@@ -106,7 +107,12 @@ export const PopupSection = () => {
         </Stack>
         <Typography>Картинка к тексту</Typography>
         <InputTypeFile htmlFor="textImage" id="textImage" registerName="textImage">
-          <Box component="img" src={backgroundMain} alt="textImage"></Box>
+          <Box
+            component="img"
+            style={{ width: '100%', height: '100%' }}
+            src={`${serverTextImage}`}
+            alt="textImage"
+          ></Box>
         </InputTypeFile>
       </Box>
     </Box>
