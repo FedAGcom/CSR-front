@@ -31,9 +31,9 @@ const FooterStatisticItemInfo: FC<TFooterStatisticItemInfo> = ({ amount, title }
 
 const FooterStatistic: FC<TFooterStatisticProps> = ({ openCases, onlineUsers, totalUsers }) => {
   const serverColorFooterUp = useSelector(getColorFooterUp);
-  
+
   return (
-    <Box className="footer-statistic" sx={{backgroundColor: serverColorFooterUp}}>
+    <Box className="footer-statistic" sx={{ backgroundColor: serverColorFooterUp }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
           <Grid item>
@@ -74,7 +74,7 @@ const FooterInfo = () => {
   const serverColorFooterDown = useSelector(getColorFooterDown);
 
   return (
-    <Box className="footer-info" sx={{backgroundColor: serverColorFooterDown}}>
+    <Box className="footer-info" sx={{ backgroundColor: serverColorFooterDown }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row">
           <Grid item xs={12} sm={5}>

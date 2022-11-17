@@ -23,8 +23,8 @@ export const Header = () => {
 
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
-  const handleCloseBalance = () => setBalanceModalOpen(false)
-  const handleCloseTrade = () => setTradeModalOpen(false)
+  const handleCloseBalance = () => setBalanceModalOpen(false);
+  const handleCloseTrade = () => setTradeModalOpen(false);
 
   const handleModalClose = () => setModalOpen(false);
   const handleModalOpen = () => setModalOpen(true);
@@ -40,7 +40,10 @@ export const Header = () => {
   //const isAuth = false;
 
   return (
-    <header className="header" style={{background: `linear-gradient(60deg, ${serverColorHeaderLeft} 50%, ${serverColorHeaderRight} 50%)`}}>
+    <header
+      className="header"
+      style={{ background: `linear-gradient(60deg, ${serverColorHeaderLeft} 50%, ${serverColorHeaderRight} 50%)` }}
+    >
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Box className="header__content">
           <Box className="header__column1">
@@ -84,7 +87,12 @@ export const Header = () => {
                   </Box>
                 </Box>
                 <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />
-                <HeaderButton className="add-button" variant="contained" startIcon={<HeaderPlusIcon /> } onClick={() => setBalanceModalOpen(true)}>
+                <HeaderButton
+                  className="add-button"
+                  variant="contained"
+                  startIcon={<HeaderPlusIcon />}
+                  onClick={() => setBalanceModalOpen(true)}
+                >
                   пополнить
                 </HeaderButton>
               </>

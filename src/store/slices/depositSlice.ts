@@ -5,23 +5,23 @@ export const depositAPI = createApi({
   reducerPath: 'depositApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://csgofarm.online',
-    prepareHeaders: function(headers) {
+    prepareHeaders: function (headers) {
       const token: string | undefined = Cookies.get('AuthorizationCSRApp');
       if (token) {
         headers.set('Authorization', token);
       }
       return headers;
-    }
+    },
   }),
-  endpoints: function(builder) {
+  endpoints: function (builder) {
     return {
-      getCreateDepositLink: builder.query<{link: string}, string>({
-        query: function() {
+      getCreateDepositLink: builder.query<{ link: string }, string>({
+        query: function () {
           return {
             url: '/api/v1/create-deposit',
-          }
-        }
-      })
-    }
-  }
+          };
+        },
+      }),
+    };
+  },
 });

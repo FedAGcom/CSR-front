@@ -2,7 +2,6 @@ import { Button, SxProps } from '@mui/material';
 import { Container } from '@mui/system';
 import { useEffect, useState } from 'react';
 import RoulettePro from 'react-roulette-pro';
-//import { packItemsList } from '../mocks/open-case';
 import 'react-roulette-pro/dist/index.css';
 import { ArrowBottom, ArrowMain, ArrowTop, HeaderSteam } from '../components/svg';
 import {
@@ -15,9 +14,11 @@ import {
   audio,
 } from '../components/OpenCase';
 import { useNavigate, useParams } from 'react-router-dom';
-import { HeaderAndFooter, PrizeBlock } from '../components';
+import { HeaderAndFooter, LoginModal, PrizeBlock } from '../components';
 import { fetchPack } from '../store/slices/packSlice';
 import { useAppDispatch, useAppSelector } from '../store';
+import { fetchWinId } from '../store/slices/winSlice';
+import { fetchUser } from '../store/slices/userSlice';
 
 const button: SxProps = {
   margin: '47px auto',
@@ -68,21 +69,24 @@ const steamBtn: SxProps = {
 };
 
 export const OpenCase = () => {
+  const [show, setShow] = useState(false);
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const { title, price, packItemsList } = useAppSelector((state) => state.packSlice);
+  const { isAuth } = useAppSelector((state) => state.userSlice);
+  const { winId } = useAppSelector((state) => state.winSlice);
 
- const {id} = useParams()
-  console.log(id)
- const dispatch = useAppDispatch()
- const {title, price, packItemsList} = useAppSelector(state => state.packSlice)
- const {isAuth} = useAppSelector(state => state.userSlice)
+  useEffect(() => {
+    dispatch(fetchPack(id));
+  }, []);
 
- console.log(title)
- console.log(packItemsList)
-  
- useEffect(() => {
-    dispatch(fetchPack(id))
-  }, [])
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [winId]);
 
-  const [winPrizeIndex, setWinPrizeIndex] = useState(1);
+  const winPrizeIndex = (id: any) => {
+    return packItemsList.findIndex((i) => i.id == id);
+  };
 
   const reproductionArray = (array: any[] = [], length = 0) => [
     ...Array(length)
@@ -104,26 +108,21 @@ export const OpenCase = () => {
     id: generateId(),
   }));
 
-  //const [isAuth, setIsAuth] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [start, setStart] = useState(false);
 
   const navigate = useNavigate();
 
-  // const auth = () => {
-  //   setIsAuth((prevState) => !prevState);
-  // };
-
   const handleStart = () => {
     setStart((prevState) => !prevState);
     setIsActive((prevState) => !prevState);
+    dispatch(fetchWinId(id));
   };
 
   const handleTryAgain = () => {
     setStart((prevState) => !prevState);
     setIsModal(false);
-    setWinPrizeIndex((prev) => prev + 1);
   };
 
   const handlePrizeDefined = () => {
@@ -131,7 +130,7 @@ export const OpenCase = () => {
     setIsActive(false);
   };
 
-  const prizeIndex = packItemsList.length * 4 + winPrizeIndex;
+  const prizeIndex = packItemsList.length * 4 + winPrizeIndex(winId);
 
   return (
     <>
@@ -185,10 +184,13 @@ export const OpenCase = () => {
               <Button disabled={isActive} sx={button} onClick={handleStart}>{`Открыть кейс за ${price} ₽`}</Button>
             )
           ) : (
-            <Button sx={steamBtn} onClick={() => console.log('ddd')}>
-              Войти через steam
-              <HeaderSteam />
-            </Button>
+            <>
+              <LoginModal show={show} onClose={() => setShow(false)} />
+              <Button sx={steamBtn} onClick={() => setShow(true)}>
+                Войти через steam
+                <HeaderSteam />
+              </Button>
+            </>
           )}
           <CaseContent />
         </Container>

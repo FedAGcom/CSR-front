@@ -39,9 +39,9 @@ export const CaseItem: React.FC<ICaseItemProps> = (props: ICaseItemProps) => {
     setIsOpen(false);
   }
 
-  const titleFormat = (title : string, index : number) => {
-    return title.split('|')[index]?.trim()
-  }
+  const titleFormat = (title: string, index: number) => {
+    return title.split('|')[index]?.trim();
+  };
 
   return (
     <div className={'skin-wrap' + ' ' + (props.disabled ? 'disabled' : '')}>

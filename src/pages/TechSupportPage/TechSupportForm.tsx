@@ -44,7 +44,11 @@ export const TechSupportForm = () => {
 
   return (
     <>
-      <form className="tech-support-form" onSubmit={handleSubmit(onSubmit)} style={{backgroundColor: serverColorBackgroundOne ?? '#24232A'}}>
+      <form
+        className="tech-support-form"
+        onSubmit={handleSubmit(onSubmit)}
+        style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}
+      >
         <Box className="tech-support-form__title">Форма для связи с тех.поддержкой</Box>
         <Box className="tech-support-form__inputs-container">
           <label className="tech-support-form__input-label">Email*</label>

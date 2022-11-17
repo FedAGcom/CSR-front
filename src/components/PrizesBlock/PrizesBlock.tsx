@@ -72,12 +72,12 @@ export const PrizeBlock = () => {
           })}
         </Box>
       </Box>
-      <Box sx={{backgroundColor: serverColorBackgroundTwo}}>
-        <Button sx={{...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor}}>
+      <Box sx={{ backgroundColor: serverColorBackgroundTwo }}>
+        <Button sx={{ ...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor }}>
           <Bonus />
           Бонусы
         </Button>
-        <Button sx={{...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor}}>
+        <Button sx={{ ...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor }}>
           <Roulette />
           Барабан
         </Button>
