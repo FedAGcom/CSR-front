@@ -1,15 +1,19 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import { loginSlice } from './slices/loginSlice';
-import appearanceSlice from './slices/appearanceSlice';
-import packsSlice from './slices/packsSlice';
-import userSlice from './slices/userSlice';
-import { depositAPI } from './slices/depositSlice';
-import packSlice from './slices/packSlice';
-import winSlice from './slices/winSlice';
+import {
+  loginSlice,
+  combineReducers,
+  appearanceSlice,
+  packsSlice,
+  userSlice,
+  depositAPI,
+  packSlice,
+  winSlice,
+  statisticsSlise,
+} from './slices/index';
 
 const rootReducer = combineReducers({
   // [slice.name]: reducer
   [loginSlice.reducerPath]: loginSlice.reducer,
+  [statisticsSlise.reducerPath]: statisticsSlise.reducer,
   packs: packsSlice,
   packSlice: packSlice,
   winSlice: winSlice,

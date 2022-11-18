@@ -3,15 +3,16 @@ import { FooterKey, FooterNet, FooterPerson, LogoFooter, SocialFacebook, SocialI
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { getColorFooterUp, getColorFooterDown, getFooterLogo } from '../../store/selectors/getSettingsAppearance';
+import { useGetOpenCaseCountQuery, useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
 
 type TFooterStatisticProps = {
-  openCases: number;
-  onlineUsers: number;
+  openCases: number | string;
+  onlineUsers: number | string;
   totalUsers: number;
 };
 
 type TFooterStatisticItemInfo = {
-  amount: number;
+  amount: number | string;
   title: string;
 };
 
@@ -130,10 +131,15 @@ const FooterInfo = () => {
 };
 
 export const Footer = () => {
+  const { data: count } = useGetOpenCaseCountQuery('');
+  const { data: users } = useGetUsersCountQuery('');
+
+  console.log(count, 9999);
+  console.log(users, 888);
   // get from backend
-  const openCases = 253901;
-  const onlineUsers = 8912;
-  const totalUsers = 10319;
+  const openCases = count ?? '';
+  const onlineUsers = '* * *';
+  const totalUsers = users ?? '';
 
   return (
     <footer className="footer">
