@@ -138,7 +138,7 @@ export const OpenCase = () => {
         <PrizeBlock />
         <Container sx={{ maxWidth: '1148px', marginTop: '50px' }} maxWidth={false}>
           <div className="case-content__header">
-            <h5 className="case-content__title">{title}</h5>
+            <h5 className="case-content__title">{title ? title : 'Кейс'}</h5>
             <div className="case-content__back" onClick={() => navigate('/')}>
               <ArrowMain />
               Вернуться на Главную

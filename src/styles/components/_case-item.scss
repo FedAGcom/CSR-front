@@ -62,15 +62,21 @@
     }
 }
 
-.case-item-Common {
-    background: linear-gradient(180deg, #24232A 0%, #3F5879 100%);
-    border-bottom: 1px solid #6A98D4;
+.case-item-Consumer {
+    background: linear-gradient(180deg, #24232A 0%, #93a5bc 100%);
+    border-bottom: 1px solid #8daad1;
 }
-.case-item-uncommon {
-    background: linear-gradient(180deg, #24232A 0%, #4057C7 100%);
-    border-bottom: 1px solid #4F6CF6;
+.case-item-Industrial {
+    background: linear-gradient(180deg, #24232A 0%, #3F5879 100%);
+    border-bottom: 1px solid #6A98D4
+    ;
 }
 .case-item-Mil-Spec {
+    background: linear-gradient(180deg, #24232A 0%, #4057C7 100%);
+    border-bottom: 1px solid #4F6CF6
+    ;
+}
+.case-item-Restricted {
     background: linear-gradient(180deg, #24232A 0%, #6542C5 100%);
     border-bottom: 1px solid #7E51F6;
 }
