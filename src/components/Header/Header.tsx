@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
 import { getColorHeaderLeft, getColorHeaderRight, getHeaderLogo } from '../../store/selectors/getSettingsAppearance';
+import { useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
 
 export const Header = () => {
   const { user, isAuth } = useAppSelector((state) => state.userSlice);
@@ -31,7 +32,9 @@ export const Header = () => {
   const handleModalOpen = () => setModalOpen(true);
 
   // get from backend
-  const onlineUsers = 666;
+
+  const { data: users } = useGetUsersCountQuery('');
+  const allUsers = users ?? '';
   //const userName = user.nickNameSteam;
   const country = 'Россия';
   const currency = 'РУБ';
@@ -62,14 +65,14 @@ export const Header = () => {
             </Box>
             <Box className="header__users-online">
               <OnlineAmount />
-              <Box component="span">{onlineUsers}</Box>
-              <Box>онлайн</Box>
+              <Box>Всего пользователей:</Box>
+              <Box component="span">{allUsers}</Box>
             </Box>
             <HeaderButton
               className="FAQ-button"
               variant="text"
               startIcon={<FAQ />}
-              onClick={() => console.log('FAQ page')}
+              onClick={() => navigate('/tech-support')}
             >
               FAQ
             </HeaderButton>

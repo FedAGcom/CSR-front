@@ -1,18 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import { rootReducer } from './reducers';
-import { loginSlice } from './slices/loginSlice';
-import { depositAPI } from './slices/depositSlice';
+import { statisticsSlise, loginSlice, depositAPI } from './slices/index';
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      // middlewares
-      // api.middleware
-      loginSlice.middleware,
-      depositAPI.middleware,
-    ),
+    getDefaultMiddleware().concat(loginSlice.middleware, statisticsSlise.middleware, depositAPI.middleware),
 });
 
 type TRootState = ReturnType<typeof store.getState>;
