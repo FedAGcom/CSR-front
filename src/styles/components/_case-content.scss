@@ -1,17 +1,17 @@
-.case-content__wraper {
-    position: relative;
-    &::before {
-    content: '';
-     position: absolute;
-     width: 1440px;
-     height: 707px;
-     left: -165px;
-     z-index: -1;
-     background: url('../../components/images/case-content-bckg.png') center no-repeat;
-     background-size: cover;
-     background-position: center;
-    }
-}
+// .case-content__wraper {
+//     position: relative;
+//     &::before {
+//     content: '';
+//      position: absolute;
+//      width: 1440px;
+//      height: 707px;
+//      left: -165px;
+//      z-index: -1;
+//      background: url('../../components/images/case-content-bckg.png') center no-repeat;
+//      background-size: cover;
+//      background-position: center;
+//     }
+// } переделано под sxProps
 
 .case-content__title {
     text-align: center;
@@ -21,6 +21,7 @@
     font-size: 30px;
     line-height: 37px;
     color: #FFFFFF;
+    position: relative;
 }
 
 .custom-grid {
@@ -33,4 +34,5 @@
     justify-items: center;
     flex-shrink: 0;
     flex-wrap: wrap;
+    position: relative;
 }
