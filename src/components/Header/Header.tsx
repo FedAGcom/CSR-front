@@ -99,7 +99,14 @@ export const Header = () => {
                     </Box>
                   </Box>
                 </Box>
-                <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />
+                {
+                  isBalanceModalOpen ?
+                  <BalanceModal 
+                    open={isBalanceModalOpen} 
+                    onClose={handleCloseBalance} 
+                  /> :
+                  null
+                }
                 <HeaderButton
                   className="add-button"
                   variant="contained"
