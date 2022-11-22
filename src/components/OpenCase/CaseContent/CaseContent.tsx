@@ -1,15 +1,32 @@
+import { Box, SxProps } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { caseData } from '../../../mocks/open-case';
 import { useAppSelector } from '../../../store';
 import { getBackgroundCase } from '../../../store/selectors/getSettingsAppearance';
 import { CaseItem } from '../../CaseItem/CaseItem';
+
 
 export const CaseContent = () => {
   const { packItemsList } = useAppSelector((state) => state.packSlice);
   const serverBackgroundCase = useSelector(getBackgroundCase);
 
+  const bg: SxProps = {
+    minHeight: '707px',
+    position: 'relative',
+    "&::before": {
+      content: "''",
+      position: 'absolute',
+      width: '1440px',
+      height: '707px',
+      left: '-165px',
+      zIndex: '0',
+      background: `url(${serverBackgroundCase}) center no-repeat`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    },
+  }
+
   return (
-    <div className="case-content__wraper">
+    <Box sx={bg} className="case-content__wraper">
       <h5 className="case-content__title">Содержимое кейса</h5>
       <div className="custom-grid">
         {packItemsList.map((i) => {
@@ -18,6 +35,6 @@ export const CaseContent = () => {
           );
         })}
       </div>
-    </div>
+    </Box>
   );
 };

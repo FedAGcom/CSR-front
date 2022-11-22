@@ -52,7 +52,14 @@ export const AccountHeaderField = () => {
         )}
       </div>
       <div className="account-field" style={{ justifyContent: 'space-between' }}>
-        <BalanceModal open={isBalanceModalOpen} onClose={handleCloseBalance} />
+        {
+          isBalanceModalOpen ?
+          <BalanceModal 
+            open={isBalanceModalOpen} 
+            onClose={handleCloseBalance} 
+          /> :
+          null
+        }
         <ButtonBasic className="primary" onClick={() => setBalanceModalOpen(true)}>
           Пополнить баланс
         </ButtonBasic>

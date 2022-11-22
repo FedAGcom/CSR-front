@@ -47,7 +47,7 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
                 setChecked(true);
               }}
             />
-            <label htmlFor="SKINSBACK">Пополнить CS:GO скинами (SKINSBACK)</label>
+            <label htmlFor="SKINSBACK">Пополнить CS:GO скинами (SKINIFY)</label>
           </div>
 
           <div className="trade-radio">
@@ -65,8 +65,13 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
         </div>
 
         <div className="trade-btn">
-          <ButtonBasic className="primary" style={{ width: '100%' }} disabled={!isChecked}>
-            <a href={`${data?.link}`}>Пополнить</a>
+          <ButtonBasic 
+            className="primary" 
+            style={{ width: '100%' }} 
+            disabled={!isChecked}
+            onClick={() => window.location.href = `${data?.link}`}
+          >
+            Пополнить
           </ButtonBasic>
         </div>
       </div>
