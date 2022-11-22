@@ -1,8 +1,8 @@
-
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { FieldValues } from 'react-hook-form';
 import { store } from "../store";
+import Cookies from 'js-cookie';
 
 type TErrorMessage ={
     message:string
@@ -49,10 +49,7 @@ export const getSettings = createAsyncThunk(
     async (_,{rejectWithValue})=>{
 try {
     const res = await axios.get(`${baseURL}`)
-    const settingsArray = res.data
-    const settings = settingsArray[settingsArray.length -1]
-    return settings
-   
+    return res.data
 } catch (error) {
     return rejectWithValue((error as TErrorMessage).message)
 }
@@ -60,33 +57,42 @@ try {
 )
 
 
+
+
+
+const token: string | undefined = Cookies.get('AuthorizationCSRApp');
 export const sendSettings = createAsyncThunk(
     'appearance/sendSettings',
     async (data:FieldValues, { rejectWithValue, getState })=>{
         const currentState:typeof store.getState.arguments = getState()
-    const formData = new FormData();
-    formData.append('textImage', currentState.appearance.appearanceSettings.textImage );
-    formData.append('headerLogo', currentState.appearance.appearanceSettings.headerLogo);
-    formData.append('backgroundCase', currentState.appearance.appearanceSettings.backgroundCase);
-    formData.append('footerLogo', currentState.appearance.appearanceSettings.footerLogo);
-    formData.append('backgroundMainBottom', currentState.appearance.appearanceSettings.backgroundMainBottom);
-    formData.append('activeWindow', data.activeWindow);
-    formData.append('buttonText', data.buttonText);
-    formData.append('colorBackground', data.colorBackground);
-    formData.append('colorBackgroundOne', data.colorBackgroundOne);
-    formData.append('colorBackgroundTwo', data.colorBackgroundTwo);
-    formData.append('colorButton', data.colorButton);
-    formData.append('colorButtons', data.colorButtons);
-    formData.append('colorFooterDown', data.colorFooterDown);
-    formData.append('colorFooterUp', data.colorFooterUp);
-    formData.append('colorHeaderLeft', data.colorHeaderLeft);
-    formData.append('colorHeaderRight', data.colorHeaderRight);
-    formData.append('titleText', data.titleText);
-    formData.append('windowTextTwo', data.windowTextTwo);
+        const formData = new FormData();
+        formData.append('textImage', currentState.appearance.appearanceSettings.textImage );
+        formData.append('headerLogo', currentState.appearance.appearanceSettings.headerLogo);
+        formData.append('backgroundCase', currentState.appearance.appearanceSettings.backgroundCase);
+        formData.append('footerLogo', currentState.appearance.appearanceSettings.footerLogo);
+        formData.append('backgroundMainBottom', currentState.appearance.appearanceSettings.backgroundMainBottom);
+        formData.append('activeWindow', data.activeWindow);
+        formData.append('buttonText', data.buttonText);
+        formData.append('colorBackground', data.colorBackground);
+        formData.append('colorBackgroundOne', data.colorBackgroundOne);
+        formData.append('colorBackgroundTwo', data.colorBackgroundTwo);
+        formData.append('colorButton', data.colorButton);
+        formData.append('colorButtons', data.colorButtons);
+        formData.append('colorFooterDown', data.colorFooterDown);
+        formData.append('colorFooterUp', data.colorFooterUp);
+        formData.append('colorHeaderLeft', data.colorHeaderLeft);
+        formData.append('colorHeaderRight', data.colorHeaderRight);
+        formData.append('titleText', data.titleText);
+        formData.append('windowTextTwo', data.windowTextTwo);
         try {
-            await axios.post(baseURL,formData, {
-                headers: { 'Content-Type': 'application/json' },
-            })      
+            await axios.put(baseURL,formData,
+                    {
+                           headers: { 
+                                       'Content-Type': 'application/json',                         
+                                       'Authorization': `${token}`
+                                   },
+                               })   
+
             }   catch (error) {
             return rejectWithValue((error as TErrorMessage).message)
             }

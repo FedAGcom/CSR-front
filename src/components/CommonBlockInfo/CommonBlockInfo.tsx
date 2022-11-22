@@ -36,12 +36,15 @@ export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name
   const backgroundMain = useSelector(getBackgroundMainBottom);
   return (
     <div className="block__image">
-      <Box
-        component="img"
-        style={{ width: '100%', height: '100%', position: 'absolute', zIndex: '-1' }}
-        src={`${backgroundMain}`}
-        alt="headerImage"
-      ></Box>
+      {backgroundMain && (
+        <Box
+          component="img"
+          style={{ width: '100%', height: '100%', position: 'absolute', zIndex: '-1' }}
+          src={`${backgroundMain}`}
+          alt="headerImage"
+        ></Box>
+      )}
+
       <div className="container">
         <p>{name}</p>
         <div className="block__wrapper">
