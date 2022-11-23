@@ -16,7 +16,12 @@ export const Case = (props: ICaseProps) => {
   return (
     <Box className="case block__item" onClick={() => navigate('/open-case' + '/' + props.id)}>
       <Box className="case__image"></Box>
-      <Box component="img" src={props.img ? props.img : caseImage} alt="case image" sx={{ width: '255px' }}></Box>
+      <Box
+        component="img"
+        src={props.img ? props.img : caseImage}
+        alt="case image"
+        sx={{ width: '255px', height: '255px', overflow: 'hidden' }}
+      ></Box>
       <Box className="case__price">{props.price} &#8381;</Box>
       <Box className="case__title">{props.title}</Box>
     </Box>

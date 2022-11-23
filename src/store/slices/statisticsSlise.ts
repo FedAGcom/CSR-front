@@ -18,7 +18,13 @@ export const statisticsSlise = createApi({
         method: 'GET',
       }),
     }),
+    getLastItemsWon: builder.query({
+      query: () => ({
+        url: `/api/v1/itemsWon/get-last-items-won`,
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useGetOpenCaseCountQuery, useGetUsersCountQuery } = statisticsSlise;
+export const { useGetOpenCaseCountQuery, useGetUsersCountQuery, useGetLastItemsWonQuery } = statisticsSlise;
