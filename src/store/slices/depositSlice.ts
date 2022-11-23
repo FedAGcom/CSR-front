@@ -13,12 +13,12 @@ export const depositAPI = createApi({
       return headers;
     },
   }),
-  endpoints: function (builder) {
+  endpoints: function(build) {
     return {
-      getCreateDepositLink: builder.query<{ link: string }, string>({
-        query: function () {
+      getCreateDepositSkinifyLink: build.query<{ link: string }, string>({
+        query: function(requestUrl: string) {
           return {
-            url: '/api/v1/create-deposit',
+            url: requestUrl,
           };
         },
       }),

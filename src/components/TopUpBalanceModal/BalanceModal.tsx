@@ -6,16 +6,30 @@ import { depositAPI } from '../../store/slices/depositSlice';
 
 export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) => {
   const [inputValue, setInputValue] = useState<string>('');
-  const [radioValue, setRadioValue] = useState('');
-  const [isChecked, setChecked] = useState<boolean>(false);
-  const { data } = depositAPI.useGetCreateDepositLinkQuery('');
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const [topUpOptions] = useState([
+    {name: 'skinify', url: '/api/v1/create-deposit', text: 'Пополнить CS:GO скинами (Skinify)'}, 
+    {name: 'paypalych', url: '', text: 'Paypalych'},
+  ]);
+
+  const [selectedIdx, setSelectedIdx] = useState<number>(0);
+  const [skip, setSkip] = useState(true);
+  const { data } = depositAPI.useGetCreateDepositSkinifyLinkQuery( topUpOptions[selectedIdx].url, { skip });
 
   const handleClose = () => {
     onClose();
-    setChecked(false);
-    setRadioValue('');
+    setIsChecked(false);
     setInputValue('');
   };
+
+  function checkHandler(index: number) {
+    setSelectedIdx(index);
+    if (skip) {
+      setSkip(false);
+    }
+    setIsChecked(true);
+  }
 
   return (
     <ModalBasic open={open} onClose={handleClose}>
@@ -37,31 +51,20 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
         </div>
 
         <div className="trade-radio__wrapper">
-          <div className="trade-radio">
-            <RadioBtn
-              value="SKINSBACK"
-              id="SKINSBACK"
-              checked={radioValue === 'SKINSBACK' ? true : false}
-              onChange={(e) => {
-                setRadioValue(e.target.value);
-                setChecked(true);
-              }}
-            />
-            <label htmlFor="SKINSBACK">Пополнить CS:GO скинами (SKINIFY)</label>
-          </div>
-
-          <div className="trade-radio">
-            <RadioBtn
-              value="smth"
-              id="smth"
-              checked={radioValue === 'smth' ? true : false}
-              onChange={(e) => {
-                setRadioValue(e.target.value);
-                setChecked(true);
-              }}
-            />
-            <label htmlFor="smth">Пополнить CS:GO что-то еще</label>
-          </div>
+          {
+            topUpOptions.map((option, index) => {
+              return (
+                <div className="trade-radio" key={index}>
+                  <RadioBtn
+                    id={option.name}
+                    checked={selectedIdx === index && isChecked}
+                    onChange={() => checkHandler(index)}
+                  />
+                  <label htmlFor={`${option.name}`}>{option.text}</label>
+                </div>
+              )
+            })
+          }
         </div>
 
         <div className="trade-btn">
