@@ -1,8 +1,28 @@
 import { Box, Button, Container, SxProps } from '@mui/material';
 import { All, Bonus, Case, Roulette, StarIcon } from '../svg';
-import { data } from '../../mocks/prizes';
 import { useSelector } from 'react-redux';
 import { getColorButtons, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
+import { useGetLastItemsWonQuery } from '../../store/slices/statisticsSlise';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
+import { styled } from '@mui/material/styles';
+import React from 'react';
+
+const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .${tooltipClasses.tooltip}`]: {
+    width: '200px',
+    height: 'auto',
+    marginTop: '-10px',
+    zIndex: 5,
+    padding: '10px',
+    display: 'flex',
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
+    alignItems: 'flex-start',
+    fontSize: '16px',
+  },
+});
 
 const button: SxProps = {
   display: 'flex',
@@ -44,9 +64,24 @@ const button2: SxProps = {
   },
 };
 
+type TLastWonItems = {
+  icon: string | undefined;
+  item_id: number;
+  item_title: string;
+  pack_title?: string;
+  rare: string;
+  type?: string;
+  user_icon?: string;
+  user_name?: string;
+  class?: string;
+};
+
 export const PrizeBlock = () => {
   const serverColorButtons = useSelector(getColorButtons);
   const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
+
+  const { data: lastWonItems } = useGetLastItemsWonQuery('');
+  console.log(lastWonItems, 'data');
 
   return (
     <Container sx={{ maxWidth: '1148px' }} maxWidth={false}>
@@ -62,12 +97,47 @@ export const PrizeBlock = () => {
           </Button>
         </Box>
         <Box className="prizes-block">
-          {data.map((item) => {
+          {lastWonItems?.map((item: TLastWonItems) => {
             return (
-              <Box key={item.id} className={'prizes-block__item ' + item.class}>
-                <img className="prizes-block__img" src={item.img} alt="" />
-                <span className="prizes-block__title">{item.title}</span>
-              </Box>
+              <CustomTooltip
+                key={item.item_id}
+                title={
+                  <React.Fragment>
+                    <span>
+                      <b>
+                        <u>Пак:</u>
+                      </b>{' '}
+                      {item.pack_title}
+                    </span>
+                    <span>
+                      <b>
+                        <u>Тип оружия:</u>
+                      </b>{' '}
+                      {item.type}
+                    </span>
+                    <span>
+                      <b>
+                        <u>Модель:</u>
+                      </b>{' '}
+                      {item.item_title}
+                    </span>
+                    <span>
+                      <b>
+                        <u>Получил:</u>
+                      </b>{' '}
+                      {item.user_name}
+                    </span>
+                  </React.Fragment>
+                }
+                className="tooltip"
+                arrow
+              >
+                <Box className={'prizes-block__item ' + item.rare}>
+                  <img className="prizes-block__img" src={item.icon} alt="" />
+                  {/* <span className="prizes-block__title">{item.item_title}</span> */}
+                  {/* <p className="tooltip">111</p> */}
+                </Box>
+              </CustomTooltip>
             );
           })}
         </Box>

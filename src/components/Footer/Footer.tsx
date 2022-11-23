@@ -134,8 +134,6 @@ export const Footer = () => {
   const { data: count } = useGetOpenCaseCountQuery('');
   const { data: users } = useGetUsersCountQuery('');
 
-  console.log(count, 9999);
-  console.log(users, 888);
   // get from backend
   const openCases = count ?? '';
   const onlineUsers = '* * *';

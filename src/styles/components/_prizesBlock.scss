@@ -2,6 +2,44 @@
     display: flex;
     overflow: hidden;
     box-shadow: -50px 0px 21px -21px rgba(36, 35, 42, 1) inset;
+    position: relative;
+
+    &__item {
+    position: relative;
+    display: flex;
+    // z-index: -1;
+    flex-direction: column;
+    min-width: "111px";
+    max-height: '86px';
+    }
+
+    &__img {
+    box-sizing: border-box;
+    width: 88px;
+    height: 65px;
+    margin-top: 10px;
+    margin-left: 12px;
+    margin-right: 11px;
+    }
+
+&__title {
+    position: absolute;
+    box-sizing: border-box;
+    width: 88%;
+    z-index: 2;
+    text-align: center;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: unset;
+    top: 57px;
+    left: 7px;
+}
+}
+
+.tooltip {
+    &.MuiTooltip-tooltip {
+        background-color:red !important;
+}
 }
 
 .sort-block {
@@ -16,57 +54,28 @@
     position: relative;
 }
 
-.prizes-block__item {
-    position: relative;
-    display: flex;
-    z-index: -1;
-    flex-direction: column;
-    min-width: "111px"; 
-    max-height: '86px';
-}
 
-.common {
+.Common {
     background: linear-gradient(360deg, #3b4555 21.51%, rgba(32, 45, 99, 0) 100%);
     border-bottom: 1px solid #98b3d6;
 }
 
-.uncommon {
+.Uncommon {
     background: linear-gradient(360deg, #2A374A 21.51%, rgba(32, 45, 99, 0) 100%);
     border-bottom: 1px solid #6A98D4;
 }
 
-.milspec {
+.Milspec {
     background: linear-gradient(360deg, #202D63 21.51%, rgba(32, 45, 99, 0) 100%);
-    border-bottom: 1px solid #4F6CF6;  
+    border-bottom: 1px solid #4F6CF6;
 }
 
-.restricted {
+.Restricted {
     background: linear-gradient(360deg, #312456 21.51%, rgba(76, 37, 38, 0) 100%);
-    border-bottom: 1px solid #7E51F6;   
+    border-bottom: 1px solid #7E51F6;
 }
 
-.covert {
+.Covert {
     background: linear-gradient(360deg, #4C2526 21.51%, rgba(76, 37, 38, 0) 100%);
     border-bottom: 1px solid #DA5752;
-}
-
-.prizes-block__img {
-    box-sizing: border-box;
-    width: 88px;
-    height: 65px;
-    margin-top: 10px;
-    margin-left: 12px;
-    margin-right: 11px;
-}
-
-.prizes-block__title {
-    position: absolute;
-    box-sizing: border-box;
-    width: 100%;
-    z-index: 2;
-    text-align: center;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 13px;
-    top: 61px
 }
