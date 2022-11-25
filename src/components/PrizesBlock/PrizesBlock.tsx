@@ -3,26 +3,6 @@ import { All, Bonus, Case, Roulette, StarIcon } from '../svg';
 import { useSelector } from 'react-redux';
 import { getColorButtons, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
 import { useGetLastItemsWonQuery } from '../../store/slices/statisticsSlise';
-import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
-import { styled } from '@mui/material/styles';
-import React from 'react';
-
-const CustomTooltip = styled(({ className, ...props }: TooltipProps) => (
-  <Tooltip {...props} classes={{ popper: className }} />
-))({
-  [`& .${tooltipClasses.tooltip}`]: {
-    width: '200px',
-    height: 'auto',
-    marginTop: '-10px',
-    zIndex: 5,
-    padding: '10px',
-    display: 'flex',
-    flexDirection: 'column',
-    flexWrap: 'nowrap',
-    alignItems: 'flex-start',
-    fontSize: '16px',
-  },
-});
 
 const button: SxProps = {
   display: 'flex',
@@ -83,6 +63,10 @@ export const PrizeBlock = () => {
   const { data: lastWonItems } = useGetLastItemsWonQuery('');
   console.log(lastWonItems, 'data');
 
+  const titleFormat = (title: string, index: number) => {
+    return title.split('|')[index]?.trim();
+  };
+
   return (
     <Container sx={{ maxWidth: '1148px' }} maxWidth={false}>
       <Box className="win-panel">
@@ -99,45 +83,18 @@ export const PrizeBlock = () => {
         <Box className="prizes-block">
           {lastWonItems?.map((item: TLastWonItems) => {
             return (
-              <CustomTooltip
-                key={item.item_id}
-                title={
-                  <React.Fragment>
-                    <span>
-                      <b>
-                        <u>Пак:</u>
-                      </b>{' '}
-                      {item.pack_title}
-                    </span>
-                    <span>
-                      <b>
-                        <u>Тип оружия:</u>
-                      </b>{' '}
-                      {item.type}
-                    </span>
-                    <span>
-                      <b>
-                        <u>Модель:</u>
-                      </b>{' '}
-                      {item.item_title}
-                    </span>
-                    <span>
-                      <b>
-                        <u>Получил:</u>
-                      </b>{' '}
-                      {item.user_name}
-                    </span>
-                  </React.Fragment>
-                }
-                className="tooltip"
-                arrow
-              >
-                <Box className={'prizes-block__item ' + item.rare}>
-                  <img className="prizes-block__img" src={item.icon} alt="" />
-                  {/* <span className="prizes-block__title">{item.item_title}</span> */}
-                  {/* <p className="tooltip">111</p> */}
-                </Box>
-              </CustomTooltip>
+              <Box key={item.item_id} className={'prizes-block__item ' + item.rare}>
+                <img className="prizes-block__img" src={item.icon} alt="" />
+                <span className="prizes-block__type">{titleFormat(item.item_title, 0)}</span>
+                <span className="prizes-block__title">{titleFormat(item.item_title, 1)}</span>
+                <div className="tooltip">
+                  <div className="tooltip-inner">
+                    <img className="tooltip__img" src={item.user_icon} alt="" />
+                    <p className="tooltip__username">{item.user_name}</p>
+                    <p className="tooltip__case">«{item.pack_title}»</p>
+                  </div>
+                </div>
+              </Box>
             );
           })}
         </Box>
