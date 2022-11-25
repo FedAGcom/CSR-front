@@ -18,6 +18,9 @@
 
     .case-item {
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 150px;
         height: 98px;
         border-radius: 10px;
@@ -27,7 +30,6 @@
         &__img {
             display: block;
             margin: 0 auto;
-            padding-top: 16px;
             width: 88px;
         }
     
@@ -63,32 +65,30 @@
 }
 
 .case-item-Consumer {
-    background: linear-gradient(180deg, #24232A 0%, #93a5bc 100%);
-    border-bottom: 1px solid #8daad1;
+    background: linear-gradient(0deg, #75808D 32%, rgba(117, 128, 141, 0) 100%);
+    border-bottom: 1px solid #B3C3D7;
 }
 .case-item-Industrial {
-    background: linear-gradient(180deg, #24232A 0%, #3F5879 100%);
-    border-bottom: 1px solid #6A98D4
-    ;
+    background: linear-gradient(0deg, #46648B 32%, rgba(70, 100, 139, 0) 100%);
+    border-bottom: 1px solid #6A98D4;
 }
 .case-item-Mil-Spec {
-    background: linear-gradient(180deg, #24232A 0%, #4057C7 100%);
-    border-bottom: 1px solid #4F6CF6
-    ;
+    background: linear-gradient(0deg, #3447A1 32%, rgba(52, 71, 161, 0) 100%);
+    border-bottom: 1px solid #4F6CF6;
 }
 .case-item-Restricted {
-    background: linear-gradient(180deg, #24232A 0%, #6542C5 100%);
+    background: linear-gradient(0deg, #5335A1 32%, rgba(83, 53, 161, 0) 100%);
     border-bottom: 1px solid #7E51F6;
 }
 .case-item-Classified {
-    background: linear-gradient(180deg, #24232A 0%, #7B2A8D 100%);
+    background: linear-gradient(0deg, #7F2C92 32%, rgba(127, 44, 146, 0) 100%);
     border-bottom: 1px solid #C243DE;
 }
 .case-item-Covert {
-    background: linear-gradient(180deg, #24232A 0%, #9F3F3C 100%);
+    background: linear-gradient(0deg, #8F3936 32%, rgba(143, 57, 54, 0) 100%);
     border-bottom: 1px solid #DA5752;
 }
-.case-item-legendary {
-    background: linear-gradient(180deg, #24232A 0%, #9f943c 100%);
-    border-bottom: 1px solid #dedb32;
+.case-item-Contraband {
+    background: linear-gradient(0deg, #A07436 32%, rgba(160, 116, 54, 0) 100%);
+    border-bottom: 1px solid #F4B152;
 }

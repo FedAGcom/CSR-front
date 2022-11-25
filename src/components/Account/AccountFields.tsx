@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ExitIcon, HeaderSteam } from '../svg';
 import { BalanceModal, ButtonBasic, TradeLinkModal } from '../index';
 import { SkinsModal } from './SkinsModal';
@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
 import Cookies from 'js-cookie';
 import { fetchUser } from '../../store/slices/userSlice';
+import $api from '../../api';
+import { fetchFavoritePack } from '../../store/slices/packSlice';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
@@ -77,7 +79,15 @@ export const AccountHeaderField = () => {
 };
 
 export const AccountCaseField = () => {
+  const navigate = useNavigate()
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+  const dispatch = useAppDispatch()
+  const {favoritePackId} = useAppSelector(state => state.userSlice)
+  const {favoritePack} = useAppSelector(state => state.packSlice)
+
+  useEffect(() => {
+    dispatch(fetchFavoritePack(favoritePackId))
+  }, [])
 
   return (
     <div className="account-case__wrapper">
@@ -87,13 +97,13 @@ export const AccountCaseField = () => {
       >
         <div className="account-case__common">
           <p className="account-case__title">Любимый кейс</p>
-          <p className="account-case__desc">Нет любимого кейса</p>
-          <ButtonBasic className="primary">Открыть</ButtonBasic>
+          <p className="account-case__desc">{favoritePack ? favoritePack?.title :"Нет любимого кейса"}</p>
+          <ButtonBasic className="primary" onClick={() => navigate(`/open-case/${favoritePackId}`)}>Открыть</ButtonBasic>
         </div>
 
-        {/* <div className="account-case__img">
-          <img src={caseImage} />
-        </div> */}
+        <div className="account-case__img">
+          <img src={favoritePack?.image} />
+        </div>
       </div>
       <div
         className="account-case account-case__drop"
@@ -112,8 +122,34 @@ export const AccountCaseField = () => {
 };
 
 export const AccountSoldItemsField = () => {
+  const { user } = useAppSelector((state) => state.userSlice);
   const [isSkinsModalOpen, setSkinsModalOpen] = useState<boolean>(false);
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+  const [items, setItems] = useState()
+
+  const fetchItems = async () => {
+    const { data } = await $api.get<any>(`http://csgofarm.online/api/v1/items`);
+    let newItems = []
+    newItems = data.content
+    setItems(newItems)   
+    
+}
+
+const accItems = (items : any, arrId : any) => {
+  const result = []
+  for(let i = 0; i < arrId?.length; i++) {
+    for(let j = 0; j < items?.length; j++) {
+      if(arrId[i] == items[j].id) {
+      result.push(items[j])
+      }
+    }
+  }
+  return result
+}
+
+useEffect(() => {
+  fetchItems()
+}, [])
 
   return (
     <>
@@ -145,15 +181,16 @@ export const AccountSoldItemsField = () => {
         </div>
       ) : (
         <div className="account-items-content">
-          {caseData.map((i) => (
+          {accItems(items, user?.itemsIdActiveAll).map((i) => (
             <CaseItem
-              key={i.id}
-              class={i.class}
-              image={i.image}
+              key={Math.random()}
+              class={i.rare}
+              image={i.iconItemId}
               type={i.type}
               title={i.title}
               price={i.price}
               disabled={false}
+              content
             />
           ))}
         </div>

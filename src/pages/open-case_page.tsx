@@ -4,17 +4,9 @@ import { useEffect, useState } from 'react';
 import RoulettePro from 'react-roulette-pro';
 import 'react-roulette-pro/dist/index.css';
 import { ArrowBottom, ArrowMain, ArrowTop, HeaderSteam } from '../components/svg';
-import {
-  CaseContent,
-  CaseAuthBanner,
-  PrizeModal,
-  SellButton,
-  RouletteItem,
-  TryAgainButton,
-  audio,
-} from '../components/OpenCase';
+import {CaseContent, CaseAuthBanner, PrizeModal, SellButton, RouletteItem, TryAgainButton, audio, CaseRefillBanner} from '../components/OpenCase';
 import { useNavigate, useParams } from 'react-router-dom';
-import { HeaderAndFooter, LoginModal, PrizeBlock } from '../components';
+import { BalanceModal, HeaderAndFooter, LoginModal, PrizeBlock } from '../components';
 import { fetchPack } from '../store/slices/packSlice';
 import { useAppDispatch, useAppSelector } from '../store';
 import { fetchWinId } from '../store/slices/winSlice';
@@ -69,11 +61,12 @@ const steamBtn: SxProps = {
 };
 
 export const OpenCase = () => {
+  const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
   const [show, setShow] = useState(false);
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const { title, price, packItemsList } = useAppSelector((state) => state.packSlice);
-  const { isAuth } = useAppSelector((state) => state.userSlice);
+  const { isAuth, user } = useAppSelector((state) => state.userSlice);
   const { winId } = useAppSelector((state) => state.winSlice);
 
   useEffect(() => {
@@ -130,71 +123,89 @@ export const OpenCase = () => {
     setIsActive(false);
   };
 
+  const handleCloseBalance = () => {
+    setBalanceModalOpen(false);
+  };
+
   const prizeIndex = packItemsList.length * 4 + winPrizeIndex(winId);
 
   return (
     <>
-      <HeaderAndFooter>
-        <PrizeBlock />
-        <Container sx={{ maxWidth: '1148px', marginTop: '50px' }} maxWidth={false}>
-          <div className="case-content__header">
-            <h5 className="case-content__title">{title ? title : 'Кейс'}</h5>
-            <div className="case-content__back" onClick={() => navigate('/')}>
-              <ArrowMain />
-              Вернуться на Главную
-            </div>
+    <HeaderAndFooter>
+      <PrizeBlock />
+      <Container sx={{ maxWidth: '1148px', marginTop: '50px' }} maxWidth={false}>
+        <div className="case-content__header">
+          <h5 className="case-content__title">{title ? title : 'Кейс'}</h5>
+          <div className="case-content__back" onClick={() => navigate('/')}>
+            <ArrowMain />
+            Вернуться на Главную
           </div>
-          {isAuth ? (
-            <div className="roulette-wrap">
-              {isModal && (
-                <PrizeModal
-                  image={prizeList[prizeIndex].iconItemId}
-                  type={prizeList[prizeIndex].type}
-                  title={prizeList[prizeIndex].title}
-                  class={prizeList[prizeIndex].rare}
-                  id={prizeList[prizeIndex].id}
-                />
-              )}
-              <RoulettePro
-                soundWhileSpinning={audio}
-                prizes={prizeList}
-                prizeIndex={prizeIndex}
-                start={start}
-                spinningTime={5}
-                type={'horizontal'}
-                onPrizeDefined={handlePrizeDefined}
-                options={{ stopInCenter: true, withoutAnimation: true }}
-                defaultDesignOptions={{ hideCenterDelimiter: true }}
-                //@ts-expect-error заглушка для рулетки
-                prizeItemRenderFunction={(i) => <RouletteItem image={i.iconItemId} class={i.rare} />} //todo
+        </div>
+        {isAuth ? (
+          <div className="roulette-wrap">
+            {isModal && (
+              <PrizeModal
+                image={prizeList[prizeIndex].iconItemId}
+                type={prizeList[prizeIndex].type}
+                title={prizeList[prizeIndex].title}
+                class={prizeList[prizeIndex].rare}
+                id={prizeList[prizeIndex].id}
               />
-              <ArrowTop className="arrow-top" />
-              <ArrowBottom className="arrow-bottom" />
-            </div>
-          ) : (
-            <CaseAuthBanner />
-          )}
-          {isAuth ? (
-            isModal ? (
-              <div className="btn-block-wrapper">
-                <SellButton />
-                <TryAgainButton onClick={handleTryAgain} />
-              </div>
-            ) : (
-              <Button disabled={isActive} sx={button} onClick={handleStart}>{`Открыть кейс за ${price} ₽`}</Button>
-            )
-          ) : (
-            <>
-              <LoginModal show={show} onClose={() => setShow(false)} />
-              <Button sx={steamBtn} onClick={() => setShow(true)}>
-                Войти через steam
-                <HeaderSteam />
-              </Button>
+            )}
+            {price < user.balance ?
+              <>
+              <RoulettePro
+              soundWhileSpinning={audio}
+              prizes={prizeList}
+              prizeIndex={prizeIndex}
+              start={start}
+              spinningTime={5}
+              type={'horizontal'}
+              onPrizeDefined={handlePrizeDefined}
+              options={{ stopInCenter: true, withoutAnimation: true }}
+              defaultDesignOptions={{ hideCenterDelimiter: true }}
+              //@ts-expect-error заглушка для рулетки
+              prizeItemRenderFunction={(i) => <RouletteItem image={i.iconItemId} class={i.rare} />} //todo
+            />
+            <ArrowTop className="arrow-top" />
+            <ArrowBottom className="arrow-bottom" />
             </>
-          )}
-          <CaseContent />
-        </Container>
-      </HeaderAndFooter>
-    </>
+            :
+            <CaseRefillBanner price={price} balance={user.balance}/>
+            }
+          </div>
+        ) : (
+          <CaseAuthBanner />
+        )}
+        {isModal && 
+        <div className="btn-block-wrapper">
+          <SellButton />
+          <TryAgainButton onClick={handleTryAgain} />
+        </div>
+        }
+        {isAuth && !isModal && price < user.balance &&<Button disabled={isActive} sx={button} onClick={handleStart}>{`Открыть кейс за ${price} ₽`}</Button>
+        // <Button disabled={price > user.balance ? true : isActive} sx={button} onClick={handleStart}>{`Открыть кейс за ${price} ₽`}</Button>
+        }
+        {
+        isBalanceModalOpen ?
+        <BalanceModal 
+          open={isBalanceModalOpen} 
+          onClose={handleCloseBalance} 
+        /> :
+        null
+      }
+        {price > user.balance && <Button sx={button} onClick={() => setBalanceModalOpen(true)}>Пополнить баланс</Button>}
+        {!isAuth && <>
+          <LoginModal show={show} onClose={() => setShow(false)} />
+          <Button sx={steamBtn} onClick={() => setShow(true)}>
+            Войти через steam
+            <HeaderSteam />
+          </Button>
+        </>
+        }
+        <CaseContent />
+      </Container>
+    </HeaderAndFooter>
+  </>
   );
 };

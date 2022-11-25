@@ -5,7 +5,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const caseData = [
     title: 'Градиент',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAZh7PLfYQJE7dizq4yCkP_gfe_UzzwJ7ZQiibqSrNr22VblrkBuNmD6J9fDIAI4YwuDqwK7xLrojZWi_MOeU-VNNgU/130fx97f/image.png',
-    class: 'covert',
+    class: 'Covert',
   },
   {
     id: 3,
@@ -21,7 +21,7 @@ export const caseData = [
     title: 'Наследие',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5_MeKyPDJYcxX9BK5ZTvQs8QzTDSIz78tma9qz87ITJBLss4WVNLctOdBNTMmFUqKDYg2r7x5p1KcJKJ2JpirqjCnvb2lbXke_5Ctaz-I-vJK7/260fx194f/image.png',
-    class: 'restricted',
+    class: 'Restricted',
   },
   {
     id: 4,
@@ -29,7 +29,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 5,
@@ -37,7 +37,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 6,
@@ -45,7 +45,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ export const caseData = [
     title: 'Осадок',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tck29Y_cg_2biYotvz3ALi8kQ9Nm6hcIXDcQ86ZQ2F_gPqw-bqgpDp6s_Imns2uj5iuyhknboYCw/130fx97f/image.png',
-    class: 'uncommon',
+    class: 'Industrial',
   },
   {
     id: 9,
@@ -69,7 +69,7 @@ export const caseData = [
     title: 'Осадок',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tck29Y_cg_2biYotvz3ALi8kQ9Nm6hcIXDcQ86ZQ2F_gPqw-bqgpDp6s_Imns2uj5iuyhknboYCw/130fx97f/image.png',
-    class: 'uncommon',
+    class: 'Industrial',
   },
   {
     id: 10,
@@ -77,7 +77,7 @@ export const caseData = [
     title: 'Осадок',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tck29Y_cg_2biYotvz3ALi8kQ9Nm6hcIXDcQ86ZQ2F_gPqw-bqgpDp6s_Imns2uj5iuyhknboYCw/130fx97f/image.png',
-    class: 'uncommon',
+    class: 'Industrial',
   },
   {
     id: 11,
@@ -85,7 +85,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 12,
@@ -93,7 +93,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 13,
@@ -101,7 +101,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 14,
@@ -109,7 +109,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 15,
@@ -117,7 +117,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 16,
@@ -125,7 +125,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 17,
@@ -133,7 +133,7 @@ export const caseData = [
     title: 'Градиент',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot621FAZh7PLfYQJE7dizq4yCkP_gfe_UzzwJ7ZQiibqSrNr22VblrkBuNmD6J9fDIAI4YwuDqwK7xLrojZWi_MOeU-VNNgU/130fx97f/image.png',
-    class: 'covert',
+    class: 'Covert',
   },
   {
     id: 18,
@@ -149,7 +149,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 20,
@@ -157,7 +157,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 21,
@@ -165,7 +165,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 22,
@@ -173,7 +173,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 23,
@@ -181,7 +181,7 @@ export const caseData = [
     title: 'Осадок',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tck29Y_cg_2biYotvz3ALi8kQ9Nm6hcIXDcQ86ZQ2F_gPqw-bqgpDp6s_Imns2uj5iuyhknboYCw/130fx97f/image.png',
-    class: 'uncommon',
+    class: 'Industrial',
   },
   {
     id: 24,
@@ -189,7 +189,7 @@ export const caseData = [
     title: 'Осадок',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tck29Y_cg_2biYotvz3ALi8kQ9Nm6hcIXDcQ86ZQ2F_gPqw-bqgpDp6s_Imns2uj5iuyhknboYCw/130fx97f/image.png',
-    class: 'uncommon',
+    class: 'Industrial',
   },
   {
     id: 25,
@@ -197,7 +197,7 @@ export const caseData = [
     title: 'Осадок',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgposr-kLAtl7PvRTjBN-Mi6kYS0hPb6N4Tck29Y_cg_2biYotvz3ALi8kQ9Nm6hcIXDcQ86ZQ2F_gPqw-bqgpDp6s_Imns2uj5iuyhknboYCw/130fx97f/image.png',
-    class: 'uncommon',
+    class: 'Industrial',
   },
   {
     id: 26,
@@ -205,7 +205,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 27,
@@ -213,7 +213,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 28,
@@ -221,7 +221,7 @@ export const caseData = [
     title: 'Гроза',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpot6-iFBRv7ODcfi9P6s65mpS0m_7zO6-fzj9V7cAl2eyVpIrz2FKx8kZtZGqhIoWQJwU4aArU8le2xea50J--6oOJlyWzfFi66w/260fx194f/image.png',
-    class: 'common',
+    class: 'Consumer',
   },
   {
     id: 29,
@@ -229,7 +229,7 @@ export const caseData = [
     title: 'Айзек',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/fWFc82js0fmoRAP-qOIPu5THSWqfSmTELLqcUywGkijVjZYMUrsm1j-9xgEObwgfEh_nvjlWhNzZCveCDfIBj98xqodQ2CZknz5vMeDsDzRyTRDHAvlhXeYz_QXjHxg_7cNqQdr4o-xTKgm7tobOYrUrZt4aHJHYU6TQZVj0vxg_ifBULMGN9ivqiH-9OHBKBUQ9rY3UNg/130fx97f/image.png',
-    class: 'milspec',
+    class: 'Mil-Spec',
   },
   {
     id: 30,
@@ -237,6 +237,6 @@ export const caseData = [
     title: 'Кровавая паутина',
     image:
       'https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCo04DEVlxkKgpovbSsLQJf3qr3czxb49KzgL-DjsjjNrnCqWdY781lteXA54vwxgG2rhFla2-hcYTGclBqYAnWrgXrx728hsC_up2fm3MyvnIl4nffnEGpwUYbLGuk_6Y/150fx112fdpx2x',
-    class: 'legendary',
+    class: 'Contraband',
   },
 ];

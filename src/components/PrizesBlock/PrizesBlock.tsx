@@ -83,7 +83,7 @@ export const PrizeBlock = () => {
         <Box className="prizes-block">
           {lastWonItems?.map((item: TLastWonItems) => {
             return (
-              <Box key={item.item_id} className={'prizes-block__item ' + item.rare}>
+              <Box key={Math.random()} className={'prizes-block__item ' + item.rare}>
                 <img className="prizes-block__img" src={item.icon} alt="" />
                 <span className="prizes-block__type">{titleFormat(item.item_title, 0)}</span>
                 <span className="prizes-block__title">{titleFormat(item.item_title, 1)}</span>
