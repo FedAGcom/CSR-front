@@ -18,9 +18,11 @@ export interface IPackState {
   isLoading: boolean;
   id: number | null;
   title: string | null;
-  price: number | null;
+  price: number;
   image: string | null;
   packItemsList: IPackItemsList[];
+  favoritePack: any,
+  bestItemIdAndPrice: any,
 }
 
 const initialState: IPackState = {
@@ -28,9 +30,11 @@ const initialState: IPackState = {
   isLoading: false,
   id: null,
   title: '',
-  price: null,
+  price: 0,
   image: null,
   packItemsList: [],
+  favoritePack: {},
+  bestItemIdAndPrice: {},
 };
 
 export const fetchPack = (id: any) => async (dispatch: TAppDispatch) => {
@@ -38,6 +42,16 @@ export const fetchPack = (id: any) => async (dispatch: TAppDispatch) => {
     dispatch(packSlice.actions.packFetching());
     const { data } = await $api.get<any>(`api/v1/packs/${id}`);
     dispatch(packSlice.actions.packFetchingSuccess(data));
+  } catch (e) {
+    dispatch(packSlice.actions.packFetchingError((e as Error).message));
+  }
+};
+
+export const fetchFavoritePack = (id: any) => async (dispatch: TAppDispatch) => {
+  try {
+    dispatch(packSlice.actions.packFetching());
+    const { data } = await $api.get<any>(`api/v1/packs/${id}`);
+    dispatch(packSlice.actions.FavoritePackFetchingSuccess(data));
   } catch (e) {
     dispatch(packSlice.actions.packFetchingError((e as Error).message));
   }
@@ -61,6 +75,11 @@ export const packSlice = createSlice({
     packFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    FavoritePackFetchingSuccess(state, action: PayloadAction<IPackState>) {
+      state.isLoading = false;
+      state.error = '';
+      state.favoritePack = action.payload;
     },
   },
 });

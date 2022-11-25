@@ -8,6 +8,8 @@ interface IUserState {
   isAuth: boolean;
   error: string;
   user: any;
+  favoritePackId: any;
+  favoritePackIdAndCount: any;
 }
 
 const initialState: IUserState = {
@@ -15,6 +17,8 @@ const initialState: IUserState = {
   isAuth: false,
   error: '',
   user: {},
+  favoritePackId: 0,
+  favoritePackIdAndCount: ''
 };
 
 export const fetchUser = () => async (dispatch: TAppDispatch) => {
@@ -35,10 +39,11 @@ const userSlice = createSlice({
     userFetching(state) {
       state.isLoading = true;
     },
-    userFetchingSuccess(state, action: PayloadAction<object>) {
+    userFetchingSuccess(state, action: PayloadAction<IUserState>) {
       state.isLoading = false;
       state.isAuth = true;
       state.user = action.payload;
+      state.favoritePackId = Object.keys(action.payload.favoritePackIdAndCount)[0]
     },
     userFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;
