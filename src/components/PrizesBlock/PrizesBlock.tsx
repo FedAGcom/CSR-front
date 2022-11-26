@@ -84,9 +84,12 @@ export const PrizeBlock = () => {
           {lastWonItems?.map((item: TLastWonItems) => {
             return (
               <Box key={Math.random()} className={'prizes-block__item ' + item.rare}>
+                <div className='prize-wrap'>
                 <img className="prizes-block__img" src={item.icon} alt="" />
                 <span className="prizes-block__type">{titleFormat(item.item_title, 0)}</span>
                 <span className="prizes-block__title">{titleFormat(item.item_title, 1)}</span>
+                </div>
+                
                 <div className="tooltip">
                   <div className="tooltip-inner">
                     <img className="tooltip__img" src={item.user_icon} alt="" />
