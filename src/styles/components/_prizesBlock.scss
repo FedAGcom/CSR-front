@@ -9,13 +9,20 @@
     position: relative;
     display: flex;
     // z-index: -1;
-    flex-direction: column;
+    //flex-direction: column;
     width: 115px;
     height: 86px;
 
         &:hover{
+            .prize-wrap {
+                transition: 0.3s ease-in-out 40ms;
+                backdrop-filter: brightness(50%);
+                filter: blur(2px);
+            }
             .tooltip {
-            display: block;
+            transition: 0.3s ease-in-out 40ms;
+            opacity: 1;
+            //display: block;
             position: absolute;
             top:0;
             width: 100%;
@@ -85,7 +92,7 @@
 }
 
 .tooltip {
-    display: none;
+    opacity: 0;
 }
 
 
@@ -105,55 +112,55 @@
 .Consumer {
     background: linear-gradient(0deg, #75808D 32%, rgba(117, 128, 141, 0) 100%);
     border-bottom: 1px solid #B3C3D7;
-    &:hover {
-        background-color: rgb(91 118 134 / 92%);
-    }
+    // &:hover {
+    //     background-color: rgb(91 118 134 / 92%);
+    // }
 }
 
 .Industrial {
     background: linear-gradient(0deg, #46648B 32%, rgba(70, 100, 139, 0) 100%);
     border-bottom: 1px solid #6A98D4;
-    &:hover {
-        background-color: rgba(51, 93, 117, 0.905);
-    }
+    // &:hover {
+    //     background-color: rgba(51, 93, 117, 0.905);
+    // }
 }
 
 .Mil-Spec {
     background: linear-gradient(0deg, #3447A1 32%, rgba(52, 71, 161, 0) 100%);
     border-bottom: 1px solid #4F6CF6;
-    &:hover{
-        background-color: #5d7eaae4;
-    }
+    // &:hover{
+    //     background-color: #5d7eaae4;
+    // }
 }
 
 .Restricted {
     background: linear-gradient(0deg, #5335A1 32%, rgba(83, 53, 161, 0) 100%);
     border-bottom: 1px solid #7E51F6;
-    &:hover{
-        background-color: #431ea9e9;
-    }
+    // &:hover{
+    //     background-color: #431ea9e9;
+    // }
 }
 
 .Classified {
     background: linear-gradient(0deg, #7F2C92 32%, rgba(127, 44, 146, 0) 100%);
     border-bottom: 1px solid #C243DE;
-    &:hover{
-        background-color: #7F2C92;
-    }
+    // &:hover{
+    //     background-color: #7F2C92;
+    // }
 }
 
 .Covert {
     background: linear-gradient(0deg, #8F3936 32%, rgba(143, 57, 54, 0) 100%);
     border-bottom: 1px solid #DA5752;
-    :hover {
-        background-color: #be4e4eeb;
-    }
+    // :hover {
+    //     background-color: #be4e4eeb;
+    // }
 }
 
 .Contraband {
     background: linear-gradient(0deg, #A07436 32%, rgba(160, 116, 54, 0) 100%);
     border-bottom: 1px solid #F4B152;
-    :hover {
-        background-color: #A07436;
-    }
+    // :hover {
+    //     background-color: #A07436;
+    // }
 }
