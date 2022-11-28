@@ -24,8 +24,7 @@ const initialState: IUserState = {
 export const fetchUser = () => async (dispatch: TAppDispatch) => {
   try {
     dispatch(userSlice.actions.userFetching());
-    const response = await $api.get(`api/v1/users`); //поменять на новый запрос
-    //const response = await $api.get(`api/v1/auth/success_url?steam_id=${Cookies.get('steam_id')}`);
+    const response = await $api.get(`api/v1/users`);
     dispatch(userSlice.actions.userFetchingSuccess(response.data));
   } catch (e) {
     dispatch(userSlice.actions.userFetchingError((e as Error).message));
@@ -43,7 +42,7 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.isAuth = true;
       state.user = action.payload;
-      state.favoritePackId = Object.keys(action.payload.favoritePackIdAndCount)[0]
+      state.favoritePackId = Object.keys(action.payload.favoritePackIdAndCount || {})[0]
     },
     userFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;
