@@ -34,12 +34,13 @@ export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({
 
 export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name }: ICommonBlockInfoProps) => {
   const backgroundMain = useSelector(getBackgroundMainBottom);
+  const { packs } = useAppSelector((state) => state.packs);
   return (
     <div className="block__image">
       {backgroundMain && (
         <Box
           component="img"
-          style={{ width: '100%', height: '100%', position: 'absolute', zIndex: '-1' }}
+          style={{ width: '100%', height: '100%', position: 'absolute', zIndex: '-1', objectFit: 'cover'}}
           src={`${backgroundMain}`}
           alt="headerImage"
         ></Box>
@@ -48,6 +49,10 @@ export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name
       <div className="container">
         <p>{name}</p>
         <div className="block__wrapper">
+        {packs.map((i) => (
+            <Case key={i.id} title={i.title} price={i.price} img={i.image} id={i.id} />
+          ))}
+          {/* <Case />
           <Case />
           <Case />
           <Case />
@@ -58,8 +63,7 @@ export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name
           <Case />
           <Case />
           <Case />
-          <Case />
-          <Case />
+          <Case /> */}
         </div>
       </div>
     </div>

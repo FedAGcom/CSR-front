@@ -162,7 +162,7 @@ export const OpenCase = () => {
               spinningTime={5}
               type={'horizontal'}
               onPrizeDefined={handlePrizeDefined}
-              options={{ stopInCenter: false, withoutAnimation: true }}
+              options={{ stopInCenter: false, withoutAnimation: false }}
               defaultDesignOptions={{ hideCenterDelimiter: false }}
               //@ts-expect-error заглушка для рулетки
               prizeItemRenderFunction={(i) => <RouletteItem image={i.iconItemId} class={i.rare} />} //todo
