@@ -184,6 +184,7 @@ useEffect(() => {
           {accItems(items, user?.itemsIdActiveAll).map((i) => (
             <CaseItem
               key={Math.random()}
+              id={i.id}
               class={i.rare}
               image={i.iconItemId}
               type={i.type}

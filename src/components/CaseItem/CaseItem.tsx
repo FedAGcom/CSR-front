@@ -11,6 +11,7 @@ interface ICaseItemProps {
   price?: number;
   disabled?: boolean;
   content?: boolean;
+  id?: number | string;
 }
 
 const btn: SxProps = {
@@ -62,6 +63,7 @@ export const CaseItem: React.FC<ICaseItemProps> = (props: ICaseItemProps) => {
             onConfirm={onConfirmSale}
             skinName={`${props?.title ?? ''}`}
             price={props?.price ?? 0}
+            id={props?.id}
           />
         </>
       )}
