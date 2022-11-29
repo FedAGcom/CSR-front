@@ -70,7 +70,7 @@ export const PrizeBlock = () => {
   return (
     <Container sx={{ maxWidth: '1148px' }} maxWidth={false}>
       <Box className="win-panel">
-        <Box className="sort-block">
+        {/* <Box className="sort-block">
           <Button sx={{ ...button, backgroundColor: serverColorButtons ?? button.backgroundColor }} className="button">
             Лучшее
             <StarIcon />
@@ -79,7 +79,7 @@ export const PrizeBlock = () => {
             Все
             <All className="all" />
           </Button>
-        </Box>
+        </Box> */}
         <Box className="prizes-block">
           {lastWonItems?.map((item: TLastWonItems) => {
             return (
@@ -102,7 +102,7 @@ export const PrizeBlock = () => {
           })}
         </Box>
       </Box>
-      <Box sx={{ backgroundColor: serverColorBackgroundTwo }}>
+      {/* <Box sx={{ backgroundColor: serverColorBackgroundTwo }}>
         <Button sx={{ ...button2, backgroundColor: serverColorButtons ?? button2.backgroundColor }}>
           <Bonus />
           Бонусы
@@ -115,7 +115,7 @@ export const PrizeBlock = () => {
           <Case />
           Дневной кейс
         </Button>
-      </Box>
+      </Box> */}
     </Container>
   );
 };

@@ -1,4 +1,7 @@
 import { Box, SxProps, Typography } from '@mui/material';
+import $api from '../../api';
+import { useAppDispatch } from '../../store';
+import { fetchUser } from '../../store/slices/userSlice';
 import { ButtonBasic, ModalBasic } from '../index';
 
 interface IModalProps {
@@ -7,9 +10,10 @@ interface IModalProps {
   onConfirm: () => void;
   skinName: string;
   price: number;
+  id?: string | number;
 }
 
-export function ConfirmSkinSaleModal({ skinName, price, open, onClose, onConfirm }: IModalProps) {
+export function ConfirmSkinSaleModal({ skinName, price, open, onClose, onConfirm, id }: IModalProps) {
   const confirmSaleModalStyles: SxProps = {
     display: 'flex',
     flexDirection: 'column',
@@ -35,6 +39,12 @@ export function ConfirmSkinSaleModal({ skinName, price, open, onClose, onConfirm
     width: '185px',
   };
 
+  const dispatch = useAppDispatch()
+  const fetchSellItemById = async () => {
+    await $api.get<any>(`http://csgofarm.online:8080/api/v1/itemsWon/sellAnItem/${id}`);
+    dispatch(fetchUser())
+  }
+
   return (
     <ModalBasic open={open} onClose={onClose}>
       <Box sx={confirmSaleModalStyles}>
@@ -56,7 +66,7 @@ export function ConfirmSkinSaleModal({ skinName, price, open, onClose, onConfirm
           <ButtonBasic className="outlined" onClick={onClose} sx={btnStyles}>
             Отмена
           </ButtonBasic>
-          <ButtonBasic className="primary" onClick={onConfirm} sx={btnStyles}>
+          <ButtonBasic className="primary" onClick={() => {onConfirm(); fetchSellItemById()}} sx={btnStyles}>
             Продать
           </ButtonBasic>
         </Box>
