@@ -2,6 +2,8 @@
     min-width: 205px;
     height: 304px;
     box-sizing: border-box;
+    box-shadow: 0 0 15px rgba(0,0,0,0.75);
+    clip-path: inset(0px 2px 0px 0px);
     
     &__img {
         margin-top: 64px;
