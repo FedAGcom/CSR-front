@@ -102,8 +102,10 @@
     padding: 30px;
 
         &__wrapper {
-        margin: 30px 0;
+            margin: 30px 0 30px;
+        gap: 30px;
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: space-between;
         }

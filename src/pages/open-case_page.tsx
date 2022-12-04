@@ -11,6 +11,7 @@ import { fetchPack } from '../store/slices/packSlice';
 import { useAppDispatch, useAppSelector } from '../store';
 import { fetchWinId } from '../store/slices/winSlice';
 import { fetchUser } from '../store/slices/userSlice';
+import $api from '../api';
 
 const button: SxProps = {
   margin: '47px auto',
@@ -129,6 +130,11 @@ export const OpenCase = () => {
 
   const prizeIndex = packItemsList.length * 4 + winPrizeIndex(winId);
 
+  const fetchSellItemById = async () => {
+    await $api.get<any>(`http://csgofarm.online:8080/api/v1/itemsWon/sellAnItem/${winId}`);
+    dispatch(fetchUser())
+  }
+
   return (
     <>
     <HeaderAndFooter>
@@ -179,7 +185,7 @@ export const OpenCase = () => {
         )}
         {isModal && 
         <div className="btn-block-wrapper">
-          <SellButton />
+          <SellButton onClick={() => {fetchSellItemById(); handleTryAgain()}}/>
           <TryAgainButton onClick={handleTryAgain} />
         </div>
         }
