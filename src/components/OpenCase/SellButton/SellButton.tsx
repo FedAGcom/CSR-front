@@ -26,9 +26,11 @@ const button: SxProps = {
   },
 };
 
-export const SellButton = () => {
+
+
+export const SellButton = (props: any) => {
   return (
-    <Button startIcon={<SellBtn />} sx={button}>
+    <Button startIcon={<SellBtn />} sx={button} {...props}>
       Продать
     </Button>
   );

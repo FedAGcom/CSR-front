@@ -64,7 +64,7 @@ export const Header = () => {
               )}
             </Box>
             <Box className="header__users-online">
-              <OnlineAmount />
+              <OnlineAmount className="online-icon"/>
               <Box>Всего пользователей:</Box>
               <Box component="span">{allUsers}</Box>
             </Box>
