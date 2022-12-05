@@ -1,0 +1,26 @@
+{
+  "header": {
+    "totalUsers": "Total users",
+    "FAQ": "FAQ",
+    "country": "USA",
+    "currency": "USD",
+    "signIn": "Sign In",
+    "balance": "Balance",
+    "topUp": "Top up"
+  },
+
+  "localizationModal": {
+    "title": "Update platform interface",
+    "subtitle": "Choose the right language and currency",
+    "countryInputLabel": "Country",
+    "languageInputLabel": "language",
+    "currencyInputLabel": "Currency",
+    "closeBtn": "Close",
+    "country1": "Russia",
+    "country2": "USA",
+    "russianLng": "Russian",
+    "englishLng": "English",
+    "currencyRub": "RUB",
+    "currencyUsd": "USD"
+  }
+}

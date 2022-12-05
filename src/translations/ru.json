@@ -1,0 +1,27 @@
+{
+  "header": {
+    "totalUsers": "Всего пользователей",
+    "FAQ": "FAQ",
+    "country": "Россия",
+    "currency": "РУБ",
+    "signIn": "Войти",
+    "balance": "Баланс",
+    "topUp": "Пополнить"
+  },
+
+  "localizationModal": {
+    "title": "Обновить интерфейс платформы",
+    "subtitle": "Выберите подходящий язык и валюту",
+    "countryInputLabel": "Страна",
+    "languageInputLabel": "Язык",
+    "currencyInputLabel": "Валюта",
+    "closeBtn": "Закрыть",
+    "country1": "Россия",
+    "country2": "США",
+    "russianLng": "Русский",
+    "englishLng": "Английский",
+    "currencyRub": "РУБ",
+    "currencyUsd": "USD"
+  }
+}
+

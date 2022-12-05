@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FAQ, Logo, OnlineAmount, HeaderSteam, HeaderPlusIcon } from '../svg';
 import { Box, Avatar, Container } from '@mui/material';
 import { HeaderButton } from './HeaderButton/HeaderButton';
-import { flagRu } from '../images';
+import { flagRu, flagEn } from '../images';
 import { LoginModal } from '../index';
 import { LocalizationModal } from './LocalizationModal/LocalizationModal';
 import { BalanceModal } from '../index';
@@ -11,8 +11,16 @@ import { useAppSelector } from '../../store';
 import { useSelector } from 'react-redux';
 import { getColorHeaderLeft, getColorHeaderRight, getHeaderLogo } from '../../store/selectors/getSettingsAppearance';
 import { useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
+import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+
+const languages: Record<string, {name: string, flag: string}> = {
+  en: {name: 'English', flag: flagEn},
+  ru: {name: 'Русский', flag: flagRu},
+}
 
 export const Header = () => {
+  const { t } = useTranslation();
   const { user, isAuth } = useAppSelector((state) => state.userSlice);
   const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
   const serverColorHeaderRight = useSelector(getColorHeaderRight);
@@ -31,17 +39,8 @@ export const Header = () => {
   const handleModalClose = () => setModalOpen(false);
   const handleModalOpen = () => setModalOpen(true);
 
-  // get from backend
-
   const { data: users } = useGetUsersCountQuery('');
   const allUsers = users ?? '';
-  //const userName = user.nickNameSteam;
-  const country = 'Россия';
-  const currency = 'РУБ';
-  //const balanceValue = user.balance;
-
-  // get from redux
-  //const isAuth = false;
 
   return (
     <header
@@ -65,7 +64,7 @@ export const Header = () => {
             </Box>
             <Box className="header__users-online">
               <OnlineAmount />
-              <Box>Всего пользователей:</Box>
+              <Box>{t('header.totalUsers')}:</Box>
               <Box component="span">{allUsers}</Box>
             </Box>
             <HeaderButton
@@ -79,9 +78,9 @@ export const Header = () => {
           </Box>
           <Box className="header__column2">
             <Box className="header__location" onClick={handleModalOpen}>
-              <Box className="header__flag" component="img" alt="Country icon" src={flagRu}></Box>
-              <Box className="header__country">{country}</Box>
-              <Box className="header__currency">{currency}</Box>
+              <Box className="header__flag" component="img" alt="Country icon" src={languages[i18next.language].flag}></Box>
+              <Box className="header__country">{languages[i18next.language].name}</Box>
+              <Box className="header__currency">RUB</Box>
             </Box>
             <LocalizationModal isOpen={isModalOpen} handleClose={handleModalClose}></LocalizationModal>
             {isAuth ? (
@@ -92,7 +91,7 @@ export const Header = () => {
                   <Box>
                     <Box className="header__username">{user.nickNameSteam}</Box>
                     <Box className="header__balance">
-                      Баланс:
+                      {t('header.balance')}:
                       <Box component="span" className="header__balance-value">
                         {user.balance?.toLocaleString('ru')}
                       </Box>
@@ -113,7 +112,7 @@ export const Header = () => {
                   startIcon={<HeaderPlusIcon />}
                   onClick={() => setBalanceModalOpen(true)}
                 >
-                  пополнить
+                  {t('header.topUp')}
                 </HeaderButton>
               </>
             ) : (
@@ -126,7 +125,7 @@ export const Header = () => {
                   variant="contained"
                   endIcon={<HeaderSteam />}
                 >
-                  ВОЙТИ
+                  {t('header.signIn')}
                 </HeaderButton>
               </>
             )}
