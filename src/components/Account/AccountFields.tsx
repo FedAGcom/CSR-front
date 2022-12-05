@@ -97,7 +97,7 @@ export const AccountCaseField = () => {
       >
         <div className="account-case__common">
           <p className="account-case__title">Любимый кейс</p>
-          <p className="account-case__desc">{favoritePack ? favoritePack?.title :"Нет любимого кейса"}</p>
+          <p className="account-case__desc">{favoritePack && favoritePack?.title}</p>
           <ButtonBasic className="primary" onClick={() => navigate(`/open-case/${favoritePackId}`)}>Открыть</ButtonBasic>
         </div>
 
@@ -184,6 +184,7 @@ useEffect(() => {
           {accItems(items, user?.itemsIdActiveAll).map((i) => (
             <CaseItem
               key={Math.random()}
+              id={i.id}
               class={i.rare}
               image={i.iconItemId}
               type={i.type}

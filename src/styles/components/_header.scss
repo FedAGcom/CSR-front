@@ -90,3 +90,23 @@
     margin-left: 5px;
   }
 }
+
+.online-icon {
+  animation: pulse 2s infinite;
+  
+  @keyframes pulse {
+    0% {
+      opacity: .3;
+      transform: scale(1.1);
+    }
+
+    50% {
+        opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+        opacity: .3;
+        transform: scale(1.1);
+    }
+  }
+}

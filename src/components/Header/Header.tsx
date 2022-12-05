@@ -63,7 +63,7 @@ export const Header = () => {
               )}
             </Box>
             <Box className="header__users-online">
-              <OnlineAmount />
+              <OnlineAmount className="online-icon"/>
               <Box>{t('header.totalUsers')}:</Box>
               <Box component="span">{allUsers}</Box>
             </Box>
