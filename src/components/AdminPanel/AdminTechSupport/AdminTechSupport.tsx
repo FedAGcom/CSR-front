@@ -1,7 +1,10 @@
 import { Box, Typography, Divider } from '@mui/material';
+import { useGetRequestsQuery } from '../../../store/slices/supportSlice';
 import { AdminTechSupportSearchForm } from './AdminTechSupportSearchForm';
 
 export function AdminTechSupport() {
+  const { data } = useGetRequestsQuery('');
+
   return (
     <Box className="admin-tech-support">
       <Typography component="h1" className="admin-tech-support__title">
@@ -13,7 +16,7 @@ export function AdminTechSupport() {
           Заявки
         </Typography>
         <Typography component="span" className="admin-tech-support__requests-number">
-          0
+          {data?.length || 0}
         </Typography>
       </Box>
       <AdminTechSupportSearchForm />

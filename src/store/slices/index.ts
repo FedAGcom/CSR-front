@@ -7,6 +7,7 @@ import { depositAPI } from './depositSlice';
 import packSlice from './packSlice';
 import winSlice from './winSlice';
 import { statisticsSlise } from './statisticsSlise';
+import { supportSlice } from './supportSlice';
 
 export {
   loginSlice,
@@ -18,4 +19,5 @@ export {
   packSlice,
   winSlice,
   statisticsSlise,
+  supportSlice,
 };
