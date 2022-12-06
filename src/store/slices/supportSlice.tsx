@@ -4,6 +4,14 @@ export const supportSlice = createApi({
   reducerPath: 'support',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://csgofarm.online',
+    prepareHeaders: (headers) => {
+      const token = document.cookie.slice(20);
+
+      if (token) {
+        headers.set('Authorization', `${token}`);
+      }
+      return headers;
+    },
   }),
   tagTypes: ['TechRequests', 'EmailRequests'],
   endpoints: (builder) => ({
