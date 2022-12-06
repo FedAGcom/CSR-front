@@ -70,7 +70,7 @@ export const AccountHeaderField = () => {
         <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
           Трейд ссылка
         </ButtonBasic>
-        <div className="account-exit" onClick={handleExit}>
+        <div className="account-exit" onClick={() => {handleExit(); navigate('/')}}>
           <ExitIcon />
         </div>
       </div>
@@ -87,7 +87,7 @@ export const AccountCaseField = () => {
 
   useEffect(() => {
     dispatch(fetchFavoritePack(favoritePackId))
-  }, [])
+  }, [favoritePackId])
 
   return (
     <div className="account-case__wrapper">

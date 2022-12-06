@@ -89,19 +89,18 @@ type TModalPromoProps = {
   open: boolean;
   onClose: () => void;
   children: React.ReactNode;
-  id: number;
   name: string;
   abc?: number;
 };
 
-export const ModalPromo: FC<TModalPromoProps> = ({ open, onClose, children, name, id }) => {
+export const ModalPromo: FC<TModalPromoProps> = ({ open, onClose, children, name }) => {
   return (
     <MuiModal open={open} onClick={onClose}>
       <Box sx={modalContainer}>
         <Box sx={modalContentAdmin} onClick={(e) => e.stopPropagation()}>
           <Box sx={closeButtonAdmin}>
             <Box className="aum__title">
-              Промокод <span>{name}</span> (#{id})
+              Промокод <span>{name}</span>
             </Box>
             <IconButton onClick={onClose} className="modal-close">
               <CloseIcon />

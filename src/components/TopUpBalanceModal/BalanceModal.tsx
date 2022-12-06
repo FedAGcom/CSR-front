@@ -3,10 +3,15 @@ import { ButtonBasic, InputBasic, ModalBasic, RadioBtn } from '../index';
 import { WaletIcon } from '../svg';
 import { ITradeLinkModalProps } from '../TradeLinkModal/TradeLinkModal';
 import { depositAPI } from '../../store/slices/depositSlice';
+import { useAppDispatch, useAppSelector } from '../../store';
+import userSlice, { checkPromo, clearMessage } from '../../store/slices/userSlice';
 
 export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isSucces, setIsSucces] = useState<boolean>(false)
+  const dispatch = useAppDispatch()
+  const {promoMessage} = useAppSelector(state => state.userSlice)
 
   const [topUpOptions] = useState([
     {name: 'skinify', url: '/api/v1/create-deposit', text: 'Пополнить CS:GO скинами (Skinify)'}, 
@@ -31,8 +36,20 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
     setIsChecked(true);
   }
 
+  const checkPromoHandler = () => {
+    dispatch(checkPromo(inputValue))
+    setIsSucces(true)
+  }
+
+  const handleSucces = () => {
+    setIsSucces((prev) => !prev)
+    onClose()
+    dispatch(clearMessage(''))
+  }
+  console.log(isSucces)
   return (
-    <ModalBasic open={open} onClose={handleClose}>
+    <>
+    {!promoMessage ? <ModalBasic open={open} onClose={handleClose}>
       <div className="trade-wrapper">
         <div className="trade-title">
           <p>Пополнение баланса</p> <WaletIcon />
@@ -71,13 +88,19 @@ export const BalanceModal: React.FC<ITradeLinkModalProps> = ({ onClose, open }) 
           <ButtonBasic 
             className="primary" 
             style={{ width: '100%' }} 
-            disabled={!isChecked}
-            onClick={() => window.location.href = `${data?.link}`}
+            disabled={!isChecked && !inputValue}
+            onClick={() => {inputValue ? checkPromoHandler() : window.location.href = `${data?.link}`}}
           >
             Пополнить
           </ButtonBasic>
         </div>
       </div>
     </ModalBasic>
+    :
+    <ModalBasic open={isSucces} onClose={handleSucces}>
+    <div style={{textAlign: 'center', fontSize: "2rem"}}>{promoMessage}</div>
+    </ModalBasic>
+    }
+  </>
   );
 };
