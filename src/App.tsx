@@ -54,7 +54,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         <Route path="/tech-support" element={<TechSupportPage />} />
-        {!user.role ? (
+        {user.role === 'admin' ? (
           <>
             <Route path="/admin" element={<AdminLayout />}>
               <Route path="/admin/users" element={<AdminUsers />} />

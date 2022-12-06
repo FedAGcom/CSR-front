@@ -4,15 +4,6 @@ export const supportSlice = createApi({
   reducerPath: 'support',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://csgofarm.online',
-    prepareHeaders: (headers) => {
-      const token =
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI3NjU2MTE5ODQyMzI4NjQ0OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY3MDA4MjgwMywiZXhwIjoxNjcwNjg3NjAzfQ.XDwUBGQGOjE96A7KMbC0eqlwQwDAr7kuQl7WIswajmk';
-
-      if (token) {
-        headers.set('Authorization', `${token}`);
-      }
-      return headers;
-    },
   }),
   tagTypes: ['TechRequests', 'EmailRequests'],
   endpoints: (builder) => ({
