@@ -82,6 +82,21 @@ export const ButtonBasic = (props: IMyButtonProps) => {
     },
   };
 
+  const supRemoveBtn: SxProps = {
+    width: '160px',
+    height: '38px',
+    borderRadius: '5px',
+    color: '#fff',
+    backgroundColor: 'transparent',
+    border: '1px solid #FB0000',
+    marginTop: '5px',
+    '&:hover': {
+      border: '1px solid #ce4d4d',
+      color: '#FB0000',
+      backgroundColor: '#000',
+    },
+  };
+
   let styles = { ...btnStyles };
   if (props.className === 'primary') styles = { ...styles, ...primary };
   else if (props.className === 'outlined') styles = { ...styles, ...outlined };
@@ -89,6 +104,7 @@ export const ButtonBasic = (props: IMyButtonProps) => {
   else if (props.className === 'text') styles = { ...styles, ...text };
   else if (props.className === 'admin') styles = { ...styles, ...adminButton };
   else if (props.className === 'skins') styles = { ...styles, ...skinsBtn };
+  else if (props.className === 'supRemoveBtn') styles = { ...styles, ...supRemoveBtn };
 
   return <MUIButton {...props} disableRipple={false} sx={{ ...styles, ...props.sx }}></MUIButton>;
 };

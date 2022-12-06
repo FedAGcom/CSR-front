@@ -8,12 +8,13 @@ import {
   packSlice,
   winSlice,
   statisticsSlise,
+  supportSlice,
 } from './slices/index';
 
 const rootReducer = combineReducers({
-  // [slice.name]: reducer
   [loginSlice.reducerPath]: loginSlice.reducer,
   [statisticsSlise.reducerPath]: statisticsSlise.reducer,
+  [supportSlice.reducerPath]: supportSlice.reducer,
   packs: packsSlice,
   packSlice: packSlice,
   winSlice: winSlice,
