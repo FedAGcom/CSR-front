@@ -41,7 +41,7 @@ export const PromoTable = () => {
               Создать промокод
             </div>
           </div>
-          <TableRow className="admin-users__wrapper">
+          {/* <TableRow className="admin-users__wrapper">
             <TableCell align="center" width="10%">
               22
             </TableCell>
@@ -60,8 +60,8 @@ export const PromoTable = () => {
             <TableCell align="center" width="12%" className="admin-users__modal" onClick={open}>
               Открыть
             </TableCell>
-          </TableRow>
-          <AdminPromoModal open={isOpen} onClose={() => setIsOpen(false)} id={22} name={`FedAG2022`} />
+          </TableRow> */}
+          <AdminPromoModal open={isOpen} onClose={() => setIsOpen(false)} name={`FedAG2022`} />
         </TableBody>
       </Table>
     </>
