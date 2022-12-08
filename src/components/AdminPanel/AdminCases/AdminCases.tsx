@@ -63,6 +63,7 @@ export const AdminCases = () => {
           .map((caseItem) => {
             return (
               <Case
+                id={caseItem.id}
                 key={caseItem.id}
                 caseItem={caseItem}
                 onClick={() => handleCaseClick(caseItem.id)}
