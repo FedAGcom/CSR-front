@@ -3,6 +3,9 @@ import { All, Bonus, Case, Roulette, StarIcon } from '../svg';
 import { useSelector } from 'react-redux';
 import { getColorButtons, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
 import { useGetLastItemsWonQuery } from '../../store/slices/statisticsSlise';
+import { fetchUser } from '../../store/slices/userSlice';
+import { useAppDispatch } from '../../store';
+import { useEffect, useState } from 'react';
 
 const button: SxProps = {
   display: 'flex',
@@ -59,13 +62,26 @@ type TLastWonItems = {
 export const PrizeBlock = () => {
   const serverColorButtons = useSelector(getColorButtons);
   const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
+  const [intervalMs, setIntervalMs] = useState(2000)
 
-  const { data: lastWonItems } = useGetLastItemsWonQuery('');
+  const { data: lastWonItems } = useGetLastItemsWonQuery('', {
+    pollingInterval: 10000,
+  }
+  );
   console.log(lastWonItems, 'data');
+  //const dispatch = useAppDispatch()
 
   const titleFormat = (title: string, index: number) => {
     return title.split('|')[index]?.trim();
   };
+
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     dispatch(fetchUser())
+  //   }, 2000);
+  
+  //   return () => clearInterval(interval);
+  // }, []);
 
   return (
     <Container sx={{ maxWidth: '1148px' }} maxWidth={false}>

@@ -11,6 +11,8 @@ interface IUserState {
   promoMessage: string;
   favoritePackId: any;
   favoritePackIdAndCount: any;
+  bestItemIdAndPrice: any;
+  bestItemId: any;
 }
 
 const initialState: IUserState = {
@@ -20,7 +22,9 @@ const initialState: IUserState = {
   user: {},
   promoMessage: '',
   favoritePackId: 0,
-  favoritePackIdAndCount: ''
+  favoritePackIdAndCount: '',
+  bestItemIdAndPrice: 0,
+  bestItemId: 0,
 };
 
 export const fetchUser = () => async (dispatch: TAppDispatch) => {
@@ -63,6 +67,7 @@ const userSlice = createSlice({
       state.isAuth = true;
       state.user = action.payload;
       state.favoritePackId = Object.keys(action.payload.favoritePackIdAndCount || {})[0]
+      state.bestItemId = Object.keys(action.payload.bestItemIdAndPrice || {})[0]
     },
     userFetchingError(state, action: PayloadAction<string>) {
       state.isLoading = false;

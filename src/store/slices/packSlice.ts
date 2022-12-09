@@ -37,6 +37,11 @@ const initialState: IPackState = {
   bestItemIdAndPrice: {},
 };
 
+export const fetchItemById = (id: any) => async (dispatch: TAppDispatch) => {
+  const { data } = await $api.get<any>(`api/v1/items/${id}`);
+  dispatch(packSlice.actions.BestItem(data));
+}
+
 export const fetchPack = (id: any) => async (dispatch: TAppDispatch) => {
   try {
     dispatch(packSlice.actions.packFetching());
@@ -81,6 +86,9 @@ export const packSlice = createSlice({
       state.error = '';
       state.favoritePack = action.payload;
     },
+    BestItem(state, action:PayloadAction<IPackState>) {
+      state.bestItemIdAndPrice = action.payload
+    }
   },
 });
 

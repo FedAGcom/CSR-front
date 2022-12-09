@@ -12,7 +12,7 @@ import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearan
 import Cookies from 'js-cookie';
 import { fetchUser } from '../../store/slices/userSlice';
 import $api from '../../api';
-import { fetchFavoritePack } from '../../store/slices/packSlice';
+import { fetchFavoritePack, fetchItemById } from '../../store/slices/packSlice';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
@@ -32,6 +32,7 @@ export const AccountHeaderField = () => {
 
   const handleExit = () => {
     Cookies.remove('AuthorizationCSRApp');
+    navigate('/')
     dispatch(fetchUser());
   };
 
@@ -70,7 +71,7 @@ export const AccountHeaderField = () => {
         <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
           Трейд ссылка
         </ButtonBasic>
-        <div className="account-exit" onClick={() => {handleExit(); navigate('/')}}>
+        <div className="account-exit" onClick={handleExit}>
           <ExitIcon />
         </div>
       </div>
@@ -82,11 +83,12 @@ export const AccountCaseField = () => {
   const navigate = useNavigate()
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
   const dispatch = useAppDispatch()
-  const {favoritePackId} = useAppSelector(state => state.userSlice)
-  const {favoritePack} = useAppSelector(state => state.packSlice)
+  const {favoritePackId, bestItemId} = useAppSelector(state => state.userSlice)
+  const {favoritePack, bestItemIdAndPrice} = useAppSelector(state => state.packSlice)
 
   useEffect(() => {
     dispatch(fetchFavoritePack(favoritePackId))
+    dispatch(fetchItemById(bestItemId))
   }, [favoritePackId])
 
   return (
@@ -97,8 +99,8 @@ export const AccountCaseField = () => {
       >
         <div className="account-case__common">
           <p className="account-case__title">Любимый кейс</p>
-          <p className="account-case__desc">{favoritePack && favoritePack?.title}</p>
-          <ButtonBasic className="primary" onClick={() => navigate(`/open-case/${favoritePackId}`)}>Открыть</ButtonBasic>
+          <p className="account-case__desc">{favoritePack.title ? favoritePack.title : 'Нет любимого кейса'}</p>
+          <ButtonBasic className="primary" onClick={() => navigate(favoritePackId ? `/open-case/${favoritePackId}` : '/')}>Открыть</ButtonBasic>
         </div>
 
         <div className="account-case__img">
@@ -111,11 +113,10 @@ export const AccountCaseField = () => {
       >
         <div className="account-case__common">
           <p className="account-case__title">Лучший дроп</p>
-          <p className="account-case__desc">Пока нет лучшего дропа</p>
-          <ButtonBasic className="primary">Открыть</ButtonBasic>
+          <p className="account-case__desc">{bestItemIdAndPrice.title ? bestItemIdAndPrice.title : "Пока нет лучшего дропа"}</p>
+          <ButtonBasic className="primary" onClick={() => navigate('/')}>Открыть</ButtonBasic>
+          {bestItemIdAndPrice && <img className="account-drop__img" src={bestItemIdAndPrice.iconItemId} />}
         </div>
-
-        {/* <div className="account-drop__img"><img src={weapon} /></div> */}
       </div>
     </div>
   );

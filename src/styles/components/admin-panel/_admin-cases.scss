@@ -41,7 +41,7 @@
   }
 
   .admin-case {
-
+    position: relative;
     background-color: $background-main-lighter;
     border-radius: 10px;
     width: 255px;
@@ -52,9 +52,26 @@
     padding: 15px;
     border: 1px solid #3E3C43;
     @include font(14px, 17px, 400);
+
+    &:hover {
+      .admin-case__delete {
+        opacity: 1;
+      }
+    }
    
     &__image {
       margin-top: -11px;
+    }
+
+    &__delete {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 

@@ -33,6 +33,10 @@ export const fetchPacks = () => async (dispatch: TAppDispatch) => {
   }
 };
 
+export const deletePack = (id: number) => async (dispatch: TAppDispatch) => {
+    await $api.delete<any>(`api/v1/packs/${id}`)
+}
+
 export const packsSlice = createSlice({
   name: 'packs',
   initialState,
