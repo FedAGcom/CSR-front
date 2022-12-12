@@ -19,7 +19,7 @@ interface IPackState {
 
 const initialState: IPackState = {
   packs: [],
-  isLoading: false,
+  isLoading: true,
   error: '',
 };
 

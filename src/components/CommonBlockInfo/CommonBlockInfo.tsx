@@ -1,9 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Skeleton } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useAppSelector } from '../../store';
 import { Case } from '../index';
 import { getBackgroundMainBottom } from './../../store/selectors/getSettingsAppearance';
+import { CaseSkeleton } from './CaseSkeleton';
 
 interface ICommonBlockInfoProps {
   blockStyle?: React.CSSProperties;
@@ -16,16 +17,17 @@ export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({
   pStyle,
   name,
 }: ICommonBlockInfoProps) => {
-  const { packs } = useAppSelector((state) => state.packs);
+  const { packs, isLoading } = useAppSelector((state) => state.packs);
+  const skeletons = [...new Array(4)].map((_, index) => <CaseSkeleton key={index} />)
 
   return (
     <div className="block" style={blockStyle}>
       <div className="container">
         <p style={pStyle}>{name}</p>
         <div className="block__wrapper">
-          {packs.map((i) => (
+          {!isLoading ? packs.map((i) => (
             <Case key={i.id} title={i.title} price={i.price} img={i.image} id={i.id} />
-          ))}
+          )) : skeletons}
         </div>
       </div>
     </div>
@@ -34,7 +36,8 @@ export const CommonBlockInfo: React.FC<ICommonBlockInfoProps> = ({
 
 export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name }: ICommonBlockInfoProps) => {
   const backgroundMain = useSelector(getBackgroundMainBottom);
-  const { packs } = useAppSelector((state) => state.packs);
+  const { packs, isLoading } = useAppSelector((state) => state.packs);
+  const skeletons = [...new Array(4)].map((_, index) => <CaseSkeleton key={index} />)
   return (
     <div className="block__image">
       {backgroundMain && (
@@ -49,9 +52,9 @@ export const CommonBlockInfoWithImage: React.FC<ICommonBlockInfoProps> = ({ name
       <div className="container">
         <p>{name}</p>
         <div className="block__wrapper">
-        {packs.map((i) => (
+        {!isLoading ? packs.map((i) => (
             <Case key={i.id} title={i.title} price={i.price} img={i.image} id={i.id} />
-          ))}
+          )) : skeletons}
           {/* <Case />
           <Case />
           <Case />
