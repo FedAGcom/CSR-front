@@ -1,7 +1,11 @@
 import { Box, Container } from '@mui/material';
 import { AskQuestionBlock, HeaderAndFooter, PrizeBlock, ButtonBackToMain } from '../../components';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const PrivacyPolicyPage = () => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
   return (
     <Box>
       <HeaderAndFooter>
@@ -9,7 +13,7 @@ export const PrivacyPolicyPage = () => {
         <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
           <Box className="privacy-policy">
             <ButtonBackToMain />
-            <Box className="privacy-policy__title">Политика конфиденциальности</Box>
+            {matches &&  <Box className="privacy-policy__title">Политика конфиденциальности</Box> }
             <ol className="privacy-policy__list">
               <li>
                 {' '}

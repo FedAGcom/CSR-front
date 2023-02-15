@@ -1,6 +1,8 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
 import { technical, topUp, common, withdraw } from './data';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type TFaqItem = {
   question: string;
@@ -34,15 +36,27 @@ type TFaqCategoryListProps = {
 };
 
 const FaqCategoryList = ({ faqArray, title }: TFaqCategoryListProps) => {
+  const theme = useTheme();
+  const matchesDownMd = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Box className="FAQ__category-list">
+    <>
+  {matchesDownMd && <Box className="FAQ__category-list" style={{display: 'block', textAlign: 'right'}}>
+      <Box className="FAQ__category-title" style={{marginBottom: '55px'}}>{title}</Box>
+      <Box className="FAQ__list">
+        {faqArray.map((item: TFaqItem, index: number) => {
+          return <FaqItem key={`faq-${index}`} faqItem={item} index={index + 1} />;
+        })}
+      </Box>
+    </Box>}
+    {!matchesDownMd && <Box className="FAQ__category-list">
       <Box className="FAQ__category-title">{title}</Box>
       <Box className="FAQ__list">
         {faqArray.map((item: TFaqItem, index: number) => {
           return <FaqItem key={`faq-${index}`} faqItem={item} index={index + 1} />;
         })}
       </Box>
-    </Box>
+    </Box>}
+    </>
   );
 };
 

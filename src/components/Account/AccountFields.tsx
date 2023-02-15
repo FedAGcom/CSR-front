@@ -13,6 +13,8 @@ import Cookies from 'js-cookie';
 import { fetchUser } from '../../store/slices/userSlice';
 import $api from '../../api';
 import { fetchFavoritePack, fetchItemById } from '../../store/slices/packSlice';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const AccountHeaderField = () => {
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
@@ -21,7 +23,9 @@ export const AccountHeaderField = () => {
   const navigate = useNavigate();
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
   const dispatch = useAppDispatch();
-
+  const theme = useTheme();
+  const matchesDownLg = useMediaQuery(theme.breakpoints.down('lg'));
+  const matchesUpLg = useMediaQuery(theme.breakpoints.up('lg'));
   const handleCloseTrade = () => {
     setTradeModalOpen(false);
   };
@@ -63,17 +67,26 @@ export const AccountHeaderField = () => {
           /> :
           null
         }
-        <ButtonBasic className="primary" onClick={() => setBalanceModalOpen(true)}>
+        {matchesUpLg &&   <ButtonBasic className="primary" onClick={() => setBalanceModalOpen(true)}>
           Пополнить баланс
-        </ButtonBasic>
+        </ButtonBasic> }
+      {matchesDownLg &&  <ButtonBasic className="primary" onClick={() => setBalanceModalOpen(true)} style={{marginBottom: '55px'}}>
+          Пополнить баланс
+        </ButtonBasic> }
 
         <TradeLinkModal open={isTradeModalOpen} onClose={handleCloseTrade} />
-        <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
+        {matchesUpLg &&    <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)}>
           Трейд ссылка
-        </ButtonBasic>
-        <div className="account-exit" onClick={handleExit}>
-          <ExitIcon />
-        </div>
+        </ButtonBasic> } 
+        {matchesDownLg &&   <ButtonBasic className="outlined" onClick={() => setTradeModalOpen(true)} style={{marginBottom: '55px'}}>
+          Трейд ссылка
+        </ButtonBasic> }
+        {matchesUpLg &&  <div className="account-exit" onClick={handleExit}>
+          <ExitIcon /> 
+        </div>}   
+        {matchesDownLg && <div className="account-exit" onClick={handleExit}  style={{marginLeft: '55px'}}>
+          <ExitIcon /> 
+        </div>}
       </div>
     </div>
   );
@@ -85,6 +98,8 @@ export const AccountCaseField = () => {
   const dispatch = useAppDispatch()
   const {favoritePackId, bestItemId} = useAppSelector(state => state.userSlice)
   const {favoritePack, bestItemIdAndPrice} = useAppSelector(state => state.packSlice)
+  const theme = useTheme();
+  const matchesDownLg = useMediaQuery(theme.breakpoints.down('lg'));
 
   useEffect(() => {
     dispatch(fetchFavoritePack(favoritePackId))
@@ -93,11 +108,11 @@ export const AccountCaseField = () => {
 
   return (
     <div className="account-case__wrapper">
-      <div
+     {!matchesDownLg && <div
         className="account-case account-case__item"
         style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}
       >
-        <div className="account-case__common">
+       <div className="account-case__common">
           <p className="account-case__title">Любимый кейс</p>
           <p className="account-case__desc">{favoritePack.title ? favoritePack.title : 'Нет любимого кейса'}</p>
           <ButtonBasic className="primary" onClick={() => navigate(favoritePackId ? `/open-case/${favoritePackId}` : '/')}>Открыть</ButtonBasic>
@@ -106,8 +121,33 @@ export const AccountCaseField = () => {
         <div className="account-case__img">
           <img src={favoritePack?.image} />
         </div>
-      </div>
-      <div
+      </div> }
+      {matchesDownLg && <div
+        className="account-case account-case__item"
+        style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A', width: '100%' }}
+      >
+       <div className="account-case__common">
+          <p className="account-case__title">Любимый кейс</p>
+          <p className="account-case__desc">{favoritePack.title ? favoritePack.title : 'Нет любимого кейса'}</p>
+          <ButtonBasic className="primary" onClick={() => navigate(favoritePackId ? `/open-case/${favoritePackId}` : '/')}>Открыть</ButtonBasic>
+        </div>
+
+        <div className="account-case__img">
+          <img src={favoritePack?.image} />
+        </div>
+      </div> }
+      {matchesDownLg &&  <div
+        className="account-case account-case__drop"
+        style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A', width: '100%' }}
+      >
+        <div className="account-case__common">
+          <p className="account-case__title">Лучший дроп</p>
+          <p className="account-case__desc">{bestItemIdAndPrice.title ? bestItemIdAndPrice.title : "Пока нет лучшего дропа"}</p>
+          <ButtonBasic className="primary" onClick={() => navigate('/')}>Открыть</ButtonBasic>
+          {bestItemIdAndPrice && <img className="account-drop__img" src={bestItemIdAndPrice.iconItemId} />}
+        </div>
+      </div>}
+     {!matchesDownLg &&  <div
         className="account-case account-case__drop"
         style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}
       >
@@ -117,7 +157,7 @@ export const AccountCaseField = () => {
           <ButtonBasic className="primary" onClick={() => navigate('/')}>Открыть</ButtonBasic>
           {bestItemIdAndPrice && <img className="account-drop__img" src={bestItemIdAndPrice.iconItemId} />}
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
@@ -127,6 +167,9 @@ export const AccountSoldItemsField = () => {
   const [isSkinsModalOpen, setSkinsModalOpen] = useState<boolean>(false);
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
   const [items, setItems] = useState()
+  const theme = useTheme();
+  const matchesDownSm = useMediaQuery(theme.breakpoints.down('sm'));
+
 
   const fetchItems = async () => {
     const { data } = await $api.get<any>(`http://csgofarm.online/api/v1/items`);
@@ -155,20 +198,27 @@ useEffect(() => {
   return (
     <>
       <div className="account-field__wrapper" style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}>
-        <p className="account-items__p">Предметы</p>
+      {!matchesDownSm &&  <p className="account-items__p">Предметы</p>}
+      {matchesDownSm &&  <p className="account-items__p" style={{marginBottom: '55px'}}>Предметы</p>}
         <div className="account__sold-btns">
-          <ButtonBasic className="skins" onClick={() => setSkinsModalOpen(true)}>
+        {!matchesDownSm && <ButtonBasic className="skins" onClick={() => setSkinsModalOpen(true)}>
             Вывести скины
-          </ButtonBasic>
+          </ButtonBasic> }
+         {matchesDownSm && <ButtonBasic className="skins" onClick={() => setSkinsModalOpen(true)} style={{marginBottom: '55px'}}>
+            Вывести скины
+          </ButtonBasic> }
           <SkinsModal
             open={isSkinsModalOpen}
             onClose={() => setSkinsModalOpen(false)}
             style={{ padding: '30px', width: '790px' }}
           />
 
-          <ButtonBasic className="disabled" disabled={true}>
+{!matchesDownSm &&   <ButtonBasic className="disabled" disabled={true}>
             Продать все
-          </ButtonBasic>
+          </ButtonBasic> }
+          {matchesDownSm &&   <ButtonBasic className="disabled" disabled={true} style={{marginBottom: '55px'}}>
+            Продать все
+          </ButtonBasic> }
         </div>
       </div>
 
