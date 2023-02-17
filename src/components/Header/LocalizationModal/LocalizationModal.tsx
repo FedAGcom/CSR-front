@@ -62,7 +62,7 @@ export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, is
             </Select>
           </Box>
           <ButtonBasic className="primary" sx={{ width: '100%' }} onClick={handleCloseButton}>
-          {t('localizationModal.closeBtn')}
+          {t('localizationModal.closeBtn')} 
           </ButtonBasic>
         </Box>
       </>

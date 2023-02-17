@@ -22,5 +22,46 @@
     "englishLng": "English",
     "currencyRub": "RUB",
     "currencyUsd": "USD"
+  },
+
+  "footerInfo": {
+    "serviceInfo" :{
+      "title" : "Service" ,
+      "info" : {
+        "verification": "Verification",
+        "terms_of_Service": "Terms of Service" ,
+        "privacy_police": "Privacy police",
+        "tech_support" : "Tech support"
+      }
+    },  
+    "accountInfo" : {
+      "title": "My account",
+      "info": {
+        "account": "My account" ,
+        "cases": "My cases",
+        "features": "Features"
+      }
+    },
+    "fedagRoulette" : {
+      "title": "FEDAG ROULETTE",
+      "info": {
+        "dailyCase": "Daily case",
+        "stock" : "Stock"
+      }
+    }
+  },
+  
+  "footerStatistic" : {
+    "cases": "Cases",
+    "online": "Online",
+    "users": "Users"
+  },
+
+  "mainPageCommonBlockInfo" : {
+    "hotOffers" : "Hot offers",
+    "popular" : "Popular",
+    "default" : "Default",
+    "ourBuilds" : "Our Builds"
   }
+
 }

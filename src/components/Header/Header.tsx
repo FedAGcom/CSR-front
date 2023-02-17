@@ -14,9 +14,10 @@ import { useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 
-const languages: Record<string, {name: string, flag: string}> = {
-  en: {name: 'English', flag: flagEn},
-  ru: {name: 'Русский', flag: flagRu},
+
+const languages: Record<string, {name: string, flag: string , currency: {rub: string , usd: string}}> = {
+  en: {name: 'English', flag: flagEn , currency : { rub : 'RUB' , usd: 'USD'}},
+  ru: {name: 'Русский', flag: flagRu,  currency : { rub : 'РУБ' , usd: 'ДОЛ'}}
 }
 
 export const Header = () => {
@@ -93,7 +94,7 @@ export const Header = () => {
                     <Box className="header__balance">
                       {t('header.balance')}:
                       <Box component="span" className="header__balance-value">
-                        {user.balance?.toLocaleString('ru')}
+                        {user.balance?.toLocaleString('ru')} 
                       </Box>
                     </Box>
                   </Box>
