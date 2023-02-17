@@ -11,40 +11,42 @@ body {
   margin: 0 auto;
   background-color: $background-main;
 
-    &::-webkit-scrollbar, & *::-webkit-scrollbar {
-        width: 9px;
-    }
+  &::-webkit-scrollbar,
+  & *::-webkit-scrollbar {
+    width: 9px;
+  }
 
-    &::-webkit-scrollbar-track, & *::-webkit-scrollbar-track {
-        box-shadow: 5px 5px 5px -5px rgba(158, 108, 107, 0.273) inset;
-        background-color: #484544;
-    }
+  &::-webkit-scrollbar-track,
+  & *::-webkit-scrollbar-track {
+    box-shadow: 5px 5px 5px -5px rgba(158, 108, 107, 0.273) inset;
+    background-color: #484544;
+  }
 
-    &::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb {
-        background-color: #7f1010d0;
-        background-image: -webkit-linear-gradient(
-            45deg,
-            rgba(255, 255, 255, 0.25) 25%,
-            transparent 25%,
-            transparent 50%,
-            rgba(255, 255, 255, 0.25) 50%,
-            rgba(255, 255, 255, 0.25) 75%,
-            transparent 75%,
-            transparent
-        );
-    }
+  &::-webkit-scrollbar-thumb,
+  & *::-webkit-scrollbar-thumb {
+    background-color: #7f1010d0;
+    background-image: -webkit-linear-gradient(45deg,
+        rgba(255, 255, 255, 0.25) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 75%,
+        transparent 75%,
+        transparent);
+  }
 }
 
 .container {
-  width: $main-width;
+  max-width: $main-width;
   margin: 0 auto;
 }
 
 .modal-close {
-	&:hover {
-	box-shadow: 0px 0px 20px red;
-		& .close-icon{
-		fill: red;
-		}
-	}
+  &:hover {
+    box-shadow: 0px 0px 20px red;
+
+    & .close-icon {
+      fill: red;
+    }
+  }
 }

@@ -11,6 +11,8 @@ import { fetchPack } from '../store/slices/packSlice';
 import { useAppDispatch, useAppSelector } from '../store';
 import { fetchWinId } from '../store/slices/winSlice';
 import { fetchUser } from '../store/slices/userSlice';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import $api from '../api';
 
 const button: SxProps = {
@@ -69,6 +71,8 @@ export const OpenCase = () => {
   const { title, price, packItemsList } = useAppSelector((state) => state.packSlice);
   const { isAuth, user } = useAppSelector((state) => state.userSlice);
   const { winId } = useAppSelector((state) => state.winSlice);
+  const theme = useTheme();
+  const matchesUpLg = useMediaQuery(theme.breakpoints.up('lg'));
 
   useEffect(() => {
     dispatch(fetchPack(id));
@@ -142,10 +146,10 @@ export const OpenCase = () => {
       <Container sx={{ maxWidth: '1148px', marginTop: '50px' }} maxWidth={false}>
         <div className="case-content__header">
           <h5 className="case-content__title">{title ? title : 'Кейс'}</h5>
-          <div className="case-content__back" onClick={() => navigate('/')}>
+          {matchesUpLg && <div className="case-content__back" onClick={() => navigate('/')}>
             <ArrowMain />
             Вернуться на Главную
-          </div>
+          </div>}
         </div>
         {isAuth ? (
           <div className="roulette-wrap">

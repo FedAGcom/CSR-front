@@ -2,9 +2,14 @@ import { Box, Container } from '@mui/material';
 import { AskQuestionBlock, HeaderAndFooter, PrizeBlock, ButtonBackToMain } from '../../components';
 import { useSelector } from 'react-redux';
 import { getColorBackgroundOne, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 
 export const TermsOfServicePage = () => {
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
 
   return (
     <Box>
@@ -13,7 +18,7 @@ export const TermsOfServicePage = () => {
         <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
           <Box className="terms-of-service" sx={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}>
             <ButtonBackToMain />
-            <Box className="terms-of-service__title">Условия использования</Box>
+            {matches && <Box className="terms-of-service__title">Условия использования</Box> }
             <ol className="terms-of-service__list">
               <li>
                 {' '}

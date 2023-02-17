@@ -16,7 +16,7 @@ export const AccountPage = () => {
           <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
             <Box sx={{ maxWidth: '1158px' }} className="account-wrapper">
               <AccountHeaderField />
-              <AccountCaseField />
+              <AccountCaseField />              
               <AccountSoldItemsField />
             </Box>
           </Container>
