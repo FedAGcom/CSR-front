@@ -44,24 +44,25 @@ const FooterStatistic: FC<TFooterStatisticProps> = ({ openCases, onlineUsers, to
     <Box className="footer-statistic" sx={{ backgroundColor: serverColorFooterUp }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
-        {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
-            <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
-              <FooterKey />
-              <FooterStatisticItemInfo amount={openCases} title="Открыто кейсов" />
-            </Box>
+          {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+              <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
+                <FooterKey />
+                <FooterStatisticItemInfo amount={openCases} title={t('footerStatistic.cases')} />
+              </Box>
           </Grid> }
           {matchesDownMd &&  <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
             <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
               <FooterNet />
-              <FooterStatisticItemInfo amount={onlineUsers} title="Онлайн" />
+              <FooterStatisticItemInfo amount={onlineUsers} title={t('footerStatistic.online')} />
             </Box>
           </Grid> }
-          {matchesDownMd &&   <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+          {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
             <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
               <FooterPerson />
-              <FooterStatisticItemInfo amount={totalUsers} title="Пользователей" />
+              <FooterStatisticItemInfo amount={totalUsers} title={t('footerStatistic.users')} />
             </Box>
           </Grid> }
+          
           {!matchesDownMd && <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterKey />
@@ -192,3 +193,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+
