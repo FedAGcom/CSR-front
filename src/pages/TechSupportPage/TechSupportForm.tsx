@@ -8,6 +8,8 @@ import { ErrorIcon } from '../../components/svg';
 import { useSelector } from 'react-redux';
 import { getColorBackgroundOne } from '../../store/selectors/getSettingsAppearance';
 import { useSendRequestMutation } from '../../store/slices/supportSlice';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type TFormInputs = {
   email: string;
@@ -21,6 +23,9 @@ export const TechSupportForm = () => {
   const serverColorBackgroundOne = useSelector(getColorBackgroundOne);
   const [image, setImageSrc] = useState<string | ArrayBuffer | null>();
   const [sendRequest] = useSendRequestMutation();
+  const theme = useTheme();
+  const matchesDownLg = useMediaQuery(theme.breakpoints.down('lg'));
+  const matchesDownMd = useMediaQuery(theme.breakpoints.down('md'));
 
   const schema = yup.object().shape({
     email: yup.string().email('Некорректный email').required('Не указан email'),
@@ -71,8 +76,8 @@ export const TechSupportForm = () => {
         onSubmit={handleSubmit(onSubmit)}
         style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}
       >
-        <Box className="tech-support-form__title">Форма для связи с тех.поддержкой</Box>
-        <Box className="tech-support-form__inputs-container">
+      {!matchesDownMd && <Box className="tech-support-form__title" style={{margin: '0 auto'}}>Форма для связи с тех.поддержкой</Box>}
+      { !matchesDownLg &&  <Box className="tech-support-form__inputs-container" style={{width: '730px'}}>
           <label className="tech-support-form__input-label">Email*</label>
           <InputBasic placeholder="Ваш email" {...register('email')} />
           <Box className={`tech-support-form__error-message ${errors.email ? '' : 'hidden'}`}>
@@ -97,10 +102,66 @@ export const TechSupportForm = () => {
             <ErrorIcon />
             {`${errors.message?.message}`}
           </Box>
-        </Box>
+        </Box>}
+
+      { matchesDownLg && !matchesDownMd && <Box className="tech-support-form__inputs-container" style={{width: '500px'}}>
+          <label className="tech-support-form__input-label">Email*</label>
+          <InputBasic placeholder="Ваш email" {...register('email')} />
+          <Box className={`tech-support-form__error-message ${errors.email ? '' : 'hidden'}`}>
+            <ErrorIcon />
+            {`${errors.email?.message}`}
+          </Box>
+          <label className="tech-support-form__input-label">Тема вопроса/проблемы*</label>
+          <InputBasic type="text" placeholder="Название темы" {...register('theme')} />
+          <Box className={`tech-support-form__error-message ${errors.theme ? '' : 'hidden'}`}>
+            <ErrorIcon />
+            {`${errors.theme?.message}`}
+          </Box>
+          <label className="tech-support-form__input-label">Описание*</label>
+          <InputBasic
+            type="text"
+            multiline
+            sx={{ minHeight: '158px', height: 'auto', justifyContent: 'flex-start' }}
+            placeholder="Опишите, что случилось, и прикрепите скриншоты, если требуется"
+            {...register('message')}
+          />
+          <Box className={`tech-support-form__error-message ${errors.message ? '' : 'hidden'}`}>
+            <ErrorIcon />
+            {`${errors.message?.message}`}
+          </Box>
+        </Box>}
+
+        { matchesDownLg && matchesDownMd && <Box className="tech-support-form__inputs-container" style={{width: '250px'}}>
+          <label className="tech-support-form__input-label">Email*</label>
+          <InputBasic placeholder="Ваш email" {...register('email')} />
+          <Box className={`tech-support-form__error-message ${errors.email ? '' : 'hidden'}`}>
+            <ErrorIcon />
+            {`${errors.email?.message}`}
+          </Box>
+          <label className="tech-support-form__input-label">Тема вопроса/проблемы*</label>
+          <InputBasic type="text" placeholder="Название темы" {...register('theme')} />
+          <Box className={`tech-support-form__error-message ${errors.theme ? '' : 'hidden'}`}>
+            <ErrorIcon />
+            {`${errors.theme?.message}`}
+          </Box>
+          <label className="tech-support-form__input-label">Описание*</label>
+          <InputBasic
+            type="text"
+            multiline
+            sx={{ minHeight: '158px', height: 'auto', justifyContent: 'flex-start' }}
+            placeholder="Опишите, что случилось, и прикрепите скриншоты, если требуется"
+            {...register('message')}
+          />
+          <Box className={`tech-support-form__error-message ${errors.message ? '' : 'hidden'}`}>
+            <ErrorIcon />
+            {`${errors.message?.message}`}
+          </Box>
+        </Box>}
+
+
         <Box className="tech-support-form__buttons">
           <label className="tech-support-form__file-upload">
-            <Box>Добавить изображение</Box>
+            <Box style={{marginBottom: '25px'}}>Добавить изображение</Box>
             <input
               type="file"
               accept="image/*"
@@ -109,7 +170,7 @@ export const TechSupportForm = () => {
               onChange={imageHandler}
             ></input>
           </label>
-          <ButtonBasic className="primary" type="submit">
+          <ButtonBasic className="primary" type="submit"  style={{marginBottom: '25px'}}>
             Отправить заявку
           </ButtonBasic>
         </Box>

@@ -12,6 +12,8 @@ import { useSelector } from 'react-redux';
 import { getColorHeaderLeft, getColorHeaderRight, getHeaderLogo } from '../../store/selectors/getSettingsAppearance';
 import { useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
 import { useTranslation } from 'react-i18next';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import i18next from 'i18next';
 
 
@@ -42,6 +44,8 @@ export const Header = () => {
 
   const { data: users } = useGetUsersCountQuery('');
   const allUsers = users ?? '';
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
 
   return (
     <header
@@ -63,19 +67,19 @@ export const Header = () => {
                 <Logo />
               )}
             </Box>
-            <Box className="header__users-online">
+           {matches && <Box className="header__users-online">
               <OnlineAmount className="online-icon"/>
               <Box>{t('header.totalUsers')}:</Box>
               <Box component="span">{allUsers}</Box>
-            </Box>
-            <HeaderButton
+            </Box>}
+            {matches && <HeaderButton
               className="FAQ-button"
               variant="text"
               startIcon={<FAQ />}
               onClick={() => navigate('/tech-support')}
             >
               FAQ
-            </HeaderButton>
+            </HeaderButton>}
           </Box>
           <Box className="header__column2">
             <Box className="header__location" onClick={handleModalOpen}>

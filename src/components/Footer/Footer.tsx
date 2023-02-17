@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { getColorFooterUp, getColorFooterDown, getFooterLogo } from '../../store/selectors/getSettingsAppearance';
 import { useGetOpenCaseCountQuery, useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 type TFooterStatisticProps = {
@@ -36,28 +38,48 @@ const FooterStatistic: FC<TFooterStatisticProps> = ({ openCases, onlineUsers, to
   const serverColorFooterUp = useSelector(getColorFooterUp);
   const { t } = useTranslation();
 
+  const theme = useTheme();
+  const matchesDownMd = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <Box className="footer-statistic" sx={{ backgroundColor: serverColorFooterUp }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
-          <Grid item>
+        {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+            <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
+              <FooterKey />
+              <FooterStatisticItemInfo amount={openCases} title="Открыто кейсов" />
+            </Box>
+          </Grid> }
+          {matchesDownMd &&  <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+            <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
+              <FooterNet />
+              <FooterStatisticItemInfo amount={onlineUsers} title="Онлайн" />
+            </Box>
+          </Grid> }
+          {matchesDownMd &&   <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+            <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
+              <FooterPerson />
+              <FooterStatisticItemInfo amount={totalUsers} title="Пользователей" />
+            </Box>
+          </Grid> }
+          {!matchesDownMd && <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterKey />
               <FooterStatisticItemInfo amount={openCases} title={t('footerStatistic.cases')} />
             </Box>
-          </Grid>
-          <Grid item>
+          </Grid> }
+          {!matchesDownMd &&  <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterNet />
               <FooterStatisticItemInfo amount={onlineUsers} title={t('footerStatistic.online')} />
             </Box>
-          </Grid>
-          <Grid item>
+          </Grid> }
+          {!matchesDownMd &&   <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterPerson />
               <FooterStatisticItemInfo amount={totalUsers} title={t('footerStatistic.users')} />
             </Box>
-          </Grid>
+          </Grid> }
         </Grid>
       </Container>
     </Box>
@@ -78,7 +100,8 @@ const FooterInfo = () => {
   const { t } = useTranslation();
   const serverColorFooterDown = useSelector(getColorFooterDown);
   const serverFooterLogo = useSelector(getFooterLogo);
-
+  const theme = useTheme();
+  const matchesDownSm = useMediaQuery(theme.breakpoints.down('sm'));
   return (
     <Box className="footer-info" sx={{ backgroundColor: serverColorFooterDown }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
@@ -108,24 +131,43 @@ const FooterInfo = () => {
           </Grid>
           <Grid item xs={12} sm={7}>
             <Grid container>
-              <Grid item xs={6} sm={4}>
+              { matchesDownSm &&  <Grid item xs={12} style={{marginTop: '25px', marginBottom: '25px'}}>
+                  <Box className="footer-info__title">{t('footerInfo.serviceInfo.title')}</Box>
+                  <FooterLink value={t('footerInfo.serviceInfo.info.verification')} url="#" />
+                  <FooterLink value={t('footerInfo.serviceInfo.info.terms_of_Service')} url="/terms-of-service" />
+                  <FooterLink value={t('footerInfo.serviceInfo.info.privacy_police')} url="/privacy-policy" />
+                  <FooterLink value={t('footerInfo.serviceInfo.info.tech_support')} url="/tech-support" />
+              </Grid> }
+              { matchesDownSm &&   <Grid item xs={12}  style={{marginTop: '25px', marginBottom: '25px'}}>
+                  <Box className="footer-info__title">{t('footerInfo.accountInfo.title')}</Box>
+                  <FooterLink value={t('footerInfo.accountInfo.info.account')} url="/account" />
+                  <FooterLink value={t('footerInfo.accountInfo.info.cases')} url="#" />
+                  <FooterLink value={t('footerInfo.accountInfo.info.features')} url="#" />
+              </Grid> }
+              { matchesDownSm &&   <Grid item xs={12} style={{marginTop: '25px', marginBottom: '25px'}}>
+                <Box className="footer-info__title">{t('footerInfo.fedagRoulette.title')}</Box>
+                <FooterLink value={t('footerInfo.fedagRoulette.info.dailyCase')} url="#" />
+                <FooterLink value={t('footerInfo.fedagRoulette.info.stock')} url="#" />
+              </Grid> }
+              
+              { !matchesDownSm &&  <Grid item sm={4}>
                 <Box className="footer-info__title">{t('footerInfo.serviceInfo.title')}</Box>
                 <FooterLink value={t('footerInfo.serviceInfo.info.verification')} url="#" />
                 <FooterLink value={t('footerInfo.serviceInfo.info.terms_of_Service')} url="/terms-of-service" />
                 <FooterLink value={t('footerInfo.serviceInfo.info.privacy_police')} url="/privacy-policy" />
                 <FooterLink value={t('footerInfo.serviceInfo.info.tech_support')} url="/tech-support" />
-              </Grid>
-              <Grid item xs={6} sm={4}>
+              </Grid> }
+              { !matchesDownSm &&   <Grid item sm={4}>
                 <Box className="footer-info__title">{t('footerInfo.accountInfo.title')}</Box>
                 <FooterLink value={t('footerInfo.accountInfo.info.account')} url="/account" />
                 <FooterLink value={t('footerInfo.accountInfo.info.cases')} url="#" />
                 <FooterLink value={t('footerInfo.accountInfo.info.features')} url="#" />
-              </Grid>
-              <Grid item xs={6} sm={4}>
+              </Grid> }
+              { !matchesDownSm &&   <Grid item sm={4}>
                 <Box className="footer-info__title">{t('footerInfo.fedagRoulette.title')}</Box>
                 <FooterLink value={t('footerInfo.fedagRoulette.info.dailyCase')} url="#" />
                 <FooterLink value={t('footerInfo.fedagRoulette.info.stock')} url="#" />
-              </Grid>
+              </Grid> }
             </Grid>
           </Grid>
         </Grid>
