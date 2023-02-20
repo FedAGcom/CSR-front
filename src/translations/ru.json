@@ -22,6 +22,46 @@
     "englishLng": "Английский",
     "currencyRub": "РУБ",
     "currencyUsd": "USD"
+  },
+
+  "footerInfo": {
+    "serviceInfo" :{
+      "title" : "Сервис" ,
+      "info" : {
+        "verification": "Проверка",
+        "terms_of_Service": "Правила" ,
+        "privacy_police": "Политика",
+        "tech_support" : "Поддержка"
+      }
+    },
+    "AccountInfo" : {
+      "title": "Мой аккаунт",
+      "info": {
+        "account": "Мой аккаунт" ,
+        "cases": "Мои кейсы",
+        "features": "Плюшки"
+      }
+    },
+    "Fedag roulette" : {
+      "title": "FEDAG ROULETTE",
+      "info": {
+        "daily case": "Дневной кейс",
+        "stock" : "Акции"
+      }
+    }
+  },
+
+  "footerStatistic" : {
+    "cases": "Открыто кейсов",
+    "online": "Онлайн",
+    "users": "Пользователей"
+  },
+
+  "mainPageCommonBlockInfo" : {
+    "hotOffers" : "Горячие предложения",
+    "popular" : "Популярные",
+    "default" : "Дефолт",
+    "ourBuilds" : "Наши сборки"
   }
 }
 

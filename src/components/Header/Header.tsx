@@ -16,6 +16,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import i18next from 'i18next';
 
+
 const languages: Record<string, {name: string, flag: string}> = {
   en: {name: 'English', flag: flagEn},
   ru: {name: 'Русский', flag: flagRu},
@@ -135,7 +136,7 @@ export const Header = () => {
             )}
           </Box>
         </Box>
-      </Container>
+      </Container> 
     </header>
   );
 };

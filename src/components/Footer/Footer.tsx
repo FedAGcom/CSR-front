@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { getColorFooterUp, getColorFooterDown, getFooterLogo } from '../../store/selectors/getSettingsAppearance';
 import { useGetOpenCaseCountQuery, useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -35,46 +36,49 @@ const FooterStatisticItemInfo: FC<TFooterStatisticItemInfo> = ({ amount, title }
 
 const FooterStatistic: FC<TFooterStatisticProps> = ({ openCases, onlineUsers, totalUsers }) => {
   const serverColorFooterUp = useSelector(getColorFooterUp);
+  const { t } = useTranslation();
+
   const theme = useTheme();
   const matchesDownMd = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <Box className="footer-statistic" sx={{ backgroundColor: serverColorFooterUp }}>
       <Container sx={{ maxWidth: '1158px' }} maxWidth={false}>
         <Grid container direction="row" justifyContent="space-between" alignItems="center">
-        {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
-            <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
-              <FooterKey />
-              <FooterStatisticItemInfo amount={openCases} title="Открыто кейсов" />
-            </Box>
+          {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+              <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
+                <FooterKey />
+                <FooterStatisticItemInfo amount={openCases} title={t('footerStatistic.cases')} />
+              </Box>
           </Grid> }
           {matchesDownMd &&  <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
             <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
               <FooterNet />
-              <FooterStatisticItemInfo amount={onlineUsers} title="Онлайн" />
+              <FooterStatisticItemInfo amount={onlineUsers} title={t('footerStatistic.online')} />
             </Box>
           </Grid> }
-          {matchesDownMd &&   <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
+          {matchesDownMd && <Grid item xs={12} md={4} style={{marginBottom: '55px'}}>
             <Box className="footer-statistic-item" style={{justifyContent: 'center'}}>
               <FooterPerson />
-              <FooterStatisticItemInfo amount={totalUsers} title="Пользователей" />
+              <FooterStatisticItemInfo amount={totalUsers} title={t('footerStatistic.users')} />
             </Box>
           </Grid> }
+          
           {!matchesDownMd && <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterKey />
-              <FooterStatisticItemInfo amount={openCases} title="Открыто кейсов" />
+              <FooterStatisticItemInfo amount={openCases} title={t('footerStatistic.cases')} />
             </Box>
           </Grid> }
           {!matchesDownMd &&  <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterNet />
-              <FooterStatisticItemInfo amount={onlineUsers} title="Онлайн" />
+              <FooterStatisticItemInfo amount={onlineUsers} title={t('footerStatistic.online')} />
             </Box>
           </Grid> }
           {!matchesDownMd &&   <Grid item xs={12} md={4}>
             <Box className="footer-statistic-item">
               <FooterPerson />
-              <FooterStatisticItemInfo amount={totalUsers} title="Пользователей" />
+              <FooterStatisticItemInfo amount={totalUsers} title={t('footerStatistic.users')} />
             </Box>
           </Grid> }
         </Grid>
@@ -94,6 +98,7 @@ const FooterLink: FC<TFooterLink> = ({ value, url }) => {
 };
 
 const FooterInfo = () => {
+  const { t } = useTranslation();
   const serverColorFooterDown = useSelector(getColorFooterDown);
   const serverFooterLogo = useSelector(getFooterLogo);
   const theme = useTheme();
@@ -127,42 +132,42 @@ const FooterInfo = () => {
           </Grid>
           <Grid item xs={12} sm={7}>
             <Grid container>
-           { matchesDownSm &&  <Grid item xs={12} style={{marginTop: '25px', marginBottom: '25px'}}>
-                <Box className="footer-info__title">Сервис</Box>
-                <FooterLink value="Проверка" url="#" />
-                <FooterLink value="Правила" url="/terms-of-service" />
-                <FooterLink value="Политика" url="/privacy-policy" />
-                <FooterLink value="Поддержка" url="/tech-support" />
+              { matchesDownSm &&  <Grid item xs={12} style={{marginTop: '25px', marginBottom: '25px'}}>
+                  <Box className="footer-info__title">{t('footerInfo.serviceInfo.title')}</Box>
+                  <FooterLink value={t('footerInfo.serviceInfo.info.verification')} url="#" />
+                  <FooterLink value={t('footerInfo.serviceInfo.info.terms_of_Service')} url="/terms-of-service" />
+                  <FooterLink value={t('footerInfo.serviceInfo.info.privacy_police')} url="/privacy-policy" />
+                  <FooterLink value={t('footerInfo.serviceInfo.info.tech_support')} url="/tech-support" />
               </Grid> }
-            {  matchesDownSm &&   <Grid item xs={12}  style={{marginTop: '25px', marginBottom: '25px'}}>
-                <Box className="footer-info__title">Мой аккаунт</Box>
-                <FooterLink value="Мой аккаунт" url="/account" />
-                <FooterLink value="Мои кейсы" url="#" />
-                <FooterLink value="Плюшки" url="#" />
+              { matchesDownSm &&   <Grid item xs={12}  style={{marginTop: '25px', marginBottom: '25px'}}>
+                  <Box className="footer-info__title">{t('footerInfo.accountInfo.title')}</Box>
+                  <FooterLink value={t('footerInfo.accountInfo.info.account')} url="/account" />
+                  <FooterLink value={t('footerInfo.accountInfo.info.cases')} url="#" />
+                  <FooterLink value={t('footerInfo.accountInfo.info.features')} url="#" />
               </Grid> }
-             { matchesDownSm &&   <Grid item xs={12} style={{marginTop: '25px', marginBottom: '25px'}}>
-                <Box className="footer-info__title">FEDAG ROULETTE</Box>
-                <FooterLink value="Дневной кейс" url="#" />
-                <FooterLink value="Акции" url="#" />
+              { matchesDownSm &&   <Grid item xs={12} style={{marginTop: '25px', marginBottom: '25px'}}>
+                <Box className="footer-info__title">{t('footerInfo.fedagRoulette.title')}</Box>
+                <FooterLink value={t('footerInfo.fedagRoulette.info.dailyCase')} url="#" />
+                <FooterLink value={t('footerInfo.fedagRoulette.info.stock')} url="#" />
               </Grid> }
-
+              
               { !matchesDownSm &&  <Grid item sm={4}>
-                <Box className="footer-info__title">Сервис</Box>
-                <FooterLink value="Проверка" url="#" />
-                <FooterLink value="Правила" url="/terms-of-service" />
-                <FooterLink value="Политика" url="/privacy-policy" />
-                <FooterLink value="Поддержка" url="/tech-support" />
+                <Box className="footer-info__title">{t('footerInfo.serviceInfo.title')}</Box>
+                <FooterLink value={t('footerInfo.serviceInfo.info.verification')} url="#" />
+                <FooterLink value={t('footerInfo.serviceInfo.info.terms_of_Service')} url="/terms-of-service" />
+                <FooterLink value={t('footerInfo.serviceInfo.info.privacy_police')} url="/privacy-policy" />
+                <FooterLink value={t('footerInfo.serviceInfo.info.tech_support')} url="/tech-support" />
               </Grid> }
-            {  !matchesDownSm &&   <Grid item sm={4}>
-                <Box className="footer-info__title">Мой аккаунт</Box>
-                <FooterLink value="Мой аккаунт" url="/account" />
-                <FooterLink value="Мои кейсы" url="#" />
-                <FooterLink value="Плюшки" url="#" />
+              { !matchesDownSm &&   <Grid item sm={4}>
+                <Box className="footer-info__title">{t('footerInfo.accountInfo.title')}</Box>
+                <FooterLink value={t('footerInfo.accountInfo.info.account')} url="/account" />
+                <FooterLink value={t('footerInfo.accountInfo.info.cases')} url="#" />
+                <FooterLink value={t('footerInfo.accountInfo.info.features')} url="#" />
               </Grid> }
-             { !matchesDownSm &&   <Grid item sm={4}>
-                <Box className="footer-info__title">FEDAG ROULETTE</Box>
-                <FooterLink value="Дневной кейс" url="#" />
-                <FooterLink value="Акции" url="#" />
+              { !matchesDownSm &&   <Grid item sm={4}>
+                <Box className="footer-info__title">{t('footerInfo.fedagRoulette.title')}</Box>
+                <FooterLink value={t('footerInfo.fedagRoulette.info.dailyCase')} url="#" />
+                <FooterLink value={t('footerInfo.fedagRoulette.info.stock')} url="#" />
               </Grid> }
             </Grid>
           </Grid>
@@ -188,3 +193,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+
