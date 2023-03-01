@@ -13,6 +13,7 @@ interface IUserState {
   favoritePackIdAndCount: any;
   bestItemIdAndPrice: any;
   bestItemId: any;
+  currency: string;
 }
 
 const initialState: IUserState = {
@@ -25,6 +26,7 @@ const initialState: IUserState = {
   favoritePackIdAndCount: '',
   bestItemIdAndPrice: 0,
   bestItemId: 0,
+  currency: 'RUB'
 };
 
 export const fetchUser = () => async (dispatch: TAppDispatch) => {
@@ -83,9 +85,12 @@ const userSlice = createSlice({
     clearMessage(state, action: PayloadAction<string>) {
       state.promoMessage = action.payload;
     },
+    setCurrency(state, action: PayloadAction<string>) {
+      state.currency = action.payload;
+    }
   },
 });
 
-export const {clearMessage } = userSlice.actions
+export const {clearMessage, setCurrency } = userSlice.actions
 
 export default userSlice.reducer;

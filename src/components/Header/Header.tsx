@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FAQ, Logo, OnlineAmount, HeaderSteam, HeaderPlusIcon } from '../svg';
 import { Box, Avatar, Container } from '@mui/material';
 import { HeaderButton } from './HeaderButton/HeaderButton';
@@ -7,7 +7,7 @@ import { LoginModal } from '../index';
 import { LocalizationModal } from './LocalizationModal/LocalizationModal';
 import { BalanceModal } from '../index';
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector } from '../../store';
+import { useAppSelector, useAppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import { getColorHeaderLeft, getColorHeaderRight, getHeaderLogo } from '../../store/selectors/getSettingsAppearance';
 import { useGetUsersCountQuery } from '../../store/slices/statisticsSlise';
@@ -15,6 +15,7 @@ import { useTranslation } from 'react-i18next';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import i18next from 'i18next';
+import {setCurrency} from '../../store/slices/userSlice';
 
 
 const languages: Record<string, {name: string, flag: string}> = {
@@ -23,6 +24,8 @@ const languages: Record<string, {name: string, flag: string}> = {
 }
 
 export const Header = () => {
+  const currency = useAppSelector(state => state.userSlice.currency);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const { user, isAuth } = useAppSelector((state) => state.userSlice);
   const serverColorHeaderLeft = useSelector(getColorHeaderLeft);
@@ -46,6 +49,14 @@ export const Header = () => {
   const allUsers = users ?? '';
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('md'));
+
+  useEffect(() => {
+    if (i18next.language === 'en') {
+      dispatch(setCurrency('USD'));
+    } else {
+      dispatch(setCurrency('RUB'));
+    }
+  }, []);
 
   return (
     <header
@@ -85,7 +96,7 @@ export const Header = () => {
             <Box className="header__location" onClick={handleModalOpen}>
               <Box className="header__flag" component="img" alt="Country icon" src={languages[i18next.language].flag}></Box>
               <Box className="header__country">{languages[i18next.language].name}</Box>
-              <Box className="header__currency">RUB</Box>
+              <Box className="header__currency">{currency}</Box>
             </Box>
             <LocalizationModal isOpen={isModalOpen} handleClose={handleModalClose}></LocalizationModal>
             {isAuth ? (

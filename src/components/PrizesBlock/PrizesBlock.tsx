@@ -1,51 +1,52 @@
-import { Box, Button, Container, SxProps } from '@mui/material';
-import { All, Bonus, Case, Roulette, StarIcon } from '../svg';
-import { useSelector } from 'react-redux';
-import { getColorButtons, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
+import { Box, Container } from '@mui/material';
+//import { Button, SxProps } from '@mui/material';
+//import { All, Bonus, Case, Roulette, StarIcon } from '../svg';
+//import { useSelector } from 'react-redux';
+//import { getColorButtons, getColorBackgroundTwo } from '../../store/selectors/getSettingsAppearance';
 import { useGetLastItemsWonQuery } from '../../store/slices/statisticsSlise';
-import { fetchUser } from '../../store/slices/userSlice';
-import { useAppDispatch } from '../../store';
-import { useEffect, useState } from 'react';
+//import { fetchUser } from '../../store/slices/userSlice';
+//import { useAppDispatch } from '../../store';
+//import { useEffect, useState } from 'react';
 
-const button: SxProps = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  backgroundColor: '#B81034',
-  width: '72px',
-  height: '42px',
-  color: 'white',
-  borderRadius: '5px',
-  textTransform: 'initial',
-  marginTop: '1px',
-  padding: '0 6px 0 7px',
-  fontSize: '12px',
-  lineHeight: '15px',
-  '&:hover': {
-    textDecoration: 'initial',
-    backgroundColor: '#D2002D',
-    boxShadow: 'none',
-  },
-};
+// const button: SxProps = {
+//   display: 'flex',
+//   justifyContent: 'space-between',
+//   backgroundColor: '#B81034',
+//   width: '72px',
+//   height: '42px',
+//   color: 'white',
+//   borderRadius: '5px',
+//   textTransform: 'initial',
+//   marginTop: '1px',
+//   padding: '0 6px 0 7px',
+//   fontSize: '12px',
+//   lineHeight: '15px',
+//   '&:hover': {
+//     textDecoration: 'initial',
+//     backgroundColor: '#D2002D',
+//     boxShadow: 'none',
+//   },
+// };
 
-const button2: SxProps = {
-  backgroundColor: '#B81034',
-  width: '190px',
-  height: '74px',
-  color: 'white',
-  borderRadius: '10px',
-  textTransform: 'initial',
-  fontSize: '20px',
-  lineHeight: '25px',
-  marginTop: '15px',
-  marginBottom: '15px',
-  marginRight: '10px',
-  gap: '15px',
-  '&:hover': {
-    textDecoration: 'initial',
-    backgroundColor: '#D2002D',
-    boxShadow: 'none',
-  },
-};
+// const button2: SxProps = {
+//   backgroundColor: '#B81034',
+//   width: '190px',
+//   height: '74px',
+//   color: 'white',
+//   borderRadius: '10px',
+//   textTransform: 'initial',
+//   fontSize: '20px',
+//   lineHeight: '25px',
+//   marginTop: '15px',
+//   marginBottom: '15px',
+//   marginRight: '10px',
+//   gap: '15px',
+//   '&:hover': {
+//     textDecoration: 'initial',
+//     backgroundColor: '#D2002D',
+//     boxShadow: 'none',
+//   },
+// };
 
 type TLastWonItems = {
   icon: string | undefined;
@@ -60,15 +61,15 @@ type TLastWonItems = {
 };
 
 export const PrizeBlock = () => {
-  const serverColorButtons = useSelector(getColorButtons);
-  const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
-  const [intervalMs, setIntervalMs] = useState(2000)
+ // const serverColorButtons = useSelector(getColorButtons);
+ // const serverColorBackgroundTwo = useSelector(getColorBackgroundTwo);
+ // const [intervalMs, setIntervalMs] = useState(2000)
 
   const { data: lastWonItems } = useGetLastItemsWonQuery('', {
     pollingInterval: 10000,
   }
   );
-  console.log(lastWonItems, 'data');
+  //console.log(lastWonItems, 'data');
   //const dispatch = useAppDispatch()
 
   const titleFormat = (title: string, index: number) => {
@@ -79,7 +80,7 @@ export const PrizeBlock = () => {
   //   const interval = setInterval(() => {
   //     dispatch(fetchUser())
   //   }, 2000);
-  
+
   //   return () => clearInterval(interval);
   // }, []);
 
@@ -101,11 +102,11 @@ export const PrizeBlock = () => {
             return (
               <Box key={Math.random()} className={'prizes-block__item ' + item.rare}>
                 <div className='prize-wrap'>
-                <img className="prizes-block__img" src={item.icon} alt="" />
-                <span className="prizes-block__type">{titleFormat(item.item_title, 0)}</span>
-                <span className="prizes-block__title">{titleFormat(item.item_title, 1)}</span>
+                  <img className="prizes-block__img" src={item.icon} alt="" />
+                  <span className="prizes-block__type">{titleFormat(item.item_title, 0)}</span>
+                  <span className="prizes-block__title">{titleFormat(item.item_title, 1)}</span>
                 </div>
-                
+
                 <div className="tooltip">
                   <div className="tooltip-inner">
                     <img className="tooltip__img" src={item.user_icon} alt="" />

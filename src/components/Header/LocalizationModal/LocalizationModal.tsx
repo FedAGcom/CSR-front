@@ -6,6 +6,8 @@ import { InputLabel } from './InputLabel';
 import Select from './Select';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import {setCurrency} from '../../../store/slices/userSlice';
+import { useAppSelector, useAppDispatch } from '../../../store/store';
 
 type TLocalizationModalProps = {
   handleClose: () => void;
@@ -13,6 +15,8 @@ type TLocalizationModalProps = {
 };
 
 export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, isOpen }) => {
+  const currency = useAppSelector(state => state.userSlice.currency);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -26,6 +30,11 @@ export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, is
     i18next.changeLanguage(e.target.value as string);
   }
 
+  const changeCurrencyHandler = (e: SelectChangeEvent<unknown>) => {
+    console.log(e.target.value);
+    dispatch(setCurrency(e.target.value as string));
+  }
+  
   const handleCloseButton = () => {
     handleClose();
   };
@@ -56,7 +65,8 @@ export const LocalizationModal: FC<TLocalizationModalProps> = ({ handleClose, is
           </Box>
           <Box className="localization__form-item">
             <InputLabel htmlFor="currency-input">{t('localizationModal.currencyInputLabel')}</InputLabel>
-            <Select labelId="currency-input" defaultValue="RUB">
+            <Select labelId="currency-input" value={currency}
+            onChange={changeCurrencyHandler}>
               <MenuItem value="RUB">{t('localizationModal.currencyRub')}</MenuItem>
               <MenuItem value="USD">{t('localizationModal.currencyUsd')}</MenuItem>
             </Select>

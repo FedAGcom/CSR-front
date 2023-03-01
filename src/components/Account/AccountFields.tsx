@@ -15,8 +15,10 @@ import $api from '../../api';
 import { fetchFavoritePack, fetchItemById } from '../../store/slices/packSlice';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { rubToUsd } from '../../translations/rubToUsd';
 
 export const AccountHeaderField = () => {
+  const currency = useAppSelector(state => state.userSlice.currency);
   const [isTradeModalOpen, setTradeModalOpen] = useState<boolean>(false);
   const [isBalanceModalOpen, setBalanceModalOpen] = useState<boolean>(false);
   const { user } = useAppSelector((state) => state.userSlice);
@@ -40,6 +42,8 @@ export const AccountHeaderField = () => {
     dispatch(fetchUser());
   };
 
+  const sign = currency === 'USD' ? "$" : '₽';
+
   return (
     <div className="account-field__wrapper" style={{ backgroundColor: serverColorBackgroundOne ?? '#24232A' }}>
       <div className="account-field">
@@ -50,7 +54,7 @@ export const AccountHeaderField = () => {
           <div className="account-info__name">
             <p>{user.nickNameSteam}</p> <HeaderSteam />
           </div>
-          <div className="account-info__money">{`${user.balance?.toLocaleString('ru')} ₽`}</div>
+          <div className="account-info__money">{`${rubToUsd(user.balance?.toLocaleString('ru'), currency)} ${sign}`}</div>
         </div>
         {user.role === 'admin' && (
           <ButtonBasic sx={{ marginLeft: '4rem' }} className="primary" onClick={() => navigate('/admin')}>
