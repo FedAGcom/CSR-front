@@ -1,6 +1,8 @@
 import { Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { caseImage } from '../images';
+import { useAppSelector } from '../../store';
+import { rubToUsd } from '../../translations/rubToUsd';
 
 interface ICaseProps {
   id: number;
@@ -11,7 +13,11 @@ interface ICaseProps {
 }
 
 export const Case = (props: ICaseProps) => {
+  const currency = useAppSelector(state => state.userSlice.currency);
   const navigate = useNavigate();
+
+  const sign = currency === 'USD' ? "$" : '₽';
+  console.log(currency);
 
   return (
     <Box className="case block__item" onClick={() => navigate('/open-case' + '/' + props.id)}>
@@ -22,7 +28,7 @@ export const Case = (props: ICaseProps) => {
         alt="case image"
         sx={{ width: '255px', height: '255px', overflow: 'hidden' }}
       ></Box>
-      <Box className="case__price">{props.price} &#8381;</Box>
+      <Box className="case__price">{rubToUsd(props.price, currency)} {sign}</Box>
       <Box className="case__title">{props.title}</Box>
     </Box>
   );
