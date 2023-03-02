@@ -6,6 +6,7 @@ export type TItem = {
   rare: string;
   quality: string;
   winchance: number;
+  price: number
 };
 
 export type TItemFromBack = {

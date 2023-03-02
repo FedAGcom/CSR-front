@@ -85,6 +85,10 @@ export const EditSkinForm: FC<TAddSkinFormProps> = ({ setEditSkinFormActive, cha
         <Box>Процент выпадения</Box>
         <AdminInput defaultValue={item.winchance} placeholder="Число" {...register('winchance')} />
       </Box>
+      <Box className="add-skin-form__form">
+        <Box>Стоимость</Box>
+        <AdminInput placeholder="Число" {...register('price')} />
+      </Box>
       <Box className="add-skin-form__button-container">
         <ButtonBasic className="admin" onClick={handleSubmit(onSubmit)}>
           Сохранить

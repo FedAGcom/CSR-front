@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Box, Divider } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { CaseCreateButton, CasesSearchForm, Case, ModalAdmin, ModalContent } from './components';
-import { TCase, TEditableCase } from './components/types';
+import { TCase, TEditableCase  } from './components/types';
 import { token } from './token';
 
 const headers = {
@@ -45,7 +45,6 @@ export const AdminCases = () => {
     setModalOpen(true);
   };
 
-  console.log(cases);
 
   return (
     <Box className="admin-cases">
@@ -77,7 +76,7 @@ export const AdminCases = () => {
         onClose={() => setModalOpen(false)}
         title={editableCase ? `Кейс "${editableCase?.title}"` : 'Кейс'}
       >
-        <ModalContent editableCase={editableCase} setModalOpen={setModalOpen} getCases={getCases} />
+      <ModalContent editableCase={editableCase} setModalOpen={setModalOpen} getCases={getCases} />
       </ModalAdmin>
     </Box>
   );

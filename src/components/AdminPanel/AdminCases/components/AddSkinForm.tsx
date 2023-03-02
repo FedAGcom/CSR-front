@@ -8,13 +8,19 @@ import { FC } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { TItem } from './types';
+import axios from 'axios';
+import { token } from '../token';
+
 
 type TAddSkinFormProps = {
   setAddSkinFormActive: (value: boolean) => void;
   addItem: (item: TItem) => void;
+  editableCase: any | null | undefined;
+  id: number| undefined
 };
 
-export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addItem }) => {
+export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addItem ,editableCase , id}) => {
+ 
   const schema = yup.object().shape({
     type: yup
       .string()
@@ -29,12 +35,33 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addIt
       .string()
       .required()
       .test('select3', 'Выберите значение', (value) => (value === 'default' ? false : true)),
-    winchance: yup.number().required(),
+    winchance: yup
+    .number()
+    .required()
+    .min(0, "Min is 0")
+    .max(99, "max is 99"),
+    price: yup.number().required(),
   });
 
-  const { register, handleSubmit, formState } = useForm<TItem>({ resolver: yupResolver(schema) });
+  const { register, handleSubmit, formState: { errors } } = useForm<TItem>({ resolver: yupResolver(schema) });
+  
 
-  const onSubmit = (data: TItem) => {
+  const onSubmit = async (data: TItem) => {
+    if (editableCase) {      
+
+      await axios
+        .post(`http://csgofarm.online/api/v1/packs/addItems/${editableCase.id}`, data, {
+          headers: { Authorization: token, 'Content-Type': 'application/json' },
+        })
+        .then(() => setAddSkinFormActive(false))
+    } else {  
+      await axios
+        .post(`http://csgofarm.online/api/v1/packs/addItems/${id}`, data, {
+          headers: { Authorization: token, 'Content-Type': 'application/json' },
+        })
+        .then(() => setAddSkinFormActive(false));
+    }
+        
     setAddSkinFormActive(false);
     addItem(data);
   };
@@ -47,7 +74,7 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addIt
     <Box className="add-skin-form">
       <Box className="add-skin-form__form">
         <Box>Тип</Box>
-        <AdminSelect defaultValue={'default'} {...register('type')} error={!!formState.errors.type}>
+        <AdminSelect defaultValue={'default'} {...register('type')} error={!!errors.type}>
           <MenuItem value="default" disabled hidden sx={{ display: 'none' }}>
             Выбрать
           </MenuItem>
@@ -62,11 +89,11 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addIt
       </Box>
       <Box className="add-skin-form__form">
         <Box>Название</Box>
-        <AdminInput {...register('title')} error={!!formState.errors.title} />
+        <AdminInput {...register('title')} error={!!errors.title} />
       </Box>
       <Box className="add-skin-form__form">
         <Box>Редкость</Box>
-        <AdminSelect defaultValue={'default'} {...register('rare')} error={!!formState.errors.rare}>
+        <AdminSelect defaultValue={'default'} {...register('rare')} error={!!errors.rare}>
           <MenuItem value="default" disabled hidden sx={{ display: 'none' }}>
             Выбрать
           </MenuItem>
@@ -81,7 +108,7 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addIt
       </Box>
       <Box className="add-skin-form__form">
         <Box>Качество</Box>
-        <AdminSelect defaultValue={'default'} {...register('quality')} error={!!formState.errors.quality}>
+        <AdminSelect defaultValue={'default'} {...register('quality')} error={!!errors.quality}>
           <MenuItem value="default" disabled hidden sx={{ display: 'none' }}>
             Выбрать
           </MenuItem>
@@ -96,7 +123,12 @@ export const AddSkinForm: FC<TAddSkinFormProps> = ({ setAddSkinFormActive, addIt
       </Box>
       <Box className="add-skin-form__form">
         <Box>Процент выпадения</Box>
-        <AdminInput placeholder="Число" {...register('winchance')} />
+        <AdminInput   placeholder="Число"  {...register("winchance")}  />
+        {errors.winchance && <p>{"Min value is 0 max is 99"}</p>}
+      </Box>
+      <Box className="add-skin-form__form">
+        <Box>Стоимость</Box>
+        <AdminInput placeholder="Число" {...register('price' , {valueAsNumber: true})} />
       </Box>
       <Box className="add-skin-form__button-container">
         <ButtonBasic className="admin" onClick={handleSubmit(onSubmit)}>
