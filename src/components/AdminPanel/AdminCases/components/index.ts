@@ -8,6 +8,7 @@ import { CaseHeaderForm } from './CaseHeaderForm';
 import { AddSkinForm } from './AddSkinForm';
 import { AddSkinButton } from './AddSkinButton';
 import { ModalContent } from './ModalContent';
+import { CreateCaseButton } from './CreateCaseButton';
 
 export {
   CasesSearchForm,
@@ -20,4 +21,5 @@ export {
   AddSkinForm,
   AddSkinButton,
   ModalContent,
+  CreateCaseButton
 };

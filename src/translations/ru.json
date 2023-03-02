@@ -34,7 +34,7 @@
         "tech_support" : "Поддержка"
       }
     },
-    "AccountInfo" : {
+    "accountInfo" : {
       "title": "Мой аккаунт",
       "info": {
         "account": "Мой аккаунт" ,
@@ -42,10 +42,10 @@
         "features": "Плюшки"
       }
     },
-    "Fedag roulette" : {
+    "fedagRoulette" : {
       "title": "FEDAG ROULETTE",
       "info": {
-        "daily case": "Дневной кейс",
+        "dailyCase": "Дневной кейс",
         "stock" : "Акции"
       }
     }

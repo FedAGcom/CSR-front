@@ -48,6 +48,8 @@ export const Skin: FC<TSkinProps> = ({ item, index, changeItem, deleteItem }) =>
         <Box>{`${item.quality}`}</Box>
         <Divider orientation="vertical"></Divider>
         <Box>{`${item.winchance} %`}</Box>
+        <Divider orientation="vertical"></Divider>
+        <Box>{`${item.price} $`}</Box>
       </Box>
       {isEditActive && (
         <EditSkinForm
